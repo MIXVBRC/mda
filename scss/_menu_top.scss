@@ -1,0 +1,18 @@
+.menu-top {
+    display: inline-block;
+
+    &__list {
+        display: table;
+    }
+
+    &__item {
+        display: table-cell;
+        
+    }
+
+    &__link {
+        color: $font_color;
+        margin-left: 145px;
+    }
+
+}

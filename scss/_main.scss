@@ -1,0 +1,11 @@
+body * {
+    // font-style: $font_style;
+    font-family: $font_style;
+}
+
+body {
+    background-color: $background_color;
+    background-image: url("../img/bg.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
