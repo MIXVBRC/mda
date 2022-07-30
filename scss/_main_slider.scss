@@ -1,0 +1,30 @@
+.slider {
+
+    &__list {
+
+    }
+
+    &__item {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    &__description {
+        margin-top: 45px;
+    }
+
+    &__img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        object-position: center;
+        object-fit: cover;
+    }
+}

@@ -1,9 +1,22 @@
+// Настройки
+@import "_settings";
+
 // Сброс стилей
 @import "_reset";
-@import "_settings";
+
+// Флекс бокс
 @import "_flexbox";
 
+// Общий
 @import "_main";
+
+// Хедер
 @import "_header";
 @import "_menu_top";
+@import "_burger";
 
+// Главная страница
+@import "_main_slider";
+@import "_mda_animate";
+@import "_main_sections";
+@import "_main_popular";

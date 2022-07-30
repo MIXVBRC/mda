@@ -12,17 +12,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.min.css">
+    <script src="js/jquery.min.js"></script>
     <script src="js/script.js"></script>
 </head>
 <body>
     <div class="wrapper">
         <div class="content">
 
-            <header class="header">
-                <div class="logo">
+            <header class="header" data-header>
+                <a href="/" class="logo">
                     <img class="logo__file" src="img/logo_header.png" alt="Logo">
-                </div>
-                <nav class="menu-top">
+                </a>
+                <nav class="menu-top" data-menu-top>
                     <div class="menu-top__list">
                         <div class="menu-top__item"><a href="#" class="menu-top__link">О нас</a></div>
                         <div class="menu-top__item"><a href="#" class="menu-top__link">Вакансии</a></div>
@@ -30,10 +31,82 @@
                         <div class="menu-top__item"><a href="#" class="menu-top__link">Контакты</a></div>
                     </div>
                 </nav>
+                <div class="burger" data-menu-burger><span></span></div>
             </header>
 
             <div class="main">
 
+                <section class="slider">
+                    <div class="slider__list">
+                        <div class="slider__item">
+                            <div class="mda-animate">
+                                <img class="mda-animate__w" src="img/mda_w.png" alt="">
+                                <img class="mda-animate__r" src="img/mda_r.png" alt="">
+                                <img class="mda-animate__b" src="img/mda_b.png" alt="">
+                            </div>
+                            <div class="slider__description">Сеть магазинов кальянной индустрии</div>
+                            <!-- <img class="slider__img" src="img/bg.png" alt=""> -->
+                        </div>
+                    </div>
+                </section>
+
+                <section class="sections">
+                    <div class="container">
+                        <div class="sections__body">
+                            <div class="sections__list">
+                                <div class="sections__item">
+                                    <a class="sections__link" href="#">Электроники</a>
+                                </div>
+                                <div class="sections__item">
+                                    <a class="sections__link" href="#">Табаки</a>
+                                </div>
+                            </div>
+                            <div class="sections__img">
+                                <img class="img__contain" src="img/logo.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="popular">
+                    <div class="container">
+                        <h2 class="popular__title">Популярное</h2>
+                        <div class="popular__body">
+                            <div class="popular__list">
+
+                                <div class="popular__item">
+                                    <a href="#" class="popular__link">
+                                        <img src="img/element.jpeg" alt="" class="popular__img img__cover">
+                                        <div class="popular__name">Glitch Sauce Salt Bleach</div>
+                                    </a>
+                                </div>
+
+                                <div class="popular__item">
+                                    <a href="#" class="popular__link">
+                                        <img src="img/element.jpeg" alt="" class="popular__img img__cover">
+                                        <div class="popular__name">Glitch Sauce Salt Bleach</div>
+                                    </a>
+                                </div>
+
+                                <div class="popular__item">
+                                    <a href="#" class="popular__link">
+                                        <img src="img/element.jpeg" alt="" class="popular__img img__cover">
+                                        <div class="popular__name">Glitch Sauce Salt Bleach</div>
+                                    </a>
+                                </div>
+
+                                <div class="popular__item">
+                                    <a href="#" class="popular__link">
+                                        <img src="img/element.jpeg" alt="" class="popular__img img__cover">
+                                        <div class="popular__name">Glitch Sauce Salt Bleach</div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
             </div>
 
         </div>
