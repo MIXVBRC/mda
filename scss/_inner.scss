@@ -1,0 +1,46 @@
+.title {
+    margin-top: $inner_title_margin;
+    margin-bottom: 50px;
+
+    &__text {
+        text-transform: uppercase;
+        position: relative;
+        font-size: 30px;
+    }
+}
+
+.breadcrumbs {
+
+    &__list {
+        
+    }
+
+    &__item {
+        display: inline-block;
+    }
+
+    &__item:not(:last-child) {
+        margin-right: 10px;
+        position: relative;
+
+        &::before {
+            content: '|';
+            position: absolute;
+            right: -9px;
+            top: 4px;
+            font-size: 10px;
+        }
+    }
+
+    &__item:last-child &__link {
+        opacity: 0.5;
+    }
+
+    &__link {
+        font-size: 10px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

@@ -1,14 +1,25 @@
+// Цвета
 $main_color: #0085FF;
 $background_color: #15151B;
-$header_color: rgba(0,0,0,0.5);
+$blackout_color: rgba(0,0,0,0.5);
 $font_color: #fff;
 $lines_color: rgba(0,133,255,0.44);
 
+// Шрифт
 $font_style: 'Montserrat';
 
-$content_width: 1400px;
+// Размеры экрана
+$c_width: 1400px;
+$l_width: 992px;
+$m_width: 768px;
+$s_width: 576px;
+
+// Прочие настройки
 $header_height: 76px;
+$inner_title_margin: calc($header_height + 50px);
 $transition_time: 500ms;
 $transition_time_mini: 250ms;
 $anaglyph_scale: 5px;
 $section_margin_bottom: 100px;
+$blur_intensive: 20px;
+$border: 2px solid $lines_color;

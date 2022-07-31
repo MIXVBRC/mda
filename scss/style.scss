@@ -1,6 +1,9 @@
 // Настройки
 @import "_settings";
 
+// Миксины
+@import "_mixin";
+
 // Сброс стилей
 @import "_reset";
 
@@ -20,3 +23,13 @@
 @import "_mda_animate";
 @import "_main_sections";
 @import "_main_popular";
+@import "_main_news";
+
+// Футер
+@import "_footer";
+@import "_menu_bottom";
+
+// Внутренние
+@import "_inner";
+@import "_mini_sections";
+@import "_list_1";

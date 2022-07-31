@@ -1,4 +1,4 @@
-.sections {
+.sections-main {
 
     &__body {
         display: grid;
@@ -13,23 +13,38 @@
     }
 
     &__item {
-
+        
     }
 
     &__link {
         display: block;
-        border: 2px solid $lines_color;
+        border: $border;
         padding: 55px;
         font-size: 36px;
         text-transform: uppercase;
+        background-color: $blackout_color;
+
+        &:hover {
+            background-color: $lines_color;
+            transition: $transition_time_mini ease-in-out;
+        }
     }
 
     &__img {
+        position: relative;
+
+        & > img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 
-@media (max-width: $content_width) {
-    .sections {
+@media (max-width: $c_width) {
+    .sections-main {
         &__list {
             gap: 25px;
         }
@@ -39,11 +54,11 @@
         }
     }
 }
-@media (max-width: 992px) {
+@media (max-width: $l_width) {
     
 }
-@media (max-width: 768px) {
-    .sections {
+@media (max-width: $m_width) {
+    .sections-main {
         &__body {
             grid-template-columns: 1fr;
         }
@@ -55,4 +70,4 @@
         }
     }
 }
-@media (max-width: 576px) {}
+@media (max-width: $s_width) {}

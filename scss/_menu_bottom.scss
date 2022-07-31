@@ -1,0 +1,36 @@
+.menu-bottom {
+    width: 100%;
+
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    &__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__link {
+        padding: 7px;
+        opacity: 0.5;
+    }
+}
+@media (max-width: $c_width) {
+
+}
+@media (max-width: $l_width) {
+    .menu-bottom {
+        &__list {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+}
+@media (max-width: $m_width) {
+    .menu-bottom {
+        &__list {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}

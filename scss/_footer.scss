@@ -1,0 +1,18 @@
+.footer {
+    margin-top: $section_margin_bottom;
+    & > .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+.phone {
+    margin-bottom: 25px;
+    opacity: 0.5;
+}
+.logo {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 80px;
+}

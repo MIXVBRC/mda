@@ -1,0 +1,22 @@
+.sections-mini {
+    margin-bottom: $section_margin_bottom;
+
+    &__body {
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__item {
+        margin-right: 20px;
+    }
+
+    &__link {
+        font-size: 15px;
+        padding: 14px 46px 14px 14px;
+        opacity: 0.5;
+        border: 2px solid $font_color;
+    }
+}

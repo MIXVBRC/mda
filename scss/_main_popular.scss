@@ -1,36 +1,30 @@
 .popular {
 
     &__body {
-    }
-
-    &__title {
-        text-transform: uppercase;
-        position: relative;
-        margin-bottom: 80px;
-        font-size: 40px;
-
-        &::before {
-            $width: 200px;
-            content: '';
-            position: absolute;
-            background-color: $font_color;
-            width: $width;
-            height: 1px;
-            left: calc(($width + 20px) * -1);
-            top: 50%;
-        }
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 2fr 1fr;
     }
 
     &__list {
         display: grid;
         gap: 20px;
-        grid-template-columns: 2fr 1fr;
-        grid-auto-rows: 500px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: 400px;
+    }
+
+    &__list &__item:nth-child(4n+1) {
+        grid-column: 1/3;
+    }
+
+    &__list &__item:nth-child(4n) {
+        grid-column: 2/4;
     }
 
     &__item {
         position: relative;
-        border: 2px solid $lines_color;
+        border: $border;
+        background-color: $blackout_color;
     }
 
     &__link {
@@ -50,8 +44,8 @@
         left: 0;
         width: 100%;
         display: block;
-        background-color: $header_color;
-        backdrop-filter: blur(20px);
+        background-color: $blackout_color;
+        @include blur;
     }
 
     &__item:hover &__name {
@@ -63,12 +57,44 @@
     }
 }
 
-@media (max-width: $content_width) {}
-@media (max-width: 992px) {}
-@media (max-width: 768px) {
+@media (max-width: $c_width) {
     .popular {
-        &__title {
-            font-size: 30px;
+        &__body {
+            display: block;
+        }
+
+        &__right {
+            display: none;
+        }
+    }
+}
+@media (max-width: $l_width) {
+
+}
+@media (max-width: $m_width) {
+    .popular {
+        &__name {
+            opacity: 1;
+            font-size: 14px;
+        }
+        &__list {
+            grid-template-columns: 1fr 1fr;
+            grid-auto-rows: 300px;
+        }
+
+        &__list &__item:nth-child(4n+1) {
+            grid-column: unset;
+        }
+    
+        &__list &__item:nth-child(4n) {
+            grid-column: unset;
+        }
+    }
+}
+@media (max-width: $s_width) {
+    .popular {
+        &__list {
+            grid-template-columns: 1fr;
         }
     }
 }

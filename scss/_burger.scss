@@ -2,9 +2,9 @@
     display: none;
 }
 
-@media (max-width: $content_width) {}
-@media (max-width: 992px) {}
-@media (max-width: 768px) {
+@media (max-width: $c_width) {}
+@media (max-width: $l_width) {}
+@media (max-width: $m_width) {
     .burger {
 
         display: block;
@@ -65,4 +65,4 @@
         }
     }
 }
-@media (max-width: 576px) {}
+@media (max-width: $s_width) {}

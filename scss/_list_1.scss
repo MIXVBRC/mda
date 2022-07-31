@@ -1,0 +1,46 @@
+.list1 {
+
+    &__body {
+    }
+
+    &__list {
+        display: grid;
+        gap: 50px;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    &__item {
+        & > *:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
+
+    &__img {
+        border: 2px solid $font_color;
+        height: 380px;
+        overflow: hidden;
+        transition: $transition_time_mini ease-in-out;
+
+        & > img {
+            transition: $transition_time_mini ease-in-out;
+        }
+    }
+
+    &__item:hover &__img {
+        border: 2px solid $lines_color;
+        transition: $transition_time_mini ease-in-out;
+
+        & > img {
+            transform: scale(1.05);
+            transition: $transition_time_mini ease-in-out;
+        }
+    }
+
+    &__name {
+        font-size: 14px;
+    }
+
+    &__price {
+        font-size: 14px;
+    }
+}

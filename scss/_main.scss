@@ -1,3 +1,20 @@
+// Прижимаем футер
+html,
+body {
+  height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.content {
+    flex: 1 0 auto;
+}
+.footer {
+    flex: 0 0 auto;
+}
+
 body * {
     // font-style: $font_style;
     font-family: $font_style;
@@ -6,10 +23,22 @@ body * {
 
 body {
     background-color: $background_color;
-    background-size: 100%;
-    background-repeat: no-repeat;
+    background-size: 1920px;
+    background-repeat: repeat-y;
+    background-position: top;
+}
+@media (max-width: $l_width) {
+    body {
+        background-size: $l_width;
+    }
+}
+@media (max-width: $m_width) {
+    body {
+        background-size: $m_width;
+    }
 }
 
+// Изображения
 .img {
 
     &__contain,
@@ -28,8 +57,46 @@ body {
     }
 }
 
+// Заголовки на главной
 .main {
     & > section {
         margin-bottom: $section_margin_bottom;
-    } 
+    }
+    &__title {
+        text-transform: uppercase;
+        position: relative;
+        margin-bottom: 80px;
+        font-size: 40px;
+    
+        &::before {
+            $width: 200px;
+            content: '';
+            opacity: 0.5;
+            position: absolute;
+            background-color: $font_color;
+            width: $width;
+            height: 2px;
+            left: calc(($width + 20px) * -1);
+            top: 50%;
+        }
+    }
+}
+@media (max-width: $l_width) {
+    .main {
+        &__title {
+            &::before {
+                left: 4px;
+                top: unset;
+                bottom: -36px;
+                width: 50%;
+            }
+        }
+    }
+}
+@media (max-width: $m_width) {
+    .main {
+        &__title {
+            font-size: 30px;
+        }
+    }
 }
