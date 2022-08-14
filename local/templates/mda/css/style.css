@@ -469,7 +469,8 @@ body {
   flex: 0 0 auto;
 }
 
-body * {
+body > .footer *,
+body > .content * {
   font-family: "Montserrat";
   color: #fff;
 }
@@ -547,6 +548,8 @@ body {
   align-items: center;
   padding: 0 15px 0 65px;
   z-index: 100;
+  top: 0;
+  left: 0;
 }
 .header::after {
   content: "";
@@ -1013,7 +1016,7 @@ body {
 .breadcrumbs__item:not(:last-child)::before {
   content: "|";
   position: absolute;
-  right: -9px;
+  right: -7px;
   top: 4px;
   font-size: 10px;
 }
