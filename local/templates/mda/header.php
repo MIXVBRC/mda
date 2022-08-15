@@ -72,7 +72,7 @@ IncludeTemplateLangFile(__FILE__);
 
                 <?$APPLICATION->IncludeComponent(
                     "bitrix:breadcrumb",
-                    "main",
+                    "",
                     Array(
                         "PATH" => "",
                         "SITE_ID" => "s1",
