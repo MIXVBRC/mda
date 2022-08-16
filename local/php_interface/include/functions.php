@@ -47,7 +47,7 @@ function pre($data, $die = false, $var_dump = false)
 {
     if (!isAdmin()) return;
 
-    echo "<pre>";
+    echo "<pre style=\"color: #000 !important; background-color: #fff !important;\">";
     $var_dump ? var_dump($data) : print_r($data);
     echo "</pre>";
 

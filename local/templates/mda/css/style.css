@@ -469,8 +469,7 @@ body {
   flex: 0 0 auto;
 }
 
-body > .footer *,
-body > .content * {
+body * {
   font-family: "Montserrat";
   color: #fff;
 }
@@ -548,8 +547,6 @@ body {
   align-items: center;
   padding: 0 15px 0 65px;
   z-index: 100;
-  top: 0;
-  left: 0;
 }
 .header::after {
   content: "";
@@ -1026,8 +1023,9 @@ body {
 .breadcrumbs__link {
   font-size: 10px;
 }
-.breadcrumbs__link:hover {
+.breadcrumbs__link:hover:not(span) {
   text-decoration: underline;
+  color: #fff;
 }
 
 .sections-mini {
