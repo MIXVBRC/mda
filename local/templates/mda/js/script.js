@@ -33,6 +33,16 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('[data-add2basket]').on('click', function (event) {
         let product = $(this).data('product');
-        pre(product);
+
+        $.ajax({
+            type: 'POST',
+            url: '/include/add2basket.php',
+            data: {
+                product: product
+            }
+        });
+
+        BX.onCustomEvent('OnBasketChange');
+    
     });
 });
