@@ -15,7 +15,8 @@ body {
     flex: 0 0 auto;
 }
 
-body * {
+body > .content *,
+body > .footer * {
     // font-style: $font_style;
     font-family: $font_style;
     color: $font_color;
