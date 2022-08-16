@@ -1,0 +1,26 @@
+.personal {
+
+    &__body {
+    }
+
+    &__list {
+        display: grid;
+        gap: 15px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    &__item {
+        text-align: center;
+        padding: 50px 15px;
+        border: 1px solid $font_color;
+        font-size: 18px;
+        text-transform: uppercase;
+        background-color: $blackout_color;
+
+        &:hover {
+            background-color: $font_color;
+            color: $background_color;
+            transition: $transition_time_mini ease-in-out;
+        }
+    }
+}

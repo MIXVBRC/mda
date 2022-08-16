@@ -16,13 +16,14 @@ use Bitrix\Main\Localization\Loc;
 
 $this->setFrameMode(true);
 
+$img = $arResult['DETAIL_PICTURE']['SRC'] ? $arResult['DETAIL_PICTURE']['SRC'] : SITE_TEMPLATE_PATH.'/img/noimg.png'
 ?>
 
 <div class="element" id="bid">
     <div class="container">
         <div class="element__body">
             <div class="element__img" data-entity="images-container">
-                <img class="img__cover" src="<?=$arResult['DETAIL_PICTURE']['SRC']?>" alt="<?=$arResult['DETAIL_PICTURE']['ALT']?>">
+                <img class="img__cover" src="<?=$img?>" alt="<?=$arResult['DETAIL_PICTURE']['ALT']?>">
             </div>
             <div class="element__info">
                 <div class="element__name"><?=$arResult['NAME']?></div>

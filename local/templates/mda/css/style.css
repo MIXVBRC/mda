@@ -1165,3 +1165,21 @@ body {
     grid-template-columns: 1fr;
   }
 }
+.personal__list {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: 1fr 1fr;
+}
+.personal__item {
+  text-align: center;
+  padding: 50px 15px;
+  border: 1px solid #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.personal__item:hover {
+  background-color: #fff;
+  color: #15151B;
+  transition: 250ms ease-in-out;
+}

@@ -73,11 +73,13 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
                 <?
                     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], $elementEdit);
                     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], $elementDelete, $elementDeleteParams);
+
+                    $img = $arItem['DETAIL_PICTURE']['SRC'] ? $arItem['DETAIL_PICTURE']['SRC'] : SITE_TEMPLATE_PATH.'/img/noimg.png'
                 ?>
 
                 <a href="<?=$arItem['DETAIL_PAGE_URL']?>" class="list1__item"  id="<?=$this->GetEditAreaId($arItem['ID'])?>">
                     <div class="list1__img">
-                        <img class="img__cover" src="<?=$arItem['DETAIL_PICTURE']['SRC']?>" alt="<?=$arItem['DETAIL_PICTURE']['ALT']?>">
+                        <img class="img__cover" src="<?=$img?>" alt="<?=$arItem['DETAIL_PICTURE']['ALT']?>">
                     </div>
                     <div class="list1__name"><?=$arItem['NAME']?></div>
                     <div class="list1__price"><?=$arItem['PRICES'][$arParams['PRICE_CODE'][0]]['PRINT_VALUE']?></div>
