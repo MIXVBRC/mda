@@ -70,7 +70,7 @@ if ($isFilter)
 		$arCurSection = array();
 }
 ?>
-<div class="row">1
+<div class="row">
 <?
 if ($isVerticalFilter)
 	include($_SERVER["DOCUMENT_ROOT"]."/".$this->GetFolder()."/section_vertical.php");
