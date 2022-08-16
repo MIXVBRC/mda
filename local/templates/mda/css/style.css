@@ -547,6 +547,8 @@ body {
   align-items: center;
   padding: 0 15px 0 65px;
   z-index: 100;
+  top: 0;
+  left: 0;
 }
 .header::after {
   content: "";
@@ -1075,4 +1077,23 @@ body {
 }
 .list1__price {
   font-size: 14px;
+}
+
+.pagenavigation {
+  margin-top: 50px;
+}
+.pagenavigation__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.pagenavigation__list > li:not(:first-child) {
+  margin-left: 15px;
+}
+.pagenavigation__list > li span {
+  padding: 4px 7px;
+}
+.pagenavigation__list > li[data-select] span {
+  border: 1px solid #fff;
 }

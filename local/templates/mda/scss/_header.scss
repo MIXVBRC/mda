@@ -7,6 +7,8 @@
     align-items: center;
     padding: 0 15px 0 65px;
     z-index: 100;
+    top: 0;
+    left: 0;
 
     &::after {
         content: '';

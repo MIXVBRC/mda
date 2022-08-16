@@ -32,9 +32,10 @@ IncludeTemplateLangFile(__FILE__);
 </head>
 <body style="background-image: url('<?=SITE_TEMPLATE_PATH?>/img/ef.png'), url('<?=SITE_TEMPLATE_PATH?>/img/prop.png');">
 
-<?$APPLICATION->ShowPanel();?>
-
 <div class="content">
+
+    <?$APPLICATION->ShowPanel();?>
+
     <header class="header" data-header>
         <a href="<?= (isMainPage() ? "javascript:void(0)" : "/") ?>" class="logo">
             <img class="logo__file" src="<?=SITE_TEMPLATE_PATH?>/img/logo_header.png" alt="Logo">
