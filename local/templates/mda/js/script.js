@@ -29,3 +29,10 @@ $(document).ready(function () {
         $('[data-header]').toggleAttr('data-active');
     });
 });
+
+$(document).ready(function () {
+    $('[data-add2basket]').on('click', function (event) {
+        let product = $(this).data('product');
+        pre(product);
+    });
+});
