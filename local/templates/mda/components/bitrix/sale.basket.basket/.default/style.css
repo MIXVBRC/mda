@@ -1641,7 +1641,7 @@ h2.basket-item-info-name {
 	-ms-flex-align: center;
 	padding: 10px 0;
 	border-radius: 2px;
-	background-color: #e6f8fe;
+	background-color: unset;
 	color: #333;
 	text-align: center;
 	transition: 300ms all ease;
@@ -2193,7 +2193,7 @@ h2.basket-item-info-name {
 	width:131px;
 	height:116px;
 	margin:50px auto 42px;
-	background:url(images/empty_cart.svg) no-repeat center;
+	background:url(images/empty_cart.png) no-repeat center;
 	background-size:contain;
 }
 .bx-sbb-empty-cart-text{
@@ -2247,3 +2247,4 @@ body.bx-theme-yellow .catalog-block-header{border-color:#f4b236;}
 	background-color: #fff !important;
 	color: #000 !important;
 }
+

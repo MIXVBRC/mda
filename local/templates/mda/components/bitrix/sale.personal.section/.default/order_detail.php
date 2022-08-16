@@ -39,7 +39,11 @@ foreach($arParams as $key => $val)
 	if(mb_strpos($key, "PROP_") !== false)
 		$arDetParams[$key] = $val;
 }
+?>
 
+<div class="container">
+
+<?
 $APPLICATION->IncludeComponent(
 	"bitrix:sale.personal.order.detail",
 	"",
@@ -47,3 +51,4 @@ $APPLICATION->IncludeComponent(
 	$component
 );
 ?>
+</div>

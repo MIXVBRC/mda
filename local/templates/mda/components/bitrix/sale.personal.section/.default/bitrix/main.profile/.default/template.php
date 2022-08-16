@@ -6,6 +6,7 @@ use Bitrix\Main\Localization\Loc;
 
 ?>
 
+<div class="container">
 <div class="bx_profile">
 	<?
 	ShowError($arResult["strProfileError"]);
@@ -21,33 +22,34 @@ use Bitrix\Main\Localization\Loc;
 		<input type="hidden" name="lang" value="<?=LANG?>" />
 		<input type="hidden" name="ID" value="<?=$arResult["ID"]?>" />
 		<input type="hidden" name="LOGIN" value="<?=$arResult["arUser"]["LOGIN"]?>" />
-		<div class="main-profile-block-shown" id="user_div_reg">
-			<div class="main-profile-block-date-info">
-				<?
-				if($arResult["ID"]>0)
-				{
-					if ($arResult["arUser"]["TIMESTAMP_X"] <> '')
-					{
-						?>
-						<div class="col-sm-9 col-md-offset-3 small">
-							<strong><?=Loc::getMessage('LAST_UPDATE')?></strong>
-							<strong><?=$arResult["arUser"]["TIMESTAMP_X"]?></strong>
-						</div>
-						<?
-					}
+        <div class="main-profile-block-date-info">
+            <?
+            if($arResult["ID"]>0)
+            {
+                if ($arResult["arUser"]["TIMESTAMP_X"] <> '')
+                {
+                    ?>
+                    <div class="col-sm-9 col-md-offset-3 small">
+                        <strong><?=Loc::getMessage('LAST_UPDATE')?></strong>
+                        <strong><?=$arResult["arUser"]["TIMESTAMP_X"]?></strong>
+                    </div>
+                    <?
+                }
 
-					if ($arResult["arUser"]["LAST_LOGIN"] <> '')
-					{
-						?>
-						<div class="col-sm-9 col-md-offset-3 small">
-							<strong><?=Loc::getMessage('LAST_LOGIN')?></strong>
-							<strong><?=$arResult["arUser"]["LAST_LOGIN"]?></strong>
-						</div>
-						<?
-					}
-				}
-				?>
-			</div>
+                if ($arResult["arUser"]["LAST_LOGIN"] <> '')
+                {
+                    ?>
+                    <div class="col-sm-9 col-md-offset-3 small">
+                        <strong><?=Loc::getMessage('LAST_LOGIN')?></strong>
+                        <strong><?=$arResult["arUser"]["LAST_LOGIN"]?></strong>
+                    </div>
+                    <?
+                }
+            }
+            ?>
+        </div>
+		<div class="main-profile-block-shown" id="user_div_reg">
+
 			<?
 			if (!in_array(LANGUAGE_ID,array('ru', 'ua')))
 			{
@@ -89,11 +91,11 @@ use Bitrix\Main\Localization\Loc;
 			if ($arResult['CAN_EDIT_PASSWORD'])
 			{
 				?>
-				<div class="form-group">
-					<p class="main-profile-form-password-annotation col-sm-9 col-sm-offset-3 small">
-						<?echo $arResult["GROUP_POLICY"]["PASSWORD_REQUIREMENTS"];?>
-					</p>
-				</div>
+<!--				<div class="form-group">-->
+<!--					<p class="main-profile-form-password-annotation col-sm-9 col-sm-offset-3 small">-->
+<!--						--><?//echo $arResult["GROUP_POLICY"]["PASSWORD_REQUIREMENTS"];?>
+<!--					</p>-->
+<!--				</div>-->
 				<div class="form-group">
 					<label class="main-profile-form-label col-sm-12 col-md-3 text-md-right" for="main-profile-password"><?=Loc::getMessage('NEW_PASSWORD_REQ')?></label>
 					<div class="col-sm-12">
@@ -135,4 +137,5 @@ use Bitrix\Main\Localization\Loc;
 	<script>
 		BX.Sale.PrivateProfileComponent.init();
 	</script>
+</div>
 </div>

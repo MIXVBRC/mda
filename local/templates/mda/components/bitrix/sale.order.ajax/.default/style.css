@@ -399,7 +399,7 @@
 }
 .bx-soa-coupon-input input[type=text].form-control {
     border: 1px solid #CCD5DB;
-    background-color: #f8fafc;
+    background-color: rgba(0,0,0,0.5);
     background-image: none;
     border-radius: 2px;
     outline: none;
@@ -409,7 +409,7 @@
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #555;
+    color: #fff;
     box-shadow: none;
 }
 .bx-soa-coupon-input input[type=text].form-control:focus {
@@ -504,7 +504,7 @@
     -o-transition: background .2s ease;
     transition: background .2s ease;
 }
-.bx-soa-pickup-list-item.bx-selected {background: #f8fafc;}
+.bx-soa-pickup-list-item.bx-selected {background: unset;}
 .bx-soa-pickup-list .bx-soa-pickup-list-item:last-child {border-bottom: 1px solid #dcdfe2;}
 
 .bx-soa-pickup-l-item-adress {
@@ -893,7 +893,7 @@
     font-size: 14px;
     font-weight: 500;
     padding-bottom: 2px;
-    color: #000;
+    color: #fff;
 }
 .bx-soa .bx-soa-customer-label-container small,
 .bx-soa .bx-soa-custom-label-container small,
@@ -902,7 +902,7 @@
 
 /*FIELDS*/
 .form-control {
-    background-color: #f8fafc;
+    background-color: rgba(0,0,0,0.5);
     border: 1px solid #d5dadc;
     box-shadow: none;
     border-radius: 2px;
@@ -940,7 +940,7 @@
 }
 .bx-soa-pp-desc-container {padding-top: 7px;}
 .bx-soa-pp-desc-container .bx-soa-pp-company {
-    background: #f8fafc;
+    background: unset;
     border: 1px solid #d5dadc;
     padding: 7px 15px;
 }
@@ -1520,4 +1520,23 @@ label[data-bx-user-consent] a{
 }
 label[data-bx-user-consent] input{
     margin-top: 2px;
+}
+
+.bx-soa-section-title-container {
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+.btn-default {
+    background-color: unset !important;
+    border: 1px solid #fff !important;
+    border-radius: unset !important;
+}
+
+.btn-default:hover {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+.bx-soa-section {
+    background-color: rgba(0,0,0,0.5) !important;
 }

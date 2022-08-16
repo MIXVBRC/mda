@@ -68,3 +68,40 @@
 	display: flex;
 	flex-flow: row wrap;
 }
+
+.sale-order-detail-payment-options-order-content-title,
+.sale-order-detail-payment-options-title,
+.sale-order-detail-about-order-title,
+.sale-order-detail-general-head,
+.sale-order-list-accomplished-title-container {
+	background-color: rgba(0,0,0,0.5) !important;
+}
+
+.sale-order-detail-general {
+	border: none !important;
+}
+
+.sale-order-detail-payment-options-order-content-title,
+.sale-order-detail-payment-options-title,
+.sale-order-detail-about-order-title {
+	border-top: 1px solid #fff !important;
+	border-left: 1px solid #fff !important;
+	border-right: 1px solid #fff !important;
+}
+
+.sale-order-detail-order-section {
+	width: 100%;
+}
+
+.sale-order-list-status-alert,
+.sale-order-detail-payment-options-methods-info-title-status-alert {
+	background-color: unset !important;
+	color: #eab3b9 !important;
+	border: 1px solid #eab3b9 !important;
+}
+
+.sale-order-list-shipment-status-block {
+	background-color: unset !important;
+	color: #f3f4f5 !important;
+	border: 1px solid #f3f4f5 !important;
+}

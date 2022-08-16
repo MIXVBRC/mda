@@ -42,7 +42,12 @@ $(document).ready(function () {
             }
         });
 
-        BX.onCustomEvent('OnBasketChange');
-    
+        $.ajax({
+            type: 'POST',
+            url: '/include/basket-small.php',
+            success: function (data) {
+                $('[data-basket-small]').html(data);
+            }
+        });
     });
 });

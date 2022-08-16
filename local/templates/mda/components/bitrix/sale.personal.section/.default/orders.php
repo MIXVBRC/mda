@@ -11,7 +11,11 @@ if ($arParams["MAIN_CHAIN_NAME"] <> '')
 {
 	$APPLICATION->AddChainItem(htmlspecialcharsbx($arParams["MAIN_CHAIN_NAME"]), $arResult['SEF_FOLDER']);
 }
+?>
 
+<div class="container">
+
+<?
 $APPLICATION->AddChainItem(Loc::getMessage("SPS_CHAIN_ORDERS"), $arResult['PATH_TO_ORDERS']);
 $APPLICATION->IncludeComponent(
 	"bitrix:sale.personal.order.list",
@@ -43,4 +47,4 @@ $APPLICATION->IncludeComponent(
 	$component
 );
 ?>
-
+</div>
