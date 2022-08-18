@@ -227,6 +227,7 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 			$componentElementParams,
 			$component
 		);
+
 		$GLOBALS['CATALOG_CURRENT_ELEMENT_ID'] = $elementId;
 
 		if ($elementId > 0)

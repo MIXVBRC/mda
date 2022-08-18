@@ -30,24 +30,24 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
-    $('[data-add2basket]').on('click', function (event) {
-        let product = $(this).data('product');
-
-        $.ajax({
-            type: 'POST',
-            url: '/include/add2basket.php',
-            data: {
-                product: product
-            }
-        });
-
-        $.ajax({
-            type: 'POST',
-            url: '/include/basket-small.php',
-            success: function (data) {
-                $('[data-basket-small]').html(data);
-            }
-        });
-    });
-});
+// $(document).ready(function () {
+//     $('[data-add2basket]').on('click', function (event) {
+//         let product = $(this).data('product');
+//
+//         $.ajax({
+//             type: 'POST',
+//             url: '/include/add2basket.php',
+//             data: {
+//                 product: product
+//             }
+//         });
+//
+//         $.ajax({
+//             type: 'POST',
+//             url: '/include/basket-small.php',
+//             success: function (data) {
+//                 $('[data-basket-small]').html(data);
+//             }
+//         });
+//     });
+// });

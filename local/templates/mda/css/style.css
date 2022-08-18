@@ -1080,6 +1080,24 @@ body {
   font-size: 14px;
 }
 
+.list2__body {
+  margin-top: 300px;
+}
+.list2__item {
+  border: 2px solid rgba(0, 133, 255, 0.44);
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 15px;
+  grid-auto-rows: minmax(200px, auto);
+}
+.list2__info {
+  padding: 15px;
+}
+.list2__name {
+  margin-bottom: 30px;
+  font-size: 24px;
+}
 .pagenavigation {
   margin-top: 50px;
 }
