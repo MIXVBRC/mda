@@ -1,10 +1,13 @@
 .list2 {
 
     &__body {
-        margin-top: 300px;
+        
     }
 
     &__list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
 
     &__item {
@@ -13,11 +16,10 @@
         display: grid;
         grid-template-columns: 1fr 3fr;
         gap: 15px;
-        grid-auto-rows: minmax(200px, auto);
     }
 
     &__img {
-        
+        height: 250px;
     }
 
     &__info {
