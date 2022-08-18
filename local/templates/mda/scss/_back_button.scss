@@ -1,0 +1,56 @@
+.back-button {
+    text-transform: uppercase;
+    padding: 15px 15px 15px 80px;
+    display: inline-block;
+    border: $border1;
+    font-size: 12px;
+    position: relative;
+
+    &::after,
+    &::before {
+        content: '';
+        position: absolute;
+    }
+
+    &::before {
+        left: 15px;
+        top: 18px;
+        width: 9px;
+        height: 9px;
+        border-left: 1px solid $font_color;
+        border-bottom: 1px solid $font_color;
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        left: 14px;
+        top: 22px;
+        width: 60px;
+        height: 1px;
+        background-color: $font_color;
+    }
+
+    &:hover {
+        background-color: $font_color;
+        color: $background_color;
+        transition: $transition_time_mini ease-in-out;
+
+        &::before {
+            border-color: $background_color;
+            transition: $transition_time_mini ease-in-out;
+        }
+
+        &::after {
+            background-color: $background_color;
+            transition: $transition_time_mini ease-in-out;
+        }
+    }
+
+    &:first-child {
+        margin-bottom: 15px;
+    }
+
+    &:last-child {
+        margin-top: 15px;
+    }
+}

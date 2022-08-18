@@ -44,3 +44,25 @@
         font-size: 14px;
     }
 }
+@media (max-width: $c_width) {
+    .list1 {
+        &__list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+@media (max-width: $l_width) {
+    .list1 {
+        &__list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+@media (max-width: $m_width) {}
+@media (max-width: $s_width) {
+    .list1 {
+        &__list {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}

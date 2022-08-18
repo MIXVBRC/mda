@@ -34,3 +34,25 @@
     &__description {
     }
 }
+@media (max-width: $c_width) {
+    .list2 {
+        &__item {
+            grid-template-columns: 2fr 4fr;
+        }
+    }
+}
+@media (max-width: $l_width) {
+    .list2 {
+        &__item {
+            grid-template-columns: 3fr 5fr;
+        }
+    }
+}
+@media (max-width: $m_width) {
+    .list2 {
+        &__item {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+@media (max-width: $s_width) {}

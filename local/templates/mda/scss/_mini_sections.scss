@@ -7,13 +7,16 @@
     &__list {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
     }
 
     &__item {
+        margin-top: 15px;
         margin-right: 20px;
     }
 
     &__link {
+        display: inline-block;
         font-size: 15px;
         padding: 14px 46px 14px 14px;
         opacity: 0.5;

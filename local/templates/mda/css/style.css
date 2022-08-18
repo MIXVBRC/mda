@@ -472,7 +472,6 @@ body {
 body > .content *,
 body > .footer * {
   font-family: "Montserrat";
-  color: #fff;
 }
 
 body {
@@ -1037,11 +1036,14 @@ body {
 .sections-mini__list {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 .sections-mini__item {
+  margin-top: 15px;
   margin-right: 20px;
 }
 .sections-mini__link {
+  display: inline-block;
   font-size: 15px;
   padding: 14px 46px 14px 14px;
   opacity: 0.5;
@@ -1080,6 +1082,21 @@ body {
   font-size: 14px;
 }
 
+@media (max-width: 1400px) {
+  .list1__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 992px) {
+  .list1__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 576px) {
+  .list1__list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 .list2__list {
   display: grid;
   grid-template-columns: 1fr;
@@ -1101,6 +1118,36 @@ body {
 .list2__name {
   margin-bottom: 30px;
   font-size: 24px;
+}
+@media (max-width: 1400px) {
+  .list2__item {
+    grid-template-columns: 2fr 4fr;
+  }
+}
+@media (max-width: 992px) {
+  .list2__item {
+    grid-template-columns: 3fr 5fr;
+  }
+}
+@media (max-width: 768px) {
+  .list2__item {
+    grid-template-columns: 1fr;
+  }
+}
+.detail1 > .container {
+  max-width: 800px;
+}
+.detail1__body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  border: 2px solid rgba(0, 133, 255, 0.44);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+}
+.detail1__img {
+  border: 2px solid rgba(0, 133, 255, 0.44);
+  height: 300px;
 }
 .pagenavigation {
   margin-top: 50px;
@@ -1204,4 +1251,52 @@ body {
   background-color: #fff;
   color: #15151B;
   transition: 250ms ease-in-out;
+}
+
+.back-button {
+  text-transform: uppercase;
+  padding: 15px 15px 15px 80px;
+  display: inline-block;
+  border: 1px solid #fff;
+  font-size: 12px;
+  position: relative;
+}
+.back-button::after, .back-button::before {
+  content: "";
+  position: absolute;
+}
+.back-button::before {
+  left: 15px;
+  top: 18px;
+  width: 9px;
+  height: 9px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  transform: rotate(45deg);
+}
+.back-button::after {
+  left: 14px;
+  top: 22px;
+  width: 60px;
+  height: 1px;
+  background-color: #fff;
+}
+.back-button:hover {
+  background-color: #fff;
+  color: #15151B;
+  transition: 250ms ease-in-out;
+}
+.back-button:hover::before {
+  border-color: #15151B;
+  transition: 250ms ease-in-out;
+}
+.back-button:hover::after {
+  background-color: #15151B;
+  transition: 250ms ease-in-out;
+}
+.back-button:first-child {
+  margin-bottom: 15px;
+}
+.back-button:last-child {
+  margin-top: 15px;
 }
