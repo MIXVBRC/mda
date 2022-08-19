@@ -16,7 +16,7 @@
 
 .popup-window {
     background-color: $background_color;
-    border: $border;
+    border: 1px solid $font_color;
 
     & * {
         color: $font_color;
@@ -24,8 +24,17 @@
 }
 .popup-window-content {
     background-color: unset !important;
+    padding: 15px !important;
+    border: $border;
+
+    & img {
+        width: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
 
     & p {
         margin-top: 15px;
+        padding: 5px;
     }
 }

@@ -8,7 +8,8 @@
 	{
 		BasketButton.superclass.constructor.apply(this, arguments);
 		this.buttonNode = BX.create('span', {
-			props: {className: 'btn btn-default btn-buy btn-sm', id: this.id},
+			// props: {className: 'btn btn-default btn-buy btn-sm', id: this.id},
+			props: {className: 'popup__button', id: this.id},
 			style: typeof params.style === 'object' ? params.style : {},
 			text: params.text,
 			events: this.contextEvents
@@ -1878,13 +1879,16 @@
 					// show pict and pict_second containers
 					if (this.obPict)
 					{
+
 						if (this.offers[index].PREVIEW_PICTURE)
 						{
-							BX.adjust(this.obPict, {style: {backgroundImage: 'url(\'' + this.offers[index].PREVIEW_PICTURE.SRC + '\')'}});
+							// BX.adjust(this.obPict, {style: {backgroundImage: 'url(\'' + this.offers[index].PREVIEW_PICTURE.SRC + '\')'}});
+							this.obPict.src = this.offers[index].PREVIEW_PICTURE.SRC;
 						}
 						else
 						{
-							BX.adjust(this.obPict, {style: {backgroundImage: 'url(\'' + this.defaultPict.pict.SRC + '\')'}});
+							// BX.adjust(this.obPict, {style: {backgroundImage: 'url(\'' + this.defaultPict.pict.SRC + '\')'}});
+							this.obPict.src = this.defaultPict.pict.SRC;
 						}
 
 						this.obPict.style.display = '';
@@ -1894,19 +1898,23 @@
 					{
 						if (this.offers[index].PREVIEW_PICTURE_SECOND)
 						{
-							BX.adjust(this.obSecondPict, {style: {backgroundImage: 'url(\'' + this.offers[index].PREVIEW_PICTURE_SECOND.SRC + '\')'}});
+							// BX.adjust(this.obSecondPict, {style: {backgroundImage: 'url(\'' + this.offers[index].PREVIEW_PICTURE_SECOND.SRC + '\')'}});
+							this.obSecondPict.src = this.offers[index].PREVIEW_PICTURE_SECOND.SRC;
 						}
 						else if (this.offers[index].PREVIEW_PICTURE.SRC)
 						{
-							BX.adjust(this.obSecondPict, {style: {backgroundImage: 'url(\'' + this.offers[index].PREVIEW_PICTURE.SRC + '\')'}});
+							// BX.adjust(this.obSecondPict, {style: {backgroundImage: 'url(\'' + this.offers[index].PREVIEW_PICTURE.SRC + '\')'}});
+							this.obSecondPict.src = this.offers[index].PREVIEW_PICTURE.SRC;
 						}
 						else if (this.defaultPict.secondPict)
 						{
-							BX.adjust(this.obSecondPict, {style: {backgroundImage: 'url(\'' + this.defaultPict.secondPict.SRC + '\')'}});
+							// BX.adjust(this.obSecondPict, {style: {backgroundImage: 'url(\'' + this.defaultPict.secondPict.SRC + '\')'}});
+							this.obSecondPict.src = this.defaultPict.secondPict.SRC;
 						}
 						else
 						{
-							BX.adjust(this.obSecondPict, {style: {backgroundImage: 'url(\'' + this.defaultPict.pict.SRC + '\')'}});
+							// BX.adjust(this.obSecondPict, {style: {backgroundImage: 'url(\'' + this.defaultPict.pict.SRC + '\')'}});
+							this.obSecondPict.src = this.defaultPict.pict.SRC;
 						}
 
 						this.obSecondPict.style.display = '';
@@ -2010,20 +2018,20 @@
 
 			if (reachedTopLimit)
 			{
-				BX.addClass(this.obQuantityUp, 'product-item-amount-field-btn-disabled');
+				BX.addClass(this.obQuantityUp, 'disabled'); // product-item-amount-field-btn-disabled
 			}
-			else if (BX.hasClass(this.obQuantityUp, 'product-item-amount-field-btn-disabled'))
+			else if (BX.hasClass(this.obQuantityUp, 'disabled')) // product-item-amount-field-btn-disabled
 			{
-				BX.removeClass(this.obQuantityUp, 'product-item-amount-field-btn-disabled');
+				BX.removeClass(this.obQuantityUp, 'disabled'); // product-item-amount-field-btn-disabled
 			}
 
 			if (reachedBottomLimit)
 			{
-				BX.addClass(this.obQuantityDown, 'product-item-amount-field-btn-disabled');
+				BX.addClass(this.obQuantityDown, 'disabled'); // product-item-amount-field-btn-disabled
 			}
-			else if (BX.hasClass(this.obQuantityDown, 'product-item-amount-field-btn-disabled'))
+			else if (BX.hasClass(this.obQuantityDown, 'disabled')) // product-item-amount-field-btn-disabled
 			{
-				BX.removeClass(this.obQuantityDown, 'product-item-amount-field-btn-disabled');
+				BX.removeClass(this.obQuantityDown, 'disabled'); // product-item-amount-field-btn-disabled
 			}
 
 			if (reachedTopLimit && reachedBottomLimit)

@@ -23,8 +23,10 @@ if ($arResult["SECTIONS_COUNT"] > 0):?>
         <div class="sections-mini__body">
             <div class="sections-mini__list">
 
-                <?foreach ($arResult['SECTIONS'] as &$arSection):?>
+                <?foreach ($arResult['SECTIONS'] as $arSection):?>
                 <?
+                    if ($arSection['ELEMENT_CNT'] <= 0) continue;
+
                     $this->AddEditAction($arSection['ID'], $arSection['EDIT_LINK'], $strSectionEdit);
                     $this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
                 ?>

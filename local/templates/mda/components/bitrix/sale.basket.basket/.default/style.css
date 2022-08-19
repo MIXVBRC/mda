@@ -2217,10 +2217,15 @@ body.bx-theme-yellow .catalog-block-header{border-color:#f4b236;}
 
 
 
-.basket-items-list-header,
+
 .basket-checkout-container {
 	background-color: rgba(0,0,0,0.5);
 	border-radius: unset;
+	backdrop-filter: blur(20px);
+}
+.basket-items-list-header {
+	background-color: unset;
+	backdrop-filter: blur(20px);
 }
 .basket-items-list-header-filter-item.active {
 	color: #fff;

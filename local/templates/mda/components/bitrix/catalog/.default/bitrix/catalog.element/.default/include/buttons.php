@@ -5,11 +5,10 @@
  * @var array $actualItem
  * @var array $arParams
  * @var array $arResult
+ * @var bool $showAddBtn
+ * @var bool $showBuyBtn
  * @var CatalogSectionComponent $component
  */
-
-$showAddBtn = in_array('ADD', $arParams['ADD_TO_BASKET_ACTION']);
-$showBuyBtn = in_array('BUY', $arParams['ADD_TO_BASKET_ACTION']);
 ?>
 
 <div data-entity="main-button-container">

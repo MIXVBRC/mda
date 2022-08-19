@@ -12,7 +12,7 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 
-$this->setFrameMode(true);
+$this->setFrameMode(false);
 $this->addExternalCss("/bitrix/css/main/bootstrap.css");
 
 $APPLICATION->IncludeComponent(
@@ -190,4 +190,5 @@ if ($arParams["SHOW_TOP_ELEMENTS"] !== "N")
         $component
     );
 	unset($basketAction);
-}
+}?>
+

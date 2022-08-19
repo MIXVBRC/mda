@@ -55,12 +55,18 @@
 	border: 1px solid #fff;
 	width: 100%;
 	padding-left: 15px;
+	backdrop-filter: blur(20px);
 }
 
 .main-profile-block-shown {
 	display: grid;
 	gap: 15px;
 	grid-template-columns: 1fr 1fr;
+}
+
+.form-group .form-control.form-control-email {
+	border: 1px solid #5F5F5F;
+	color: #5F5F5F;
 }
 
 @media (max-width: 768px)

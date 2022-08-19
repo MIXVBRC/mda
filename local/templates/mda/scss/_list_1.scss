@@ -16,6 +16,7 @@
     }
 
     &__img {
+        display: block;
         border: 2px solid $font_color;
         height: 380px;
         overflow: hidden;
@@ -37,11 +38,102 @@
     }
 
     &__name {
+        display: block;
         font-size: 14px;
     }
 
+    &__properties {
+        margin-top: 15px;
+    }
+
+    &__properties-title {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    &__properties-sky {
+        
+    }
+
+    &__properties-sky-element {
+        margin-bottom: 15px;
+    }
+
+    &__properties-sky-title {
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    &__properties-sky-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    &__properties-sky-item {
+        margin-bottom: 5px;
+        padding: 5px;
+        border: 2px solid $font_color;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            margin-right: 5px;
+        }
+
+        &.selected {
+            color: $font_color;
+            border: 2px solid $main_color;
+        }
+    }
+
+    &__properties-sky-item-img {
+        height: 30px;
+        width: 30px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 70%;
+
+        &.selected {
+            border: 2px solid $main_color;
+        }
+    }
+
     &__price {
-        font-size: 14px;
+        
+    }
+
+    &__price-now {
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    &__price-old {
+        margin-bottom: -5px;
+
+        & > span {
+            font-weight: bold;
+            font-size: 15px;
+            color: $font_color_medium !important;
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                top: 9px;
+                left: 0;
+                background-color: $font_color_medium;
+            }
+        }
+    }
+
+    &__buy-button {
+        display: inline-block;
+        padding: 10px 20px;
+        border: 1px solid $font_color;
+        text-transform: uppercase;
     }
 }
 @media (max-width: $c_width) {
