@@ -3,12 +3,12 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог");
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:catalog", 
-	"",
+	".default", 
 	array(
 		"ACTION_VARIABLE" => "action",
 		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_PICT_PROP" => "-",
-		"ADD_PROPERTIES_TO_BASKET" => "Y",
+		"ADD_PROPERTIES_TO_BASKET" => "N",
 		"ADD_SECTIONS_CHAIN" => "Y",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
@@ -18,9 +18,9 @@ $APPLICATION->SetTitle("Каталог");
 		"BASKET_URL" => "/personal/basket.php",
 		"BIG_DATA_RCM_TYPE" => "personal",
 		"CACHE_FILTER" => "N",
-		"CACHE_GROUPS" => "Y",
+		"CACHE_GROUPS" => "N",
 		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "A",
+		"CACHE_TYPE" => "N",
 		"COMMON_ADD_TO_BASKET_ACTION" => "ADD",
 		"COMMON_SHOW_CLOSE_POPUP" => "N",
 		"COMPATIBLE_MODE" => "Y",
@@ -42,7 +42,7 @@ $APPLICATION->SetTitle("Каталог");
 		"DETAIL_META_DESCRIPTION" => "-",
 		"DETAIL_META_KEYWORDS" => "-",
 		"DETAIL_PRODUCT_INFO_BLOCK_ORDER" => "sku,props",
-		"DETAIL_PRODUCT_PAY_BLOCK_ORDER" => "rating,price,priceRanges,quantityLimit,quantity,buttons",
+		"DETAIL_PRODUCT_PAY_BLOCK_ORDER" => "price,quantity,buttons,rating,priceRanges,quantityLimit",
 		"DETAIL_SET_CANONICAL_URL" => "N",
 		"DETAIL_SET_VIEWED_IN_COMPONENT" => "N",
 		"DETAIL_SHOW_POPULAR" => "N",
@@ -83,7 +83,6 @@ $APPLICATION->SetTitle("Каталог");
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"INSTANT_RELOAD" => "N",
 		"LABEL_PROP" => array(
-			0 => "VKUS",
 		),
 		"LAZY_LOAD" => "N",
 		"LINE_ELEMENT_COUNT" => "3",
@@ -97,7 +96,7 @@ $APPLICATION->SetTitle("Каталог");
 		"LIST_META_KEYWORDS" => "-",
 		"LIST_PRODUCT_BLOCKS_ORDER" => "price,props,sku,quantityLimit,quantity,buttons",
 		"LIST_PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false}]",
-		"LIST_SHOW_SLIDER" => "Y",
+		"LIST_SHOW_SLIDER" => "N",
 		"LIST_SLIDER_INTERVAL" => "3000",
 		"LIST_SLIDER_PROGRESS" => "N",
 		"LOAD_ON_SCROLL" => "N",
@@ -240,36 +239,44 @@ $APPLICATION->SetTitle("Каталог");
 		"LABEL_PROP_POSITION" => "top-left",
 		"OFFER_TREE_PROPS" => array(
 			0 => "VKUS",
+			1 => "TOPER",
 		),
 		"PRODUCT_PROPERTIES" => array(
-			0 => "VKUS",
 		),
 		"OFFERS_CART_PROPERTIES" => array(
 			0 => "VKUS",
 		),
 		"TOP_PROPERTY_CODE" => array(
-			0 => "VKUS",
-			1 => "",
+			0 => "",
+			1 => "VKUS",
+			2 => "",
 		),
 		"TOP_OFFERS_PROPERTY_CODE" => array(
 			0 => "VKUS",
 			1 => "",
 		),
 		"LIST_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
+			0 => "FORM",
+			1 => "COLOR",
+			2 => "",
 		),
 		"LIST_OFFERS_PROPERTY_CODE" => array(
 			0 => "VKUS",
-			1 => "",
+			1 => "TEST",
+			2 => "PHOTOS",
+			3 => "",
 		),
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "VKUS",
-			1 => "",
+			0 => "FORM",
+			1 => "COLOR",
+			2 => "",
 		),
 		"DETAIL_OFFERS_PROPERTY_CODE" => array(
 			0 => "VKUS",
-			1 => "",
+			1 => "TOPER",
+			2 => "TEST",
+			3 => "PHOTOS",
+			4 => "",
 		),
 		"TOP_PROPERTY_CODE_MOBILE" => array(
 		),
@@ -278,6 +285,9 @@ $APPLICATION->SetTitle("Каталог");
 		"DETAIL_MAIN_BLOCK_PROPERTY_CODE" => array(
 		),
 		"DETAIL_MAIN_BLOCK_OFFERS_PROPERTY_CODE" => array(
+			0 => "VKUS",
+			1 => "TOPER",
+			2 => "TEST",
 		),
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",

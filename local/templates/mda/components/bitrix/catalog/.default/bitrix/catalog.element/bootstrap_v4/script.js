@@ -8,7 +8,8 @@
 	{
 		BasketButton.superclass.constructor.apply(this, arguments);
 		this.buttonNode = BX.create('SPAN', {
-			props: {className: 'btn btn-default btn-buy btn-sm', id: this.id},
+			// props: {className: 'btn btn-default btn-buy btn-sm', id: this.id},
+			props: {className: 'popup__button', id: this.id},
 			style: typeof params.style === 'object' ? params.style : {},
 			text: params.text,
 			events: this.contextEvents
@@ -2703,7 +2704,7 @@
 							'data-id': images[i].ID
 						},
 						props: {
-							className: 'product-item-detail-slider-image' + (i == 0 ? ' active' : '')
+							className: (i == 0 ? ' active' : '')
 						},
 						children: [img]
 					})
@@ -2895,20 +2896,20 @@
 
 			if (reachedTopLimit)
 			{
-				BX.addClass(this.obQuantityUp, 'product-item-amount-field-btn-disabled');
+				BX.addClass(this.obQuantityUp, 'disabled'); // product-item-amount-field-btn-disabled
 			}
-			else if (BX.hasClass(this.obQuantityUp, 'product-item-amount-field-btn-disabled'))
+			else if (BX.hasClass(this.obQuantityUp, 'disabled')) // product-item-amount-field-btn-disabled
 			{
-				BX.removeClass(this.obQuantityUp, 'product-item-amount-field-btn-disabled');
+				BX.removeClass(this.obQuantityUp, 'disabled'); // product-item-amount-field-btn-disabled
 			}
 
 			if (reachedBottomLimit)
 			{
-				BX.addClass(this.obQuantityDown, 'product-item-amount-field-btn-disabled');
+				BX.addClass(this.obQuantityDown, 'disabled'); // product-item-amount-field-btn-disabled
 			}
-			else if (BX.hasClass(this.obQuantityDown, 'product-item-amount-field-btn-disabled'))
+			else if (BX.hasClass(this.obQuantityDown, 'disabled')) // product-item-amount-field-btn-disabled
 			{
-				BX.removeClass(this.obQuantityDown, 'product-item-amount-field-btn-disabled');
+				BX.removeClass(this.obQuantityDown, 'disabled'); // product-item-amount-field-btn-disabled
 			}
 
 			if (reachedTopLimit && reachedBottomLimit)

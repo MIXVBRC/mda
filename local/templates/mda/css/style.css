@@ -472,6 +472,7 @@ body {
 body > .content *,
 body > .footer * {
   font-family: "Montserrat";
+  color: #fff;
 }
 
 body {
@@ -1173,29 +1174,96 @@ body {
   gap: 30px;
   grid-template-columns: 1fr 1fr;
 }
+.element__img {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.element__img > div {
+  width: 100%;
+  border: 2px solid rgba(0, 133, 255, 0.44);
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.element__img > div > img {
+  width: 100%;
+  height: 100%;
+  -o-object-position: center;
+     object-position: center;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
 .element__name {
   margin-top: 50px;
   font-size: 40px;
   text-transform: uppercase;
   margin-bottom: 30px;
 }
-.element__buy-container {
-  margin-top: 30px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  border-top: 1px solid #5F5F5F;
-  border-bottom: 1px solid #5F5F5F;
-}
-.element__buy-container > * {
+.element__description-title {
+  font-size: 22px;
   margin-bottom: 15px;
 }
-.element__quantity {
-  text-transform: uppercase;
+.element__properties {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #5F5F5F;
 }
-.element__quantity > span {
-  margin-left: 15px;
-  text-transform: none;
-  color: #8A8A8A;
+.element__properties-title {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+.element__properties-sky-element {
+  margin-bottom: 15px;
+}
+.element__properties-sky-title {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.element__properties-sky-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.element__properties-sky-item {
+  margin-bottom: 5px;
+  padding: 5px;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+.element__properties-sky-item:not(:last-child) {
+  margin-right: 5px;
+}
+.element__properties-sky-item.selected {
+  color: #fff;
+  border: 2px solid #0085FF;
+}
+.element__properties-sky-item-img {
+  height: 30px;
+  width: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+}
+.element__properties-sky-item-img.selected {
+  border: 2px solid #0085FF;
+}
+.element__properties-item {
+  display: flex;
+  flex-direction: row;
+}
+.element__properties-name {
+  flex: 0 0 auto;
+  margin-right: 15px;
+}
+.element__properties-value {
+  flex: 1 0 auto;
+}
+.element__buy-container {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #5F5F5F;
 }
 .element__buy-button {
   display: inline-block;
@@ -1208,8 +1276,87 @@ body {
   color: #15151B;
 }
 .element__price {
+  margin-bottom: 15px;
+}
+.element__price-now {
   font-weight: bold;
   font-size: 25px;
+}
+.element__price-old {
+  margin-bottom: -5px;
+}
+.element__price-old > span {
+  font-weight: bold;
+  font-size: 15px;
+  color: #8A8A8A !important;
+  position: relative;
+}
+.element__price-old > span::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 9px;
+  left: 0;
+  background-color: #8A8A8A;
+}
+.element__price-discount {
+  margin-top: -5px;
+  font-weight: bold;
+  font-size: 15px;
+  color: #ff2d2d !important;
+}
+
+.quantity {
+  margin-bottom: 15px;
+}
+.quantity__button {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  padding: 5px;
+  font-size: 24px;
+  position: relative;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+.quantity__button.disabled {
+  border-color: #8A8A8A;
+}
+.quantity__button.disabled:before, .quantity__button.disabled:after {
+  background-color: #8A8A8A;
+}
+.quantity__button.plus:before, .quantity__button.plus:after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 2px;
+  left: 1px;
+  top: 6px;
+  background-color: #fff;
+}
+.quantity__button.plus:after {
+  transform: rotate(90deg);
+}
+.quantity__button.minus:before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 2px;
+  left: 1px;
+  top: 6px;
+  background-color: #fff;
+}
+.quantity__input {
+  width: 30px;
+  display: inline-block;
+  text-align: center;
+}
+.quantity__input::-webkit-outer-spin-button, .quantity__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.quantity__result {
+  margin-left: 15px;
 }
 
 @media (max-width: 1400px) {
@@ -1299,4 +1446,112 @@ body {
 }
 .back-button:last-child {
   margin-top: 15px;
+}
+
+.popup__button {
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  color: #fff;
+  display: inline-block;
+  cursor: pointer;
+}
+.popup__button:hover {
+  background-color: #fff;
+  color: #15151B;
+}
+
+.popup-window {
+  background-color: #15151B;
+  border: 2px solid rgba(0, 133, 255, 0.44);
+}
+.popup-window * {
+  color: #fff;
+}
+
+.popup-window-content {
+  background-color: unset !important;
+}
+.popup-window-content p {
+  margin-top: 15px;
+}
+
+.basket-small {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  background-image: url("../img/cart.svg");
+  background-position: 45% 50%;
+  background-repeat: no-repeat;
+  background-color: #15151B;
+  border-radius: 30px;
+  border: 2px solid #fff;
+}
+@-webkit-keyframes pulse {
+  0% {
+    background-color: #15151B;
+  }
+  2% {
+    background-color: #0085FF;
+  }
+  100% {
+    background-color: #15151B;
+  }
+}
+@keyframes pulse {
+  0% {
+    background-color: #15151B;
+  }
+  2% {
+    background-color: #0085FF;
+  }
+  100% {
+    background-color: #15151B;
+  }
+}
+@-webkit-keyframes jerking {
+  0% {
+    right: -5px;
+  }
+  2% {
+    right: -7px;
+  }
+  10% {
+    right: -4px;
+  }
+  15% {
+    right: -5px;
+  }
+}
+@keyframes jerking {
+  0% {
+    right: -5px;
+  }
+  2% {
+    right: -7px;
+  }
+  10% {
+    right: -4px;
+  }
+  15% {
+    right: -5px;
+  }
+}
+.basket-small__count {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  padding: 0 7px;
+  border: 2px solid #fff;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 20px;
+  -webkit-animation-name: pulse, jerking;
+          animation-name: pulse, jerking;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
 }

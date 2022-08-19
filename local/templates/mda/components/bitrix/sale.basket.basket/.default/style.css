@@ -251,7 +251,6 @@
 .basket-coupon-block-total-price-difference {
 	display: inline-block;
 	padding: 5px 6px 6px;
-	background: #d1ecf1;
 	color: #179ebb;
 	text-align: center;
 	font: 400 13px/12px "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -280,7 +279,6 @@
 	min-width: 100%;
 	width: 100%;
 	border-radius: 1px;
-	background-color: #edf8e0;
 	color: #6a9997;
 	font: 400 12px/14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -291,7 +289,6 @@
 	right: 80px;
 	width: 16px;
 	height: 16px;
-	background-color: #edf8e0;
 	content: '';
 	-webkit-transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
@@ -385,7 +382,6 @@
 	-ms-flex-align: center;
 	padding: 13px 25px;
 	border-bottom: 1px solid #e2dfdf;
-	background: #f2f2f2;
 	transition: 300ms padding ease;
 	-webkit-box-align: center;
 	align-items: center;
@@ -502,7 +498,6 @@
 	bottom: 0;
 	left: 0;
 	z-index: 100;
-	background-color: #fff;
 	opacity: .7;
 	-webkit-animation-name: ShowOverlay;
 	animation-name: ShowOverlay;
@@ -543,7 +538,6 @@
 	bottom: 0;
 	left: 0;
 	z-index: 100;
-	background-color: #fff;
 	opacity: .7;
 }
 
@@ -568,7 +562,6 @@
 	bottom: 0;
 	left: 0;
 	z-index: 100;
-	background-color: #fff;
 	opacity: .7;
 }
 
@@ -1219,8 +1212,6 @@ h2.basket-item-info-name {
 	transition: 300ms all ease;
 }
 
-.basket-item-block-amount.disabled .basket-item-amount-filed { background-color: #f3f3f3; }
-
 .basket-item-amount-filed:hover,
 .basket-item-amount-filed:focus { border-color: #006cc0; }
 
@@ -1418,7 +1409,6 @@ h2.basket-item-info-name {
 .basket-item-price-difference {
 	padding: 3px;
 	max-width: 100%;
-	background: #d1ecf1;
 	color: #179ebb;
 	text-align: center;
 	white-space: normal;

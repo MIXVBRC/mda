@@ -1,0 +1,56 @@
+.basket-small {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    background-image: url('../img/cart.svg');
+    background-position: 45% 50%;
+    background-repeat: no-repeat;
+    background-color: $background_color;
+    border-radius: 30px;
+    border: 2px solid $font_color;
+
+    @keyframes pulse {
+        0% {
+            background-color: $background_color;
+        }
+        2% {
+            background-color: $main_color;
+        }
+        100% {
+            background-color: $background_color;
+        }
+    }
+
+    @keyframes jerking {
+        0% {
+            right: -5px;
+        }
+        2% {
+            right: -7px;
+        }
+        10% {
+            right: -4px;
+        }
+        15% {
+            right: -5px;
+        }
+    }
+
+    &__count {
+        position: absolute;
+        right: -5px;
+        top: -5px;
+        padding: 0 7px;
+        border: 2px solid $font_color;
+        color: $font_color;
+        font-weight: bold;
+        border-radius: 20px;
+
+        animation-name: pulse, jerking;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+    }
+}

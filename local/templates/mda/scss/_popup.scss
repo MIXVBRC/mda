@@ -1,0 +1,31 @@
+.popup {
+
+    &__button {
+        padding: 10px 20px;
+        border: 1px solid $font_color;
+        color: $font_color;
+        display: inline-block;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $font_color;
+            color: $background_color;
+        }
+    }
+}
+
+.popup-window {
+    background-color: $background_color;
+    border: $border;
+
+    & * {
+        color: $font_color;
+    }
+}
+.popup-window-content {
+    background-color: unset !important;
+
+    & p {
+        margin-top: 15px;
+    }
+}
