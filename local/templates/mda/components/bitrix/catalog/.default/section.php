@@ -13,9 +13,9 @@
 use Bitrix\Main\Loader;
 use Bitrix\Main\ModuleManager;
 
-$this->setFrameMode(true);
-$this->addExternalCss("/bitrix/css/main/bootstrap.css");
+$this->setFrameMode(false);
 
+/*
 if (!isset($arParams['FILTER_VIEW_MODE']) || (string)$arParams['FILTER_VIEW_MODE'] == '')
 	$arParams['FILTER_VIEW_MODE'] = 'VERTICAL';
 $arParams['USE_FILTER'] = (isset($arParams['USE_FILTER']) && $arParams['USE_FILTER'] == 'Y' ? 'Y' : 'N');
@@ -69,15 +69,34 @@ if ($isFilter)
 	if (!isset($arCurSection))
 		$arCurSection = array();
 }
-?>
-<?
+*/
 
-if (isset($arParams['USE_COMMON_SETTINGS_BASKET_POPUP']) && $arParams['USE_COMMON_SETTINGS_BASKET_POPUP'] === 'Y')
-{
+$APPLICATION->IncludeComponent(
+	"bitrix:catalog.section.list",
+	"",
+	array(
+		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
+		"SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
+		"SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
+		"CACHE_TYPE" => $arParams["CACHE_TYPE"],
+		"CACHE_TIME" => $arParams["CACHE_TIME"],
+		"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+		"COUNT_ELEMENTS" => $arParams["SECTION_COUNT_ELEMENTS"],
+		"TOP_DEPTH" => $arParams["SECTION_TOP_DEPTH"],
+		"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
+		"VIEW_MODE" => $arParams["SECTIONS_VIEW_MODE"],
+		"SHOW_PARENT_NAME" => $arParams["SECTIONS_SHOW_PARENT_NAME"],
+		"HIDE_SECTION_NAME" => (isset($arParams["SECTIONS_HIDE_SECTION_NAME"]) ? $arParams["SECTIONS_HIDE_SECTION_NAME"] : "N"),
+		"ADD_SECTIONS_CHAIN" => (isset($arParams["ADD_SECTIONS_CHAIN"]) ? $arParams["ADD_SECTIONS_CHAIN"] : '')
+	),
+	$component,
+	array("HIDE_ICONS" => "Y")
+);
+
+if (isset($arParams['USE_COMMON_SETTINGS_BASKET_POPUP']) && $arParams['USE_COMMON_SETTINGS_BASKET_POPUP'] === 'Y') {
     $basketAction = isset($arParams['COMMON_ADD_TO_BASKET_ACTION']) ? $arParams['COMMON_ADD_TO_BASKET_ACTION'] : '';
-}
-else
-{
+} else {
     $basketAction = isset($arParams['TOP_ADD_TO_BASKET_ACTION']) ? $arParams['TOP_ADD_TO_BASKET_ACTION'] : '';
 }
 
@@ -223,38 +242,4 @@ $APPLICATION->IncludeComponent(
     ),
     $component
 );
-
-$sectionListParams = array(
-    "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-    "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-    "SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
-    "SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
-    "CACHE_TYPE" => $arParams["CACHE_TYPE"],
-    "CACHE_TIME" => $arParams["CACHE_TIME"],
-    "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-    "COUNT_ELEMENTS" => $arParams["SECTION_COUNT_ELEMENTS"],
-    "TOP_DEPTH" => $arParams["SECTION_TOP_DEPTH"],
-    "SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
-    "VIEW_MODE" => $arParams["SECTIONS_VIEW_MODE"],
-    "SHOW_PARENT_NAME" => $arParams["SECTIONS_SHOW_PARENT_NAME"],
-    "HIDE_SECTION_NAME" => (isset($arParams["SECTIONS_HIDE_SECTION_NAME"]) ? $arParams["SECTIONS_HIDE_SECTION_NAME"] : "N"),
-    "ADD_SECTIONS_CHAIN" => (isset($arParams["ADD_SECTIONS_CHAIN"]) ? $arParams["ADD_SECTIONS_CHAIN"] : '')
-);
-
-if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
-{
-    $sectionListParams["COUNT_ELEMENTS_FILTER"] = "CNT_ACTIVE";
-    if ($arParams["HIDE_NOT_AVAILABLE"] == "Y")
-    {
-        $sectionListParams["COUNT_ELEMENTS_FILTER"] = "CNT_AVAILABLE";
-    }
-}
-$APPLICATION->IncludeComponent(
-    "bitrix:catalog.section.list",
-    "",
-    $sectionListParams,
-    $component,
-    array("HIDE_ICONS" => "Y")
-);
-unset($sectionListParams);
 ?>

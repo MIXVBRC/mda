@@ -1541,7 +1541,6 @@ body {
 .popup-window-content {
   background-color: unset !important;
   padding: 15px !important;
-  border: 2px solid rgba(0, 133, 255, 0.44);
 }
 .popup-window-content img {
   width: 100%;
