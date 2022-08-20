@@ -16,7 +16,27 @@ $this->setFrameMode(true);
     <div class="container">
         <div class="detail1__body">
             <div class="detail1__img">
+                <?/*
                 <img class="img__cover" src="<?=$arResult['DETAIL_PICTURE']['SRC']?>" alt="<?=$arResult['DETAIL_PICTURE']['ALT']?>">
+                */?>
+                <?=
+                getPictureSource(
+                    $arResult["DETAIL_PICTURE"],
+                    [
+                        "min"=> [
+                            1200 => 848
+                        ],
+                        "max"=>[
+                            260 => 290,
+                            575 => 515,
+                            767 => 707,
+                            991 => 691,
+                            1199 => 668
+                        ]
+                    ],
+                    0
+                );
+                ?>
             </div>
 
             <div class="detail1__description"><?=$arResult['DETAIL_TEXT']?></div>

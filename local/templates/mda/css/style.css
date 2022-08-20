@@ -1241,6 +1241,13 @@ body {
 .detail1__img {
   border: 2px solid rgba(0, 133, 255, 0.44);
 }
+.detail1__img img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+}
 .element__body {
   display: grid;
   gap: 30px;
