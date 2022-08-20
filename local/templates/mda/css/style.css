@@ -1240,7 +1240,6 @@ body {
 }
 .detail1__img {
   border: 2px solid rgba(0, 133, 255, 0.44);
-  height: 300px;
 }
 .element__body {
   display: grid;
