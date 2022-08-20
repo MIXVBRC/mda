@@ -541,15 +541,16 @@ body {
   }
 }
 .header {
-  height: 76px;
-  position: fixed;
   width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+.header__body {
   display: flex;
   align-items: center;
   padding: 0 15px 0 65px;
-  z-index: 100;
-  top: 0;
-  left: 0;
 }
 .header::after {
   content: "";
@@ -1633,4 +1634,19 @@ body {
   background-color: #fff;
   color: #15151B;
   transition: 250ms ease-in-out;
+}
+
+.personal-small {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  background-image: url("../img/cart.svg");
+  background-position: 45% 50%;
+  background-repeat: no-repeat;
+  background-color: #15151B;
+  border-radius: 30px;
+  border: 2px solid #fff;
 }

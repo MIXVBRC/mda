@@ -32,16 +32,16 @@
 
     &:hover {
         background-color: $font_color;
-        color: $background_color;
+        color: $font_color_reverse;
         transition: $transition_time_mini ease-in-out;
 
         &::before {
-            border-color: $background_color;
+            border-color: $font_color_reverse;
             transition: $transition_time_mini ease-in-out;
         }
 
         &::after {
-            background-color: $background_color;
+            background-color: $font_color_reverse;
             transition: $transition_time_mini ease-in-out;
         }
     }

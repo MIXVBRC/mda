@@ -142,7 +142,7 @@
 
     &__buy-button:hover {
         background-color: $font_color;
-        color: $background_color;
+        color: $font_color_reverse;
     }
 
     &__price {

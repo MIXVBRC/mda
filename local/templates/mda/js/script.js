@@ -28,6 +28,24 @@ $(document).ready(function () {
         $('[data-menu-top]').toggleAttr('data-active');
         $('[data-header]').toggleAttr('data-active');
     });
+
+    var audio = new Audio();
+
+    audio.src = '/local/templates/mda/audio/mda.mp3';
+
+    $('[data-audio]').on('click', function (event) {
+
+        $(this).toggleAttr('data-audio-play');
+
+        if ($(this).hasAttr('data-audio-play')) {
+            audio.play();
+            pre(1);
+        } else {
+            audio.pause();
+            pre(0);
+        }
+
+    });
 });
 
 // $(document).ready(function () {

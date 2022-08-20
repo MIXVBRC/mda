@@ -1,4 +1,9 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+
+/**
+ * @global CMain $APPLICATION
+ */
+
 // Namespace D7
 use Bitrix\Main\Page\Asset;
 ?>
@@ -12,7 +17,7 @@ IncludeTemplateLangFile(__FILE__);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title><?= $APPLICATION->ShowTitle() ?></title>
+    <title><?=$APPLICATION->ShowTitle()?></title>
 
     <?
     // Для подключения css
@@ -34,33 +39,36 @@ IncludeTemplateLangFile(__FILE__);
 
 <div class="content">
 
-    <?$APPLICATION->ShowPanel();?>
-
     <header class="header" data-header>
-        <a href="<?= (isMainPage() ? "javascript:void(0)" : "/") ?>" class="logo">
-            <img class="logo__file" src="<?=SITE_TEMPLATE_PATH?>/img/logo_header.png" alt="Logo">
-        </a>
-        <?
-        $APPLICATION->IncludeComponent(
-            "bitrix:menu",
-            "menu_top",
-            array(
-                "ALLOW_MULTI_SELECT" => "N",
-                "CHILD_MENU_TYPE" => "left",
-                "DELAY" => "N",
-                "MAX_LEVEL" => "1",
-                "MENU_CACHE_GET_VARS" => array(
+
+        <?$APPLICATION->ShowPanel();?>
+
+        <div class="header__body">
+            <a href="<?= (isMainPage() ? "javascript:void(0)" : "/") ?>" class="logo">
+                <img class="logo__file" src="<?=SITE_TEMPLATE_PATH?>/img/logo_header.png" alt="Logo">
+            </a>
+            <?
+            $APPLICATION->IncludeComponent(
+                "bitrix:menu",
+                "menu_top",
+                array(
+                    "ALLOW_MULTI_SELECT" => "N",
+                    "CHILD_MENU_TYPE" => "left",
+                    "DELAY" => "N",
+                    "MAX_LEVEL" => "1",
+                    "MENU_CACHE_GET_VARS" => array(
+                    ),
+                    "MENU_CACHE_TIME" => "3600",
+                    "MENU_CACHE_TYPE" => "N",
+                    "MENU_CACHE_USE_GROUPS" => "Y",
+                    "ROOT_MENU_TYPE" => "top",
+                    "USE_EXT" => "N",
+                    "COMPONENT_TEMPLATE" => "menu_top"
                 ),
-                "MENU_CACHE_TIME" => "3600",
-                "MENU_CACHE_TYPE" => "N",
-                "MENU_CACHE_USE_GROUPS" => "Y",
-                "ROOT_MENU_TYPE" => "top",
-                "USE_EXT" => "N",
-                "COMPONENT_TEMPLATE" => "menu_top"
-            ),
-            false
-        );
-        ?>
+                false
+            );
+            ?>
+        </div>
     </header>
 
     <div class="main">

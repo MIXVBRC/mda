@@ -1,0 +1,14 @@
+.personal-small {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    background-image: url('../img/cart.svg');
+    background-position: 45% 50%;
+    background-repeat: no-repeat;
+    background-color: $background_color;
+    border-radius: 30px;
+    border: 2px solid $font_color;
+}
