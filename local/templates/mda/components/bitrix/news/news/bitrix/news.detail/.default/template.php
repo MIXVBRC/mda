@@ -11,24 +11,6 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-
-pre($arResult['DETAIL_PICTURE']['SRC']);
-getPictureSource(
-    $arResult["DETAIL_PICTURE"],
-    [
-        "min"=> [
-            1200 => 848
-        ],
-        "max"=>[
-            260 => 290,
-            575 => 515,
-            767 => 707,
-            991 => 691,
-            1199 => 668
-        ]
-    ],
-    0
-)
 ?>
 <div class="detail1">
     <div class="container">
