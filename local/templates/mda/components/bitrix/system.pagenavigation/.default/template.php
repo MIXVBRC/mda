@@ -16,7 +16,6 @@ $strNavQueryString = ($arResult["NavQueryString"] != "" ? $arResult["NavQueryStr
 $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["NavQueryString"] : "");
 ?>
 
-
 <div class="pagenavigation">
 	<div class="container">
 		<ul class="pagenavigation__list">
@@ -38,10 +37,12 @@ $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["Nav
                     <li data-select><span>1</span></li>
             <?endif?>
 
-            <?
-            $arResult["nStartPage"]++;
-            while($arResult["nStartPage"] <= $arResult["nEndPage"]-1):
-            ?>
+            <?if ($arResult["nStartPage"]>1):?>
+                <li><span>...</span></li>
+            <?endif?>
+
+            <?$arResult["nStartPage"]++;?>
+            <?while($arResult["nStartPage"] <= $arResult["nEndPage"]-1):?>
                 <?if ($arResult["nStartPage"] == $arResult["NavPageNomer"]):?>
                     <li data-select><span><?=$arResult["nStartPage"]?></span></li>
                 <?else:?>
@@ -49,6 +50,10 @@ $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["Nav
                 <?endif?>
                 <?$arResult["nStartPage"]++?>
             <?endwhile?>
+
+            <?if ($arResult["nEndPage"]<$arResult["NavPageCount"]):?>
+                <li><span>...</span></li>
+            <?endif?>
 
             <?if($arResult["NavPageNomer"] < $arResult["NavPageCount"]):?>
                 <?if($arResult["NavPageCount"] > 1):?>
