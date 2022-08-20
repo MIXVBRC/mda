@@ -72,41 +72,46 @@ function fpc($data, $add = false)
  * @param $image
  * @param $arSizeInfo
  * @param $minHeight
+ * @return string
+ *
+ * <pre>
+ * min и max в массиве $arSizeInfo:
+ * ключ - размер дисплея
+ * значение - визуально отображаемая ширина изображения
  *
  * Пример использования в компоненте news.detail:
-
-getPictureSource(
-    $arResult["DETAIL_PICTURE"],
-    [
-        "min"=> [
-            1200 => 848
-        ],
-        "max"=>[
-            260 => 290,
-            575 => 515,
-            767 => 707,
-            991 => 691,
-            1199 => 668
-        ]
-    ],
-    0
-)
-
+ *
+ * echo getPictureSource(
+ *     $arResult["DETAIL_PICTURE"],
+ *     [
+ *         "min"=> [
+ *             1200 => 848
+ *         ],
+ *         "max"=>[
+ *             260 => 290,
+ *             575 => 515,
+ *             767 => 707,
+ *             991 => 691,
+ *             1199 => 668
+ *         ]
+ *     ],
+ *     0
+ * )
+ *
  * Данный пример вернет:
-
-<picture>
-    <source type="image/png" media="(min-width:1200px)" srcset="/upload/resize_cache/iblock/7b9/848_477_1/image.png">
-    <source type="image/png" media="(max-width:260px)" srcset="/upload/resize_cache/iblock/7b9/290_163_1/image.png">
-    <source type="image/png" media="(max-width:575px)" srcset="/upload/resize_cache/iblock/7b9/515_289_1/image.png">
-    <source type="image/png" media="(max-width:767px)" srcset="/upload/resize_cache/iblock/7b9/707_397_1/image.png">
-    <source type="image/png" media="(max-width:991px)" srcset="/upload/resize_cache/iblock/7b9/691_388_1/image.png">
-    <source type="image/png" media="(max-width:1199px)" srcset="/upload/resize_cache/iblock/7b9/668_375_1/image.png">
-    <img srcset="./upload/iblock/7b9/image.png" alt="Lorem 3">
-</picture>
-
- * min и max в массиве:
- *     ключ - размер дисплея
- *     значение - ширина изображения
+ *
+ * &lt;picture&gt;
+ *     &lt;source type="image/png" media="(min-width:1200px)" srcset="/upload/resize_cache/iblock/7b9/848_477_1/image.png"&gt;
+ *     &lt;source type="image/png" media="(max-width:260px)" srcset="/upload/resize_cache/iblock/7b9/290_163_1/image.png"&gt;
+ *     &lt;source type="image/png" media="(max-width:575px)" srcset="/upload/resize_cache/iblock/7b9/515_289_1/image.png"&gt;
+ *     &lt;source type="image/png" media="(max-width:767px)" srcset="/upload/resize_cache/iblock/7b9/707_397_1/image.png"&gt;
+ *     &lt;source type="image/png" media="(max-width:991px)" srcset="/upload/resize_cache/iblock/7b9/691_388_1/image.png"&gt;
+ *     &lt;source type="image/png" media="(max-width:1199px)" srcset="/upload/resize_cache/iblock/7b9/668_375_1/image.png"&gt;
+ *     &lt;img srcset="./upload/iblock/7b9/image.png" alt="image">
+ * &lt;/picture>
+ *
+ * </pre>
+ *
  */
 function getPictureSource($image, $arSizeInfo, $minHeight)
 {

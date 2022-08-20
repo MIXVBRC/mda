@@ -29,7 +29,28 @@ $this->setFrameMode(true);
 
                 <a class="list2__item" href="<?=$arItem['DETAIL_PAGE_URL']?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                     <div class="list2__img">
+
+                        <?/*
                         <img class="img__cover" src="<?=$arItem['PREVIEW_PICTURE']['SRC']?>" alt="<?=$arItem['PREVIEW_PICTURE']['ALT']?>">
+                        */?>
+
+                        <?= getPictureSource(
+                            $arItem["PREVIEW_PICTURE"],
+                            [
+                                "min"=> [
+                                    1200 => 303
+                                ],
+                                "max"=>[
+                                    320 => 286,
+                                    575 => 541,
+                                    767 => 733,
+                                    991 => 353,
+                                    1199 => 303
+                                ]
+                            ],
+                            0
+                        ); ?>
+
                     </div>
                     <div class="list2__info">
                         <div class="list2__name"><?=$arItem['NAME']?></div>

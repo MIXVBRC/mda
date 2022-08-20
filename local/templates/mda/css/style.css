@@ -1205,6 +1205,14 @@ body {
 .list2__img {
   height: 250px;
 }
+.list2__img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
 .list2__info {
   padding: 15px;
 }
@@ -1243,6 +1251,7 @@ body {
 }
 .detail1__img img {
   width: 100%;
+  height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
   -o-object-position: center;
@@ -1547,16 +1556,19 @@ body {
 .basket-small {
   position: fixed;
   right: 30px;
-  bottom: 30px;
+  bottom: 105px;
   width: 60px;
   height: 60px;
-  background-color: #fff;
   background-image: url("../img/cart.svg");
+  background-size: 55%;
   background-position: 45% 50%;
   background-repeat: no-repeat;
   background-color: #15151B;
   border-radius: 30px;
   border: 2px solid #fff;
+}
+.basket-small:hover {
+  border: 2px solid #0085FF;
 }
 @-webkit-keyframes pulse {
   0% {
@@ -1650,11 +1662,14 @@ body {
   bottom: 30px;
   width: 60px;
   height: 60px;
-  background-color: #fff;
-  background-image: url("../img/cart.svg");
-  background-position: 45% 50%;
+  background-image: url("../img/person.png");
+  background-size: 80%;
+  background-position: 50% 10px;
   background-repeat: no-repeat;
   background-color: #15151B;
   border-radius: 30px;
   border: 2px solid #fff;
+}
+.personal-small:hover {
+  border: 2px solid #0085FF;
 }

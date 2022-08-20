@@ -70,5 +70,7 @@ IncludeTemplateLangFile(__FILE__);
     )
 );?>
 
+<a href="/personal/" class="personal-small"></a>
+
 </body>
 </html>
