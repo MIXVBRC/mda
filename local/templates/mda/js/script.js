@@ -23,6 +23,7 @@ $.fn.toggleAttr = function(name) {
 }
 
 $(document).ready(function () {
+
     $('[data-menu-burger]').on('click', function (event) {
         $('[data-menu-burger]').toggleAttr('data-active');
         $('[data-menu-top]').toggleAttr('data-active');
@@ -30,7 +31,6 @@ $(document).ready(function () {
     });
 
     var audio = new Audio();
-
     audio.src = '/local/templates/mda/audio/mda.mp3';
 
     $('[data-audio]').on('click', function (event) {
@@ -39,13 +39,18 @@ $(document).ready(function () {
 
         if ($(this).hasAttr('data-audio-play')) {
             audio.play();
-            pre(1);
         } else {
             audio.pause();
-            pre(0);
         }
 
+        setTimeout(function () {
+            if ($(this).hasAttr('data-audio-play')) {
+                $(this).toggleAttr('data-audio-play');
+            }
+        }, 51000);
+
     });
+    
 });
 
 // $(document).ready(function () {

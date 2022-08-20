@@ -1034,6 +1034,7 @@ body {
 
 .pagenavigation {
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 .pagenavigation__list {
   display: flex;
@@ -1045,6 +1046,7 @@ body {
   margin-left: 15px;
 }
 .pagenavigation__list > li span {
+  display: inline-block;
   padding: 4px 7px;
 }
 .pagenavigation__list > li[data-select] span {

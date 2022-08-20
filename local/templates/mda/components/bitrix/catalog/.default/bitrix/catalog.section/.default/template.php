@@ -20,7 +20,7 @@ use \Bitrix\Main\Localization\Loc;
  * |	<!-- component-end -->
  */
 
-$this->setFrameMode(false);
+$this->setFrameMode(true);
 
 if (!empty($arResult['NAV_RESULT']))
 {

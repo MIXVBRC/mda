@@ -15,7 +15,7 @@
 use Bitrix\Main\Loader;
 use Bitrix\Main\ModuleManager;
 
-$this->setFrameMode(false);
+$this->setFrameMode(true);
 
 file_put_contents(__DIR__.'/sections.txt', print_r($arResult, true));
 

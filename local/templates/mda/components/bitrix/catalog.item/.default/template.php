@@ -13,7 +13,7 @@ use \Bitrix\Main;
  * @var string $templateFolder
  */
 
-$this->setFrameMode(false);
+$this->setFrameMode(true);
 
 if (isset($arResult['ITEM']))
 {
