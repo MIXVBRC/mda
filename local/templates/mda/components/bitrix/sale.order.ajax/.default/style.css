@@ -1087,7 +1087,13 @@ ul.bx-soa-pp-list li {
         }*/
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2),@media only screen and (min--moz-device-pixel-ratio: 2),@media only screen and (-moz-min-device-pixel-ratio: 2),@media only screen and (-o-min-device-pixel-ratio: 2/1),@media only screen and (min-device-pixel-ratio: 2),@media only screen and (min-resolution: 192dpi),@media only screen and (min-resolution: 2dppx){
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+@media only screen and (min--moz-device-pixel-ratio: 2),
+@media only screen and (-moz-min-device-pixel-ratio: 2),
+@media only screen and (-o-min-device-pixel-ratio: 2/1),
+@media only screen and (min-device-pixel-ratio: 2),
+@media only screen and (min-resolution: 192dpi),
+@media only screen and (min-resolution: 2dppx) {
     .bx-soa-location-input-container {
         border-width: .5px;
     }
@@ -1113,11 +1119,11 @@ ul.bx-soa-pp-list li {
     animation-fill-mode: forwards;
 }
 
-@-webkit-keyframes animationBorderStep {0%{border-color:#70BB18}100%{border-color: #91cedc}}
-@-moz-keyframes animationBorderStep {0%{border-color:#70BB18}100%{border-color: #91cedc}}
-@-ms-keyframes animationBorderStep {0%{border-color:#70BB18}100%{border-color: #91cedc}}
-@-o-keyframes animationBorderStep {0%{border-color:#70BB18}100%{border-color: #91cedc}}
-@keyframes animationBorderStep {0%{border-color:#70BB18}100%{border-color: #91cedc}}
+@-webkit-keyframes animationBorderStep {0%{border-color:#70BB18}100%{border-color: #fff}}
+@-moz-keyframes animationBorderStep {0%{border-color:#70BB18}100%{border-color: #fff}}
+@-ms-keyframes animationBorderStep {0%{border-color:#70BB18}100%{border-color: #fff}}
+@-o-keyframes animationBorderStep {0%{border-color:#70BB18}100%{border-color: #fff}}
+@keyframes animationBorderStep {0%{border-color:#70BB18}100%{border-color: #fff}}
 
 .bx-soa-section.bx-step-bad {
     -webkit-animation: animationBorderStepBad ease 5s;
@@ -1322,9 +1328,9 @@ hr.bxe-light{
     border-color: #FAEBCC;
 }
 .alert-danger {
-    color: #A94442;
-    background-color: #F2DEDE;
-    border-color: #EBCCD1;
+    color: #fff;
+    background-color: #A94442;
+    border-color: #A94442;
 }
 
 /* PAGINATION */

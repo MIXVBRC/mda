@@ -1031,6 +1031,25 @@ body {
   color: #fff;
 }
 
+.pagenavigation {
+  margin-top: 50px;
+}
+.pagenavigation__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.pagenavigation__list > li:not(:first-child) {
+  margin-left: 15px;
+}
+.pagenavigation__list > li span {
+  padding: 4px 7px;
+}
+.pagenavigation__list > li[data-select] span {
+  border: 1px solid #fff;
+}
+
 .sections-mini {
   margin-bottom: 100px;
 }
@@ -1220,25 +1239,6 @@ body {
   border: 2px solid rgba(0, 133, 255, 0.44);
   height: 300px;
 }
-.pagenavigation {
-  margin-top: 50px;
-}
-.pagenavigation__list {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.pagenavigation__list > li:not(:first-child) {
-  margin-left: 15px;
-}
-.pagenavigation__list > li span {
-  padding: 4px 7px;
-}
-.pagenavigation__list > li[data-select] span {
-  border: 1px solid #fff;
-}
-
 .element__body {
   display: grid;
   gap: 30px;
@@ -1377,6 +1377,28 @@ body {
   color: #ff2d2d !important;
 }
 
+@media (max-width: 1400px) {
+  .element__name {
+    margin-top: unset;
+    font-size: 35px;
+  }
+}
+@media (max-width: 992px) {
+  .element__name {
+    font-size: 28px;
+  }
+  .element__body {
+    grid-template-columns: 2fr 3fr;
+  }
+}
+@media (max-width: 768px) {
+  .element__name {
+    font-size: 22px;
+  }
+  .element__body {
+    grid-template-columns: 1fr;
+  }
+}
 .quantity {
   margin-bottom: 15px;
 }
@@ -1427,47 +1449,6 @@ body {
 }
 .quantity__result {
   margin-left: 15px;
-}
-
-@media (max-width: 1400px) {
-  .element__name {
-    margin-top: unset;
-    font-size: 35px;
-  }
-}
-@media (max-width: 992px) {
-  .element__name {
-    font-size: 28px;
-  }
-  .element__body {
-    grid-template-columns: 2fr 3fr;
-  }
-}
-@media (max-width: 768px) {
-  .element__name {
-    font-size: 22px;
-  }
-  .element__body {
-    grid-template-columns: 1fr;
-  }
-}
-.personal__list {
-  display: grid;
-  gap: 15px;
-  grid-template-columns: 1fr 1fr;
-}
-.personal__item {
-  text-align: center;
-  padding: 50px 15px;
-  border: 1px solid #fff;
-  font-size: 18px;
-  text-transform: uppercase;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.personal__item:hover {
-  background-color: #fff;
-  color: #15151B;
-  transition: 250ms ease-in-out;
 }
 
 .back-button {
@@ -1633,4 +1614,23 @@ body {
           animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
+}
+
+.personal__list {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: 1fr 1fr;
+}
+.personal__item {
+  text-align: center;
+  padding: 50px 15px;
+  border: 1px solid #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.personal__item:hover {
+  background-color: #fff;
+  color: #15151B;
+  transition: 250ms ease-in-out;
 }
