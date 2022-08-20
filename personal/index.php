@@ -15,7 +15,7 @@ $APPLICATION->SetTitle("Мой кабинет");
 		"CUSTOM_PAGES" => "",
 		"CUSTOM_SELECT_PROPS" => array(
 		),
-		"MAIN_CHAIN_NAME" => "Мой кабинет",
+		"MAIN_CHAIN_NAME" => "",
 		"NAV_TEMPLATE" => "",
 		"ORDERS_PER_PAGE" => "20",
 		"ORDER_DEFAULT_SORT" => "STATUS",
@@ -30,7 +30,7 @@ $APPLICATION->SetTitle("Мой кабинет");
 		"ORDER_RESTRICT_CHANGE_PAYSYSTEM" => array(
 			0 => "0",
 		),
-		"PATH_TO_BASKET" => "/personal/cart/",
+		"PATH_TO_BASKET" => "/personal/order/",
 		"PATH_TO_CATALOG" => "/catalog/",
 		"PATH_TO_CONTACT" => "",
 		"PATH_TO_PAYMENT" => "/personal/order/payment/",
@@ -38,7 +38,7 @@ $APPLICATION->SetTitle("Мой кабинет");
 		"SAVE_IN_SESSION" => "Y",
 		"SEF_MODE" => "Y",
 		"SEND_INFO_PRIVATE" => "N",
-		"SET_TITLE" => "Y",
+		"SET_TITLE" => "N",
 		"SHOW_ACCOUNT_PAGE" => "Y",
 		"SHOW_BASKET_PAGE" => "Y",
 		"SHOW_CONTACT_PAGE" => "N",

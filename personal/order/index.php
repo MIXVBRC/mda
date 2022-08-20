@@ -32,7 +32,7 @@ $APPLICATION->SetTitle("Корзина");
 		"DEFERRED_REFRESH" => "N",
 		"DISCOUNT_PERCENT_POSITION" => "bottom-right",
 		"DISPLAY_MODE" => "extended",
-		"EMPTY_BASKET_HINT_PATH" => "/",
+		"EMPTY_BASKET_HINT_PATH" => "/catalog/",
 		"GIFTS_BLOCK_TITLE" => "Выберите один из подарков",
 		"GIFTS_CONVERT_CURRENCY" => "N",
 		"GIFTS_HIDE_BLOCK_TITLE" => "N",
