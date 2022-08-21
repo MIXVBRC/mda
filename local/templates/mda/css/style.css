@@ -469,8 +469,7 @@ body {
   flex: 0 0 auto;
 }
 
-body > .content *,
-body > .footer * {
+body *:not(.bx-core-window *, .bx-panel-tooltip *) {
   font-family: "Montserrat";
   color: #fff;
 }
