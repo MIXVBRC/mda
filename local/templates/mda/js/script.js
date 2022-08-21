@@ -30,7 +30,7 @@ $(document).ready(function () {
         $('[data-header]').toggleAttr('data-active');
     });
 
-    var audio = new Audio();
+    let audio = new Audio();
     audio.src = '/local/templates/mda/audio/mda.mp3';
 
     $('[data-audio]').on('click', function (event) {
@@ -43,14 +43,7 @@ $(document).ready(function () {
             audio.pause();
         }
 
-        setTimeout(function () {
-            if ($(this).hasAttr('data-audio-play')) {
-                $(this).toggleAttr('data-audio-play');
-            }
-        }, 51000);
-
     });
-    
 });
 
 // $(document).ready(function () {
