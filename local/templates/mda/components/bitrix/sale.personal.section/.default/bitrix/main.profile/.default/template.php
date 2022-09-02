@@ -6,7 +6,6 @@ use Bitrix\Main\Localization\Loc;
 
 ?>
 
-<div class="container">
 <div class="bx_profile">
 	<?
 	ShowError($arResult["strProfileError"]);
@@ -137,5 +136,4 @@ use Bitrix\Main\Localization\Loc;
 	<script>
 		BX.Sale.PrivateProfileComponent.init();
 	</script>
-</div>
 </div>

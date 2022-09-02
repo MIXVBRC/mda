@@ -71,7 +71,7 @@ IncludeTemplateLangFile(__FILE__);
     )
 );?>
 
-<a href="<?=(isAuth() ? '/personal/' : '/auth/')?>" class="personal-small"></a>
+<a href="/personal/" class="personal-small"></a>
 
 </body>
 </html>
