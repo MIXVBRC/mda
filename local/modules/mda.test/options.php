@@ -16,120 +16,116 @@ $module_id = htmlspecialchars($request['mid'] != '' ? $request['mid'] : $request
 // подключаем наш модуль
 Loader::includeModule($module_id);
 
-/*
- * Параметры модуля со значениями по умолчанию
- */
+// Параметры модуля со значениями по умолчанию
 $aTabs = array(
-    array(
 
-        // Основные настройки
+    // Основные настройки
 
+    [
         'DIV'     => 'edit1',
         'TAB'     => Loc::getMessage('MDA_TEST_OPTIONS_TAB_GENERAL'),
         'TITLE'   => Loc::getMessage('MDA_TEST_OPTIONS_TAB_GENERAL'),
-        'OPTIONS' => array(
-            array(
+        'OPTIONS' => [
+            [
                 'switch_on',                                   // имя элемента формы
                 Loc::getMessage('MDA_TEST_OPTIONS_SWITCH_ON'), // поясняющий текст — «Включить прокрутку»
                 'Y',                                           // значение по умолчанию «да»
-                array('checkbox')                              // тип элемента формы — checkbox
-            ),
-            array(
+                ['checkbox']                                   // тип элемента формы — checkbox
+            ],
+            [
                 'jquery_on',                                   // имя элемента формы
                 Loc::getMessage('MDA_TEST_OPTIONS_JQUERY_ON'), // поясняющий текст — «Подключить jQuery»
                 'N',                                           // значение по умолчанию «нет»
-                array('checkbox')                              // тип элемента формы — checkbox
-            ),
-        )
-    ),
-    array(
+                ['checkbox']                                   // тип элемента формы — checkbox
+            ],
+        ]
+    ],
 
-        // Дополнительные настройки
+    // Дополнительные настройки
 
+    [
         'DIV'     => 'edit2',
         'TAB'     => Loc::getMessage('MDA_TEST_OPTIONS_TAB_ADDITIONAL'),
         'TITLE'   => Loc::getMessage('MDA_TEST_OPTIONS_TAB_ADDITIONAL'),
-        'OPTIONS' => array(
-            /*
-             * секция «Внешний вид»
-             */
+        'OPTIONS' => [
+
+            // секция «Внешний вид»
+
             Loc::getMessage('MDA_TEST_OPTIONS_SECTION_VIEW'),
-            array(
+            [
                 'width',                                    // имя элемента формы
                 Loc::getMessage('MDA_TEST_OPTIONS_WIDTH'),  // поясняющий текст — «Ширина (пикселей)»
                 '50',                                       // значение по умолчанию 50px
-                array('text', 5)                            // тип элемента формы — input type="text", ширина 5 симв.
-            ),
-            array(
+                ['text', 5]                                 // тип элемента формы — input type="text", ширина 5 симв.
+            ],
+            [
                 'height',                                   // имя элемента формы
                 Loc::getMessage('MDA_TEST_OPTIONS_HEIGHT'), // поясняющий текст — «Высота (пикселей)»
                 '50',                                       // значение по умолчанию 50px
-                array('text', 5)                            // тип элемента формы — input type="text", ширина 5 симв.
-            ),
-            array(
+                ['text', 5]                                 // тип элемента формы — input type="text", ширина 5 симв.
+            ],
+            [
                 'radius',                                   // имя элемента формы
                 Loc::getMessage('MDA_TEST_OPTIONS_RADIUS'), // поясняющий текст — «Радиус (пикселей)»
                 '50',                                       // значение по умолчанию 50px
-                array('text', 5)                            // тип элемента формы — input type="text", ширина 5 симв.
-            ),
-            array(
+                ['text', 5]                                 // тип элемента формы — input type="text", ширина 5 симв.
+            ],
+            [
                 'color',                                    // имя элемента формы
                 Loc::getMessage('MDA_TEST_OPTIONS_COLOR'),  // поясняющий текст — «Цвет фона»
                 '#bf3030',                                  // значение по умолчанию #bf3030
-                array('text', 5)                            // тип элемента формы — input type="text", ширина 5 симв.
-            ),
-            /*
-             * секция «Положение на странице»
-             */
+                ['text', 5]                                 // тип элемента формы — input type="text", ширина 5 симв.
+            ],
+
+            // секция «Положение на странице»
+
             Loc::getMessage('MDA_TEST_OPTIONS_SECTION_LAYOUT'),
-            array(
+            [
                 'side',                                       // имя элемента формы
                 Loc::getMessage('MDA_TEST_OPTIONS_POSITION'), // поясняющий текст — «Положение кнопки»
                 'left',                                       // значение по умолчанию «left»
-                array(
+                [
                     'selectbox',                              // тип элемента формы — <select>
-                    array(
+                    [
                         'left'  => Loc::getMessage('MDA_TEST_OPTIONS_SIDE_LEFT'),
                         'right' => Loc::getMessage('MDA_TEST_OPTIONS_SIDE_RIGHT')
-                    )
-                )
-            ),
-            array(
+                    ]
+                ]
+            ],
+            [
                 'indent_bottom',                                   // имя элемента формы
                 Loc::getMessage('MDA_TEST_OPTIONS_INDENT_BOTTOM'), // поясняющий текст — «Отступ снизу (пикселей)»
                 '10',                                              // значение по умолчанию 10px
-                array('text', 5)                                   // тип элемента формы — input type="text"
-            ),
-            array(
+                ['text', 5]                                        // тип элемента формы — input type="text"
+            ],
+            [
                 'indent_side',                                     // имя элемента формы
                 Loc::getMessage('MDA_TEST_OPTIONS_INDENT_SIDE'),   // поясняющий текст — «Отступ сбоку (пикселей)»
                 '10',                                              // значение по умолчанию 10px
-                array('text', 5)                                   // тип элемента формы — input type="text"
-            ),
-            /*
-             * секция «Поведение»
-             */
+                ['text', 5]                                        // тип элемента формы — input type="text"
+            ],
+
+            // секция «Поведение»
+
             Loc::getMessage('MDA_TEST_OPTIONS_SECTION_ACTION'),
-            array(
+            [
                 'speed',                                   // имя элемента формы
                 Loc::getMessage('MDA_TEST_OPTIONS_SPEED'), // поясняющий текст — «Скорость прокрутки»
                 'normal',                                  // значение по умолчанию «normal»
-                array(
+                [
                     'selectbox',                           // тип элемента формы — <select>
-                    array(
+                    [
                         'slow'   => Loc::getMessage('MDA_TEST_OPTIONS_SPEED_SLOW'),
                         'normal' => Loc::getMessage('MDA_TEST_OPTIONS_SPEED_NORMAL'),
                         'fast'   => Loc::getMessage('MDA_TEST_OPTIONS_SPEED_FAST')
-                    )
-                )
-            )
-        )
-    )
+                    ]
+                ]
+            ]
+        ]
+    ]
 );
 
-/*
- * Создаем форму для редактирвания параметров модуля
- */
+// Создаем форму для редактирвания параметров модуля
 $tabControl = new CAdminTabControl(
     'tabControl',
     $aTabs
@@ -148,18 +144,14 @@ $tabControl->begin();
         }
         $tabControl->buttons();
         ?>
-        <input type="submit" name="apply"
-               value="<?= Loc::GetMessage('MDA_TEST_OPTIONS_INPUT_APPLY'); ?>" class="adm-btn-save" />
-        <input type="submit" name="default"
-               value="<?= Loc::GetMessage('MDA_TEST_OPTIONS_INPUT_DEFAULT'); ?>" />
+        <input type="submit" name="apply" value="<?= Loc::GetMessage('MDA_TEST_OPTIONS_INPUT_APPLY'); ?>" class="adm-btn-save" />
+        <input type="submit" name="default" value="<?= Loc::GetMessage('MDA_TEST_OPTIONS_INPUT_DEFAULT'); ?>" />
     </form>
 
 <?php
 $tabControl->end();
 
-/*
- * Обрабатываем данные после отправки формы
- */
+// Обрабатываем данные после отправки формы
 if ($request->isPost() && check_bitrix_sessid()) {
 
     foreach ($aTabs as $aTab) { // цикл по вкладкам
@@ -183,7 +175,7 @@ if ($request->isPost() && check_bitrix_sessid()) {
                     }
                 }
                 Option::set($module_id, $arOption[0], is_array($optionValue) ? implode(',', $optionValue) : $optionValue);
-            } elseif ($request['default']) { // устанавливаем по умолчанию
+            } else if ($request['default']) { // устанавливаем по умолчанию
                 Option::set($module_id, $arOption[0], $arOption[2]);
             }
         }
