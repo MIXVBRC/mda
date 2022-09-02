@@ -10,6 +10,7 @@ IncludeTemplateLangFile(__FILE__);
     <div class="container">
 
         <div class="phone">
+            <i class="fa fa-phone"></i>
             <?$APPLICATION->IncludeComponent(
                 "bitrix:main.include",
                 "phone",
@@ -70,7 +71,7 @@ IncludeTemplateLangFile(__FILE__);
     )
 );?>
 
-<a href="/personal/" class="personal-small"></a>
+<a href="<?=(isAuth() ? '/personal/' : '/auth/')?>" class="personal-small"></a>
 
 </body>
 </html>

@@ -1,0 +1,135 @@
+.contacts {
+
+    &__body {
+    }
+
+    &__list {
+        display: grid;
+        gap: 15px;
+        grid-template-columns: 1fr;
+    }
+
+    &__item {
+        display: grid;
+        gap: 15px;
+        grid-template-columns: 1fr 2fr;
+        padding: 15px;
+        background-color: $blackout_color;
+        border: $border;
+
+        &-info {
+
+            & > *:not(:last-child) {
+                margin-bottom: 15px;
+            }
+
+            & i.fa {
+                margin-right: 10px;
+            }
+        }
+    
+        &-name {
+            font-size: 28px;
+            padding-bottom: 15px;
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 80%;
+                height: 2px;
+                background-color: $font_color;
+            }
+        }
+
+        &-phone,
+        &-whatsapp {
+            
+            & > a {
+                color: $main_color;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    
+        &-phone {
+        }
+    
+        &-whatsapp {
+
+            & > i {
+                color: $whatsapp;
+            }
+        }
+    
+        &-address {
+
+            & > span {
+                color: $main_color;
+            }
+
+            & > address {
+                display: inline;
+            }
+        }
+    
+        &-time {
+
+            & > span {
+                color: $main_color;
+            }
+        }
+    }
+
+    &__map {
+        border: $border;
+        line-height: 0;
+
+        & > iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+        }
+        
+        &-test {
+            width: 100%;
+            height: 300px;
+            background-color: #fff;
+        }
+    }
+}
+
+@media (max-width: $c_width) {}
+@media (max-width: $l_width) {
+    .contacts {
+        &__list {
+            grid-template-columns: 1fr 1fr;
+        }
+        &__item {
+            grid-template-columns: 1fr;
+
+            &-name {
+                font-size: 22px;
+
+                &::before {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+@media (max-width: $m_width) {
+    .contacts {
+        &__list {
+            grid-template-columns: 1fr;
+        }
+        &__item {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+@media (max-width: $s_width) {}

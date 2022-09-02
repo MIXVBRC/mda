@@ -14,6 +14,10 @@
     &:hover {
         text-decoration: underline;
     }
+
+    & > i {
+        margin-right: 10px;
+    }
 }
 .logo {
     margin-top: 25px;

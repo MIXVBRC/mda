@@ -3,7 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Контакты");
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:news.list", 
-	"branches", 
+	"contacts", 
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
@@ -47,8 +47,14 @@ $APPLICATION->SetTitle("Контакты");
 		"PARENT_SECTION_CODE" => "",
 		"PREVIEW_TRUNCATE_LEN" => "",
 		"PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
+			0 => "PHONE",
+			1 => "WHATSAPP",
+			2 => "ADDRESS",
+			3 => "MAP",
+			4 => "START",
+			5 => "END",
+			6 => "AROUND_THE_CLOCK",
+			7 => "",
 		),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
@@ -62,7 +68,7 @@ $APPLICATION->SetTitle("Контакты");
 		"SORT_ORDER1" => "DESC",
 		"SORT_ORDER2" => "ASC",
 		"STRICT_SECTION_CHECK" => "N",
-		"COMPONENT_TEMPLATE" => "branches"
+		"COMPONENT_TEMPLATE" => "contacts"
 	),
 	false
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

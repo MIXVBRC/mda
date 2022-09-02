@@ -15,7 +15,7 @@ body {
     flex: 0 0 auto;
 }
 
-body *:not(.bx-core-window *, .bx-panel-tooltip *) {
+body *:not(.bx-core-window *, .bx-panel-tooltip *, i) {
     // font-style: $font_style;
     font-family: $font_style;
     color: $font_color;
