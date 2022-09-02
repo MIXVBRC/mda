@@ -15,7 +15,7 @@ Class mda_test extends CModule
 
     public function __construct()
     {
-        $this->MODULE_ID = str_ireplace('_', '.', get_class($this));
+        $this->MODULE_ID = $this->getModuleID();
 
         $arModuleVersion = [];
 
@@ -24,10 +24,13 @@ Class mda_test extends CModule
         $this->MODULE_VERSION = $arModuleVersion['VERSION'];
         $this->MODULE_VERSION_DATE = $arModuleVersion['VERSION_DATE'];
 
-        $this->MODULE_NAME = 'MDA тестовый модуль';
-        $this->MODULE_DESCRIPTION = 'Описание модуля';
+        $this->MODULE_NAME = Loc::getMessage("MDA_TEST_NAME");
+        $this->MODULE_DESCRIPTION = Loc::getMessage("MDA_TEST_DESCRIPTION");
     }
 
+    public function getModuleID() {
+        return str_ireplace('_', '.', get_class($this));
+    }
 
     function InstallDB($install_wizard = true)
     {
