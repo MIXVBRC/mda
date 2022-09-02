@@ -24,8 +24,8 @@ Class mda_test extends CModule
         $this->MODULE_VERSION = $arModuleVersion['VERSION'];
         $this->MODULE_VERSION_DATE = $arModuleVersion['VERSION_DATE'];
 
-        $this->MODULE_NAME = Loc::getMessage("MDA_TEST_NAME");
-        $this->MODULE_DESCRIPTION = Loc::getMessage("MDA_TEST_DESCRIPTION");
+        $this->MODULE_NAME = Loc::getMessage("MDA_TEST_INSTALL_NAME");
+        $this->MODULE_DESCRIPTION = Loc::getMessage("MDA_TEST_INSTALL_DESCRIPTION");
     }
 
     public function getModuleID() {
