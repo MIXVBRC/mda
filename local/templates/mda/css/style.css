@@ -962,6 +962,9 @@ body {
   margin-bottom: 25px;
   opacity: 0.5;
 }
+.phone:hover {
+  text-decoration: underline;
+}
 
 .logo {
   margin-top: 25px;
@@ -1173,6 +1176,10 @@ body {
   border: 1px solid #fff;
   text-transform: uppercase;
 }
+.list1__buy-button:hover {
+  background-color: #fff;
+  color: #15151B;
+}
 
 @media (max-width: 1400px) {
   .list1__list {
@@ -1326,6 +1333,10 @@ body {
   color: #fff;
   border: 2px solid #0085FF;
 }
+.element__properties-sky-item:hover:not(.selected) {
+  background-color: #fff;
+  color: #15151B;
+}
 .element__properties-sky-item-img {
   height: 30px;
   width: 30px;
@@ -1455,6 +1466,12 @@ body {
   left: 1px;
   top: 6px;
   background-color: #fff;
+}
+.quantity__button.plus:hover, .quantity__button.minus:hover {
+  background-color: #fff;
+}
+.quantity__button.plus:hover:before, .quantity__button.plus:hover:after, .quantity__button.minus:hover:before, .quantity__button.minus:hover:after {
+  background-color: #15151B;
 }
 .quantity__input {
   width: 30px;

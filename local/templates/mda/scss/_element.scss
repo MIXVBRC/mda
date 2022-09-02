@@ -96,6 +96,11 @@
             color: $font_color;
             border: 2px solid $main_color;
         }
+
+        &:hover:not(.selected) {
+            background-color: $font_color;
+            color: $font_color_reverse;
+        }
     }
 
     &__properties-sky-item-img {

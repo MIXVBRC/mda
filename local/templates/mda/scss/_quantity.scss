@@ -46,6 +46,18 @@
                 background-color: $font_color;
             }
         }
+
+        &.plus,
+        &.minus {
+            &:hover {
+                background-color: $font_color;
+
+                &:before,
+                &:after {
+                    background-color: $font_color_reverse;
+                }
+            }
+        }
         
     }
 

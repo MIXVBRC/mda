@@ -12,7 +12,7 @@ IncludeTemplateLangFile(__FILE__);
         <div class="phone">
             <?$APPLICATION->IncludeComponent(
                 "bitrix:main.include",
-                "",
+                "phone",
                 Array(
                     "AREA_FILE_SHOW" => "file",
                     "AREA_FILE_SUFFIX" => "inc",

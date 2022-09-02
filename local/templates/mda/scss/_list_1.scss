@@ -134,6 +134,11 @@
         padding: 10px 20px;
         border: 1px solid $font_color;
         text-transform: uppercase;
+
+        &:hover {
+            background-color: $font_color;
+            color: $font_color_reverse;
+        }
     }
 }
 @media (max-width: $c_width) {
