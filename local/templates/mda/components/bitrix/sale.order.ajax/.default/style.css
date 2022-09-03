@@ -579,7 +579,7 @@
 }
 .bx-soa-cart-total.bx-soa-cart-total-fixed {
     position: fixed;
-    top: 10px;
+    top: 110px;
 }
 .bx-soa-cart-total.bx-soa-cart-total-bottom {opacity: 0;}
 @media(max-width: 768px){
@@ -1307,7 +1307,7 @@ hr.bxe-light{
 }
 
 .alert{
-    border: none;
+    /*border: none;*/
     border-radius: 1px;
     font-size: 14px;
     padding: 15px;
@@ -1319,13 +1319,13 @@ hr.bxe-light{
 }
 .alert-success {
     color: #3C763D;
-    background-color: #DFF0D8;
-    border-color: #D6E9C6;
+    background-color: #15151B;
+    border-color: #0085FF;
 }
 .alert-warning {
     color: #8A6D3B;
-    background-color: #FCF8E3;
-    border-color: #FAEBCC;
+    background-color: #15151B;
+    border-color: #0085FF;
 }
 .alert-danger {
     color: #fff;
@@ -1446,12 +1446,12 @@ hr.bxe-light{
 .bx-soa-tooltip.bx-soa-tooltip-static .tooltip-arrow{left:20px;}
 
 .bx-soa-tooltip .tooltip-inner{max-width: 300px;}
-.bx-soa-tooltip.bx-soa-tooltip-danger  .tooltip-arrow{border-top-color:#F2DEDE;}
-.bx-soa-tooltip.bx-soa-tooltip-danger  .tooltip-inner{background:#F2DEDE;color:#A94442;}
-.bx-soa-tooltip.bx-soa-tooltip-warning .tooltip-arrow{border-top-color:#FCF8E3;}
-.bx-soa-tooltip.bx-soa-tooltip-warning .tooltip-inner{background:#FCF8E3;color:#8A6D3B;}
-.bx-soa-tooltip.bx-soa-tooltip-success .tooltip-arrow{border-top-color:#dff0d8;}
-.bx-soa-tooltip.bx-soa-tooltip-success .tooltip-inner{background:#dff0d8;color:#3c763d;}
+.bx-soa-tooltip.bx-soa-tooltip-danger  .tooltip-arrow{border-top-color:#15151B;}
+.bx-soa-tooltip.bx-soa-tooltip-danger  .tooltip-inner{background:#15151B;color:#A94442;}
+.bx-soa-tooltip.bx-soa-tooltip-warning .tooltip-arrow{border-top-color:#15151B;}
+.bx-soa-tooltip.bx-soa-tooltip-warning .tooltip-inner{background:#15151B;color:#8A6D3B;}
+.bx-soa-tooltip.bx-soa-tooltip-success .tooltip-arrow{border-top-color:#15151B;}
+.bx-soa-tooltip.bx-soa-tooltip-success .tooltip-inner{background:#15151B;color:#3c763d;}
 
 .bx-soa-tooltip.bx-soa-tooltip-coupon{display:none;}
 .bx-soa-coupon-item-used:hover    .bx-soa-tooltip,

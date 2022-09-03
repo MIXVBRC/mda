@@ -26,7 +26,7 @@
         &:hover,
         &:focus {
             background-color: $font_color;
-            color: $font_color_reverse;
+            color: $font_color_reverse !important;
         }
     }
 
@@ -39,7 +39,7 @@
             &:hover {
                 background-color: $font_color;
                 border: $border1;
-                color: $font_color_reverse;
+                color: $font_color_reverse !important;
             }
         }
     }
@@ -47,7 +47,7 @@
     &__auth {
         
         &:hover {
-            color: $main_color;
+            color: $main_color !important;
         }
     }
 

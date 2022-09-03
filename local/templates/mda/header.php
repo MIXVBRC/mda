@@ -89,6 +89,7 @@ IncludeTemplateLangFile(__FILE__);
                 );?><br>
 
             </div>
-
         </div>
+
+        <div class="container">
         <? endif; ?>

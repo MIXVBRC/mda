@@ -108,13 +108,11 @@ else
 {
 	?>
     <div class="personal">
-        <div class="container">
-            <div class="personal__body">
-                <div class="personal__list">
-                    <?foreach ($availablePages as $blockElement):?>
-                        <a href="<?=htmlspecialcharsbx($blockElement['path'])?>" class="personal__item"><?=htmlspecialcharsbx($blockElement['name'])?></a>
-                    <?endforeach;?>
-                </div>
+        <div class="personal__body">
+            <div class="personal__list">
+                <?foreach ($availablePages as $blockElement):?>
+                    <a href="<?=htmlspecialcharsbx($blockElement['path'])?>" class="personal__item"><?=htmlspecialcharsbx($blockElement['name'])?></a>
+                <?endforeach;?>
             </div>
         </div>
     </div>

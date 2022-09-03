@@ -13,8 +13,6 @@ if ($arParams["MAIN_CHAIN_NAME"] <> '')
 }
 ?>
 
-<div class="container">
-
 <?
 $APPLICATION->AddChainItem(Loc::getMessage("SPS_CHAIN_ORDERS"), $arResult['PATH_TO_ORDERS']);
 $APPLICATION->IncludeComponent(
@@ -47,4 +45,3 @@ $APPLICATION->IncludeComponent(
 	$component
 );
 ?>
-</div>

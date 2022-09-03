@@ -8190,7 +8190,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 				return;
 
 			var scrollTop = BX.GetWindowScrollPos().scrollTop,
-				ghostTop = BX.pos(this.totalGhostBlockNode).top,
+				ghostTop = BX.pos(this.totalGhostBlockNode).top - 100,
 				ghostBottom = BX.pos(this.orderBlockNode).bottom,
 				width;
 

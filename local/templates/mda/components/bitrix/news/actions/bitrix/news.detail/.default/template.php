@@ -13,14 +13,12 @@
 $this->setFrameMode(true);
 ?>
 <div class="detail1">
-    <div class="container">
-        <div class="detail1__body">
-            <div class="detail1__img">
-                <img class="img__cover" src="<?=$arResult['DETAIL_PICTURE']['SRC']?>" alt="<?=$arResult['DETAIL_PICTURE']['ALT']?>">
-            </div>
-
-            <div class="detail1__description"><?=$arResult['DETAIL_TEXT']?></div>
+    <div class="detail1__body">
+        <div class="detail1__img">
+            <img class="img__cover" src="<?=$arResult['DETAIL_PICTURE']['SRC']?>" alt="<?=$arResult['DETAIL_PICTURE']['ALT']?>">
         </div>
-        <a href="<?=$arResult['LIST_PAGE_URL']?>" class="back-button">Назад</a>
+
+        <div class="detail1__description"><?=$arResult['DETAIL_TEXT']?></div>
     </div>
+    <a href="<?=$arResult['LIST_PAGE_URL']?>" class="back-button">Назад</a>
 </div>

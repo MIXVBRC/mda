@@ -1,0 +1,66 @@
+.order-cansel {
+
+    &__body {
+    }
+
+    &__form {
+    }
+
+    &__item {
+
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+    }
+
+    &__label {
+        text-align: right;
+    }
+
+    &__input {
+        border: $border1;
+        padding: 5px 10px;
+        background-color: $blackout_color;
+
+        &:hover,
+        &:focus {
+            background-color: $font_color;
+            color: $font_color_reverse !important;
+        }
+    }
+
+    &__button {
+        border: $border1;
+        padding: 5px 10px;
+
+        &:hover {
+            background-color: $font_color;
+            border: $border1;
+            color: $font_color_reverse !important;
+        }
+    }
+
+    &__forgot {
+        
+        &:hover {
+            color: $main_color !important;
+        }
+    }
+
+    &__remember {
+        padding-left: 5px;
+    }
+
+    &__error {
+
+        & * {
+            color: $main_color_reverse !important;
+        }
+    }
+
+    &__link {
+        &:hover {
+            color: $main_color !important;
+        }
+    }
+}

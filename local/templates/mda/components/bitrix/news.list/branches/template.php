@@ -14,32 +14,30 @@ $this->setFrameMode(true);
 ?>
 
 <section class="news">
-    <div class="container">
-        <div class="news__body">
-            <div class="news__list">
+    <div class="news__body">
+        <div class="news__list">
 
-                <?foreach($arResult["ITEMS"] as $arItem):?>
+            <?foreach($arResult["ITEMS"] as $arItem):?>
 
-                <?
-                    $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
-                    $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-                ?>
+            <?
+                $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+                $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+            ?>
 
-                <a class="news__item" href="<?=$arItem['DETAIL_PAGE_URL']?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-                    <div class="news__name"><?=$arItem['NAME']?></div>
-                    <div class="news__description"><?=$arItem['PREVIEW_TEXT']?></div>
-                </a>
+            <a class="news__item" href="<?=$arItem['DETAIL_PAGE_URL']?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+                <div class="news__name"><?=$arItem['NAME']?></div>
+                <div class="news__description"><?=$arItem['PREVIEW_TEXT']?></div>
+            </a>
 
-                <?endforeach;?>
-
-            </div>
-
-            <div class="news__right">
-                <?if ($arResult['IMAGE']):?>
-                    <img src="<?=$arResult['IMAGE']?>">
-                <?endif;?>
-            </div>
+            <?endforeach;?>
 
         </div>
+
+        <div class="news__right">
+            <?if ($arResult['IMAGE']):?>
+                <img src="<?=$arResult['IMAGE']?>">
+            <?endif;?>
+        </div>
+
     </div>
 </section>

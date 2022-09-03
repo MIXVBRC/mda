@@ -164,45 +164,43 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 <?endif;?>
 
 <div class="list1">
-    <div class="container">
-        <div class="list1__body" data-entity="<?=$containerName?>">
-            <div class="list1__list" data-entity="items-row">
+    <div class="list1__body" data-entity="<?=$containerName?>">
+        <div class="list1__list" data-entity="items-row">
 
-                <?$areaIds = array();?>
+            <?$areaIds = array();?>
 
-                <?foreach ($arResult['ITEMS'] as $item):?>
+            <?foreach ($arResult['ITEMS'] as $item):?>
 
-                    <?
-                    $uniqueId = $item['ID'].'_'.md5($this->randString().$component->getAction());
-                    $areaIds[$item['ID']] = $this->GetEditAreaId($uniqueId);
-                    $this->AddEditAction($uniqueId, $item['EDIT_LINK'], $elementEdit);
-                    $this->AddDeleteAction($uniqueId, $item['DELETE_LINK'], $elementDelete, $elementDeleteParams);
-                    ?>
+                <?
+                $uniqueId = $item['ID'].'_'.md5($this->randString().$component->getAction());
+                $areaIds[$item['ID']] = $this->GetEditAreaId($uniqueId);
+                $this->AddEditAction($uniqueId, $item['EDIT_LINK'], $elementEdit);
+                $this->AddDeleteAction($uniqueId, $item['DELETE_LINK'], $elementDelete, $elementDeleteParams);
+                ?>
 
-                    <?$APPLICATION->IncludeComponent(
-                        'bitrix:catalog.item',
-                        '',
-                        array(
-                            'RESULT' => array(
-                                'ITEM' => $item,
-                                'AREA_ID' => $areaIds[$item['ID']],
-                                'TYPE' => 'CARD',
-                                'BIG_LABEL' => 'N',
-                                'BIG_DISCOUNT_PERCENT' => 'N',
-                                'BIG_BUTTONS' => 'Y',
-                                'SCALABLE' => 'N'
-                            ),
-                            'PARAMS' => $generalParams
-                                + array('SKU_PROPS' => $arResult['SKU_PROPS'][$item['IBLOCK_ID']])
+                <?$APPLICATION->IncludeComponent(
+                    'bitrix:catalog.item',
+                    '',
+                    array(
+                        'RESULT' => array(
+                            'ITEM' => $item,
+                            'AREA_ID' => $areaIds[$item['ID']],
+                            'TYPE' => 'CARD',
+                            'BIG_LABEL' => 'N',
+                            'BIG_DISCOUNT_PERCENT' => 'N',
+                            'BIG_BUTTONS' => 'Y',
+                            'SCALABLE' => 'N'
                         ),
-                        $component,
-                        array('HIDE_ICONS' => 'Y')
-                    );?>
-                <?endforeach;?>
+                        'PARAMS' => $generalParams
+                            + array('SKU_PROPS' => $arResult['SKU_PROPS'][$item['IBLOCK_ID']])
+                    ),
+                    $component,
+                    array('HIDE_ICONS' => 'Y')
+                );?>
+            <?endforeach;?>
 
-                <?unset($generalParams, $rowItems);?>
+            <?unset($generalParams, $rowItems);?>
 
-            </div>
         </div>
     </div>
 </div>

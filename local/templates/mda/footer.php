@@ -2,6 +2,10 @@
 IncludeTemplateLangFile(__FILE__);
 ?>
 
+<? if (!isMainPage()): ?>
+</div>
+<?endif;?>
+
 </div>
 
 </div>

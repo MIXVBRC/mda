@@ -17,6 +17,10 @@ if ($arParams["MAIN_CHAIN_NAME"] <> '')
 }
 $APPLICATION->AddChainItem(Loc::getMessage("SPS_CHAIN_ORDERS"), $arResult['PATH_TO_ORDERS']);
 $APPLICATION->AddChainItem(Loc::getMessage("SPS_CHAIN_ORDER_DETAIL", array("#ID#" => $arResult["VARIABLES"]["ID"])));
+
+?>
+
+<?
 $APPLICATION->IncludeComponent(
 	"bitrix:sale.personal.order.cancel",
 	"",

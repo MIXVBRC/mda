@@ -1,0 +1,17 @@
+.order-confirm {
+    background-color: $background_color;
+    border: $border;
+    padding: 15px;
+
+    & a {
+        color: $main_color !important;
+    }
+
+    & .ps_logo > *:not(:last-child) {
+        margin-bottom: 15px;
+    }
+
+    &__file * {
+        color: #000 !important;
+    }
+}

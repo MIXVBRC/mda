@@ -3492,7 +3492,7 @@ body {
   flex: 0 0 auto;
 }
 
-body *:not(.bx-core-window *, .bx-panel-tooltip *, i) {
+body *:not(.bx-core-window *, .bx-panel-tooltip *, i, #pickUpMap *, .order-confirm__file *) {
   font-family: "Montserrat";
   color: #fff;
 }
@@ -3562,7 +3562,7 @@ body {
     font-size: 30px;
   }
 }
-.header {
+.header:not(table) {
   width: 100%;
   position: fixed;
   top: 0;
@@ -4818,7 +4818,7 @@ body {
 }
 .auth__input:hover, .auth__input:focus {
   background-color: #fff;
-  color: #15151B;
+  color: #15151B !important;
 }
 .auth__button > * {
   border: 2px solid #fff;
@@ -4827,10 +4827,10 @@ body {
 .auth__button > *:hover {
   background-color: #fff;
   border: 2px solid #fff;
-  color: #15151B;
+  color: #15151B !important;
 }
 .auth__forgot:hover {
-  color: #0085FF;
+  color: #0085FF !important;
 }
 .auth__remember {
   padding-left: 5px;
@@ -4853,7 +4853,7 @@ body {
 }
 .register__input:hover, .register__input:focus {
   background-color: #fff;
-  color: #15151B;
+  color: #15151B !important;
 }
 .register__button > * {
   border: 2px solid #fff;
@@ -4862,10 +4862,10 @@ body {
 .register__button > *:hover {
   background-color: #fff;
   border: 2px solid #fff;
-  color: #15151B;
+  color: #15151B !important;
 }
 .register__auth:hover {
-  color: #0085FF;
+  color: #0085FF !important;
 }
 .register__remember {
   padding-left: 5px;
@@ -4881,4 +4881,146 @@ body {
   font-size: 12px;
   padding: 5px;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.order-confirm {
+  background-color: #15151B;
+  border: 2px solid rgba(0, 133, 255, 0.44);
+  padding: 15px;
+}
+.order-confirm a {
+  color: #0085FF !important;
+}
+.order-confirm .ps_logo > *:not(:last-child) {
+  margin-bottom: 15px;
+}
+.order-confirm__file * {
+  color: #000 !important;
+}
+
+.forgot__teble {
+  border-spacing: 15px 15px;
+  border-collapse: initial;
+}
+.forgot__label {
+  text-align: right;
+}
+.forgot__input {
+  border: 2px solid #fff;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.forgot__input:hover, .forgot__input:focus {
+  background-color: #fff;
+  color: #15151B !important;
+}
+.forgot__button > * {
+  border: 2px solid #fff;
+  padding: 5px 10px;
+}
+.forgot__button > *:hover {
+  background-color: #fff;
+  border: 2px solid #fff;
+  color: #15151B !important;
+}
+.forgot__auth:hover {
+  color: #0085FF !important;
+}
+.forgot__remember {
+  padding-left: 5px;
+}
+.forgot__error * {
+  color: #ff2d2d !important;
+}
+.forgot__necessarily {
+  margin-right: 5px;
+  color: #ff2d2d !important;
+}
+.forgot__requirements {
+  font-size: 12px;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.order-cansel__item:not(:last-child) {
+  margin-bottom: 15px;
+}
+.order-cansel__label {
+  text-align: right;
+}
+.order-cansel__input {
+  border: 2px solid #fff;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.order-cansel__input:hover, .order-cansel__input:focus {
+  background-color: #fff;
+  color: #15151B !important;
+}
+.order-cansel__button {
+  border: 2px solid #fff;
+  padding: 5px 10px;
+}
+.order-cansel__button:hover {
+  background-color: #fff;
+  border: 2px solid #fff;
+  color: #15151B !important;
+}
+.order-cansel__forgot:hover {
+  color: #0085FF !important;
+}
+.order-cansel__remember {
+  padding-left: 5px;
+}
+.order-cansel__error * {
+  color: #ff2d2d !important;
+}
+.order-cansel__link:hover {
+  color: #0085FF !important;
+}
+
+.profile__form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+.profile__item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+}
+.profile__input {
+  border: 2px solid #fff;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  max-width: 300px;
+}
+.profile__input:hover, .profile__input:focus {
+  background-color: #fff;
+  color: #15151B !important;
+}
+.profile__button > * {
+  border: 2px solid #fff;
+  padding: 5px 10px;
+}
+.profile__button > *:hover {
+  background-color: #fff;
+  border: 2px solid #fff;
+  color: #15151B !important;
+}
+.profile__forgot:hover {
+  color: #0085FF !important;
+}
+.profile__remember {
+  padding-left: 5px;
+}
+.profile__error * {
+  color: #ff2d2d !important;
+}
+.profile__success * {
+  color: #0085FF !important;
+}
+.profile__small {
+  font-size: 12px;
+  color: #8A8A8A !important;
 }
