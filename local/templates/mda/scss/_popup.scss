@@ -1,40 +1,68 @@
 .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15px;
+    @include blur;
+    background-color: $blackout_color;
+    z-index: 1000;
+    display: none;
+    
+    &[data-popup-active] {
+        display: flex;
+    }
 
-    &__button {
-        padding: 10px 20px;
-        border: 1px solid $font_color;
-        color: $font_color;
-        display: inline-block;
+    &__body {
+        position: relative;
+        background-color: $background_color;
+        width: 100%;
+        max-width: $m_width;
+    }
+
+    &__close {
+        position: absolute;
         cursor: pointer;
+        width: $popup_close_size;
+        height: $popup_close_size;
+        border-radius: 50%;
+        top: 15px;
+        right: 15px;
+
+        &::before,
+        &::after {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: $font_color;
+            top: calc($popup_close_size / 2 - 1px);
+            left: 0;
+            transition: $transition_time_mini ease-in-out;
+        }
+
+        &::before {
+            transform: rotate(45deg);
+        }
+
+        &::after {
+            transform: rotate(-45deg);
+        }
 
         &:hover {
-            background-color: $font_color;
-            color: $font_color_reverse;
+            &::before,
+            &::after {
+                background-color: $main_color_reverse;
+                transition: $transition_time_mini ease-in-out;
+            }
         }
     }
-}
 
-.popup-window {
-    background-color: $background_color;
-    border: 1px solid $font_color;
-
-    & * {
-        color: $font_color;
-    }
-}
-.popup-window-content {
-    background-color: unset !important;
-    padding: 15px !important;
-    // border: $border;
-
-    & img {
-        width: 100%;
-        object-fit: contain;
-        object-position: center;
-    }
-
-    & p {
-        margin-top: 15px;
-        padding: 5px;
+    &__content {
+        // padding: 15px;
     }
 }

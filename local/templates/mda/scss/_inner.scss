@@ -8,3 +8,11 @@
         font-size: 30px;
     }
 }
+
+@media (max-width: $m_width) {
+    .title {
+        &__text {
+            font-size: 22px;
+        }
+    }
+}

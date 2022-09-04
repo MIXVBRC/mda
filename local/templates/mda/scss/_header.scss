@@ -2,7 +2,6 @@
 
     &:not(table){
         width: 100%;
-        // height: $header_height;
         position: fixed;
         top: 0;
         left: 0;
@@ -35,8 +34,22 @@
 
 @media (max-width: $m_width) {
     .header {
+
+        &[data-active] &__body {
+            border-bottom-width: 2px;
+            border-bottom-color: $font_color_medium;
+            transition: $transition_time ease-in-out;
+        }
+
         &[data-active]::after {
             height: 100vh;
+            transition: $transition_time ease-in-out;
+        }
+
+        &__body {
+            border-bottom: 0px solid $transparent;
+            padding: 0 25px;
+            justify-content: space-between;
             transition: $transition_time ease-in-out;
         }
     }

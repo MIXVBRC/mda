@@ -1,82 +1,76 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 
-<div class="forgot">
-    <div class="forgot__body">
+<div class="form">
+    <div class="form__body">
 
-        <?if ($arParams["~AUTH_RESULT"]):?>
-            <div class="register__error"><?ShowMessage($arParams["~AUTH_RESULT"])?></div>
-        <? endif ?>
+        <div class="form__title">Восстановление пароля</div>
 
-        <? if ($arResult["BACKURL"] <> ''): ?>
-            <input type="hidden" name="backurl" value="<?= $arResult["BACKURL"] ?>"/>
-        <? endif; ?>
+        <form class="form__form" name="bform" method="post" target="_top" action="<?= $arResult["AUTH_URL"] ?>">
 
-        <input type="hidden" name="AUTH_FORM" value="Y">
-        <input type="hidden" name="TYPE" value="SEND_PWD">
+            <div class="form__list">
 
-        <form class="forgot__form" name="bform" method="post" target="_top" action="<?= $arResult["AUTH_URL"] ?>">
-            <table class="forgot__teble">
+                <?if ($arParams["~AUTH_RESULT"]):?>
+                    <div class="form__item">
+                        <div class="form__message"><?ShowMessage($arParams["~AUTH_RESULT"])?></div>
+                    </div>
+                <? endif ?>
 
-                <tbody>
+                <? if ($arResult["BACKURL"] <> ''): ?>
+                    <input type="hidden" name="backurl" value="<?= $arResult["BACKURL"] ?>"/>
+                <? endif; ?>
 
-                    <tr class="forgot__item">
-                        <td class="forgot__label"><?= GetMessage("sys_forgot_pass_login1") ?></td>
-                        <td>
-                            <input class="forgot__input" type="text" name="USER_LOGIN" value="<?= $arResult["USER_LOGIN"] ?>"/>
-                            <input type="hidden" name="USER_EMAIL"/>
-                        </td>
-                    </tr>
+                <input type="hidden" name="AUTH_FORM" value="Y">
+                <input type="hidden" name="TYPE" value="SEND_PWD">
 
-                    <tr class="forgot__item">
-                        <td class="forgot__label"></td>
-                        <td><?= GetMessage("sys_forgot_pass_note_email") ?></td>
-                    </tr>
+                <div class="form__item">
+                    <input class="form__input" placeholder="<?=GetMessage("sys_forgot_pass_login1")?>" type="text" name="USER_LOGIN" value="<?= $arResult["USER_LOGIN"] ?>">
+                    <input type="hidden" name="USER_EMAIL"/>
+                </div>
 
-                    <? if ($arResult["PHONE_REGISTRATION"]): ?>
+                <div class="form__item">
+                    <div class="form__small"><?=GetMessage("sys_forgot_pass_note_email")?></div>
+                </div>
 
-                        <tr class="forgot__item">
-                            <td class="forgot__label"><?= GetMessage("sys_forgot_pass_phone") ?></td>
-                            <td><input class="forgot__input" type="text" name="USER_PHONE_NUMBER" value="<?= $arResult["USER_PHONE_NUMBER"] ?>"/></td>
-                        </tr>
+                <? if ($arResult["PHONE_REGISTRATION"]): ?>
 
-                        <tr class="forgot__item">
-                            <td class="forgot__label"></td>
-                            <td><?= GetMessage("sys_forgot_pass_note_phone") ?></td>
-                        </tr>
+                    <div class="form__item">
+                        <input class="form__input" placeholder="<?=GetMessage("sys_forgot_pass_phone")?>" type="text" name="USER_PHONE_NUMBER" value="<?= $arResult["USER_PHONE_NUMBER"] ?>">
+                    </div>
 
-                    <? endif; ?>
+                    <div class="form__item">
+                        <div class="form__small"><?=GetMessage("sys_forgot_pass_note_phone")?></div>
+                    </div>
 
-                    <? if ($arResult["USE_CAPTCHA"]): ?>
+                <? endif; ?>
 
-                        <tr class="forgot__item">
-                            <td></td>
-                            <td><input type="hidden" name="captcha_sid" value="<?= $arResult["CAPTCHA_CODE"] ?>" />
-                                <img src="/bitrix/tools/captcha.php?captcha_sid=<?= $arResult["CAPTCHA_CODE"] ?>" width="180" height="40" alt="CAPTCHA" /></td>
-                        </tr>
+                <? if ($arResult["USE_CAPTCHA"]): ?>
 
-                        <tr class="forgot__item">
-                            <td class="forgot__label"><? echo GetMessage("system_auth_captcha") ?></td>
-                            <td><input class="forgot__input" type="text" name="captcha_word" maxlength="50" value="" autocomplete="off" /></td>
-                        </tr>
+                    <div class="form__item">
+                        <input type="hidden" name="captcha_sid" value="<?= $arResult["CAPTCHA_CODE"] ?>" />
+                        <img src="/bitrix/tools/captcha.php?captcha_sid=<?= $arResult["CAPTCHA_CODE"] ?>" width="180" height="40" alt="CAPTCHA" />
+                    </div>
 
-                    <? endif ?>
+                    <div class="form__item">
+                        <input class="form__input" placeholder="<?=GetMessage("system_auth_captcha")?>" type="text" name="captcha_word" maxlength="50" value="" autocomplete="off">
+                    </div>
 
-                    <tr class="forgot__item">
-                        <td></td>
-                        <td class="forgot__button"><input type="submit" name="send_account_info" value="<?= GetMessage("AUTH_SEND") ?>"/></td>
-                    </tr>
+                <? endif ?>
 
-                    <tr class="forgot__item">
-                        <td></td>
-                        <td><a class="forgot__auth" href="<?= $arResult["AUTH_AUTH_URL"] ?>" rel="nofollow"><?= GetMessage("AUTH_AUTH") ?></a></td>
-                    </tr>
+                <div class="form__item">
+                    <input class="form__button" type="submit" name="send_account_info" value="<?= GetMessage("AUTH_SEND") ?>">
+                </div>
 
-                </tbody>
+                <div class="form__item">
+                    <a class="form__link" href="<?=$arResult["AUTH_AUTH_URL"]?>" rel="nofollow"><?=GetMessage("AUTH_AUTH")?></a>
+                </div>
 
-            </table>
+            </div>
+
+
         </form>
 
     </div>
+
 </div>
 
 <script type="text/javascript">

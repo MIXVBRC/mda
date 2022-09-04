@@ -75,7 +75,14 @@ IncludeTemplateLangFile(__FILE__);
     )
 );?>
 
-<a href="/personal/" class="personal-small"></a>
+<a href="<?=(isAuth() ? '/personal/' : '/auth/')?>" class="personal-small"></a>
+
+<div class="popup" data-popup>
+    <div class="popup__body">
+        <div class="popup__close" data-popup-close></div>
+        <div class="popup__content" data-popup-content></div>
+    </div>
+</div>
 
 </body>
 </html>

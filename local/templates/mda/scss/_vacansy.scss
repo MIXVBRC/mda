@@ -1,0 +1,130 @@
+.vacansy {
+
+    &__body {
+        padding-top: 100px;
+    }
+
+    &__title {
+        font-size: 24px;
+        padding-bottom: 24px;
+        width: 100%;
+        border-bottom: $border1;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        padding-right: 12px;
+    }
+
+    &__item {
+        border: $border1;
+        padding: 40px 30px 30px 30px;
+        position: relative;
+        background-color: $blackout_color;
+
+        & > *:not(:last-child) {
+            margin-bottom: 25px;
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            background-color: $font_color;
+            bottom: -12px;
+        }
+
+        &::before {
+            width: 100%;
+            height: 2px;
+            left: 12px;
+        }
+
+        &::after {
+            width: 2px;
+            height: 100%;
+            right: -12px;
+        }
+
+        &-title {
+            text-transform: uppercase;
+        }
+    
+        &-text {
+            & span {
+                font-weight: bold;
+            }
+
+            & p {
+                display: inline;
+            }
+        }
+    
+        &-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+    
+        &-terms {
+            & > *:not(:last-child) {
+                margin-bottom: 25px;
+            }
+        }
+    
+        &-time {
+            color: $font_color_medium !important;
+        }
+    
+        &-pay {
+            text-transform: uppercase;
+        }
+    
+        &-button {
+            text-transform: uppercase;
+            border: $border1;
+            padding: 10px;
+
+            &:hover {
+                background-color: $font_color;
+                color: $font_color_reverse !important;
+            }
+        }
+    }
+}
+
+@media (max-width: $c_width) {
+    .vacansy {
+        &__item {
+            &-footer {
+                flex-direction: column;
+                align-items: flex-start;
+
+                & > *:not(:last-child) {
+                    margin-bottom: 25px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: $l_width) {
+    .vacansy {
+        &__title {
+            font-size: 18px;
+        }
+        &__list {
+            gap: 30px;
+        }
+    }
+}
+@media (max-width: $m_width) {
+    .vacansy {
+        &__list {
+            grid-template-columns: 1fr;
+        }
+    }
+}

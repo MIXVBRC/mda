@@ -52,64 +52,69 @@
                 
             </div>
 
-            <div class="auth">
-                <div class="auth__body">
-                    <form class="auth__form">
-                        <table class="auth__teble">
-                            <tbody>
+            <div class="container">
 
-                                <tr class="auth__item">
-                                    <td class="auth__label">Логин:</td>
-                                    <td><input class="auth__input" type="text" name="USER_LOGIN" maxlength="255" value=""/></td>
-                                </tr>
+                <div class="form">
+                    <div class="form__body">
+                        <form class="form__form">
+    
+                            <div class="form__title">Присоединяйся к нашей команде</div>
+    
+                            <div class="form__list">
+    
+                                <div class="form__item">
+                                    <div class="form__error">
+                                        <p>Неверный логин или пароль</p>
+                                    </div>
+                                </div>
 
-                                <tr class="auth__item">
-                                    <td class="auth__label">Пароль:</td>
-                                    <td><input class="auth__input" type="password" name="USER_PASSWORD" maxlength="255" autocomplete="off"/></td>
-                                </tr>
+                                <div class="form__item">
+                                    <div class="form__success">
+                                        <p>Информация сохранена</p>
+                                    </div>
+                                </div>
+    
+                                <div class="form__item">
+                                    <input class="form__input" placeholder="Имя" type="text" value="">
+                                </div>
+    
+                                <div class="form__item">
+                                    <input class="form__input" placeholder="Email" type="text" value="">
+                                </div>
+    
+                                <div class="form__item">
+                                    <input class="form__input" placeholder="Телефон" type="text" value="">
+                                </div>
+    
+                                <div class="form__item">
+                                    <div style="width: 180px; height: 40px; background-color: #fff;"></div>
+                                </div>
+    
+                                <div class="form__item">
+                                    <input class="form__input" placeholder="Код с картинки" type="text" value="">
+                                </div>
 
-                                <tr class="auth__item">
-                                    <td></td>
-                                    <td><input type="hidden" name="captcha_sid" value="" />
-                                    <img src="/bitrix/tools/captcha.php?captcha_sid=" width="180" height="40" alt="CAPTCHA" /></td>
-                                </tr>
-
-                                <tr class="auth__item">
-                                    <td class="auth__label">Капча:</td>
-                                    <td><input class="auth__input" type="text" name="captcha_word" maxlength="50" value="" autocomplete="off" /></td>
-                                </tr>
-
-                                <tr class="auth__item">
-                                    <td></td>
-                                    <td>
-                                        <input type="checkbox" id="USER_REMEMBER" name="USER_REMEMBER" value="Y" />
-                                        <label class="auth__remember" for="USER_REMEMBER">Запомнить меня</label>
-                                    </td>
-                                </tr>
-
-                                <tr class="auth__item">
-                                    <td></td>
-                                    <td class="auth__button">
-                                        <input type="submit" name="Login" value="Войти"/>
-                                        <a href="#" rel="nofollow">Регистрация</a>
-                                    </td>
-                                </tr>
-
-                                <tr class="auth__item">
-                                    <td></td>
-                                    <td class="auth__error"><p>Неверный логин или пароль.</p></td>
-                                </tr>
-
-                                <tr class="auth__item">
-                                    <td></td>
-                                    <td><a class="auth__forgot" href="#" rel="nofollow">Забыли пароль?</a></td>
-                                </tr>
-
-                            </tbody>
-
-                        </table>
-                    </form>
+                                <div class="form__item">
+                                    <div class="form__small">Пароль должен быть не менее 6 символов длиной.</div>
+                                </div>
+    
+                                <div class="form__item">
+                                    <input class="form__button" type="submit" value="Отправить">
+                                </div>
+    
+                                <div class="form__item">
+                                    <a href="#" class="form__link">Забыли пароль?</a>
+                                </div>
+                                
+                            </div>
+                            
+                            
+                        </form>
+                        
+                    </div>
+                    
                 </div>
+
             </div>
 
         </div>

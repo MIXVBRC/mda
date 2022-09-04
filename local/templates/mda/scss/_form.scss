@@ -1,0 +1,137 @@
+.form {
+
+    &__body {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 800px;
+        padding: 60px;
+        border: $border1;
+        background-color: $background_color;
+    }
+
+    &__form {
+    }
+
+    &__title {
+        margin-bottom: 60px;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 28px;
+    }
+
+    &__list {
+    }
+
+    &__item {
+        position: relative;
+        
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
+    }
+
+    &__message {
+        color: $font_color_medium !important;
+        
+        & .notetext {
+            color: $font_color_medium !important;
+        }
+
+        & .errortext {
+            color: $main_color_reverse !important;
+        }
+
+        & .successtext {
+            color: $main_color !important;
+        }
+    }
+
+    &__note {
+        color: $font_color_medium !important;
+        & * {
+            color: $font_color_medium !important;
+        }
+    }
+
+    &__error {
+        color: $main_color_reverse !important;
+        & * {
+            color: $main_color_reverse !important;
+        }
+    }
+
+    &__success {
+        color: $main_color !important;
+        & * {
+            color: $main_color !important;
+        }
+    }
+
+    &__input {
+        padding: 5px 0;
+        border-bottom: $border1;
+        width: 100%;
+    }
+
+    &__button {
+        border: $border1;
+        padding: 10px 10px;
+        text-transform: uppercase;
+    }
+
+    &__link {
+        &:hover {
+            color: $main_color !important;
+        }
+    }
+
+    &__small {
+        font-size: 12px;
+        color: $font_color_medium !important;
+    }
+
+    &__checkbox {
+        cursor: pointer;
+        margin-right: 5px;
+    }
+
+    &__textarea {
+        width: 100%;
+        border-bottom: $border1;
+        padding: 5px 0;
+        resize: vertical;
+        border-radius: none;
+        outline: none;
+    }
+
+    & [readonly] {
+        color: $font_color_medium !important;
+        border-color: $font_color_medium;
+    }
+}
+
+@media (max-width: $c_width) {}
+@media (max-width: $l_width) {
+    
+}
+@media (max-width: $m_width) {
+    .form {
+        &__title {
+            font-size: 20px;
+        }
+
+        &__body {
+            padding: 60px 30px;
+        }
+    }
+}
+@media (max-width: $s_width) {
+    .form {
+        &__title {
+            font-size: 16px;
+        }
+        &__body {
+            padding: 60px 15px;
+        }
+    }
+}

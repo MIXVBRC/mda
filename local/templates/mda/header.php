@@ -74,22 +74,24 @@ IncludeTemplateLangFile(__FILE__);
     <div class="main">
 
         <? if (!isMainPage()): ?>
-        <div class="title">
-            <div class="container">
-                <h1 class="title__text"><?$APPLICATION->ShowTitle(false);?></h1>
 
-                <?$APPLICATION->IncludeComponent(
-                    "bitrix:breadcrumb",
-                    "",
-                    Array(
-                        "PATH" => "",
-                        "SITE_ID" => "s1",
-                        "START_FROM" => "0"
-                    )
-                );?><br>
+            <div class="title">
+                <div class="container">
+                    <h1 class="title__text"><?$APPLICATION->ShowTitle(false);?></h1>
 
+                    <?$APPLICATION->IncludeComponent(
+                        "bitrix:breadcrumb",
+                        "",
+                        Array(
+                            "PATH" => "",
+                            "SITE_ID" => "s1",
+                            "START_FROM" => "0"
+                        )
+                    );?><br>
+
+                </div>
             </div>
-        </div>
 
-        <div class="container">
+            <div class="container">
+
         <? endif; ?>

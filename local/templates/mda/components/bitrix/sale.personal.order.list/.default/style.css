@@ -216,7 +216,7 @@
 .sale-order-list-inner-container {
 	padding: 0 15px 15px 15px;
 	border: 1px solid #efecec;
-	background-color: #15151B;
+	background-color: rgba(0,0,0,0.5);
 }
 
 .sale-order-list-inner-title-line {

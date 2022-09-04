@@ -58,3 +58,12 @@
         animation-iteration-count: infinite;
     }
 }
+
+@media (max-width: $m_width) {
+    .basket-small {
+        right: 15px;
+        bottom: 75px;
+        width: 45px;
+        height: 45px;
+    }
+}

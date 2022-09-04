@@ -16,3 +16,12 @@
         border: 2px solid $main_color;
     }
 }
+
+@media (max-width: $m_width) {
+    .personal-small {
+        right: 15px;
+        bottom: 15px;
+        width: 45px;
+        height: 45px;
+    }
+}

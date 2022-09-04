@@ -1,0 +1,40 @@
+.popup-window {
+    background-color: $background_color;
+    border: 1px solid $font_color;
+
+    & * {
+        color: $font_color;
+    }
+
+    &-button {
+        padding: 10px 20px;
+        border: 1px solid $font_color;
+        color: $font_color !important;
+        display: inline-block;
+        cursor: pointer;
+        background-color: unset;
+        line-height: initial;
+        border-radius: unset;
+
+        &:hover {
+            background-color: $font_color;
+            color: $font_color_reverse;
+        }
+    }
+
+    &-content {
+        background-color: unset !important;
+        padding: 15px !important;
+    
+        & img {
+            width: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+    
+        & p {
+            margin-top: 15px;
+            padding: 5px;
+        }
+    }
+}

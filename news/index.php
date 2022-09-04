@@ -55,7 +55,7 @@ $APPLICATION->SetTitle("Новости");
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",
 		"META_KEYWORDS" => "-",
-		"NEWS_COUNT" => "1",
+		"NEWS_COUNT" => "10",
 		"PAGER_BASE_LINK_ENABLE" => "N",
 		"PAGER_DESC_NUMBERING" => "N",
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
@@ -84,6 +84,7 @@ $APPLICATION->SetTitle("Новости");
 		"USE_SEARCH" => "N",
 		"USE_SHARE" => "N",
 		"COMPONENT_TEMPLATE" => "news",
+		"CACHE_NOTES" => "",
 		"SEF_URL_TEMPLATES" => array(
 			"news" => "",
 			"section" => "",

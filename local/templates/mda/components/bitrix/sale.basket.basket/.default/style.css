@@ -2199,6 +2199,10 @@ h2.basket-item-info-name {
 	margin-bottom:42px;
 }
 
+.bx-sbb-empty-cart-desc a {
+	color: #0085FF !important;
+}
+
 .catalog-block-header{
 	font-size:14px;
 	font-weight: bold;
