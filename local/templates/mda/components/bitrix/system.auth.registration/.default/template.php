@@ -41,7 +41,7 @@ if ($arResult["SHOW_SMS_FIELD"] == true) {
 
         <? if ($arResult["SHOW_SMS_FIELD"] == true): ?>
 
-            <form class="form__form" method="post" action="<?= $arResult["AUTH_URL"] ?>" name="regform">
+            <form method="post" action="<?= $arResult["AUTH_URL"] ?>" name="regform">
 
                 <input type="hidden" name="SIGNED_DATA" value="<?=htmlspecialcharsbx($arResult["SIGNED_DATA"])?>"/>
 

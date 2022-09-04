@@ -5,7 +5,7 @@
 
         <div class="form__title">Восстановление пароля</div>
 
-        <form class="form__form" name="bform" method="post" target="_top" action="<?= $arResult["AUTH_URL"] ?>">
+        <form name="bform" method="post" target="_top" action="<?= $arResult["AUTH_URL"] ?>">
 
             <div class="form__list">
 

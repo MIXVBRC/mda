@@ -12,7 +12,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
         <div class="form__title">Присоединяйся к нашей команде</div>
 
-        <form class="form__form" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
+        <form method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
 
             <input type="hidden" name="AUTH_FORM" value="Y" />
             <input type="hidden" name="TYPE" value="AUTH" />

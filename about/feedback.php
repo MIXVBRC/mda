@@ -19,7 +19,9 @@ $APPLICATION->SetTitle(""); ?><?$APPLICATION->IncludeComponent(
 		"NOT_SHOW_FILTER" => array("",""),
 		"NOT_SHOW_TABLE" => array("",""),
 		"RESULT_ID" => $_REQUEST['RESULT_ID'],
-		"SEF_MODE" => "N",
+		"SEF_FOLDER" => "/about/feedback.php",
+		"SEF_MODE" => "Y",
+		"SEF_URL_TEMPLATES" => Array("edit"=>"","list"=>"","new"=>"/about/feedback.php","view"=>""),
 		"SHOW_ADDITIONAL" => "N",
 		"SHOW_ANSWER_VALUE" => "N",
 		"SHOW_EDIT_PAGE" => "N",
@@ -29,7 +31,6 @@ $APPLICATION->SetTitle(""); ?><?$APPLICATION->IncludeComponent(
 		"START_PAGE" => "new",
 		"SUCCESS_URL" => "",
 		"USE_EXTENDED_ERRORS" => "Y",
-		"VARIABLE_ALIASES" => Array("action"=>"action"),
 		"WEB_FORM_ID" => "1"
 	)
 );?>

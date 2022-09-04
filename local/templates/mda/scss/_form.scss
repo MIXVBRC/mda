@@ -1,5 +1,4 @@
 .form {
-
     &__body {
         margin: 0 auto;
         width: 100%;
@@ -7,9 +6,6 @@
         padding: 60px;
         border: $border1;
         background-color: $background_color;
-    }
-
-    &__form {
     }
 
     &__title {
@@ -110,10 +106,6 @@
     }
 }
 
-@media (max-width: $c_width) {}
-@media (max-width: $l_width) {
-    
-}
 @media (max-width: $m_width) {
     .form {
         &__title {

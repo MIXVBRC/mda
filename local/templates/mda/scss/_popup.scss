@@ -11,6 +11,7 @@
     background-color: $blackout_color;
     z-index: 1000;
     display: none;
+    overflow: auto;
     
     &[data-popup-active] {
         display: flex;

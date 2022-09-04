@@ -9,13 +9,11 @@ if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();
  * @global CMain $APPLICATION
  * @global CUser $USER
  */
-
-pre($_REQUEST);
 ?>
 
 <div class="form">
     <div class="form__body">
-        <form class="form__form" action="<?=POST_FORM_ACTION_URI?>" method="POST">
+        <form action="<?=POST_FORM_ACTION_URI?>" method="POST">
 
             <?=bitrix_sessid_post()?>
 
