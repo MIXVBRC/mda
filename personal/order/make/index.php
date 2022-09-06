@@ -81,6 +81,9 @@ $APPLICATION->SetTitle("Оформление заказа");
 			0 => "2",
 		),
 		"PROPS_FADE_LIST_1" => array(
+			0 => "1",
+			1 => "2",
+			2 => "3",
 		)
 	),
 	false
