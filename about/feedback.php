@@ -1,5 +1,5 @@
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
-$APPLICATION->SetTitle(""); ?><?$APPLICATION->IncludeComponent(
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");?>
+<?$APPLICATION->IncludeComponent(
 	"bitrix:form",
 	"",
 	Array(
