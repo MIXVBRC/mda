@@ -14,8 +14,6 @@
 
 $this->setFrameMode(true);
 
-file_put_contents(__DIR__.'/sections.txt', print_r($arResult, true));
-
 $APPLICATION->IncludeComponent(
 	"bitrix:catalog.section.list",
 	"",
