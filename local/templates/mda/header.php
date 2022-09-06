@@ -21,7 +21,7 @@ IncludeTemplateLangFile(__FILE__);
 
     <?
     // Для подключения css
-    Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/style.min.css");
+    Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/style.css");
 
     // Для подключения скриптов
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.min.js");
