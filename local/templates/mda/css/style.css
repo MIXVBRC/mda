@@ -4557,7 +4557,7 @@ body {
 }
 .back-button:hover {
   background-color: #fff;
-  color: #15151B;
+  color: #15151B !important;
   transition: 250ms ease-in-out;
 }
 .back-button:hover::before {
