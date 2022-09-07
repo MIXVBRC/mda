@@ -2,7 +2,7 @@
 
 <div class="form">
     <div class="form__body">
-        <?pre(isAuth())?>
+        
         <?=$arResult["FORM_HEADER"]?>
 
             <div class="form__title"><?= $arResult['FORM_TITLE'] ?></div>
