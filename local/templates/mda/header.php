@@ -24,7 +24,8 @@ IncludeTemplateLangFile(__FILE__);
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/style.css");
 
     // Для подключения скриптов
-    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.min.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.inputmask.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/script.js");
 
     // Для вывода строки в секцию <head> ... </head>, например можно добавить шрифт

@@ -69,7 +69,7 @@ $(document).ready(function () {
     };
 
     // popup open
-    $('[data-popup-link]').on('click' ,function (event) {
+    $('[data-popup-form]').on('click' ,function (event) {
 
         event.preventDefault();
 
@@ -81,7 +81,9 @@ $(document).ready(function () {
             type: 'POST',
             url: $(this).attr('href'),
             async: false,
-            // data: {},
+            data: {
+                WEB_FORM_ID: $(this).data('popup-form')
+            },
             success: function (data) {
                 pre($('[data-popup]').hasAttr('data-popup-active'));
                 $('[data-popup-content]').html(data);
@@ -96,5 +98,4 @@ $(document).ready(function () {
         $(this).closest('[data-popup]').toggleAttr('data-popup-active');
         $('[data-popup-content]').html('');
     });
-
 });
