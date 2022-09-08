@@ -100,3 +100,37 @@ body {
         }
     }
 }
+
+.mda-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 1000px;
+    background-image: url('../img/mda_background.svg');
+    background-repeat: no-repeat;
+    background-position: 50% 90px;
+    background-size: 2500px;
+
+}
+@media (max-width: $c_width) {
+    .mda-bg {
+        background-size: 1800px;
+    }
+}
+@media (max-width: $l_width) {
+    .mda-bg {
+        background-size: 1300px;
+    }
+}
+@media (max-width: $m_width) {
+    .mda-bg {
+        background-size: 1000px;
+    }
+}
+@media (max-width: $s_width) {
+    .mda-bg {
+        background-size: 800px;
+    }
+}

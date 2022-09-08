@@ -16,6 +16,9 @@
 // Общий
 @import "_main";
 
+// Переопределение битриксовых классов
+@import "_bitrix";
+
 // Хедер
 @import "_header";
 @import "_menu_top";
@@ -34,33 +37,24 @@
 
 // Внутренние
 @import "_inner";
-@import "_breadcrumbs";
-@import "_pagenavigation";
 
-@import "_mini_sections";
-
-@import "_list_1";
-@import "_list_2";
-
-@import "_detail_1";
-
-@import "_element";
-@import "_quantity";
-
-@import "_back_button";
-
-@import "_popup";
-
-@import "_basket_small";
-@import "_personal";
-@import "_personal_small";
-@import "_contacts";
-@import "_order_confirm";
-@import "_order_cansel";
-// Формы
-@import "_form";
-
-// О компании
-@import "_about";
-@import "_vacansy";
-@import "_bitrix";
+@import "_breadcrumbs"; // Хлебные крошки
+@import "_pagenavigation"; // Пагинация
+@import "_mini_sections"; // Список подразделов
+@import "_list_1"; // Список элементов 1
+@import "_list_2"; // Список элементов 2
+@import "_detail_1"; // Детальная страница 1
+@import "_element"; // Карточка товара
+@import "_quantity"; // Количество
+@import "_back_button"; // Кнопка назад
+@import "_popup"; // Всплывающее окно
+@import "_basket_small"; // Кнопка малой корзины
+@import "_personal_small"; // Кнопка личного кабинета
+@import "_personal"; // Личный кабинет
+@import "_contacts"; // Контакты
+@import "_order_confirm"; // Успешное создание заказа
+@import "_form"; // Формы
+@import "_about"; // О компании
+@import "_vacansy"; // Вакансии
+@import "_loading"; // Загрузка
+@import "_advantage"; // Преймущества

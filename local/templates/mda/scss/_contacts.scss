@@ -88,6 +88,7 @@
     &__map {
         border: $border;
         line-height: 0;
+        background-color: $font_color;
 
         & > iframe {
             width: 100%;

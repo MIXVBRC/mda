@@ -38,6 +38,10 @@ IncludeTemplateLangFile(__FILE__);
 </head>
 <body style="background-image: url('<?=SITE_TEMPLATE_PATH?>/img/ef.png'), url('<?=SITE_TEMPLATE_PATH?>/img/prop.png');">
 
+<?if ($APPLICATION->GetDirProperty("MDA_LOGO") == 'Y'):?>
+    <div class="mda-bg"></div>
+<?endif;?>
+
 <div class="content">
 
     <header class="header" data-header>
@@ -94,5 +98,5 @@ IncludeTemplateLangFile(__FILE__);
             </div>
 
             <div class="container">
-
+                
         <? endif; ?>
