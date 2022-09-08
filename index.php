@@ -90,6 +90,7 @@ $APPLICATION->IncludeComponent(
 ?>
 
 <?
+/*
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "advantage",
@@ -156,7 +157,9 @@ $APPLICATION->IncludeComponent(
         "IMAGE" => "46"
     ),
     false
-);?>
+);
+*/
+?>
 
 <?
 $APPLICATION->IncludeComponent(
