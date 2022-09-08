@@ -98,5 +98,5 @@ IncludeTemplateLangFile(__FILE__);
             </div>
 
             <div class="container">
-
+                
         <? endif; ?>
