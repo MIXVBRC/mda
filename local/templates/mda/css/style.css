@@ -5186,6 +5186,9 @@ body {
     grid-template-columns: 1fr;
   }
 }
+.advantage {
+  background-color: #15151B;
+}
 .advantage__body {
   margin-top: 50px;
   margin-bottom: 50px;
@@ -5205,6 +5208,7 @@ body {
 }
 .advantage__icon > i {
   font-size: 70px;
+  color: #0085FF !important;
 }
 .advantage__icon > img {
   width: 70px;
