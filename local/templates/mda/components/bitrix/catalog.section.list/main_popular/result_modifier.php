@@ -7,7 +7,7 @@
  * @var array $arParams
  */
 
-
+// Вывод изображений справа
 if ($arParams['IMAGE'] > 0) {
     $item = \Bitrix\Iblock\ElementTable::getList([
         'select' => ['ID', 'DETAIL_PICTURE'],
@@ -18,5 +18,17 @@ if ($arParams['IMAGE'] > 0) {
     ])->fetch();
     $arResult['IMAGE'] = CFile::GetPath($item['DETAIL_PICTURE']);
 }
+
+$sectionList = [];
+foreach ($arResult['SECTIONS'] as $arSection) {
+
+    if (!$arSection['UF_RECOMMEND']) continue;
+
+    if (($arParams['ELEMENT_COUNT'] -= 1) < 0) break;
+
+    $sectionList[] = $arSection;
+}
+$arResult['SECTIONS'] = $sectionList;
+
 
 

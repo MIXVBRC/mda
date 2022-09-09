@@ -14,6 +14,6 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 $this->setFrameMode(true);
 
 if($arResult["FILE"] <> ''): ?>
-    <a href="tel:<?include($arResult["FILE"]);?>"><?include($arResult["FILE"]);?></a>
+    <a href="tel:<?include($arResult["FILE"]);?>"><?if ($arParams['ICON']):?><i class="fa fa-<?=$arParams['ICON']?>"></i><?endif;?><?include($arResult["FILE"]);?></a>
 <? endif; ?>
 

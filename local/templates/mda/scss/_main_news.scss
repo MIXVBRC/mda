@@ -23,6 +23,10 @@
         padding: 65px;
         border: $border;
         background-color: $blackout_color;
+
+        &:hover {
+            border-color: $font_color_medium;
+        }
     }
 
     &__name {

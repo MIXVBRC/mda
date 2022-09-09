@@ -26,10 +26,10 @@ if ($arResult['SECTIONS']):?>
 
                     <?foreach ($arResult['SECTIONS'] as $arSection):?>
 
-                    <?
-                    $this->AddEditAction($arSection['ID'], $arSection['EDIT_LINK'], $strSectionEdit);
-                    $this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
-                    ?>
+                        <?
+                        $this->AddEditAction($arSection['ID'], $arSection['EDIT_LINK'], $strSectionEdit);
+                        $this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
+                        ?>
 
                         <div class="popular__item" id="<?=$this->GetEditAreaId($arSection['ID'])?>">
                             <a href="<?=$arSection['SECTION_PAGE_URL']?>" class="popular__link">

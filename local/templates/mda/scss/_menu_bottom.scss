@@ -34,3 +34,10 @@
         }
     }
 }
+@media (max-width: $s_width) {
+    .menu-bottom {
+        &__list {
+            grid-template-columns: 1fr;
+        }
+    }
+}

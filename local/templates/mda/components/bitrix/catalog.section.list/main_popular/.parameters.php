@@ -17,10 +17,17 @@ foreach ($itemList as $item) {
     $arValues[$item['ID']] = '['.$item['ID'].'] '.$item['NAME'];
 }
 
-$arTemplateParameters['IMAGE'] = array(
+$arTemplateParameters['IMAGE'] = [
     'PARENT' => 'ADDITIONAL_SETTINGS',
     'NAME' => 'Картинка',
     'TYPE' => 'LIST',
     'MULTIPLE' => 'N',
     'VALUES' => $arValues,
-);
+];
+$arTemplateParameters['ELEMENT_COUNT'] = [
+    'PARENT' => 'ADDITIONAL_SETTINGS',
+    'NAME' => 'Количество выводимых элементов',
+    'TYPE' => 'STRING',
+    'MULTIPLE' => 'N',
+    'VALUE' => '4',
+];

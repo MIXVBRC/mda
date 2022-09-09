@@ -59,7 +59,7 @@ body {
 
 // Заголовки на главной
 .main {
-    & > section {
+    & section {
         margin-bottom: $section_margin_bottom;
     }
     &__title {

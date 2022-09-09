@@ -1,6 +1,5 @@
 .footer {
-    margin-top: $section_margin_bottom;
-    & > .container {
+    &__body {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -15,7 +14,7 @@
         text-decoration: underline;
     }
 
-    & > i {
+    & i.fa {
         margin-right: 10px;
     }
 }

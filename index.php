@@ -37,7 +37,7 @@ $APPLICATION->IncludeComponent(
 			0 => "",
 			1 => "",
 		),
-		"SECTION_ID" => $_REQUEST["SECTION_ID"],
+		"SECTION_ID" => '',
 		"SECTION_URL" => "/catalog/#SECTION_CODE#/",
 		"SECTION_USER_FIELDS" => array(
 			0 => "",
@@ -64,7 +64,7 @@ $APPLICATION->IncludeComponent(
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"COUNT_ELEMENTS" => "Y",
-		"COUNT_ELEMENTS_FILTER" => "CNT_ACTIVE",
+		"COUNT_ELEMENTS_FILTER" => "CNT_AVAILABLE",
 		"FILTER_NAME" => "sectionsFilter",
 		"IBLOCK_ID" => "5",
 		"IBLOCK_TYPE" => "catalog",
@@ -73,17 +73,18 @@ $APPLICATION->IncludeComponent(
 			0 => "",
 			1 => "",
 		),
-		"SECTION_ID" => $_REQUEST["SECTION_ID"],
-		"SECTION_URL" => "/catalog/#SECTION_CODE#/",
+		"SECTION_ID" => "",
+		"SECTION_URL" => "/catalog/#SECTION_CODE_PATH#/",
 		"SECTION_USER_FIELDS" => array(
-			0 => "",
+			0 => "UF_RECOMMEND",
 			1 => "",
 		),
 		"SHOW_PARENT_NAME" => "Y",
-		"TOP_DEPTH" => "1",
+		"TOP_DEPTH" => "9",
 		"VIEW_MODE" => "LINE",
 		"COMPONENT_TEMPLATE" => "main_popular",
-		"IMAGE" => "45"
+		"IMAGE" => "45",
+		"ELEMENT_COUNT" => "4"
 	),
 	false
 );

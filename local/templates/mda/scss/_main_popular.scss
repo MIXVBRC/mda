@@ -25,6 +25,10 @@
         position: relative;
         border: $border;
         background-color: $blackout_color;
+
+        &:hover {
+            border-color: $font_color_medium;
+        }
     }
 
     &__link {
