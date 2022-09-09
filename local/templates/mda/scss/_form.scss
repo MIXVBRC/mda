@@ -73,6 +73,12 @@
         border: $border1;
         padding: 10px 10px;
         text-transform: uppercase;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $font_color;
+            color: $font_color_reverse !important;
+        }
     }
 
     &__link {

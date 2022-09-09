@@ -3492,7 +3492,7 @@ body {
   flex: 0 0 auto;
 }
 
-body *:not(.bx-core-window *, .bx-panel-tooltip *, i, #pickUpMap *, .order-confirm__file *) {
+body *:not(.bx-core-window *, .bx-panel-tooltip *, i, #pickUpMap *, .order-confirm__file *, .main-user-consent-request-popup *) {
   font-family: "Montserrat";
   color: #fff;
 }
@@ -5023,6 +5023,11 @@ body {
   border: 2px solid #fff;
   padding: 10px 10px;
   text-transform: uppercase;
+  cursor: pointer;
+}
+.form__button:hover {
+  background-color: #fff;
+  color: #15151B !important;
 }
 .form__link:hover {
   color: #0085FF !important;

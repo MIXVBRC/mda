@@ -8,7 +8,7 @@ $APPLICATION->SetTitle("Оформление заказа");
 	array(
 		"ACTION_VARIABLE" => "soa-action",
 		"ADDITIONAL_PICT_PROP_5" => "-",
-		"ALLOW_APPEND_ORDER" => "Y",
+		"ALLOW_APPEND_ORDER" => "N",
 		"ALLOW_AUTO_REGISTER" => "Y",
 		"ALLOW_NEW_PROFILE" => "N",
 		"ALLOW_USER_PROFILES" => "N",
