@@ -27,52 +27,20 @@ use \Bitrix\Main\Localization\Loc;
 $this->setFrameMode(false);
 ?>
 
-<? require __DIR__ . '/image.php';?>
+<? require __DIR__ . '/image.php'; ?>
 
-<? require __DIR__ . '/title.php';?>
+<? require __DIR__ . '/title.php'; ?>
 
-<?
-if (!empty($arParams['PRODUCT_BLOCKS_ORDER']))
-{
+<?// require __DIR__ . '/quantityLimit.php'; ?>
 
-//    require __DIR__ . '/quantityLimit.php';
-//    require __DIR__ . '/props.php';
+<?// require __DIR__ . '/props.php'; ?>
 
-    require __DIR__ . '/sku.php';
-    require __DIR__ . '/price.php';
-    require __DIR__ . '/quantity.php';
-    require __DIR__ . '/buttons.php';
+<div class="list1__item-hide">
+    <? require __DIR__ . '/sku.php'; ?>
+</div>
 
+<? require __DIR__ . '/price.php'; ?>
 
-    /*
-    foreach ($arParams['PRODUCT_BLOCKS_ORDER'] as $blockName)
-    {
-        switch ($blockName)
-        {
-            case 'quantityLimit':
-                require __DIR__ . '/quantityLimit.php';
-                break;
+<? require __DIR__ . '/quantity.php'; ?>
 
-            case 'quantity':
-                require __DIR__ . '/quantity.php';
-                break;
-
-            case 'price':
-                require __DIR__ . '/price.php';
-                break;
-
-            case 'buttons':
-                require __DIR__ . '/buttons.php';
-                break;
-
-            case 'props':
-                require __DIR__ . '/props.php';
-                break;
-
-            case 'sku':
-                require __DIR__ . '/sku.php';
-                break;
-        }
-    }
-    */
-}
+<? require __DIR__ . '/buttons.php'; ?>

@@ -41,7 +41,7 @@ else
                 <div class="form">
                     <div class="form__body">
 
-                        <div data-bx-loader="" class="main-user-consent-request-loader">
+                        <div data-bx-loader class="main-user-consent-request-loader">
                             <svg class="main-user-consent-request-circular" viewBox="25 25 50 50">
                                 <circle class="main-user-consent-request-path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
                             </svg>

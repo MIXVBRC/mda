@@ -112,10 +112,12 @@ if (isset($arResult['ITEM']))
 
     <div class="list1__item" id="<?=$areaId?>" data-entity="item">
 
-        <?
-        // Элемент
-        require __DIR__ . '/include/element.php';
-        ?>
+        <div class="list1__item-body">
+            <?
+            // Элемент
+            require __DIR__ . '/include/element.php';
+            ?>
+        </div>
 
         <?
         if (!$haveOffers)

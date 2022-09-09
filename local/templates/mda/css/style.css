@@ -4069,6 +4069,9 @@ body {
     grid-column: unset;
   }
 }
+.footer {
+  margin-top: 100px;
+}
 .footer__body {
   display: flex;
   justify-content: center;
@@ -4211,8 +4214,28 @@ body {
   gap: 50px;
   grid-template-columns: repeat(4, 1fr);
 }
-.list1__item > *:not(:last-child) {
+.list1__item-body {
+  position: relative;
+  overflow: hidden;
+}
+.list1__item-body > *:not(:last-child) {
   margin-bottom: 10px;
+}
+.list1__item-hide {
+  padding: 0 10px;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  transition: 250ms ease-in-out;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  max-height: 380px;
+  overflow: auto;
+}
+.list1__item:hover .list1__item-hide {
+  transition: 250ms ease-in-out;
+  right: 0;
 }
 .list1__img {
   display: block;
@@ -4279,12 +4302,18 @@ body {
 .list1__properties-sky-item-img.selected {
   border: 2px solid #0085FF;
 }
+.list1__price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.list1__price > *:not(:last-child) {
+  margin-right: 10px;
+}
 .list1__price-now {
   font-weight: bold;
   font-size: 25px;
-}
-.list1__price-old {
-  margin-bottom: -5px;
 }
 .list1__price-old > span {
   font-weight: bold;
@@ -4320,6 +4349,18 @@ body {
 @media (max-width: 992px) {
   .list1__list {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .list1__item-hide {
+    padding: unset;
+    position: initial;
+    width: initial;
+    transition: 250ms ease-in-out;
+    -webkit-backdrop-filter: blur(0);
+            backdrop-filter: blur(0);
+    max-height: initial;
+    overflow: initial;
   }
 }
 @media (max-width: 576px) {

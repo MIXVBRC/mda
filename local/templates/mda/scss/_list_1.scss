@@ -10,8 +10,35 @@
     }
 
     &__item {
-        & > *:not(:last-child) {
-            margin-bottom: 10px;
+        
+        &-body {
+            position: relative;
+            overflow: hidden;
+
+            & > *:not(:last-child) {
+                margin-bottom: 10px;
+            }
+        }
+
+        &:hover &-body {
+            
+        }
+
+        &-hide {
+            padding: 0 10px;
+            position: absolute;
+            top: 0;
+            right: 100%;
+            width: 100%;
+            transition: $transition_time_mini ease-in-out;
+            @include blur;
+            max-height: 380px;
+            overflow: auto;
+        }
+
+        &:hover &-hide {
+            transition: $transition_time_mini ease-in-out;
+            right: 0;
         }
     }
 
@@ -100,31 +127,36 @@
     }
 
     &__price {
-        
-    }
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
 
-    &__price-now {
-        font-weight: bold;
-        font-size: 25px;
-    }
+        & > *:not(:last-child) {
+            margin-right: 10px;
+        }
 
-    &__price-old {
-        margin-bottom: -5px;
-
-        & > span {
+        &-now {
             font-weight: bold;
-            font-size: 15px;
-            color: $font_color_medium !important;
-            position: relative;
-
-            &::before {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 2px;
-                top: 9px;
-                left: 0;
-                background-color: $font_color_medium;
+            font-size: 25px;
+        }
+    
+        &-old {
+            & > span {
+                font-weight: bold;
+                font-size: 15px;
+                color: $font_color_medium !important;
+                position: relative;
+    
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    top: 9px;
+                    left: 0;
+                    background-color: $font_color_medium;
+                }
             }
         }
     }
@@ -140,6 +172,7 @@
             color: $font_color_reverse;
         }
     }
+
 }
 @media (max-width: $c_width) {
     .list1 {
@@ -155,7 +188,22 @@
         }
     }
 }
-@media (max-width: $m_width) {}
+@media (max-width: $m_width) {
+    .list1 {
+        &__item {
+            &-hide {
+                padding: unset;
+                position: initial;
+                width: initial;
+                transition: $transition_time_mini ease-in-out;
+                backdrop-filter: blur(0);
+                max-height: initial;
+                overflow: initial;
+            }
+        }
+    }
+    
+}
 @media (max-width: $s_width) {
     .list1 {
         &__list {
