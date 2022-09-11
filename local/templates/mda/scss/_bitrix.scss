@@ -9,7 +9,7 @@
     &-button {
         padding: 10px 20px;
         border: 1px solid $font_color;
-        color: $font_color !important;
+        color: $font_color;
         display: inline-block;
         cursor: pointer;
         background-color: unset;
@@ -23,8 +23,8 @@
     }
 
     &-content {
-        background-color: unset !important;
-        padding: 15px !important;
+        background-color: unset;
+        padding: 15px;
     
         & img {
             width: 100%;
@@ -37,4 +37,11 @@
             padding: 5px;
         }
     }
+}
+
+#bx-soa-order *,
+#color-white *,
+.bx-sbb-empty-cart-container *,
+#basket-root * {
+    color: $font_color;
 }

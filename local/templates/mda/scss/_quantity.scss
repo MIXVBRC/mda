@@ -65,6 +65,7 @@
         width: 30px;
         display: inline-block;
         text-align: center;
+        color: $font_color;
 
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
@@ -74,5 +75,6 @@
 
     &__result {
         margin-left: 15px;
+        color: $font_color;
     }
 }

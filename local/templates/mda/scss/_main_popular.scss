@@ -50,6 +50,7 @@
         display: block;
         background-color: $blackout_color;
         @include blur;
+        color: $font_color;
     }
 
     &__item:hover &__name {

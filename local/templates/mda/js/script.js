@@ -25,21 +25,20 @@ $.fn.toggleAttr = function(name) {
 $(document).ready(function () {
 
     $('[data-menu-burger]').on('click', function (event) {
-        $('[data-menu-top]').css({'margin-top' : $('[data-header]').height() + 'px'});
+
         $('[data-menu-burger]').toggleAttr('data-active');
         $('[data-menu-top]').toggleAttr('data-active');
         $('[data-header]').toggleAttr('data-active');
     });
 
     $(window).resize(function() {
-        if ($(window).width() > 768) {
-            $('[data-menu-top]').css({'margin-top' : ''});
-            $('[data-menu-burger]').removeAttr('data-active');
-            $('[data-menu-top]').removeAttr('data-active');
-            $('[data-header]').removeAttr('data-active');
-        } else {
-            $('[data-menu-top]').css({'margin-top' : $('[data-header]').height() + 'px'});
-        }
+        if ($(window).width() <= 768) return;
+
+        $('[data-menu-top]').css({'margin-top' : ''});
+        $('[data-menu-burger]').removeAttr('data-active');
+        $('[data-menu-top]').removeAttr('data-active');
+        $('[data-header]').removeAttr('data-active');
+
     });
 
 

@@ -10,6 +10,7 @@
         border-bottom: $border1;
         margin-bottom: 30px;
         text-transform: uppercase;
+        color: $font_color;
     }
 
     &__info {
@@ -19,6 +20,7 @@
     }
 
     &__text {
+        color: $font_color;
     }
 
     &__img {

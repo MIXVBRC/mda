@@ -40,12 +40,13 @@ foreach($arParams as $key => $val)
 		$arDetParams[$key] = $val;
 }
 ?>
-
+<div id="color-white">
 <?
-$APPLICATION->IncludeComponent(
-	"bitrix:sale.personal.order.detail",
-	"",
-	$arDetParams,
-	$component
-);
-?>
+	$APPLICATION->IncludeComponent(
+		"bitrix:sale.personal.order.detail",
+		"",
+		$arDetParams,
+		$component
+	);
+	?>
+</div>

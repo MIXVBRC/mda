@@ -20,25 +20,32 @@
             }
         }
 
+        &:hover {
+            position: relative;
+        }
+
         &:hover &-body {
-            
+            position: absolute;
+            left: -15px;
+            top: -15px;
+            background-color: $blackout_color;
+            @include blur;
+            padding: 15px;
+            width: 100%;
+            box-sizing: content-box;
+            z-index: 1;
+
+            & * {
+                box-sizing: border-box;
+            }
+        }
+        
+        &:hover &-hide {
+            display: block;
         }
 
         &-hide {
-            padding: 0 10px;
-            position: absolute;
-            top: 0;
-            right: 100%;
-            width: 100%;
-            transition: $transition_time_mini ease-in-out;
-            @include blur;
-            max-height: 380px;
-            overflow: auto;
-        }
-
-        &:hover &-hide {
-            transition: $transition_time_mini ease-in-out;
-            right: 0;
+            display: none;
         }
     }
 
@@ -55,7 +62,7 @@
     }
 
     &__item:hover &__img {
-        border: 2px solid $lines_color;
+        // border: 2px solid $lines_color;
         transition: $transition_time_mini ease-in-out;
 
         & > img {
@@ -67,62 +74,64 @@
     &__name {
         display: block;
         font-size: 14px;
+        color: $font_color;
     }
 
     &__properties {
         margin-top: 15px;
-    }
 
-    &__properties-title {
-        font-size: 22px;
-        margin-bottom: 15px;
-    }
+        &-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+    
+        &-sky {
 
-    &__properties-sky {
+            &-element {
+                margin-bottom: 15px;
+            }
         
-    }
+            &-title {
+                display: inline-block;
+                margin-bottom: 10px;
+                color: $font_color;
+            }
+        
+            &-list {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+        
+            &-item {
+                margin-bottom: 5px;
+                padding: 5px;
+                border: 2px solid $font_color;
+                cursor: pointer;
+                color: $font_color;
+        
+                &:not(:last-child) {
+                    margin-right: 5px;
+                }
+        
+                &.selected {
+                    color: $font_color;
+                    border: 2px solid $main_color;
+                }
 
-    &__properties-sky-element {
-        margin-bottom: 15px;
-    }
-
-    &__properties-sky-title {
-        display: inline-block;
-        margin-bottom: 10px;
-    }
-
-    &__properties-sky-list {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 100%;
-    }
-
-    &__properties-sky-item {
-        margin-bottom: 5px;
-        padding: 5px;
-        border: 2px solid $font_color;
-        cursor: pointer;
-
-        &:not(:last-child) {
-            margin-right: 5px;
-        }
-
-        &.selected {
-            color: $font_color;
-            border: 2px solid $main_color;
-        }
-    }
-
-    &__properties-sky-item-img {
-        height: 30px;
-        width: 30px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 70%;
-
-        &.selected {
-            border: 2px solid $main_color;
+                &-img {
+                    height: 30px;
+                    width: 30px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: 70%;
+            
+                    &.selected {
+                        border: 2px solid $main_color;
+                    }
+                }
+            }
         }
     }
 
@@ -139,13 +148,14 @@
         &-now {
             font-weight: bold;
             font-size: 25px;
+            color: $font_color;
         }
     
         &-old {
             & > span {
                 font-weight: bold;
                 font-size: 15px;
-                color: $font_color_medium !important;
+                color: $font_color_medium;
                 position: relative;
     
                 &::before {
@@ -166,6 +176,7 @@
         padding: 10px 20px;
         border: 1px solid $font_color;
         text-transform: uppercase;
+        color: $font_color;
 
         &:hover {
             background-color: $font_color;
@@ -191,14 +202,26 @@
 @media (max-width: $m_width) {
     .list1 {
         &__item {
-            &-hide {
-                padding: unset;
+            &:hover &-body {
                 position: initial;
-                width: initial;
-                transition: $transition_time_mini ease-in-out;
+                left: initial;
+                top: initial;
+                background-color: unset;
                 backdrop-filter: blur(0);
-                max-height: initial;
-                overflow: initial;
+                padding: unset;
+                width: initial;
+                box-sizing: border-box;
+                z-index: 1;
+            }
+
+            &-hide {
+                display: block;
+            }
+        }
+
+        &__item:hover &__img {
+            & > img {
+                transform: scale(1);
             }
         }
     }

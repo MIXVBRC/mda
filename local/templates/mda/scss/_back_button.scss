@@ -5,6 +5,7 @@
     border: $border1;
     font-size: 12px;
     position: relative;
+    color: $font_color;
 
     &::after,
     &::before {
@@ -32,7 +33,7 @@
 
     &:hover {
         background-color: $font_color;
-        color: $font_color_reverse !important;
+        color: $font_color_reverse;
         transition: $transition_time_mini ease-in-out;
 
         &::before {

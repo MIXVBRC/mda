@@ -6,61 +6,71 @@
 @media (max-width: $l_width) {}
 @media (max-width: $m_width) {
     .burger {
-
+        padding: 20px 20px;
         display: block;
-        position: relative;
-        width: 30px;
-        height: 20px;
+        
+        &__body {
+            position: relative;
+            width: 30px;
+            height: 20px;
 
-        & > span {
-            background-color: $font_color;
-            position: absolute;
-            right: 0;
-            width: 90%;
-            height: 2px;
-            top: 9px;
+            & > span {
+                background-color: $font_color;
+                position: absolute;
+                right: 0;
+                width: 90%;
+                height: 2px;
+                top: 9px;
+            }
+    
+            &::before,
+            &::after {
+                content: '';
+                background-color: $font_color;
+                position: absolute;
+                right: 0;
+                height: 2px;
+            }
+    
+            &::before {
+                top: 0;
+                width: 80%;
+            }
+    
+            &::after {
+                bottom: 0;
+                width: 100%;
+            }
+    
+            & > span,
+            &::before,
+            &::after {
+                transition: $transition_time ease-in-out;
+            }
         }
 
-        &::before,
-        &::after {
-            content: '';
-            background-color: $font_color;
-            position: absolute;
-            right: 0;
-            height: 2px;
-        }
-
-        &::before {
-            top: 0;
-            width: 80%;
-        }
-
-        &::after {
-            bottom: 0;
-            width: 100%;
-        }
-
-        & > span,
-        &::before,
-        &::after {
+        &[data-active] {
+            background-color: $main_color_reverse;
             transition: $transition_time ease-in-out;
         }
 
-        &[data-active] > span {
+        &[data-active] &__body > span {
             transform: translateX(-30px);
             width: 0%;
         }
         
-        &[data-active]::before {
+        &[data-active] &__body::before {
             transform: rotate(225deg);
             top: 9px;
             width: 100%;
         }
-        &[data-active]::after {
+        &[data-active] &__body::after {
             transform: rotate(-225deg);
             bottom: 9px;
             width: 100%;
         }
+
+        
     }
 }
 @media (max-width: $s_width) {}

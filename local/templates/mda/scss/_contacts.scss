@@ -32,6 +32,7 @@
             font-size: 28px;
             padding-bottom: 15px;
             position: relative;
+            color: $font_color;
 
             &::before {
                 content: '';
@@ -46,9 +47,10 @@
 
         &-phone,
         &-whatsapp {
+            color: $font_color;
             
             & > a {
-                color: $main_color !important;
+                color: $main_color;
 
                 &:hover {
                     text-decoration: underline;
@@ -67,9 +69,10 @@
         }
     
         &-address {
+            color: $font_color;
 
             & > span {
-                color: $main_color !important;
+                color: $main_color;
             }
 
             & > address {
@@ -78,9 +81,10 @@
         }
     
         &-time {
+            color: $font_color;
 
             & > span {
-                color: $main_color !important;
+                color: $main_color;
             }
         }
     }
@@ -105,7 +109,7 @@
 
     &__link {
         &:hover {
-            color: $main_color !important;
+            color: $main_color;
         }
     }
 }
