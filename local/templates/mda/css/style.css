@@ -4312,6 +4312,7 @@ body {
   display: grid;
   gap: 50px;
   grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(530px, auto);
 }
 .list1__item-body {
   position: relative;
