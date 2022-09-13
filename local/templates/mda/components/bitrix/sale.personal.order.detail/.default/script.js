@@ -58,6 +58,7 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 				}, this));
 			});
 
+			/** Сменить способ оплаты */
 			Array.prototype.forEach.call(listPaymentWrapper, function(paymentWrapper)
 			{
 				var rowPayment = paymentWrapper.getElementsByClassName('sale-order-detail-payment-options-methods-info')[0];

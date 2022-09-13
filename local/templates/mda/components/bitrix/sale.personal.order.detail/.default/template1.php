@@ -38,19 +38,16 @@ else
 			ShowError($error);
 		}
 	}
-?>
 
 
+	$title = Loc::getMessage('SPOD_LIST_MY_ORDER', [
+        '#ACCOUNT_NUMBER#' => htmlspecialcharsbx($arResult["ACCOUNT_NUMBER"]),
+        '#DATE_ORDER_CREATE#' => $arResult["DATE_INSERT_FORMATED"]
+    ]);
+    $APPLICATION->SetTitle($title);
+	?>
+    <?/** Заголовок */?>
 	<div class="container-fluid sale-order-detail">
-
-
-        <?/** Заголовок */?>
-        <?
-        $APPLICATION->SetTitle(Loc::getMessage('SPOD_LIST_MY_ORDER', [
-            '#ACCOUNT_NUMBER#' => htmlspecialcharsbx($arResult["ACCOUNT_NUMBER"]),
-            '#DATE_ORDER_CREATE#' => $arResult["DATE_INSERT_FORMATED"]
-        ]));
-        ?>
 		<div class="sale-order-detail-title-container">
 			<h1 class="sale-order-detail-title-element">
 				<?= Loc::getMessage('SPOD_LIST_MY_ORDER', array(
@@ -59,55 +56,49 @@ else
 				)) ?>
 			</h1>
 		</div>
-
-
-        <?/** Навигаторы */?>
-		<? if ($arParams['GUEST_MODE'] !== 'Y'):?>
+		<?pre(1);
+		if ($arParams['GUEST_MODE'] !== 'Y')
+		{
+			?>
 			<a class="sale-order-detail-back-to-list-link-up" href="<?= htmlspecialcharsbx($arResult["URL_TO_LIST"]) ?>">
 				&larr; <?= Loc::getMessage('SPOD_RETURN_LIST_ORDERS') ?>
 			</a>
-        <?endif;?>
-
-        <?/** Тело */?>
+			<?
+		}pre(1);
+		?>
 		<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-general">
-
-            <?/** Подзаголовок */?>
 			<div class="row">
 				<div class="col-md-12 cols-sm-12 col-xs-12 sale-order-detail-general-head">
 					<span class="sale-order-detail-general-item">
-
 						<?= Loc::getMessage('SPOD_SUB_ORDER_TITLE', array(
 							"#ACCOUNT_NUMBER#"=> htmlspecialcharsbx($arResult["ACCOUNT_NUMBER"]),
 							"#DATE_ORDER_CREATE#"=> $arResult["DATE_INSERT_FORMATED"]
 						))?>
-
 						<?= count($arResult['BASKET']);?>
-
 						<?
 						$count = count($arResult['BASKET']) % 10;
-						if ($count == '1') {
+						if ($count == '1')
+						{
 							echo Loc::getMessage('SPOD_TPL_GOOD');
-						} else if ($count >= '2' && $count <= '4') {
+						}
+						elseif ($count >= '2' && $count <= '4')
+						{
 							echo Loc::getMessage('SPOD_TPL_TWO_GOODS');
-						} else {
+						}
+						else
+						{
 							echo Loc::getMessage('SPOD_TPL_GOODS');
 						}
 						?>
-
 						<?=Loc::getMessage('SPOD_TPL_SUMOF')?>
-
 						<?=$arResult["PRICE_FORMATED"]?>
-
 					</span>
 				</div>
 			</div>
 
-            <?/** Информация о заказе */?>
 			<div class="row sale-order-detail-about-order">
 
 				<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-about-order-container">
-
-                    <?/** Заголовок */?>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-about-order-title">
 							<h3 class="sale-order-detail-about-order-title-element">
@@ -115,18 +106,10 @@ else
 							</h3>
 						</div>
 					</div>
-
-                    <?/** Тело */?>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-about-order-inner-container">
-
-                            <?/** Основа */?>
 							<div class="row">
-
-                                <?/** Информация о покупателе */?>
 								<div class="col-md-4 col-sm-6 sale-order-detail-about-order-inner-container-name">
-
-                                    <?/** ФИО */?>
 									<div class="sale-order-detail-about-order-inner-container-name-title">
 										<?
 										$userName = $arResult["USER_NAME"];
@@ -156,18 +139,14 @@ else
 										}
 										?>
 									</div>
-
-                                    <?/** Подробнее */?>
 									<a class="sale-order-detail-about-order-inner-container-name-read-less">
 										<?= Loc::getMessage('SPOD_LIST_LESS') ?>
 									</a>
 									<a class="sale-order-detail-about-order-inner-container-name-read-more">
 										<?= Loc::getMessage('SPOD_LIST_MORE') ?>
 									</a>
-
 								</div>
 
-                                <?/** Статус заказа */?>
 								<div class="col-md-4 col-sm-6 sale-order-detail-about-order-inner-container-status">
 									<div class="sale-order-detail-about-order-inner-container-status-title">
 										<?= Loc::getMessage('SPOD_LIST_CURRENT_STATUS_DATE', array(
@@ -188,7 +167,6 @@ else
 									</div>
 								</div>
 
-                                <?/** Сумма заказа */?>
 								<div class="col-md-<?=($arParams['GUEST_MODE'] !== 'Y') ? 2 : 4?> col-sm-6 sale-order-detail-about-order-inner-container-price">
 									<div class="sale-order-detail-about-order-inner-container-price-title">
 										<?= Loc::getMessage('SPOD_ORDER_PRICE')?>:
@@ -197,77 +175,74 @@ else
 										<?= $arResult["PRICE_FORMATED"]?>
 									</div>
 								</div>
-
-                                <?/** Повторить/отменить заказ */?>
-								<?if ($arParams['GUEST_MODE'] !== 'Y'):?>
+								<?
+								if ($arParams['GUEST_MODE'] !== 'Y')
+								{
+									?>
 									<div class="col-md-2 col-sm-6 sale-order-detail-about-order-inner-container-repeat">
-
-                                        <?/** Повторить заказ */?>
 										<a href="<?=$arResult["URL_TO_COPY"]?>" class="sale-order-detail-about-order-inner-container-repeat-button">
 											<?= Loc::getMessage('SPOD_ORDER_REPEAT') ?>
 										</a>
-
-                                        <?/** Отменить заказ */?>
-										<?if ($arResult["CAN_CANCEL"] === "Y"):?>
+										<?
+										if ($arResult["CAN_CANCEL"] === "Y")
+										{
+											?>
 											<a href="<?=$arResult["URL_TO_CANCEL"]?>" class="sale-order-detail-about-order-inner-container-repeat-cancel">
 												<?= Loc::getMessage('SPOD_ORDER_CANCEL') ?>
 											</a>
-                                        <?endif;?>
-
+											<?
+										}
+										?>
 									</div>
-                                <?endif;?>
-
+									<?
+									}
+								?>
 							</div>
-
-                            <?/** Информация о пользователе */?>
 							<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-about-order-inner-container-details">
-
-                                <?/** Заголовок */?>
 								<h4 class="sale-order-detail-about-order-inner-container-details-title">
 									<?= Loc::getMessage('SPOD_USER_INFORMATION') ?>
 								</h4>
-
-                                <?/** Информация */?>
 								<ul class="sale-order-detail-about-order-inner-container-details-list">
-
-                                    <?/** Логин */?>
-									<? if (mb_strlen($arResult["USER"]["LOGIN"]) && !in_array("LOGIN", $arParams['HIDE_USER_INFO'])):?>
+									<?
+									if (mb_strlen($arResult["USER"]["LOGIN"]) && !in_array("LOGIN", $arParams['HIDE_USER_INFO']))
+									{
+										?>
 										<li class="sale-order-detail-about-order-inner-container-list-item">
 											<?= Loc::getMessage('SPOD_LOGIN')?>:
 											<div class="sale-order-detail-about-order-inner-container-list-item-element">
 												<?= htmlspecialcharsbx($arResult["USER"]["LOGIN"]) ?>
 											</div>
 										</li>
-                                    <?endif;?>
-
-                                    <?/** E-mail */?>
-									<?if (mb_strlen($arResult["USER"]["EMAIL"]) && !in_array("EMAIL", $arParams['HIDE_USER_INFO'])):?>
+										<?
+									}
+									if (mb_strlen($arResult["USER"]["EMAIL"]) && !in_array("EMAIL", $arParams['HIDE_USER_INFO']))
+									{
+										?>
 										<li class="sale-order-detail-about-order-inner-container-list-item">
 											<?= Loc::getMessage('SPOD_EMAIL')?>:
 											<a class="sale-order-detail-about-order-inner-container-list-item-link"
 											   href="mailto:<?= htmlspecialcharsbx($arResult["USER"]["EMAIL"]) ?>"><?= htmlspecialcharsbx($arResult["USER"]["EMAIL"]) ?></a>
 										</li>
-                                    <?endif;?>
-
-                                    <?/** Тип плательщика */?>
-									<?if (mb_strlen($arResult["USER"]["PERSON_TYPE_NAME"]) && !in_array("PERSON_TYPE_NAME", $arParams['HIDE_USER_INFO'])):?>
+										<?
+									}
+									if (mb_strlen($arResult["USER"]["PERSON_TYPE_NAME"]) && !in_array("PERSON_TYPE_NAME", $arParams['HIDE_USER_INFO']))
+									{
+										?>
 										<li class="sale-order-detail-about-order-inner-container-list-item">
 											<?= Loc::getMessage('SPOD_PERSON_TYPE_NAME') ?>:
 											<div class="sale-order-detail-about-order-inner-container-list-item-element">
 												<?= htmlspecialcharsbx($arResult["USER"]["PERSON_TYPE_NAME"]) ?>
 											</div>
 										</li>
-                                    <?endif;?>
-
-                                    <?/** Свойства заказа */?>
-									<?if (isset($arResult["ORDER_PROPS"])):?>
-                                        <?foreach ($arResult["ORDER_PROPS"] as $property):?>
+										<?
+									}
+									if (isset($arResult["ORDER_PROPS"]))
+									{
+										foreach ($arResult["ORDER_PROPS"] as $property)
+										{
+											?>
 											<li class="sale-order-detail-about-order-inner-container-list-item">
-
-                                                <?/** Название свойства */?>
 												<?= htmlspecialcharsbx($property['NAME']) ?>:
-
-                                                <?/** Значение свойства */?>
 												<div class="sale-order-detail-about-order-inner-container-list-item-element">
 													<?
 													if ($property["TYPE"] == "Y/N")
@@ -298,12 +273,15 @@ else
 													?>
 												</div>
 											</li>
-                                        <?endforeach;?>
-									<?endif;?>
+											<?
+										}
+									}
+									?>
 								</ul>
-
-                                <?/** Комментарии к заказу */?>
-								<?if($arResult["USER_DESCRIPTION"] <> ''):?>
+								<?
+								if($arResult["USER_DESCRIPTION"] <> '')
+								{
+									?>
 									<h4 class="sale-order-detail-about-order-inner-container-details-title sale-order-detail-about-order-inner-container-comments">
 										<?= Loc::getMessage('SPOD_ORDER_DESC') ?>
 									</h4>
@@ -311,22 +289,18 @@ else
 										class="col-xs-12 sale-order-detail-about-order-inner-container-list-item-element">
 										<?= nl2br(htmlspecialcharsbx($arResult["USER_DESCRIPTION"])) ?>
 									</div>
-                                <?endif;?>
-
+									<?
+								}
+								?>
 							</div>
-
 						</div>
 					</div>
-
 				</div>
 			</div>
 
-            <?/** Параметры оплаты */?>
 			<div class="row sale-order-detail-payment-options">
 
 				<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-payment-options-container">
-
-                    <?/** Заголовок */?>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-payment-options-title">
 							<h3 class="sale-order-detail-payment-options-title-element">
@@ -334,23 +308,13 @@ else
 							</h3>
 						</div>
 					</div>
-
-                    <?/** Тело */?>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-payment-options-inner-container">
-
-                            <?/** Информация о заказе */?>
 							<div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-payment-options-info">
 									<div class="row">
-
-                                        <?/** Изображение */?>
 										<div class="col-md-1 col-sm-2 col-xs-2 sale-order-detail-payment-options-info-image"></div>
-
-                                        <?/** Информация */?>
 										<div class="col-md-11 col-sm-10 col-xs-10 sale-order-detail-payment-options-info-container">
-
-                                            <?/** Статус заказа */?>
 											<div class="sale-order-detail-payment-options-info-order-number">
 												<?= Loc::getMessage('SPOD_SUB_ORDER_TITLE', array(
 													"#ACCOUNT_NUMBER#"=> htmlspecialcharsbx($arResult["ACCOUNT_NUMBER"]),
@@ -367,222 +331,206 @@ else
 												}
 												?>
 											</div>
-
-                                            <?/** Сумма заказа */?>
 											<div class="sale-order-detail-payment-options-info-total-price">
 												<?=Loc::getMessage('SPOD_ORDER_PRICE_FULL')?>:
 												<span><?=$arResult["PRICE_FORMATED"]?></span>
 											</div>
-
-                                            <?/** Если заказ оплачен частично */?>
-											<?if (!empty($arResult["SUM_REST"]) && !empty($arResult["SUM_PAID"])):?>
-
-                                                <?/** Оплачено */?>
+											<?
+											if (!empty($arResult["SUM_REST"]) && !empty($arResult["SUM_PAID"]))
+											{
+												?>
 												<div class="sale-order-detail-payment-options-info-total-price">
 													<?=Loc::getMessage('SPOD_ORDER_SUM_PAID')?>:
 													<span><?=$arResult["SUM_PAID_FORMATED"]?></span>
 												</div>
-
-                                                <?/** Сумма к оплате */?>
 												<div class="sale-order-detail-payment-options-info-total-price">
 													<?=Loc::getMessage('SPOD_ORDER_SUM_REST')?>:
 													<span><?=$arResult["SUM_REST_FORMATED"]?></span>
 												</div>
-
-                                            <?endif;?>
-
+												<?
+											}
+											?>
 										</div>
 									</div>
 								</div><!--sale-order-detail-payment-options-info-->
 							</div>
-
-                            <?/** Информация об оплате */?>
 							<div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-payment-options-methods-container">
-
-									<?foreach ($arResult['PAYMENT'] as $payment):?>
-
-                                        <?/** Данные для JS */?>
-                                        <?
-                                        $paymentData[$payment['ACCOUNT_NUMBER']] = [
-                                            "payment" => $payment['ACCOUNT_NUMBER'],
-                                            "order" => $arResult['ACCOUNT_NUMBER'],
-                                            "allow_inner" => $arParams['ALLOW_INNER'],
-                                            "only_inner_full" => $arParams['ONLY_INNER_FULL'],
-                                            "refresh_prices" => $arParams['REFRESH_PRICES'],
-                                            "path_to_payment" => $arParams['PATH_TO_PAYMENT']
-                                        ];
-                                        ?>
-
+									<?
+									foreach ($arResult['PAYMENT'] as $payment)
+									{
+										?>
 										<div class="row payment-options-methods-row">
 											<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-payment-options-methods">
 												<div class="row sale-order-detail-payment-options-methods-information-block">
-
-                                                    <?/** Картинка оплаты */?>
 													<div class="col-md-2 col-sm-5 col-xs-12 sale-order-detail-payment-options-methods-image-container">
-                                                        <span class="sale-order-detail-payment-options-methods-image-element"
-                                                              style="background-image: url('<?= $payment['PAY_SYSTEM']["SRC_LOGOTIP"] <> ''? htmlspecialcharsbx($payment['PAY_SYSTEM']["SRC_LOGOTIP"]) : '/bitrix/images/sale/nopaysystem.gif'?>');"></span>
+													<span class="sale-order-detail-payment-options-methods-image-element"
+														  style="background-image: url('<?= $payment['PAY_SYSTEM']["SRC_LOGOTIP"] <> ''? htmlspecialcharsbx($payment['PAY_SYSTEM']["SRC_LOGOTIP"]) : '/bitrix/images/sale/nopaysystem.gif'?>');"></span>
 													</div>
-
-                                                    <?/** Информация */?>
-                                                    <?/** Контейнер sale-order-detail-payment-options-methods-info меняется при нажатии на "Сменить способ оплаты" */?>
 													<div class="col-md-8 col-sm-7 col-xs-10 sale-order-detail-payment-options-methods-info">
 														<div class="sale-order-detail-payment-options-methods-info-title">
-
-
-                                                            <?/** Название */?>
 															<div class="sale-order-detail-methods-title">
-
-                                                                <?/** Счет №0 от 00.00.0000 */?>
 																<?
+																$paymentData[$payment['ACCOUNT_NUMBER']] = array(
+																	"payment" => $payment['ACCOUNT_NUMBER'],
+																	"order" => $arResult['ACCOUNT_NUMBER'],
+																	"allow_inner" => $arParams['ALLOW_INNER'],
+																	"only_inner_full" => $arParams['ONLY_INNER_FULL'],
+																	"refresh_prices" => $arParams['REFRESH_PRICES'],
+																	"path_to_payment" => $arParams['PATH_TO_PAYMENT']
+																);
 																$paymentSubTitle = Loc::getMessage('SPOD_TPL_BILL')." ".Loc::getMessage('SPOD_NUM_SIGN').$payment['ACCOUNT_NUMBER'];
-																if(isset($payment['DATE_BILL'])) {
+																if(isset($payment['DATE_BILL']))
+																{
 																	$paymentSubTitle .= " ".Loc::getMessage('SPOD_FROM')." ".$payment['DATE_BILL_FORMATED'];
 																}
 																$paymentSubTitle .=",";
 																echo htmlspecialcharsbx($paymentSubTitle);
 																?>
-
-                                                                <?/** Название оплаты */?>
 																<span class="sale-order-list-payment-title-element"><?=$payment['PAY_SYSTEM_NAME']?></span>
-
-																<?if ($payment['PAID'] === 'Y'):?>
-
-                                                                    <?/** Оплачено */?>
+																<?
+																if ($payment['PAID'] === 'Y')
+																{
+																	?>
 																	<span class="sale-order-detail-payment-options-methods-info-title-status-success">
 																	<?=Loc::getMessage('SPOD_PAYMENT_PAID')?></span>
-
-                                                                <?elseif ($arResult['IS_ALLOW_PAY'] == 'N'):?>
-
-                                                                    <?/** На проверке менеджером */?>
+																	<?
+																}
+																elseif ($arResult['IS_ALLOW_PAY'] == 'N')
+																{
+																	?>
 																	<span class="sale-order-detail-payment-options-methods-info-title-status-restricted">
 																	<?=Loc::getMessage('SPOD_TPL_RESTRICTED_PAID')?></span>
-
-                                                                <?else:?>
-
-                                                                    <?/** Не оплачено */?>
+																	<?
+																}
+																else
+																{
+																	?>
 																	<span class="sale-order-detail-payment-options-methods-info-title-status-alert">
 																	<?=Loc::getMessage('SPOD_PAYMENT_UNPAID')?></span>
-
-                                                                <?endif;?>
-
+																	<?
+																}
+																?>
 															</div>
 														</div>
-
-                                                        <?/** Сумма к оплате по счету */?>
 														<div class="sale-order-detail-payment-options-methods-info-total-price">
 															<span class="sale-order-detail-sum-name"><?= Loc::getMessage('SPOD_ORDER_PRICE_BILL')?>:</span>
 															<span class="sale-order-detail-sum-number"><?=$payment['PRICE_FORMATED']?></span>
 														</div>
-
-
-                                                        <?/** Список чеков */?>
 														<?
-                                                        if (!empty($payment['CHECK_DATA'])):?>
-
-                                                            <?
+														if (!empty($payment['CHECK_DATA']))
+														{
 															$listCheckLinks = "";
-															foreach ($payment['CHECK_DATA'] as $checkInfo) {
+															foreach ($payment['CHECK_DATA'] as $checkInfo)
+															{
 																$title = Loc::getMessage('SPOD_CHECK_NUM', array('#CHECK_NUMBER#' => $checkInfo['ID']))." - ". htmlspecialcharsbx($checkInfo['TYPE_NAME']);
-																if ($checkInfo['LINK'] <> '') {
+																if ($checkInfo['LINK'] <> '')
+																{
 																	$link = $checkInfo['LINK'];
 																	$listCheckLinks .= "<div><a href='$link' target='_blank'>$title</a></div>";
 																}
 															}
-															?>
-
-															<?if ($listCheckLinks <> ''):?>
+															if ($listCheckLinks <> '')
+															{
+																?>
 																<div class="sale-order-detail-payment-options-methods-info-total-check">
 																	<div class="sale-order-detail-sum-check-left"><?= Loc::getMessage('SPOD_CHECK_TITLE')?>:</div>
 																	<div class="sale-order-detail-sum-check-left">
 																		<?=$listCheckLinks?>
-
-                                                                        <?/** Пример */?>
-                                                                        <div><a href='#' target='_blank'>Чек №0</a></div>
-                                                                        <div><a href='#' target='_blank'>Чек №0</a></div>
-
 																	</div>
 																</div>
-                                                            <?endif;?>
-                                                        <?endif;?>
-
-                                                        <?/** Сменить способ оплаты" */?>
-														<?if (
-                                                            $payment['PAID'] !== 'Y'
-                                                            && $arResult['CANCELED'] !== 'Y'
-                                                            && $arParams['GUEST_MODE'] !== 'Y'
-                                                            && $arResult['LOCK_CHANGE_PAYSYSTEM'] !== 'Y'
-                                                        ):?>
+																<?
+															}
+														}
+														if (
+															$payment['PAID'] !== 'Y'
+															&& $arResult['CANCELED'] !== 'Y'
+															&& $arParams['GUEST_MODE'] !== 'Y'
+															&& $arResult['LOCK_CHANGE_PAYSYSTEM'] !== 'Y'
+														)
+														{
+															?>
 															<a href="#" id="<?=$payment['ACCOUNT_NUMBER']?>" class="sale-order-detail-payment-options-methods-info-change-link"><?=Loc::getMessage('SPOD_CHANGE_PAYMENT_TYPE')?></a>
-                                                        <?endif;?>
-
-                                                        <?/** Обратите внимание: оплата заказа будет доступна после подтверждения менеджером */?>
-														<?if ($arResult['IS_ALLOW_PAY'] === 'N' && $payment['PAID'] !== 'Y'):?>
+															<?
+														}
+														?>
+														<?
+														if ($arResult['IS_ALLOW_PAY'] === 'N' && $payment['PAID'] !== 'Y')
+														{
+															?>
 															<div class="sale-order-detail-status-restricted-message-block">
 																<span class="sale-order-detail-status-restricted-message"><?=Loc::getMessage('SOPD_TPL_RESTRICTED_PAID_MESSAGE')?></span>
 															</div>
-                                                        <?endif;?>
-
+															<?
+														}
+														?>
 													</div>
-
-                                                    <?/** Кнопка */?>
-													<?if ($payment['PAY_SYSTEM']['IS_CASH'] !== 'Y' && $payment['PAY_SYSTEM']['ACTION_FILE'] !== 'cash'):?>
-
+													<?
+													if ($payment['PAY_SYSTEM']['IS_CASH'] !== 'Y' && $payment['PAY_SYSTEM']['ACTION_FILE'] !== 'cash')
+													{
+														?>
 														<div class="col-md-2 col-sm-12 col-xs-12 sale-order-detail-payment-options-methods-button-container">
-
-                                                            <?/** Кнопка платить */?>
-															<?if ($payment['PAY_SYSTEM']['PSA_NEW_WINDOW'] === 'Y' && $arResult["IS_ALLOW_PAY"] !== "N"):?>
-
-                                                                <?/** В новом окне */?>
+															<?
+															if ($payment['PAY_SYSTEM']['PSA_NEW_WINDOW'] === 'Y' && $arResult["IS_ALLOW_PAY"] !== "N")
+															{
+																?>
 																<a class="btn-theme sale-order-detail-payment-options-methods-button-element-new-window"
 																   target="_blank"
 																   href="<?=htmlspecialcharsbx($payment['PAY_SYSTEM']['PSA_ACTION_FILE'])?>">
 																	<?= Loc::getMessage('SPOD_ORDER_PAY') ?>
 																</a>
-                                                            <?else:?>
-																<?if ($payment["PAID"] === "Y" || $arResult["CANCELED"] === "Y" || $arResult["IS_ALLOW_PAY"] === "N"):?>
-
-                                                                    <?/** Неактивная */?>
+																<?
+															}
+															else
+															{
+																if ($payment["PAID"] === "Y" || $arResult["CANCELED"] === "Y" || $arResult["IS_ALLOW_PAY"] === "N")
+																{
+																	?>
 																	<a class="btn-theme sale-order-detail-payment-options-methods-button-element inactive-button"><?= Loc::getMessage('SPOD_ORDER_PAY') ?></a>
-                                                                <?else:?>
-
-                                                                    <?/** Не в новом окне */?>
+																	<?
+																}
+																else
+																{
+																	?>
 																	<a class="btn-theme sale-order-detail-payment-options-methods-button-element active-button"><?= Loc::getMessage('SPOD_ORDER_PAY') ?></a>
-                                                                <?endif;?>
-															<?endif;?>
+																	<?
+																}
+															}
+															?>
 														</div>
-                                                    <?endif;?>
-
-                                                    <?/** Назад */?>
+														<?
+													}
+													?>
 													<div class="sale-order-detail-payment-inner-row-template col-md-offset-3 col-sm-offset-5 col-md-5 col-sm-10 col-xs-12">
 														<a class="sale-order-list-cancel-payment">
 															<i class="fa fa-long-arrow-left"></i> <?=Loc::getMessage('SPOD_CANCEL_PAYMENT')?>
 														</a>
 													</div>
 												</div>
-
-                                                <?/** Контейнер с оплатой при нажатии "Оплатить" */?>
-												<?if (
-                                                    $payment["PAID"] !== "Y"
+												<?
+												if ($payment["PAID"] !== "Y"
 													&& $payment['PAY_SYSTEM']["IS_CASH"] !== "Y"
 													&& $payment['PAY_SYSTEM']['ACTION_FILE'] !== 'cash'
 													&& $payment['PAY_SYSTEM']['PSA_NEW_WINDOW'] !== 'Y'
 													&& $arResult['CANCELED'] !== 'Y'
-													&& $arResult["IS_ALLOW_PAY"] !== "N"
-                                                ):?>
+													&& $arResult["IS_ALLOW_PAY"] !== "N")
+												{
+													?>
 													<div class="row sale-order-detail-payment-options-methods-template col-md-12 col-sm-12 col-xs-12">
 														<span class="sale-paysystem-close active-button">
 															<span class="sale-paysystem-close-item sale-order-payment-cancel"></span><!--sale-paysystem-close-item-->
 														</span><!--sale-paysystem-close-->
 														<?=$payment['BUFFERED_OUTPUT']?>
-<!--															<a class="sale-order-payment-cancel">--><?//= Loc::getMessage('SPOD_CANCEL_PAY') ?><!--</a>-->
+															<!--<a class="sale-order-payment-cancel">--><?//= Loc::getMessage('SPOD_CANCEL_PAY') ?><!--</a>-->
 													</div>
-                                                <?endif;?>
+													<?
+												}
+												?>
 											</div>
 										</div>
-
-                                    <?endforeach;?>
-
+										<?
+									}
+									?>
 								</div>
 							</div>
 						</div>
@@ -590,12 +538,12 @@ else
 				</div>
 			</div>
 
-            <?/** Параметры отгрузки */?>
-			<?if (count($arResult['SHIPMENT'])):?>
+			<?
+			if (count($arResult['SHIPMENT']))
+			{
+				?>
 				<div class="row sale-order-detail-payment-options">
 					<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-payment-options-container">
-
-                        <?/** Заголовок */?>
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-payment-options-title">
 								<h3 class="sale-order-detail-payment-options-title-element">
@@ -603,95 +551,101 @@ else
 								</h3>
 							</div>
 						</div>
-
-                        <?/** Тело */?>
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-payment-options-inner-container">
-
-								<?foreach ($arResult['SHIPMENT'] as $shipment):?>
-
+								<?
+									foreach ($arResult['SHIPMENT'] as $shipment)
+									{
+										?>
 										<div class="row">
 											<div class="col-md-12 col-md-12 col-sm-12 sale-order-detail-payment-options-shipment-container">
 												<div class="row">
 													<div class="col-md-12 col-md-12 col-sm-12 sale-order-detail-payment-options-shipment">
-
 														<div>
-
-                                                            <?/** Изображение */?>
 															<div class="col-md-3 col-sm-5 sale-order-detail-payment-options-shipment-image-container">
-																<?if($shipment['DELIVERY']["SRC_LOGOTIP"] <> ''):?>
-																	<span class="sale-order-detail-payment-options-shipment-image-element"
-																		style="background-image: url('<?= htmlspecialcharsbx($shipment['DELIVERY']["SRC_LOGOTIP"]) ?>')">
-                                                                    </span>
-                                                                <?endif;?>
+																<?
+																if($shipment['DELIVERY']["SRC_LOGOTIP"] <> '')
+																{
+																	?>
+																	<span
+																		class="sale-order-detail-payment-options-shipment-image-element"
+																		style="background-image: url('<?= htmlspecialcharsbx($shipment['DELIVERY']["SRC_LOGOTIP"]) ?>')"></span>
+																	<?
+																}
+																?>
 															</div>
-
-                                                            <?/** Тело */?>
 															<div class="col-md-7 col-sm-7 sale-order-detail-payment-options-methods-shipment-list">
-
-                                                                <?/** Отгрузка №0 от 00.00.0000, стоимость доставки 0.00 ₽ */?>
 																<div class="sale-order-detail-payment-options-methods-shipment-list-item-title">
 																	<?
-                                                                    //change date
-                                                                    if ($shipment['PRICE_DELIVERY_FORMATED'] == '')
-                                                                    {
-                                                                        $shipment['PRICE_DELIVERY_FORMATED'] = 0;
-                                                                    }
-                                                                    $shipmentRow = Loc::getMessage('SPOD_SUB_ORDER_SHIPMENT')." ".Loc::getMessage('SPOD_NUM_SIGN').$shipment["ACCOUNT_NUMBER"];
-                                                                    if ($shipment["DATE_DEDUCTED"])
-                                                                    {
-                                                                        $shipmentRow .= " ".Loc::getMessage('SPOD_FROM')." ".$shipment["DATE_DEDUCTED_FORMATED"];
-                                                                    }
-                                                                    $shipmentRow = htmlspecialcharsbx($shipmentRow);
-                                                                    $shipmentRow .= ", ".Loc::getMessage('SPOD_SUB_PRICE_DELIVERY', array(
-                                                                            '#PRICE_DELIVERY#' => $shipment['PRICE_DELIVERY_FORMATED']
-                                                                        ));
-                                                                    echo $shipmentRow;
+																		//change date
+																		if ($shipment['PRICE_DELIVERY_FORMATED'] == '')
+																		{
+																			$shipment['PRICE_DELIVERY_FORMATED'] = 0;
+																		}
+																		$shipmentRow = Loc::getMessage('SPOD_SUB_ORDER_SHIPMENT')." ".Loc::getMessage('SPOD_NUM_SIGN').$shipment["ACCOUNT_NUMBER"];
+																		if ($shipment["DATE_DEDUCTED"])
+																		{
+																			$shipmentRow .= " ".Loc::getMessage('SPOD_FROM')." ".$shipment["DATE_DEDUCTED_FORMATED"];
+																		}
+																		$shipmentRow = htmlspecialcharsbx($shipmentRow);
+																		$shipmentRow .= ", ".Loc::getMessage('SPOD_SUB_PRICE_DELIVERY', array(
+																				'#PRICE_DELIVERY#' => $shipment['PRICE_DELIVERY_FORMATED']
+																			));
+																		echo $shipmentRow;
 																	?>
 																</div>
-
-                                                                <?/** Служба доставки */?>
-																<?if($shipment["DELIVERY_NAME"] <> ''):?>
-																	<div class="sale-order-detail-payment-options-methods-shipment-list-item">
+																<?
+																if($shipment["DELIVERY_NAME"] <> '')
+																{
+																	?>
+																	<div
+																		class="sale-order-detail-payment-options-methods-shipment-list-item">
 																		<?= Loc::getMessage('SPOD_ORDER_DELIVERY') ?>
 																		: <?= htmlspecialcharsbx($shipment["DELIVERY_NAME"]) ?>
 																	</div>
-                                                                <?endif;?>
-
-                                                                <?/** Статус отгрузки */?>
+																	<?
+																}
+																?>
 																<div class="sale-order-detail-payment-options-methods-shipment-list-item">
 																	<?= Loc::getMessage('SPOD_ORDER_SHIPMENT_STATUS')?>:
 																	<?= htmlspecialcharsbx($shipment['STATUS_NAME'])?>
 																</div>
-
-                                                                <?/** Идентификатор отправления */?>
-																<?if($shipment['TRACKING_NUMBER'] <> ''):?>
-																	<div class="sale-order-detail-payment-options-methods-shipment-list-item">
-																		<span class="sale-order-list-shipment-id-name"><?= Loc::getMessage('SPOD_ORDER_TRACKING_NUMBER') ?>:</span>
-																		<span class="sale-order-detail-shipment-id"><?= htmlspecialcharsbx($shipment['TRACKING_NUMBER']) ?></span>
-																		<span class="sale-order-detail-shipment-id-icon"></span>
+																<?
+																if($shipment['TRACKING_NUMBER'] <> '')
+																{
+																	?>
+																	<div
+																		class="sale-order-detail-payment-options-methods-shipment-list-item">
+																		<span
+																			class="sale-order-list-shipment-id-name"><?= Loc::getMessage('SPOD_ORDER_TRACKING_NUMBER') ?>:</span>
+																		<span
+																			class="sale-order-detail-shipment-id"><?= htmlspecialcharsbx($shipment['TRACKING_NUMBER']) ?></span>
+																		<span
+																			class="sale-order-detail-shipment-id-icon"></span>
 																	</div>
-                                                                <?endif;?>
-
-                                                                <?/** Показать все / Свернуть */?>
+																	<?
+																}
+																?>
 																<div class="sale-order-detail-payment-options-methods-shipment-list-item-link">
 																	<a class="sale-order-detail-show-link"><?= Loc::getMessage('SPOD_LIST_SHOW_ALL')?></a>
 																	<a class="sale-order-detail-hide-link"><?= Loc::getMessage('SPOD_LIST_LESS')?></a>
 																</div>
 															</div>
-
-                                                            <?/** Проверить отправление */?>
-															<?if($shipment['TRACKING_URL'] <> ''):?>
-																<div class="col-md-2 col-sm-12 sale-order-detail-payment-options-shipment-button-container">
+															<?
+															if($shipment['TRACKING_URL'] <> '')
+															{
+																?>
+																<div
+																	class="col-md-2 col-sm-12 sale-order-detail-payment-options-shipment-button-container">
 																	<a class="sale-order-detail-payment-options-shipment-button-element"
 																	   href="<?= $shipment['TRACKING_URL'] ?>">
 																		<?= Loc::getMessage('SPOD_ORDER_CHECK_TRACKING') ?>
 																	</a>
 																</div>
-                                                            <?endif;?>
-
+																<?
+															}
+															?>
 														</div><!--row-->
-
 														<div class="col-md-9 col-md-offset-3 col-sm-12 sale-order-detail-payment-options-shipment-composition-map">
 															<?
 															$store = $arResult['DELIVERY']['STORE_LIST'][$shipment['STORE_ID']];
@@ -860,20 +814,22 @@ else
 																</div>
 															</div>
 														</div>
-
 													</div>
 												</div>
 											</div>
 										</div>
-                                <?endforeach;?>
+										<?
+									}
+								?>
 							</div>
 						</div>
 					</div>
 				</div>
-            <?endif;?>
+				<?
+			}
+			?>
 
-<?/** | */?>
-            <?/** Содержимое заказа */?>
+
 			<div class="row sale-order-detail-payment-options-order-content">
 
 				<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-payment-options-order-content-container">
@@ -1054,8 +1010,6 @@ else
 					</div>
 				</div>
 			</div>
-
-            <?/** Итого */?>
 			<div class="row sale-order-detail-total-payment">
 				<div class="col-md-7 col-md-offset-5 col-sm-12 col-xs-12 sale-order-detail-total-payment-container">
 					<div class="row">
@@ -1134,18 +1088,16 @@ else
 					</div>
 				</div>
 			</div>
-
 		</div><!--sale-order-detail-general-->
-
-        <?/** Навигаторы */?>
-		<?if ($arParams['GUEST_MODE'] !== 'Y' && $arResult['LOCK_CHANGE_PAYSYSTEM'] !== 'Y'):?>
-			<a class="sale-order-detail-back-to-list-link-down" href="<?= $arResult["URL_TO_LIST"] ?>">
-                &larr; <?= Loc::getMessage('SPOD_RETURN_LIST_ORDERS')?>
-            </a>
-        <?endif;?>
+		<?
+		if ($arParams['GUEST_MODE'] !== 'Y' && $arResult['LOCK_CHANGE_PAYSYSTEM'] !== 'Y')
+		{
+			?>
+			<a class="sale-order-detail-back-to-list-link-down" href="<?= $arResult["URL_TO_LIST"] ?>">&larr; <?= Loc::getMessage('SPOD_RETURN_LIST_ORDERS')?></a>
+			<?
+		}
+		?>
 	</div>
-
-
 	<?
 	$javascriptParams = array(
 		"url" => CUtil::JSEscape($this->__component->GetPath().'/ajax.php'),
@@ -1159,8 +1111,6 @@ else
 	<script>
 		BX.Sale.PersonalOrderComponent.PersonalOrderDetail.init(<?=$javascriptParams?>);
 	</script>
-
-
 <?
 }
 ?>

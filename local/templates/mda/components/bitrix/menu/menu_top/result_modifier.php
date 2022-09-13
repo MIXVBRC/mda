@@ -2,20 +2,17 @@
 
 /**
  * @var array $arResult
+ * @var array $arParams
  * @var CBitrixComponentTemplate $this
  * @var CatalogElementComponent $component
  */
 
-//return;
-//pre($arResult);
 
 $sectionKeyCode = [];
-$iBlockCodeList = [];
 foreach ($arResult as $key => $section) {
     $pageList = array_diff(explode('/', $section['LINK']), ['']);
     if (count($pageList) > 1) continue;
     $code = array_shift($pageList);
-    $iBlockCodeList[] = $code;
     $sectionKeyCode[$code] = $key;
 }
 
@@ -23,7 +20,7 @@ foreach ($arResult as $key => $section) {
 
 $iBlockList = \Bitrix\Iblock\IblockTable::getList([
     'filter' => [
-        'CODE' => $iBlockCodeList,
+        'CODE' => $arParams['IBLOCK_SECTIONS'],
         'ACTIVE' => 'Y'
     ],
     'select' => ['ID', 'CODE']

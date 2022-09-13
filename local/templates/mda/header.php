@@ -82,6 +82,7 @@ IncludeTemplateLangFile(__FILE__);
 
             <div class="title">
                 <div class="container">
+
                     <h1 class="title__text"><?$APPLICATION->ShowTitle(false);?></h1>
 
                     <?$APPLICATION->IncludeComponent(
