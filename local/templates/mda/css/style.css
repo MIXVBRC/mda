@@ -3646,6 +3646,13 @@ body {
   box-shadow: 5px 5px 15px #000 !important;
 }
 
+.tablebodytext {
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
 .header:not(table) {
   width: 100%;
   position: fixed;
