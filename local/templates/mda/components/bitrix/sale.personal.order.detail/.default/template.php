@@ -693,17 +693,23 @@ else
 														</div><!--row-->
 
 														<div class="col-md-9 col-md-offset-3 col-sm-12 sale-order-detail-payment-options-shipment-composition-map">
-															<?
-															$store = $arResult['DELIVERY']['STORE_LIST'][$shipment['STORE_ID']];
-															if (isset($store))
-															{
-																?>
+
+                                                            <?/** Склад самовывоза */?>
+															<? $store = $arResult['DELIVERY']['STORE_LIST'][$shipment['STORE_ID']];
+															if (isset($store)):?>
+
+
 																<div class="row">
 																	<div class="col-md-12 col-sm-12 sale-order-detail-map-container">
 																		<div class="row">
+
+                                                                            <?/** Заголовок */?>
 																			<h4 class="sale-order-detail-payment-options-shipment-composition-map-title">
 																				<?= Loc::getMessage('SPOD_SHIPMENT_STORE')?>
 																			</h4>
+
+                                                                            <?/** Карта */?>
+                                                                            <?// TODO: Нужен другой компонент т.к. в этом ошибки JS в консоли ?>
 																			<?/*
 																				$APPLICATION->IncludeComponent(
 																					"bitrix:map.yandex.view",
@@ -735,122 +741,157 @@ else
 																					)
 																				);
 																			*/?>
+
 																		</div>
 																	</div>
 																</div>
-																<?
-																if($store['ADDRESS'] <> '')
-																{
-																	?>
+
+                                                                <?/** Адрес */?>
+																<?if($store['ADDRESS'] <> ''):?>
 																	<div class="row">
-																		<div
-																			class="col-md-12 col-sm-12 sale-order-detail-payment-options-shipment-map-address">
+																		<div class="col-md-12 col-sm-12 sale-order-detail-payment-options-shipment-map-address">
 																			<div class="row">
-																<span
-																	class="col-md-2 sale-order-detail-payment-options-shipment-map-address-title">
-																	<?= Loc::getMessage('SPOD_STORE_ADDRESS') ?>:</span>
-																				<span
-																					class="col-md-10 sale-order-detail-payment-options-shipment-map-address-element">
-																	<?= htmlspecialcharsbx($store['ADDRESS']) ?></span>
+                                                                                <span class="col-md-2 sale-order-detail-payment-options-shipment-map-address-title">
+                                                                                <?= Loc::getMessage('SPOD_STORE_ADDRESS') ?>:
+                                                                                </span>
+																				<span class="col-md-10 sale-order-detail-payment-options-shipment-map-address-element">
+                                                                                    <?= htmlspecialcharsbx($store['ADDRESS']) ?>
+                                                                                </span>
 																			</div>
 																		</div>
 																	</div>
-																	<?
-																}
-															}
-															?>
+                                                                <?endif;?>
+
+															<?endif;?>
+
+                                                            <?/** Состав отгрузки */?>
 															<div class="row">
 																<div class="col-md-12 col-sm-12 sale-order-detail-payment-options-shipment-composition-container">
+
+                                                                    <?/** Заголовок */?>
 																	<div class="row">
 																		<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-payment-options-shipment-composition-title">
 																			<h3 class="sale-order-detail-payment-options-shipment-composition-title-element"><?= Loc::getMessage('SPOD_ORDER_SHIPMENT_BASKET')?></h3>
 																		</div>
 																	</div>
+
+                                                                    <?/** Заголовок */?>
 																	<div class="row">
 																		<div class="sale-order-detail-order-section bx-active">
 																			<div class="sale-order-detail-order-section-content container-fluid">
 																				<div class="sale-order-detail-order-table-fade sale-order-detail-order-table-fade-right">
 																					<div style="width: 100%; overflow-x: auto; overflow-y: hidden;">
 																						<div class="sale-order-detail-order-item-table">
+
 																							<div class="sale-order-detail-order-item-tr hidden-sm hidden-xs">
-																								<div class="sale-order-detail-order-item-td"
-																									 style="padding-bottom: 5px;">
+
+                                                                                                <?//pre(1)?>
+                                                                                                <?/** Наименование */?>
+																								<div class="sale-order-detail-order-item-td" style="padding-bottom: 5px;">
 																									<div class="sale-order-detail-order-item-td-title">
 																										<?= Loc::getMessage('SPOD_NAME')?>
 																									</div>
 																								</div>
+
+                                                                                                <?/** Количество */?>
 																								<div class="sale-order-detail-order-item-nth-4p1"></div>
-																								<div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right"
-																									 style="padding-bottom: 5px;">
+																								<div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right" style="padding-bottom: 5px;">
 																									<div class="sale-order-detail-order-item-td-title">
 																										<?= Loc::getMessage('SPOD_QUANTITY')?>
 																									</div>
 																								</div>
+
 																							</div>
-																							<?
-																								foreach ($shipment['ITEMS'] as $item)
-																								{
-																									$basketItem = $arResult['BASKET'][$item['BASKET_ID']];
-																									?>
-																									<div class="sale-order-detail-order-item-tr sale-order-detail-order-basket-info sale-order-detail-order-item-tr-first">
-																										<div class="sale-order-detail-order-item-td"
-																											 style="min-width: 300px;">
-																											<div class="sale-order-detail-order-item-block">
-																												<div class="sale-order-detail-order-item-img-block">
-																													<a href="<?=htmlspecialcharsbx($basketItem['DETAIL_PAGE_URL'])?>">
-																														<?
-																														if($basketItem['PICTURE']['SRC'] <> '')
-																														{
-																															$imageSrc = htmlspecialcharsbx($basketItem['PICTURE']['SRC']);
-																														}
-																														else
-																														{
-																															$imageSrc = $this->GetFolder().'/images/no_photo.png';
-																														}
-																														?>
-																														<div class="sale-order-detail-order-item-imgcontainer"
-																															 style="background-image: url(<?=$imageSrc?>);
-																																 background-image:
-																																 -webkit-image-set(url(<?=$imageSrc?>) 1x,
-																																 url(<?=$imageSrc?>) 2x)">
-																														</div>
-																													</a>
-																												</div>
-																												<div class="sale-order-detail-order-item-content">
-																													<div class="sale-order-detail-order-item-title">
-																														<a href="<?=htmlspecialcharsbx($basketItem['DETAIL_PAGE_URL'])?>"><?=htmlspecialcharsbx($basketItem['NAME'])?></a>
-																													</div>
-																													<?
-																														if (isset($basketItem['PROPS']) && is_array($basketItem['PROPS']))
-																														{
-																															foreach ($basketItem['PROPS'] as $itemProps)
-																															{
-																																?>
-																																<div class="sale-order-detail-order-item-color">
-																												<span class="sale-order-detail-order-item-color-name">
-																													<?= htmlspecialcharsbx($itemProps['NAME']) ?>:</span>
-																																	<span class="sale-order-detail-order-item-color-type"><?= htmlspecialcharsbx($itemProps['VALUE']) ?></span>
-																																</div>
-																																<?
-																															}
-																														}
-																													?>
-																												</div>
-																											</div>
-																										</div>
-																										<div class="sale-order-detail-order-item-nth-4p1"></div>
-																										<div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right">
-																											<div class="sale-order-detail-order-item-td-title col-xs-7  col-sm-7 col-dm-7 visible-xs visible-sm">
-																												<?= Loc::getMessage('SPOD_QUANTITY')?>
-																											</div>
-																											<div class="sale-order-detail-order-item-td-text">
-																												<span><?=$item['QUANTITY']?>&nbsp;<?=htmlspecialcharsbx($item['MEASURE_NAME'])?></span>
-																											</div>
-																										</div>
-																									</div>
-																									<?
-																								}
-																							?>
+
+                                                                                            <?/** Список товаров отгрузки */?>
+																							<? foreach ($shipment['ITEMS'] as $item):?>
+
+                                                                                                <?$basketItem = $arResult['BASKET'][$item['BASKET_ID']];?>
+
+                                                                                                <div class="sale-order-detail-order-item-tr sale-order-detail-order-basket-info sale-order-detail-order-item-tr-first">
+                                                                                                    <div class="sale-order-detail-order-item-td" style="min-width: 300px;">
+                                                                                                        <div class="sale-order-detail-order-item-block">
+
+                                                                                                            <?/** Картинка */?>
+                                                                                                            <div class="sale-order-detail-order-item-img-block">
+                                                                                                                <a href="<?=htmlspecialcharsbx($basketItem['DETAIL_PAGE_URL'])?>">
+
+                                                                                                                    <?
+                                                                                                                    if($basketItem['PICTURE']['SRC'] <> '') {
+                                                                                                                        $imageSrc = htmlspecialcharsbx($basketItem['PICTURE']['SRC']);
+                                                                                                                    } else {
+                                                                                                                        $imageSrc = $this->GetFolder().'/images/no_photo.png';
+                                                                                                                    }
+                                                                                                                    ?>
+
+                                                                                                                    <div class="sale-order-detail-order-item-imgcontainer" style="background-image: url(<?=$imageSrc?>);
+                                                                                                                             background-image:
+                                                                                                                             -webkit-image-set(url(<?=$imageSrc?>) 1x,
+                                                                                                                             url(<?=$imageSrc?>) 2x)"></div>
+                                                                                                                </a>
+                                                                                                            </div>
+
+                                                                                                            <div class="sale-order-detail-order-item-content">
+
+                                                                                                                <?/** Название товара */?>
+                                                                                                                <div class="sale-order-detail-order-item-title">
+                                                                                                                    <a href="<?=htmlspecialcharsbx($basketItem['DETAIL_PAGE_URL'])?>"><?=htmlspecialcharsbx($basketItem['NAME'])?></a>
+                                                                                                                </div>
+
+                                                                                                                <?/** Свойства товара */?>
+                                                                                                                <? if (isset($basketItem['PROPS']) && is_array($basketItem['PROPS'])):?>
+                                                                                                                    <?foreach ($basketItem['PROPS'] as $itemProps):?>
+
+                                                                                                                        <div class="sale-order-detail-order-item-color">
+
+                                                                                                                            <?/** Название свойства */?>
+                                                                                                                            <span class="sale-order-detail-order-item-color-name">
+                                                                                                                                <?= htmlspecialcharsbx($itemProps['NAME']) ?>:
+                                                                                                                            </span>
+
+                                                                                                                            <?/** Значение товара */?>
+                                                                                                                            <span class="sale-order-detail-order-item-color-type">
+                                                                                                                                <?= htmlspecialcharsbx($itemProps['VALUE']) ?>
+                                                                                                                            </span>
+
+                                                                                                                        </div>
+
+                                                                                                                    <?endforeach;?>
+                                                                                                                <?endif;?>
+
+                                                                                                                <!-- ТЕСТ -->
+                                                                                                                <div class="sale-order-detail-order-item-color">
+                                                                                                                    <span class="sale-order-detail-order-item-color-name">
+                                                                                                                        Вкус:
+                                                                                                                    </span>
+                                                                                                                    <span class="sale-order-detail-order-item-color-type">
+                                                                                                                        Арбуз
+                                                                                                                    </span>
+                                                                                                                </div>
+
+                                                                                                            </div>
+
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="sale-order-detail-order-item-nth-4p1"></div>
+
+                                                                                                    <?/** Количество */?>
+                                                                                                    <div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right">
+
+                                                                                                        <?/** Название */?>
+                                                                                                        <div class="sale-order-detail-order-item-td-title col-xs-7  col-sm-7 col-dm-7 visible-xs visible-sm">
+                                                                                                            <?= Loc::getMessage('SPOD_QUANTITY')?>
+                                                                                                        </div>
+
+                                                                                                        <?/** Количество товара */?>
+                                                                                                        <div class="sale-order-detail-order-item-td-text">
+                                                                                                            <span><?=$item['QUANTITY']?>&nbsp;<?=htmlspecialcharsbx($item['MEASURE_NAME'])?></span>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                </div>
+                                                                                            <?endforeach;?>
+
 																						</div>
 																					</div>
 																				</div>
@@ -872,75 +913,83 @@ else
 				</div>
             <?endif;?>
 
-<?/** | */?>
+
             <?/** Содержимое заказа */?>
 			<div class="row sale-order-detail-payment-options-order-content">
 
 				<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-payment-options-order-content-container">
 					<div class="row">
+
+                        <?/** Заголовок */?>
 						<div class="col-md-12 col-sm-12 col-xs-12 sale-order-detail-payment-options-order-content-title">
 							<h3 class="sale-order-detail-payment-options-order-content-title-element">
 								<?= Loc::getMessage('SPOD_ORDER_BASKET')?>
 							</h3>
 						</div>
+
+                        <?/** Тело */?>
 						<div class="sale-order-detail-order-section bx-active">
 							<div class="sale-order-detail-order-section-content container-fluid">
 								<div class="sale-order-detail-order-table-fade sale-order-detail-order-table-fade-right">
 									<div style="width: 100%; overflow-x: auto; overflow-y: hidden;">
 										<div class="sale-order-detail-order-item-table">
 											<div class="sale-order-detail-order-item-tr hidden-sm hidden-xs">
+
+                                                <?/** Наименование */?>
 												<div class="sale-order-detail-order-item-td" style="padding-bottom: 5px;">
 													<div class="sale-order-detail-order-item-td-title">
 														<?= Loc::getMessage('SPOD_NAME')?>
 													</div>
 												</div>
+
+                                                <?/** Цена */?>
 												<div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right" style="padding-bottom: 5px;">
 													<div class="sale-order-detail-order-item-td-title">
 														<?= Loc::getMessage('SPOD_PRICE')?>
 													</div>
 												</div>
-												<?
-												if($arResult["SHOW_DISCOUNT_TAB"] <> '')
-												{
-													?>
-													<div
-														class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right"
-														style="padding-bottom: 5px;">
+
+                                                <?/** Скидка */?>
+												<? if($arResult["SHOW_DISCOUNT_TAB"] <> ''):?>
+													<div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right" style="padding-bottom: 5px;">
 														<div class="sale-order-detail-order-item-td-title">
 															<?= Loc::getMessage('SPOD_DISCOUNT') ?>
 														</div>
 													</div>
-													<?
-												}
-												?>
+                                                <?endif;?>
+
 												<div class="sale-order-detail-order-item-nth-4p1"></div>
+
+                                                <?/** Количество */?>
 												<div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right" style="padding-bottom: 5px;">
 													<div class="sale-order-detail-order-item-td-title">
 														<?= Loc::getMessage('SPOD_QUANTITY')?>
 													</div>
 												</div>
+
+                                                <?/** Сумма */?>
 												<div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right" style="padding-bottom: 5px;">
 													<div class="sale-order-detail-order-item-td-title">
 														<?= Loc::getMessage('SPOD_ORDER_PRICE')?>
 													</div>
 												</div>
+
 											</div>
-											<?
-											foreach ($arResult['BASKET'] as $basketItem)
-											{
-												?>
+
+                                            <?/** Список товаров */?>
+											<? foreach ($arResult['BASKET'] as $basketItem):?>
+
 												<div class="sale-order-detail-order-item-tr sale-order-detail-order-basket-info sale-order-detail-order-item-tr-first">
 													<div class="sale-order-detail-order-item-td" style="min-width: 300px;">
 														<div class="sale-order-detail-order-item-block">
+
+                                                            <?/** Изображение товара */?>
 															<div class="sale-order-detail-order-item-img-block">
 																<a href="<?=$basketItem['DETAIL_PAGE_URL']?>">
 																	<?
-																	if($basketItem['PICTURE']['SRC'] <> '')
-																	{
+                                                                    if($basketItem['PICTURE']['SRC'] <> '') {
 																		$imageSrc = $basketItem['PICTURE']['SRC'];
-																	}
-																	else
-																	{
+																	} else {
 																		$imageSrc = $this->GetFolder().'/images/no_photo.png';
 																	}
 																	?>
@@ -951,101 +1000,129 @@ else
 																	</div>
 																</a>
 															</div>
+
 															<div class="sale-order-detail-order-item-content">
+
+                                                                <?/** Название товара */?>
 																<div class="sale-order-detail-order-item-title">
 																	<a href="<?=$basketItem['DETAIL_PAGE_URL']?>">
 																		<?=htmlspecialcharsbx($basketItem['NAME'])?>
 																	</a>
 																</div>
-																<?
-																if (isset($basketItem['PROPS']) && is_array($basketItem['PROPS']))
-																{
-																	foreach ($basketItem['PROPS'] as $itemProps)
-																	{
-																		?>
+
+                                                                <?/** Свойства товара */?>
+																<? if (isset($basketItem['PROPS']) && is_array($basketItem['PROPS'])):?>
+																	<?foreach ($basketItem['PROPS'] as $itemProps):?>
+
 																		<div class="sale-order-detail-order-item-color">
-																		<span class="sale-order-detail-order-item-color-name">
-																			<?=htmlspecialcharsbx($itemProps['NAME'])?>:</span>
+
+                                                                            <?/** Название свойства */?>
+																		    <span class="sale-order-detail-order-item-color-name">
+																			    <?=htmlspecialcharsbx($itemProps['NAME'])?>:
+                                                                            </span>
+
+                                                                            <?/** Значение свойства */?>
 																			<span class="sale-order-detail-order-item-color-type">
-																			<?=htmlspecialcharsbx($itemProps['VALUE'])?></span>
+																			    <?=htmlspecialcharsbx($itemProps['VALUE'])?>
+                                                                            </span>
+
 																		</div>
-																		<?
-																	}
-																}
-																?>
+
+                                                                    <?endforeach;?>
+																<?endif;?>
+
+                                                                <!-- ТЕСТ -->
+                                                                <div class="sale-order-detail-order-item-color">
+                                                                    <span class="sale-order-detail-order-item-color-name">
+                                                                        Вкус:
+                                                                    </span>
+                                                                    <span class="sale-order-detail-order-item-color-type">
+                                                                        Арбуз
+                                                                    </span>
+                                                                </div>
+
 															</div>
 														</div>
 													</div>
+
+                                                    <?/** Цена товара */?>
 													<div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right">
+
+                                                        <?/** Название */?>
 														<div class="sale-order-detail-order-item-td-title col-xs-7 col-sm-5 visible-xs visible-sm">
 															<?= Loc::getMessage('SPOD_PRICE')?>
 														</div>
+
+                                                        <?/** Значение */?>
 														<div class="sale-order-detail-order-item-td-text">
 															<strong class="bx-price"><?=$basketItem['BASE_PRICE_FORMATED']?></strong>
 														</div>
+
 													</div>
-													<?
-													if($basketItem["DISCOUNT_PRICE_PERCENT_FORMATED"] <> '')
-													{
-														?>
-														<div
-															class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right">
-															<div
-																class="sale-order-detail-order-item-td-title col-xs-7 col-sm-5 visible-xs visible-sm">
+
+                                                    <?/** Скидка */?>
+													<? if($basketItem["DISCOUNT_PRICE_PERCENT_FORMATED"] <> ''):?>
+
+														<div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right">
+															<div class="sale-order-detail-order-item-td-title col-xs-7 col-sm-5 visible-xs visible-sm">
 																<?= Loc::getMessage('SPOD_DISCOUNT') ?>
 															</div>
 															<div class="sale-order-detail-order-item-td-text">
-																<strong
-																	class="bx-price"><?= $basketItem['DISCOUNT_PRICE_PERCENT_FORMATED'] ?></strong>
+																<strong class="bx-price"><?= $basketItem['DISCOUNT_PRICE_PERCENT_FORMATED'] ?></strong>
 															</div>
 														</div>
-														<?
-													}
-													elseif(mb_strlen($arResult["SHOW_DISCOUNT_TAB"]))
-													{
-														?>
-														<div
-															class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right">
-															<div
-																class="sale-order-detail-order-item-td-title col-xs-7 col-sm-5 visible-xs visible-sm">
+
+                                                    <? elseif(mb_strlen($arResult["SHOW_DISCOUNT_TAB"])):?>
+
+														<div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right">
+															<div class="sale-order-detail-order-item-td-title col-xs-7 col-sm-5 visible-xs visible-sm">
 																<?= Loc::getMessage('SPOD_DISCOUNT') ?>
 															</div>
 															<div class="sale-order-detail-order-item-td-text">
 																<strong class="bx-price"></strong>
 															</div>
 														</div>
-														<?
-													}
-													?>
+
+                                                    <?endif;?>
+
 													<div class="sale-order-detail-order-item-nth-4p1"></div>
+
+                                                    <?/** Количество */?>
 													<div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right">
+
+                                                        <?/** Заголовок */?>
 														<div class="sale-order-detail-order-item-td-title col-xs-7 col-sm-5 visible-xs visible-sm">
 															<?= Loc::getMessage('SPOD_QUANTITY')?>
 														</div>
+
 														<div class="sale-order-detail-order-item-td-text">
 														<span><?=$basketItem['QUANTITY']?>&nbsp;
+
+                                                            <?/** "шт" */?>
 															<?
-															if($basketItem['MEASURE_NAME'] <> '')
-															{
+															if($basketItem['MEASURE_NAME'] <> '') {
 																echo htmlspecialcharsbx($basketItem['MEASURE_NAME']);
-															}
-															else
-															{
+															} else {
 																echo Loc::getMessage('SPOD_DEFAULT_MEASURE');
 															}
-															?></span>
+															?>
+
+                                                        </span>
 														</div>
 													</div>
+
+                                                    <?/** Сумма */?>
 													<div class="sale-order-detail-order-item-td sale-order-detail-order-item-properties bx-text-right">
 														<div class="sale-order-detail-order-item-td-title col-xs-7 col-sm-5 visible-xs visible-sm"><?= Loc::getMessage('SPOD_ORDER_PRICE')?></div>
 														<div class="sale-order-detail-order-item-td-text">
 															<strong class="bx-price all"><?=$basketItem['FORMATED_SUM']?></strong>
 														</div>
 													</div>
+
 												</div>
-												<?
-											}
-											?>
+
+                                            <?endforeach;?>
+
 										</div>
 									</div>
 								</div>
@@ -1059,77 +1136,108 @@ else
 			<div class="row sale-order-detail-total-payment">
 				<div class="col-md-7 col-md-offset-5 col-sm-12 col-xs-12 sale-order-detail-total-payment-container">
 					<div class="row">
+
 						<ul class="col-md-8 col-sm-6 col-xs-6 sale-order-detail-total-payment-list-left">
-							<?
-							if (floatval($arResult["ORDER_WEIGHT"]))
-							{
-								?>
+
+                            <?/** Общий вес - заголовок */?>
+							<? if (floatval($arResult["ORDER_WEIGHT"])): ?>
 								<li class="sale-order-detail-total-payment-list-left-item">
 									<?= Loc::getMessage('SPOD_TOTAL_WEIGHT')?>:
 								</li>
-								<?
-							}
+                            <?endif;?>
 
-							if ($arResult['PRODUCT_SUM_FORMATED'] != $arResult['PRICE_FORMATED'] && !empty($arResult['PRODUCT_SUM_FORMATED']))
-							{
-								?>
+                            <!-- ТЕСТ -->
+                            <li class="sale-order-detail-total-payment-list-left-item">
+                                <?= Loc::getMessage('SPOD_TOTAL_WEIGHT')?>:
+                            </li>
+
+                            <?/** Товар на - заголовок */?>
+							<?if ($arResult['PRODUCT_SUM_FORMATED'] != $arResult['PRICE_FORMATED'] && !empty($arResult['PRODUCT_SUM_FORMATED'])):?>
 								<li class="sale-order-detail-total-payment-list-left-item">
 									<?= Loc::getMessage('SPOD_COMMON_SUM')?>:
 								</li>
-								<?
-							}
+                            <?endif;?>
 
-							if($arResult["PRICE_DELIVERY_FORMATED"] <> '')
-							{
-								?>
+                            <!-- ТЕСТ -->
+                            <li class="sale-order-detail-total-payment-list-left-item">
+                                <?= Loc::getMessage('SPOD_COMMON_SUM')?>:
+                            </li>
+
+                            <?/** Стоимость доставки - заголовок */?>
+                            <?if($arResult["PRICE_DELIVERY_FORMATED"] <> ''):?>
 								<li class="sale-order-detail-total-payment-list-left-item">
 									<?= Loc::getMessage('SPOD_DELIVERY') ?>:
 								</li>
-								<?
-							}
+                            <?endif;?>
 
-							if ((float)$arResult["TAX_VALUE"] > 0)
-							{
-								?>
+                            <?/** НДС - заголовок */?>
+							<?if ((float)$arResult["TAX_VALUE"] > 0):?>
 								<li class="sale-order-detail-total-payment-list-left-item">
 									<?= Loc::getMessage('SPOD_TAX') ?>:
 								</li>
-								<?
-							}
-							?>
-							<li class="sale-order-detail-total-payment-list-left-item"><?= Loc::getMessage('SPOD_SUMMARY')?>:</li>
+                            <?endif;?>
+
+                            <!-- ТЕСТ -->
+                            <li class="sale-order-detail-total-payment-list-left-item">
+                                <?= Loc::getMessage('SPOD_TAX') ?>:
+                            </li>
+
+                            <?/** Итого - заголовок */?>
+							<li class="sale-order-detail-total-payment-list-left-item">
+                                <?= Loc::getMessage('SPOD_SUMMARY')?>:
+                            </li>
+
 						</ul>
+
 						<ul class="col-md-4 col-sm-6 col-xs-6 sale-order-detail-total-payment-list-right">
-							<?
-							if (floatval($arResult["ORDER_WEIGHT"]))
-							{
-								?>
-								<li class="sale-order-detail-total-payment-list-right-item"><?= $arResult['ORDER_WEIGHT_FORMATED'] ?></li>
-								<?
-							}
 
-							if ($arResult['PRODUCT_SUM_FORMATED'] != $arResult['PRICE_FORMATED'] && !empty($arResult['PRODUCT_SUM_FORMATED']))
-							{
-								?>
-								<li class="sale-order-detail-total-payment-list-right-item"><?=$arResult['PRODUCT_SUM_FORMATED']?></li>
-								<?
-							}
+                            <?/** Общий вес */?>
+							<? if (floatval($arResult["ORDER_WEIGHT"])):?>
+								<li class="sale-order-detail-total-payment-list-right-item">
+                                    <?= $arResult['ORDER_WEIGHT_FORMATED'] ?>
+                                </li>
+                            <?endif;?>
 
-							if($arResult["PRICE_DELIVERY_FORMATED"] <> '')
-							{
-								?>
-								<li class="sale-order-detail-total-payment-list-right-item"><?= $arResult["PRICE_DELIVERY_FORMATED"] ?></li>
-								<?
-							}
+                            <!-- ТЕСТ -->
+                            <li class="sale-order-detail-total-payment-list-right-item">
+                                <?= $arResult['ORDER_WEIGHT_FORMATED'] ?>
+                            </li>
 
-							if ((float)$arResult["TAX_VALUE"] > 0)
-							{
-								?>
-								<li class="sale-order-detail-total-payment-list-right-item"><?= $arResult["TAX_VALUE_FORMATED"] ?></li>
-								<?
-							}
-							?>
-							<li class="sale-order-detail-total-payment-list-right-item"><?=$arResult['PRICE_FORMATED']?></li>
+                            <?/** Товар на */?>
+                            <?if ($arResult['PRODUCT_SUM_FORMATED'] != $arResult['PRICE_FORMATED'] && !empty($arResult['PRODUCT_SUM_FORMATED'])):?>
+								<li class="sale-order-detail-total-payment-list-right-item">
+                                    <?=$arResult['PRODUCT_SUM_FORMATED']?>
+                                </li>
+                            <?endif;?>
+
+                            <!-- ТЕСТ -->
+                            <li class="sale-order-detail-total-payment-list-right-item">
+                                <?=$arResult['PRODUCT_SUM_FORMATED']?>
+                            </li>
+
+                            <?/** Стоимость доставки */?>
+                            <?if($arResult["PRICE_DELIVERY_FORMATED"] <> ''):?>
+								<li class="sale-order-detail-total-payment-list-right-item">
+                                    <?= $arResult["PRICE_DELIVERY_FORMATED"] ?>
+                                </li>
+                            <?endif;?>
+
+                            <?/** НДС */?>
+                            <?if ((float)$arResult["TAX_VALUE"] > 0):?>
+								<li class="sale-order-detail-total-payment-list-right-item">
+                                    <?= $arResult["TAX_VALUE_FORMATED"] ?>
+                                </li>
+                            <?endif;?>
+
+                            <!-- ТЕСТ -->
+                            <li class="sale-order-detail-total-payment-list-right-item">
+                                <?= $arResult["TAX_VALUE_FORMATED"] ?>
+                            </li>
+
+                            <?/** Итого */?>
+							<li class="sale-order-detail-total-payment-list-right-item">
+                                <?=$arResult['PRICE_FORMATED']?>
+                            </li>
 						</ul>
 					</div>
 				</div>

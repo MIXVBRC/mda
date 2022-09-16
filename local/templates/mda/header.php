@@ -54,24 +54,27 @@ IncludeTemplateLangFile(__FILE__);
             </a>
             <?
             $APPLICATION->IncludeComponent(
-                "bitrix:menu",
-                "menu_top",
-                array(
-                    "ALLOW_MULTI_SELECT" => "N",
-                    "CHILD_MENU_TYPE" => "left",
-                    "DELAY" => "N",
-                    "MAX_LEVEL" => "1",
-                    "MENU_CACHE_GET_VARS" => array(
-                    ),
-                    "MENU_CACHE_TIME" => "3600",
-                    "MENU_CACHE_TYPE" => "N",
-                    "MENU_CACHE_USE_GROUPS" => "Y",
-                    "ROOT_MENU_TYPE" => "top",
-                    "USE_EXT" => "Y",
-                    "COMPONENT_TEMPLATE" => "menu_top"
-                ),
-                false
-            );
+	"bitrix:menu", 
+	"menu_top", 
+	array(
+		"ALLOW_MULTI_SELECT" => "N",
+		"CHILD_MENU_TYPE" => "left",
+		"DELAY" => "N",
+		"MAX_LEVEL" => "1",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_TYPE" => "N",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"ROOT_MENU_TYPE" => "top",
+		"USE_EXT" => "Y",
+		"COMPONENT_TEMPLATE" => "menu_top",
+		"IBLOCK_SECTIONS" => array(
+			0 => "catalog",
+		)
+	),
+	false
+);
             ?>
         </div>
     </header>
@@ -82,7 +85,7 @@ IncludeTemplateLangFile(__FILE__);
 
             <div class="title">
                 <div class="container">
-
+                    
                     <h1 class="title__text"><?$APPLICATION->ShowTitle(false);?></h1>
 
                     <?$APPLICATION->IncludeComponent(
