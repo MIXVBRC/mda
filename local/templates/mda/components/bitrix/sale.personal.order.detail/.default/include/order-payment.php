@@ -143,11 +143,10 @@ use Bitrix\Main\Localization\Loc;
                     </div>
 
                     <?/** Контейнер "Сменить способ оплаты" */?>
-                    <?/*
-                                <div class="order-detail__payment-info"></div>
-                                */?>
+                    <div class="order-detail__payment-info"></div>
 
                     <?/** Контейнер с оплатой при нажатии "Оплатить" */?>
+                    <div class="order-detail__item-show order-detail__payment-box">
                     <?if (
                         $payment["PAID"] !== "Y"
                         && $payment['PAY_SYSTEM']["IS_CASH"] !== "Y"
@@ -156,10 +155,9 @@ use Bitrix\Main\Localization\Loc;
                         && $arResult['CANCELED'] !== 'Y'
                         && $arResult["IS_ALLOW_PAY"] !== "N"
                     ):?>
-
-                        <div class="order-detail__item-show order-detail__payment-box"><?=$payment['BUFFERED_OUTPUT']?></div>
-
+                        <?=$payment['BUFFERED_OUTPUT']?>
                     <?endif;?>
+                    </div>
 
                     <?if ($payment['PAID'] !== 'Y'):?>
                         <div class="order-detail__item-buttons order-detail__payment-buttons">
@@ -189,17 +187,12 @@ use Bitrix\Main\Localization\Loc;
                             <?endif;?>
 
                             <?/** Сменить способ оплаты" */?>
-                            <?/* if (
-                                            $payment['PAID'] !== 'Y'
-                                            && $arResult['CANCELED'] !== 'Y'
-                                            && $arParams['GUEST_MODE'] !== 'Y'
-                                            && $arResult['LOCK_CHANGE_PAYSYSTEM'] !== 'Y'
-                                        ):?>
-                                            <a class="button__medium order-detail__payment-change" id="<?=$payment['ACCOUNT_NUMBER']?>" href="javascript:void(0);"><?=Loc::getMessage('SPOD_CHANGE_PAYMENT_TYPE')?></a>
-                                        <?endif;*/?>
+                            <?if ($payment['PAID'] !== 'Y' && $arResult['CANCELED'] !== 'Y' && $arParams['GUEST_MODE'] !== 'Y' && $arResult['LOCK_CHANGE_PAYSYSTEM'] !== 'Y'):?>
+                                <a class="button__medium order-detail__payment-change" id="<?=$payment['ACCOUNT_NUMBER']?>" href="javascript:void(0);"><?=Loc::getMessage('SPOD_CHANGE_PAYMENT_TYPE')?></a>
+                            <?endif;?>
 
                             <?/** Назад */?>
-                            <a class="button__error order-detail__payment-back" style="display: none;" href="javascript:void(0);"><?=Loc::getMessage('SPOD_CANCEL_PAYMENT')?></a>
+                            <a class="button__error order-detail__payment-back" href="javascript:void(0);"><?=Loc::getMessage('SPOD_CANCEL_PAYMENT')?></a>
 
                             <?/** Отменить оплату */?>
                             <a class="button__error order-detail__payment-cancel" href="javascript:void(0);"><?=Loc::getMessage('SPOD_CANCEL_PAY')?></a>

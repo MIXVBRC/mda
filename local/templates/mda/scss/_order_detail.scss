@@ -43,6 +43,7 @@
         &-error {
             margin-left: 10px;
             padding: 5px 10px;
+            cursor: default;
         }
 
         &-success {
@@ -62,12 +63,29 @@
             margin-top: 15px;
         }
 
-        &-box {
+        &-box,
+        &-cancel,
+        &-back,
+        &-new,
+        &-item[data-change] &-change,
+        &-item[data-change] &-pay,
+        &-item[data-pay] &-change,
+        &-item[data-pay] &-pay {
             display: none;
         }
 
-        &-cancel {
-            display: none;
+        &-item[data-pay] &-cancel,
+        &-item[data-change] &-back {
+            display: inline-block;
+        }
+
+        &-item[data-change] &-new,
+        &-item[data-pay] &-box {
+            display: block;
+        }
+
+        &-box {
+            padding: 15px;
         }
 
         &-item {
@@ -77,22 +95,16 @@
             }
         }
 
-        &-item[data-pay] &-pay {
-            display: none;
-        }
-        &-item[data-pay] &-cancel {
-            display: inline-block;
-        }
-        &-item[data-pay] &-box {
-            display: block;
-        }
-
         &-new {
             margin-top: 15px;
+
             &-list {
-                display: flex;
-                flex-direction: row;
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                gap: 15px;
+                overflow: hidden;
             }
+
             &-item {
                 display: grid;
                 gap: 5px;
@@ -106,16 +118,12 @@
                     cursor: pointer;
                 }
 
-                &:not(:last-child) {
-                    margin-right: 15px;
-                }
-
                 &-image {
                     object-fit: contain;
                     object-position: center;
                     margin: 0 auto;
-                    width: 130px;
-                    height: 80px;
+                    width: 160px;
+                    height: 90px;
                     background-color: #fff;
                 }
 
@@ -129,6 +137,10 @@
     }
 
     &__shipment {
+
+        &-box {
+            overflow: hidden;
+        }
 
         &-item {
             &:not(:last-child) {
@@ -162,6 +174,10 @@
             gap: 15px;
             grid-template-columns: 1fr;
         }
+
+        &-map {
+            margin-top: 15px;
+        }
     
         &-info {
         }
@@ -176,12 +192,13 @@
         &-show {
             border: $border1;
             margin-top: 15px;
-            padding: 15px;
             background-color: $blackout_color;
         
             &-body {
                 display: grid;
                 grid-template-columns: 1fr 2fr;
+                gap: 15px;
+                padding: 15px;
             }
 
             &-products {
@@ -206,8 +223,8 @@
 
             &-image {
                 & > img {
-                    width: 150px;
-                    height: 80px;
+                    width: 90px;
+                    height: 50px;
                     object-fit: contain;
                     object-position: center;
                     background-color: #fff;
@@ -282,11 +299,9 @@
 
                         &-image {
                             & > img {
-                                width: 100%;
-                                height: 100%;
-                                max-width: 100px;
-                                max-height: 100px;
-                                object-fit: contain;
+                                width: 60px;
+                                height: 60px;
+                                object-fit: cover;
                                 object-position: center;
                             }
                             margin-right: 15px;
@@ -309,13 +324,37 @@
     }
 }
 @media (max-width: $c_width) {
-    
+    .order-detail {
+        &__payment {
+            &-new {
+                &-list {
+                    grid-template-columns: repeat(5, 1fr);
+                }
+            }
+        }
+    }
 }
 @media (max-width: $l_width) {
-    
+    .order-detail {
+        &__payment {
+            &-new {
+                &-list {
+                    grid-template-columns: repeat(4, 1fr);
+                }
+            }
+        }
+    }
 }
 @media (max-width: $m_width) {
     .order-detail {
+        &__payment {
+            &-new {
+                &-list {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+        }
+
         &__item {
 
             &-buttons {
@@ -385,6 +424,14 @@
     }
 }
 @media (max-width: $s_width) {
-    
+    .order-detail {
+        &__payment {
+            &-new {
+                &-list {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+        }
+    }
 }
 

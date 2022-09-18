@@ -32,24 +32,6 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 			},this);
 
 			/** Показать информацию о доставке */
-			/*
-			var buttonShipmentShow = document.getElementsByClassName('order-detail__shipment-show')[0];
-			var buttonShipmentHide = document.getElementsByClassName('order-detail__shipment-hide')[0];
-			var shipmentBox = document.getElementsByClassName('order-detail__shipment-box')[0];
-			BX.bind(buttonShipmentShow, 'click', function() {
-				shipmentBox.style.display = 'block';
-				buttonShipmentShow.style.display = 'none';
-				buttonShipmentHide.style.display = 'inline-block';
-			},this);
-
-			BX.bind(buttonShipmentHide, 'click', function() {
-				shipmentBox.style.display = 'none';
-				buttonShipmentShow.style.display = 'inline-block';
-				buttonShipmentHide.style.display = 'none';
-			},this);
-			*/
-
-
 			var listShipmentWrapper = document.getElementsByClassName('order-detail__shipment-item');
 			Array.prototype.forEach.call(listShipmentWrapper, function(shipmentWrapper) {
 
@@ -57,10 +39,29 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 				var buttonShipmentShow = shipmentWrapper.getElementsByClassName('order-detail__shipment-show')[0];
 				var buttonShipmentHide = shipmentWrapper.getElementsByClassName('order-detail__shipment-hide')[0];
 
+
+
 				BX.bindDelegate(shipmentWrapper, 'click', { 'class': 'order-detail__shipment-show' }, BX.proxy(function() {
 					buttonShipmentShow.style.display = 'none';
 					buttonShipmentHide.style.display = 'inline-block';
 					shipmentBox.style.display = 'block';
+
+					new BX.easing({
+						duration: 300,
+						start: {opacity: 0, height: 0},
+						finish: {opacity: 100, height: shipmentBox.clientHeight},
+						transition: BX.easing.makeEaseOut(BX.easing.transitions.quad),
+						step: function(state)
+						{
+							shipmentBox.style.opacity = state.opacity / 100;
+							shipmentBox.style.height = state.height + 'px';
+						},
+						complete: function()
+						{
+							shipmentBox.style.height = 'auto';
+						}
+					}).animate();
+
 				}, this));
 				BX.bindDelegate(shipmentWrapper, 'click', { 'class': 'order-detail__shipment-hide' }, BX.proxy(function() {
 					buttonShipmentShow.style.display = 'inline-block';
@@ -70,29 +71,27 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 			});
 
 
-			/** Сменить способ оплаты */
-
+			/** Сменить способ оплаты AND оплата */
 			var paymentItem = document.getElementsByClassName('order-detail__payment-item');
-
 			Array.prototype.forEach.call(paymentItem, function(paymentWrapper) {
 
-				var paymentBox = paymentWrapper.getElementsByClassName('order-detail__payment-box')[0];
-
+				/** Ооплата */
 				BX.bindDelegate(paymentWrapper, 'click', { 'class': 'order-detail__payment-pay' }, BX.proxy(function() {
 					$(paymentWrapper).toggleAttr('data-pay');
 				}, this));
-
 				BX.bindDelegate(paymentWrapper, 'click', { 'class': 'order-detail__payment-cancel' }, BX.proxy(function() {
 					$(paymentWrapper).toggleAttr('data-pay');
 				}, this));
 
-
+				/** Сменить способ оплаты */
 				var paymentInfo = paymentWrapper.getElementsByClassName('order-detail__payment-info')[0];
 				BX.bindDelegate(paymentWrapper, 'click', { 'class': 'order-detail__payment-change' }, BX.proxy(function(event) {
 					event.preventDefault();
 
-					var paymentPay = paymentWrapper.getElementsByClassName('order-detail__payment-pay')[0];
 					var paymentBack = paymentWrapper.getElementsByClassName('order-detail__payment-back')[0];
+
+					// Фикс двойного наложения события click после ajax
+					BX.unbindAll(paymentBack);
 
 					BX.ajax({
 						method: 'POST',
@@ -106,23 +105,22 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 						},
 						onsuccess: BX.proxy(function(result) {
 
-							// paymentBox.innerHTML = result;
 							paymentInfo.innerHTML = result;
 
-							if (paymentPay) {
-								$(paymentPay).remove();
-								// btn.parentNode.removeChild(btn);
-							}
-
-							paymentBack.style.display = "inline-block";
-
-							BX.bind(paymentBack, 'click', function() {
-
-								window.location.reload();
+							BX.bind(paymentBack, 'click', function(eventBack) {
+								eventBack.preventDefault();
+								$(paymentWrapper).toggleAttr('data-change');
+								paymentInfo.innerHTML = '';
+								// window.location.reload();
 							},this);
+
+							$(paymentWrapper).toggleAttr('data-change');
 
 						},this),
 						onfailure: BX.proxy(function() {
+
+							$(paymentWrapper).removeAttr('data-change');
+							$(paymentWrapper).removeAttr('data-pay');
 
 							return this;
 

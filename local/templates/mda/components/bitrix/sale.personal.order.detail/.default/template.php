@@ -2,6 +2,8 @@
 
 /** @var array $arParams */
 /** @var array $arResult */
+/** @var array $paymentData */
+/** @var string $templateFolder */
 /** @global CMain $APPLICATION */
 
 use Bitrix\Main\Localization\Loc,
@@ -9,9 +11,9 @@ use Bitrix\Main\Localization\Loc,
 
 if ($arParams['GUEST_MODE'] !== 'Y')
 {
+    Asset::getInstance()->addJs("/local/templates/mda/components/bitrix/sale.order.payment.change/.default/script.js");
 //	Asset::getInstance()->addJs("/bitrix/components/bitrix/sale.order.payment.change/templates/.default/script.js");
-	Asset::getInstance()->addJs("/local/templates/mda/components/bitrix/sale.order.payment.change/.default/script.js");
-	Asset::getInstance()->addCss("/bitrix/components/bitrix/sale.order.payment.change/templates/.default/style.css");
+//	Asset::getInstance()->addCss("/bitrix/components/bitrix/sale.order.payment.change/templates/.default/style.css");
 }
 //$this->addExternalCss("/bitrix/css/main/bootstrap.css");
 
@@ -19,15 +21,18 @@ if ($arParams['GUEST_MODE'] !== 'Y')
  * clipboard - копирование при нажатии на иконку
  * fx - подгрузка платежных систем в "Сменить способ оплаты"
  */
-CJSCore::Init(array('clipboard', 'fx', 'BX.Sale'));
+CJSCore::Init(array('clipboard', 'fx'));
 
 $APPLICATION->SetTitle(Loc::getMessage('SPOD_LIST_MY_ORDER', [
     '#ACCOUNT_NUMBER#' => htmlspecialcharsbx($arResult["ACCOUNT_NUMBER"]),
     '#DATE_ORDER_CREATE#' => $arResult["DATE_INSERT_FORMATED"]
 ]));
+?>
 
-if (!empty($arResult['ERRORS']['FATAL'])) {
 
+<?if (!empty($arResult['ERRORS']['FATAL'])):?>
+
+    <?
 	foreach ($arResult['ERRORS']['FATAL'] as $error) {
 		ShowError($error);
 	}
@@ -37,15 +42,18 @@ if (!empty($arResult['ERRORS']['FATAL'])) {
 	if ($arParams['AUTH_FORM_IN_TEMPLATE'] && isset($arResult['ERRORS']['FATAL'][$component::E_NOT_AUTHORIZED])) {
 		$APPLICATION->AuthForm('', false, false, 'N', false);
 	}
-} else {
+    ?>
 
-    /** Ошибки */
+<?else:?>
+
+    <?/** Ошибки */?>
+    <?
 	if (!empty($arResult['ERRORS']['NONFATAL'])) {
 		foreach ($arResult['ERRORS']['NONFATAL'] as $error) {
 			ShowError($error);
 		}
 	}
-?>
+    ?>
 
     <? require __DIR__ . '/include/order.php'; ?>
 
@@ -59,14 +67,10 @@ if (!empty($arResult['ERRORS']['FATAL'])) {
 	);
 	$javascriptParams = CUtil::PhpToJSObject($javascriptParams);
 	?>
+
 	<script>
 		BX.Sale.PersonalOrderComponent.PersonalOrderDetail.init(<?=$javascriptParams?>);
 	</script>
 
-
-
-
-<?
-}
-?>
+<?endif;?>
 

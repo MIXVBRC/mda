@@ -5,35 +5,32 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 }
 
 use Bitrix\Main\Localization\Loc;
+?>
 
-if (!empty($arResult["errorMessage"]))
-{
-	if (!is_array($arResult["errorMessage"]))
-	{
+<?if (!empty($arResult["errorMessage"])):?>
+
+    <?
+	if (!is_array($arResult["errorMessage"])) {
 		ShowError($arResult["errorMessage"]);
-	}
-	else
-	{
-		foreach ($arResult["errorMessage"] as $errorMessage)
-		{
+	} else {
+		foreach ($arResult["errorMessage"] as $errorMessage) {
 			ShowError($errorMessage);
 		}
 	}
-}
-else
-{
-	if ($arResult['IS_ALLOW_PAY'] == 'N')
-	{
-		?>
+	?>
+
+<?else:?>
+
+
+	<?if ($arResult['IS_ALLOW_PAY'] == 'N'):?>
+
 		<div class="sale-paysystem-wrapper">
 			<p><b><?=Loc::getMessage("SOPC_PAY_SYSTEM_CHANGED")?></b></p>
 			<p><?=Loc::getMessage("SOPC_PAY_SYSTEM_NOT_ALLOW_PAY")?></p>
 		</div>
-		<?
-	}
-	elseif ($arResult['SHOW_INNER_TEMPLATE'] == 'Y')
-	{
-		?>
+
+    <?elseif ($arResult['SHOW_INNER_TEMPLATE'] == 'Y'):?>
+
 		<div class="bx-sopc" id="bx-sopc<?=$wrapperId?>">
 			<div class="sale-paysystem-wrapper">
 				<div class="row">
@@ -127,9 +124,10 @@ else
 				</div>
 			</div>
 		</div>
-		<?
-		if ((float)$arResult['INNER_PAYMENT_INFO']['CURRENT_BUDGET'] > 0)
-		{
+
+		<? if ((float)$arResult['INNER_PAYMENT_INFO']['CURRENT_BUDGET'] > 0):?>
+
+            <?
 			$javascriptParams = array(
 				"url" => CUtil::JSEscape($this->__component->GetPath() . '/ajax.php'),
 				"templateFolder" => CUtil::JSEscape($templateFolder),
@@ -141,42 +139,41 @@ else
 			);
 			$javascriptParams = CUtil::PhpToJSObject($javascriptParams);
 			?>
+
 			<script>
 				var sc = new BX.Sale.OrderInnerPayment(<?=$javascriptParams?>);
 			</script>
-			<?
-		}
-	}
-	elseif (empty($arResult['PAYMENT_LINK']) && !$arResult['IS_CASH'] && mb_strlen($arResult['TEMPLATE']))
-	{
-		echo $arResult['TEMPLATE'];
-	}
-	else
-	{
-		?>
-		<div class='row'>
-			<div class='col-xs-12'>
+
+        <?endif;?>
+
+	<?elseif (empty($arResult['PAYMENT_LINK']) && !$arResult['IS_CASH'] && mb_strlen($arResult['TEMPLATE'])):?>
+
+        <div>
+            <?=$arResult['TEMPLATE'];?>
+        </div>
+
+
+	<?else:?>
+
+			<div style="color: #fff">
 				<p><?=Loc::getMessage("SOPC_ORDER_SUC", array("#ORDER_ID#"=>htmlspecialcharsbx($arResult['ORDER_ID']),"#ORDER_DATE#"=>$arResult['ORDER_DATE']))?></p>
 				<p><?=Loc::getMessage("SOPC_PAYMENT_SUC", array("#PAYMENT_ID#"=>htmlspecialcharsbx($arResult['PAYMENT_ID'])))?></p>
 				<p><?=Loc::getMessage("SOPC_PAYMENT_SYSTEM_NAME", array("#PAY_SYSTEM_NAME#"=>htmlspecialcharsbx($arResult['PAY_SYSTEM_NAME'])))?></p>
-				<?
-				if (!$arResult['IS_CASH'] && !empty($arResult['PAYMENT_LINK']))
-				{
-					?>
+
+				<? if (!$arResult['IS_CASH'] && !empty($arResult['PAYMENT_LINK'])):?>
 					<p><?=Loc::getMessage("SOPC_PAY_LINK", array("#LINK#"=>htmlspecialcharsbx($arResult['PAYMENT_LINK'])))?></p>
-					<?
-				}
-				?>
+                <?endif;?>
+
 			</div>
-		</div>
-		<?
-		if (!$arResult['IS_CASH'] && !empty($arResult['PAYMENT_LINK']))
-		{
-			?>
+
+		<? if (!$arResult['IS_CASH'] && !empty($arResult['PAYMENT_LINK'])):?>
+
 			<script type="text/javascript">
 				window.open('<?=CUtil::JSEscape($arResult['PAYMENT_LINK'])?>');
 			</script>
-			<?
-		}
-	}
-}
+
+        <?endif;?>
+
+    <?endif;?>
+
+<?endif;?>

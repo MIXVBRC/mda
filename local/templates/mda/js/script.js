@@ -104,6 +104,8 @@ $(document).ready(function () {
 
         $(button).on('mouseenter', function (event) {
 
+            $(this).children('[data-button-effect-enter]').remove();
+
             let effect = $('<div data-button-effect-enter></div>');
     
             $(effect).css({
@@ -119,7 +121,9 @@ $(document).ready(function () {
             
         });
         $(button).on('mouseleave', function (event) {
-    
+
+            $(this).children('[data-button-effect-leave]').remove();
+
             let effect = $('<div data-button-effect-leave></div>');
     
             $(effect).css({

@@ -74,19 +74,6 @@ use Bitrix\Main\Localization\Loc;
                                             <?endforeach;?>
                                         <?endif;?>
 
-                                        <div class="order-detail__item-table-tr-td-product-property">
-                                            <?='Говно' . ': ' . 'Пахнет'?>
-                                        </div>
-                                        <div class="order-detail__item-table-tr-td-product-property">
-                                            <?='ГовноГовно' . ': ' . 'ПахнетПахнет'?>
-                                        </div>
-                                        <div class="order-detail__item-table-tr-td-product-property">
-                                            <?='Говно Говно Говно' . ': ' . 'ПахнетПахнетПахнет'?>
-                                        </div>
-                                        <div class="order-detail__item-table-tr-td-product-property">
-                                            <?='Говно' . ': ' . 'Пахнет Пахнет Пахнет Пахнет'?>
-                                        </div>
-
                                     </div>
 
                                 </a>

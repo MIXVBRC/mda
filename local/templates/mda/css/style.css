@@ -4826,11 +4826,11 @@ body {
     margin-left: 0;
   }
   100% {
-    width: 300px;
+    width: 200%;
     height: 300px;
     opacity: 0;
     margin-top: -150px;
-    margin-left: -150px;
+    margin-left: -100%;
   }
 }
 
@@ -4843,11 +4843,11 @@ body {
     margin-left: 0;
   }
   100% {
-    width: 300px;
+    width: 200%;
     height: 300px;
     opacity: 0;
     margin-top: -150px;
-    margin-left: -150px;
+    margin-left: -100%;
   }
 }
 .button, .button__success, .button__medium, .button__error {
@@ -4881,31 +4881,39 @@ body {
 .button [data-button-effect-leave], .button__success [data-button-effect-leave], .button__medium [data-button-effect-leave], .button__error [data-button-effect-leave] {
   animation-direction: reverse;
 }
-.button:hover {
+.button {
   border: 2px solid #fff;
-  background-color: #fff;
+}
+.button:hover {
   color: #15151B;
+  background-color: #fff;
   text-shadow: none;
 }
 .button [data-button-effect-enter], .button [data-button-effect-leave] {
   background-color: #fff;
 }
-.button__success:hover {
+.button__success {
   border: 2px solid #25d366;
+}
+.button__success:hover {
   background-color: #25d366;
 }
 .button__success [data-button-effect-enter], .button__success [data-button-effect-leave] {
   background-color: #25d366;
 }
-.button__medium:hover {
+.button__medium {
   border: 2px solid #0085FF;
+}
+.button__medium:hover {
   background-color: #0085FF;
 }
 .button__medium [data-button-effect-enter], .button__medium [data-button-effect-leave] {
   background-color: #0085FF;
 }
-.button__error:hover {
+.button__error {
   border: 2px solid #ff2d2d;
+}
+.button__error:hover {
   background-color: #ff2d2d;
 }
 .button__error [data-button-effect-enter], .button__error [data-button-effect-leave] {
@@ -5596,6 +5604,7 @@ body {
 .order-detail__payment-success, .order-detail__payment-medium, .order-detail__payment-error {
   margin-left: 10px;
   padding: 5px 10px;
+  cursor: default;
 }
 .order-detail__payment-success {
   border: 2px solid #25d366;
@@ -5612,31 +5621,30 @@ body {
 .order-detail__payment-buttons {
   margin-top: 15px;
 }
-.order-detail__payment-box {
+.order-detail__payment-box, .order-detail__payment-cancel, .order-detail__payment-back, .order-detail__payment-new, .order-detail__payment-item[data-change] .order-detail__payment-change, .order-detail__payment-item[data-change] .order-detail__payment-pay, .order-detail__payment-item[data-pay] .order-detail__payment-change, .order-detail__payment-item[data-pay] .order-detail__payment-pay {
   display: none;
 }
-.order-detail__payment-cancel {
-  display: none;
+.order-detail__payment-item[data-pay] .order-detail__payment-cancel, .order-detail__payment-item[data-change] .order-detail__payment-back {
+  display: inline-block;
+}
+.order-detail__payment-item[data-change] .order-detail__payment-new, .order-detail__payment-item[data-pay] .order-detail__payment-box {
+  display: block;
+}
+.order-detail__payment-box {
+  padding: 15px;
 }
 .order-detail__payment-item:not(:last-child) {
   border-bottom: 1px solid #fff;
   padding-bottom: 15px;
 }
-.order-detail__payment-item[data-pay] .order-detail__payment-pay {
-  display: none;
-}
-.order-detail__payment-item[data-pay] .order-detail__payment-cancel {
-  display: inline-block;
-}
-.order-detail__payment-item[data-pay] .order-detail__payment-box {
-  display: block;
-}
 .order-detail__payment-new {
   margin-top: 15px;
 }
 .order-detail__payment-new-list {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+  overflow: hidden;
 }
 .order-detail__payment-new-item {
   display: grid;
@@ -5650,23 +5658,23 @@ body {
   background-color: #0085FF;
   cursor: pointer;
 }
-.order-detail__payment-new-item:not(:last-child) {
-  margin-right: 15px;
-}
 .order-detail__payment-new-item-image {
   -o-object-fit: contain;
      object-fit: contain;
   -o-object-position: center;
      object-position: center;
   margin: 0 auto;
-  width: 130px;
-  height: 80px;
+  width: 160px;
+  height: 90px;
   background-color: #fff;
 }
 .order-detail__payment-new-item-name {
   display: inline-block;
   color: #fff;
   font-size: 12px;
+}
+.order-detail__shipment-box {
+  overflow: hidden;
 }
 .order-detail__shipment-item:not(:last-child) {
   border-bottom: 1px solid #fff;
@@ -5693,18 +5701,22 @@ body {
   gap: 15px;
   grid-template-columns: 1fr;
 }
+.order-detail__item-map {
+  margin-top: 15px;
+}
 .order-detail__item-product .order-detail__item-body {
   padding: unset;
 }
 .order-detail__item-show {
   border: 2px solid #fff;
   margin-top: 15px;
-  padding: 15px;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .order-detail__item-show-body {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  gap: 15px;
+  padding: 15px;
 }
 .order-detail__item-show-products table {
   border: 2px solid #fff;
@@ -5724,8 +5736,8 @@ body {
   margin-right: 15px;
 }
 .order-detail__item-detail-image > img {
-  width: 150px;
-  height: 80px;
+  width: 90px;
+  height: 50px;
   -o-object-fit: contain;
      object-fit: contain;
   -o-object-position: center;
@@ -5784,12 +5796,10 @@ body {
   margin-right: 15px;
 }
 .order-detail__item-table-tr-td-product-image > img {
-  width: 100%;
-  height: 100%;
-  max-width: 100px;
-  max-height: 100px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  width: 60px;
+  height: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
   -o-object-position: center;
      object-position: center;
 }
@@ -5797,7 +5807,20 @@ body {
   font-weight: bold;
   margin-bottom: 5px;
 }
+@media (max-width: 1400px) {
+  .order-detail__payment-new-list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media (max-width: 992px) {
+  .order-detail__payment-new-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 @media (max-width: 768px) {
+  .order-detail__payment-new-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
   .order-detail__item-buttons {
     display: grid;
     gap: 15px;
@@ -5845,6 +5868,11 @@ body {
   .order-detail__item-show-body {
     gap: 15px;
     grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 576px) {
+  .order-detail__payment-new-list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 768px) {

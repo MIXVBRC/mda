@@ -24,72 +24,75 @@ BX.Sale.OrderPaymentChange = (function()
 	classDescription.prototype.init = function()
 	{
 
-		var listPaySystems = this.wrapper.getElementsByClassName('order-detail__payment-new-list')[0];
-		new BX.easing(
-		{
-			duration: 500,
-			start: {opacity: 0, height: 50},
-			finish: {opacity: 100, height: 'auto'},
+		var paymentNewList = this.wrapper.getElementsByClassName('order-detail__payment-new-list')[0];
+		new BX.easing({
+			duration: 300,
+			start: {opacity: 0, height: 0},
+			finish: {opacity: 100, height: paymentNewList.clientHeight},
 			transition: BX.easing.makeEaseOut(BX.easing.transitions.quad),
 			step: function(state)
 			{
-				listPaySystems.style.opacity = state.opacity / 100;
-				listPaySystems.style.height = listPaySystems.height / 450 + 'px';
+				paymentNewList.style.opacity = state.opacity / 100;
+				paymentNewList.style.height = state.height + 'px';
 			},
 			complete: function()
 			{
-				listPaySystems.style.height = 'auto';
+				paymentNewList.style.height = 'auto';
 			}
 		}).animate();
 
 		BX.bindDelegate(this.paySystemsContainer, 'click', { 'className': 'order-detail__payment-new-item' }, BX.proxy(
-			function(event)
-			{
+			function(event) {
+
 				var targetParentNode = event.target.parentNode;
 				var hidden = targetParentNode.getElementsByClassName("order-detail__payment-new-input")[0];
-				BX.ajax(
-					{
-						method: 'POST',
-						dataType: 'html',
-						url: this.ajaxUrl,
-						data:
-						{
-							sessid: BX.bitrix_sessid(),
-							paySystemId: hidden.value,
-							accountNumber: this.accountNumber,
-							paymentNumber: this.paymentNumber,
-							inner: this.inner,
-							templateName: this.templateName,
-							refreshPrices: this.refreshPrices,
-							onlyInnerFull: this.onlyInnerFull,
-							pathToPayment: this.pathToPayment,
-							returnUrl: this.returnUrl,
-						},
-						onsuccess: BX.proxy(function(result)
-						{
-							window.location.reload();
 
-							// let paymentItem = this.paySystemsContainer.closest('.order-detail__payment-item');
-							// let paymentBox = $(paymentItem).find('.order-detail__payment-box');
-							// let paymentBack = $(paymentItem).find('.order-detail__payment-back');
-							// $(paymentItem).toggleAttr('data-pay');
-							// $(paymentBox).html(result);
-							// this.paySystemsContainer.remove();
-							// // $(paymentBack).css({display:'none'});
-							//
-							// if (this.wrapper.parentNode.previousElementSibling) {
-							// 	var detailPaymentImage = this.wrapper.parentNode.previousElementSibling.getElementsByClassName("order-detail__payment-image")[0];
-							// 	if (detailPaymentImage !== undefined) {
-							// 		detailPaymentImage.setAttribute('src', targetParentNode.getElementsByClassName("order-detail__payment-new-item-image")[0].getAttribute('src'));
-							// 	}
-							// }
-						},this),
-						onfailure: BX.proxy(function()
-						{
-							return this;
-						}, this)
-					}, this
-				);
+				pre(this.ajaxUrl);
+				BX.ajax({
+					method: 'POST',
+					dataType: 'html',
+					url: this.ajaxUrl,
+					data:
+					{
+						sessid: BX.bitrix_sessid(),
+						paySystemId: hidden.value,
+						accountNumber: this.accountNumber,
+						paymentNumber: this.paymentNumber,
+						inner: this.inner,
+						templateName: this.templateName,
+						refreshPrices: this.refreshPrices,
+						onlyInnerFull: this.onlyInnerFull,
+						pathToPayment: this.pathToPayment,
+						returnUrl: this.returnUrl,
+					},
+					onsuccess: BX.proxy(function(result) {
+
+						// window.location.reload();
+
+						let paymentItem = this.paySystemsContainer.closest('.order-detail__payment-item');
+						let paymentBox = $(paymentItem).find('.order-detail__payment-box');
+
+						$(paymentItem).toggleAttr('data-pay');
+						$(paymentItem).toggleAttr('data-change');
+
+						$(paymentBox).html(result);
+
+						this.paySystemsContainer.remove();
+
+						if (this.wrapper.parentNode.previousElementSibling) {
+							var detailPaymentImage = this.wrapper.parentNode.previousElementSibling.getElementsByClassName("order-detail__payment-image")[0];
+							if (detailPaymentImage !== undefined) {
+
+								// 'order-detail__item-title'
+
+								detailPaymentImage.setAttribute('src', targetParentNode.getElementsByClassName("order-detail__payment-new-item-image")[0].getAttribute('src'));
+							}
+						}
+					},this),
+					onfailure: BX.proxy(function() {
+						return this;
+					}, this)
+				}, this);
 				return this;
 			}, this)
 		);

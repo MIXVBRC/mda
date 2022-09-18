@@ -2,6 +2,7 @@
 /**
  * @var array $arParams
  * @var array $arResult
+ * @global CMain $APPLICATION
  */
 
 use Bitrix\Main\Localization\Loc;
@@ -73,11 +74,13 @@ use Bitrix\Main\Localization\Loc;
                                         </tr>
                                     <?endif;?>
 
-                                    <!-- TEST -->
-                                    <tr class="order-detail__item-table-tr">
-                                        <td class="order-detail__item-table-tr-td"><?= Loc::getMessage('SPOD_ORDER_TRACKING_NUMBER') ?>:</td>
-                                        <td class="order-detail__item-table-tr-td"><span class="order-detail__copy-box"><?=$shipment['ID']?></span><i class="order-detail__copy fa fa-copy"></i></td>
-                                    </tr>
+                                    <?/* if (isAdmin()): ?>
+                                        <!-- TEST -->
+                                        <tr class="order-detail__item-table-tr pre">
+                                            <td class="order-detail__item-table-tr-td"><?= Loc::getMessage('SPOD_ORDER_TRACKING_NUMBER') ?>:</td>
+                                            <td class="order-detail__item-table-tr-td"><span class="order-detail__copy-box"><?=$shipment['ID']?></span><i class="order-detail__copy fa fa-copy"></i></td>
+                                        </tr>
+                                    <? endif; */?>
 
                                 </table>
 
@@ -106,6 +109,42 @@ use Bitrix\Main\Localization\Loc;
                                             </tr>
                                         </table>
                                     <?endif;?>
+
+                                    <?/** Карта */?>
+                                    <?// TODO: Нужен другой компонент т.к. в этом ошибки JS в консоли ?>
+                                    <div class="order-detail__item-map">
+                                        <?
+                                        $APPLICATION->IncludeComponent(
+                                            "bitrix:map.yandex.view",
+                                            "",
+                                            [
+                                                "INIT_MAP_TYPE" => "COORDINATES",
+                                                "MAP_DATA" =>   serialize(
+                                                    [
+                                                        'yandex_lon' => $store['GPS_S'],
+                                                        'yandex_lat' => $store['GPS_N'],
+                                                        'PLACEMARKS' => [
+                                                            [
+                                                                "LON" => $store['GPS_S'],
+                                                                "LAT" => $store['GPS_N'],
+                                                                "TEXT" => htmlspecialcharsbx($store['TITLE'])
+                                                            ]
+                                                        ]
+                                                    ]
+                                                ),
+                                                "MAP_WIDTH" => "100%",
+                                                "MAP_HEIGHT" => "250",
+                                                "CONTROLS" => ["ZOOM", "SMALLZOOM", "SCALELINE"],
+                                                "OPTIONS" => [
+                                                    "ENABLE_DRAGGING",
+                                                    "ENABLE_SCROLL_ZOOM",
+                                                    "ENABLE_DBLCLICK_ZOOM"
+                                                ],
+                                                "MAP_ID" => ""
+                                            ]
+                                        );
+                                        ?>
+                                    </div>
 
                                 </div>
                             <?endif;?>
@@ -160,19 +199,6 @@ use Bitrix\Main\Localization\Loc;
                                                                 <?endforeach;?>
 
                                                             <?endif;?>
-
-                                                            <div class="order-detail__item-table-tr-td-product-property">
-                                                                <?='Говно' . ': ' . 'Пахнет'?>
-                                                            </div>
-                                                            <div class="order-detail__item-table-tr-td-product-property">
-                                                                <?='ГовноГовно' . ': ' . 'ПахнетПахнет'?>
-                                                            </div>
-                                                            <div class="order-detail__item-table-tr-td-product-property">
-                                                                <?='Говно Говно Говно' . ': ' . 'ПахнетПахнетПахнет'?>
-                                                            </div>
-                                                            <div class="order-detail__item-table-tr-td-product-property">
-                                                                <?='Говно' . ': ' . 'Пахнет Пахнет Пахнет Пахнет'?>
-                                                            </div>
 
                                                         </div>
                                                     </a>

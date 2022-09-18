@@ -9,11 +9,11 @@
             margin-left: 0;
         }
         100% {
-            width: 300px;
+            width: 200%;
             height: 300px;
             opacity: 0;
             margin-top: -150px;
-            margin-left: -150px;
+            margin-left: calc(200% / 2 * -1);
         }
     }
 
@@ -54,10 +54,10 @@
     }
 
     & {
+        border: 2px solid $font_color;
         &:hover {
-            border: 2px solid $font_color;
-            background-color: $font_color;
             color: $background_color;
+            background-color: $font_color;
             text-shadow: none;
         }
         & [data-button-effect-enter],
@@ -67,8 +67,8 @@
     }
 
     &__success {
+        border: 2px solid $whatsapp;
         &:hover {
-            border: 2px solid $whatsapp;
             background-color: $whatsapp;
         }
         & [data-button-effect-enter],
@@ -78,8 +78,8 @@
     }
 
     &__medium {
+        border: 2px solid $main_color;
         &:hover {
-            border: 2px solid $main_color;
             background-color: $main_color;
         }
         & [data-button-effect-enter],
@@ -89,8 +89,8 @@
     }
 
     &__error {
+        border: 2px solid $main_color_reverse;
         &:hover {
-            border: 2px solid $main_color_reverse;
             background-color: $main_color_reverse;
         }
         & [data-button-effect-enter],
