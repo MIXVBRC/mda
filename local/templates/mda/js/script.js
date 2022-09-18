@@ -97,4 +97,46 @@ $(document).ready(function () {
         $(this).closest('[data-popup]').toggleAttr('data-popup-active');
         $('[data-popup-content]').html('');
     });
+
+    // button
+    (function () {
+        let button = $('.button, .button__success, .button__medium, .button__error');
+
+        $(button).on('mouseenter', function (event) {
+
+            let effect = $('<div data-button-effect-enter></div>');
+    
+            $(effect).css({
+                left: event.offsetX + 'px',
+                top: event.offsetY + 'px',
+            });
+            
+            $(this).append(effect);
+    
+            setTimeout(function(){
+                $(effect).remove();
+            }, 500);
+            
+        });
+        $(button).on('mouseleave', function (event) {
+    
+            let effect = $('<div data-button-effect-leave></div>');
+    
+            $(effect).css({
+                left: event.offsetX + 'px',
+                top: event.offsetY + 'px',
+            });
+            
+            $(this).append(effect);
+    
+            setTimeout(function(){
+                $(effect).remove();
+            }, 500);
+            
+        });
+    })();
+
+    // inputmask
+    $('[data-phone-mask]').inputmask("+7 (999) 999-99-99");
+
 });

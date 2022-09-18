@@ -1316,7 +1316,7 @@ div.sale-order-detail-payment-options-methods-template {
 	display: inline-block;
 	width: 18px;
 	height: 18px;
-	background: url(images/sale-personal-order-sprite.svg) 1px 1px no-repeat;
+	/*background: url(images/sale-personal-order-sprite.svg) 1px 1px no-repeat;*/
 	-webkit-transition: opacity .3s ease;
 	-moz-transition: opacity .3s ease;
 	transition: opacity .3s ease;
