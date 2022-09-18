@@ -109,10 +109,10 @@ else
 	</div>
     */?>
 
-    <div class="bx-sopc" id="bx-sopc<?=$wrapperId?>">
-        <div class="order-detail__item-detail-info">
+    <div id="bx-sopc<?=$wrapperId?>">
 
-            <?/** Название оплаты */?>
+        <?/*
+        <div class="order-detail__item-detail-info">
             <div class="order-detail__item-title">
                 <?
                 $paymentSubTitle = Loc::getMessage('SOPC_TPL_BILL')." ".Loc::getMessage('SOPC_TPL_NUMBER_SIGN').$arResult['PAYMENT']['ACCOUNT_NUMBER'];
@@ -131,10 +131,7 @@ else
                 echo $paymentSubTitle;
                 ?>
             </div>
-
             <table class="order-detail__item-table">
-
-                <?/** Сумма к оплате по счету */?>
                 <tr class="order-detail__item-table-tr">
                     <td class="order-detail__item-table-tr-td">
                         <?=Loc::getMessage('SOPC_TPL_SUM_TO_PAID')?>:
@@ -144,8 +141,8 @@ else
                     </td>
                 </tr>
             </table>
-
         </div>
+        */?>
 
         <div class="order-detail__payment-new">
             <div class="order-detail__payment-new-list">
@@ -154,9 +151,7 @@ else
                     <div class="order-detail__payment-new-item">
                         <input type="hidden" class="order-detail__payment-new-input" name="PAY_SYSTEM_ID" value="<?=$paySystem['ID']?>"<?= ($key == 0) ? "checked='checked'" :""?>>
                         <? if (empty($paySystem['LOGOTIP'])) $paySystem['LOGOTIP'] = '/bitrix/images/sale/nopaysystem.gif'; ?>
-                        <div class="order-detail__payment-new-item-image">
-                            <img src="<?=htmlspecialcharsbx($paySystem['LOGOTIP'])?>" alt="payment_image">
-                        </div>
+                        <img class="order-detail__payment-new-item-image" src="<?=htmlspecialcharsbx($paySystem['LOGOTIP'])?>" alt="payment_image">
                         <div class="order-detail__payment-new-item-name">
                             <?=CUtil::JSEscape(htmlspecialcharsbx($paySystem['NAME']))?>
                         </div>

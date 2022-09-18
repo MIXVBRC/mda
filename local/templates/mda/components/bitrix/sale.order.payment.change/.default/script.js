@@ -17,7 +17,7 @@ BX.Sale.OrderPaymentChange = (function()
 		this.templateFolder = params.templateFolder;
 		this.wrapper = document.getElementById('bx-sopc'+ this.wrapperId);
 
-		this.paySystemsContainer = this.wrapper.getElementsByClassName('order-detail__item-detail-info')[0];
+		this.paySystemsContainer = this.wrapper.getElementsByClassName('order-detail__payment-new')[0];
 		BX.ready(BX.proxy(this.init, this));
 	};
 
@@ -33,19 +33,18 @@ BX.Sale.OrderPaymentChange = (function()
 			transition: BX.easing.makeEaseOut(BX.easing.transitions.quad),
 			step: function(state)
 			{
-				// listPaySystems.style.opacity = state.opacity / 100;
-				// listPaySystems.style.height = listPaySystems.height / 450 + 'px';
+				listPaySystems.style.opacity = state.opacity / 100;
+				listPaySystems.style.height = listPaySystems.height / 450 + 'px';
 			},
 			complete: function()
 			{
-				// listPaySystems.style.height = 'auto';
+				listPaySystems.style.height = 'auto';
 			}
 		}).animate();
-		pre(0);
+
 		BX.bindDelegate(this.paySystemsContainer, 'click', { 'className': 'order-detail__payment-new-item' }, BX.proxy(
 			function(event)
 			{
-				pre(1);
 				var targetParentNode = event.target.parentNode;
 				var hidden = targetParentNode.getElementsByClassName("order-detail__payment-new-input")[0];
 				BX.ajax(
@@ -68,16 +67,22 @@ BX.Sale.OrderPaymentChange = (function()
 						},
 						onsuccess: BX.proxy(function(result)
 						{
-							this.paySystemsContainer.innerHTML = result;
-							if (this.wrapper.parentNode.previousElementSibling)
-							{
-								var detailPaymentImage = this.wrapper.parentNode.previousElementSibling.getElementsByClassName("sale-order-detail-payment-options-methods-image-element")[0];
-								if (detailPaymentImage !== undefined)
-								{
-									// detailPaymentImage.style.backgroundImage = event.target.style.backgroundImage;
-									detailPaymentImage.style.backgroundImage = event.target.style.backgroundImage;
-								}
-							}
+							window.location.reload();
+
+							// let paymentItem = this.paySystemsContainer.closest('.order-detail__payment-item');
+							// let paymentBox = $(paymentItem).find('.order-detail__payment-box');
+							// let paymentBack = $(paymentItem).find('.order-detail__payment-back');
+							// $(paymentItem).toggleAttr('data-pay');
+							// $(paymentBox).html(result);
+							// this.paySystemsContainer.remove();
+							// // $(paymentBack).css({display:'none'});
+							//
+							// if (this.wrapper.parentNode.previousElementSibling) {
+							// 	var detailPaymentImage = this.wrapper.parentNode.previousElementSibling.getElementsByClassName("order-detail__payment-image")[0];
+							// 	if (detailPaymentImage !== undefined) {
+							// 		detailPaymentImage.setAttribute('src', targetParentNode.getElementsByClassName("order-detail__payment-new-item-image")[0].getAttribute('src'));
+							// 	}
+							// }
 						},this),
 						onfailure: BX.proxy(function()
 						{

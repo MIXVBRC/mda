@@ -1,0 +1,43 @@
+@media (max-width: $c_width) {}
+@media (max-width: $l_width) {}
+@media (max-width: $m_width) {
+    .mobile-table {
+        & thead {
+            display: none;
+        }
+
+        & tr {
+            display: block;
+
+            & td {
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+
+                &::before {
+                    content: attr(data-label);
+                    font-weight: bold;
+                    margin-right: 15px;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    opacity: 0.05;
+                    background-color: $font_color;
+                }
+            }
+
+            & td:nth-child(2n+1) {
+                &::after {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
+@media (max-width: $s_width) {}
