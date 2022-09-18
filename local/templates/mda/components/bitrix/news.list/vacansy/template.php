@@ -97,7 +97,7 @@ $this->setFrameMode(true);
 
                             </div>
 
-                            <a href="/include/form.php" data-popup-form="1" id="<?=$arResult['CODE'].'-'.$arItem['ID']?>" class="vacansy__item-button"><?=GetMessage('VACANSY_BUTTON')?></a>
+                            <a href="/include/form.php" data-popup-form="1" id="<?=$arResult['CODE'].'-'.$arItem['ID']?>" class="button"><?=GetMessage('VACANSY_BUTTON')?></a>
 
                         </div>
 

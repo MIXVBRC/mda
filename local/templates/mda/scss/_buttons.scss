@@ -23,12 +23,12 @@
     &__error {
         text-transform: uppercase;
         padding: 10px 15px;
-        font-weight: bold;
+        // font-weight: bold;
         display: inline-block;
-        font-size: 12px;
+        font-size: 16px;
         color: $font_color;
         text-shadow: 1px 1px 2px $background_color;
-        border: 2px solid $font_color;
+        border: 1px solid $font_color;
         transition: $transition_time ease-in-out;
         overflow: hidden;
         position: relative;
@@ -54,7 +54,7 @@
     }
 
     & {
-        border: 2px solid $font_color;
+        border: 1px solid $font_color;
         &:hover {
             color: $background_color;
             background-color: $font_color;
@@ -67,7 +67,7 @@
     }
 
     &__success {
-        border: 2px solid $whatsapp;
+        border: 1px solid $whatsapp;
         &:hover {
             background-color: $whatsapp;
         }
@@ -78,7 +78,7 @@
     }
 
     &__medium {
-        border: 2px solid $main_color;
+        border: 1px solid $main_color;
         &:hover {
             background-color: $main_color;
         }
@@ -89,7 +89,7 @@
     }
 
     &__error {
-        border: 2px solid $main_color_reverse;
+        border: 1px solid $main_color_reverse;
         &:hover {
             background-color: $main_color_reverse;
         }
@@ -112,7 +112,7 @@
 
     &::before {
         left: 15px;
-        top: 18px;
+        top: 20px;
         width: 9px;
         height: 9px;
         border-left: 1px solid $font_color;
@@ -122,7 +122,7 @@
 
     &::after {
         left: 14px;
-        top: 22px;
+        top: 24px;
         width: 60px;
         height: 1px;
         background-color: $font_color;

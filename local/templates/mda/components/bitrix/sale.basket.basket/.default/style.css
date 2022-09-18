@@ -2246,4 +2246,7 @@ body.bx-theme-yellow .catalog-block-header{border-color:#f4b236;}
 	background-color: #fff !important;
 	color: #000 !important;
 }
+.alert-info {
+	background-color: unset !important;
+}
 

@@ -22,5 +22,11 @@
         opacity: 0.5;
         border: 2px solid $font_color;
         color: $font_color;
+
+        &:hover {
+            background-color: $font_color;
+            color: $font_color_reverse;
+            opacity: 1;
+        }
     }
 }

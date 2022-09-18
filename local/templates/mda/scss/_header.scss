@@ -13,7 +13,7 @@
         align-items: center;
     }
 
-    &::after {
+    &:not(table)::after {
         content: '';
         position: absolute;
         left: 0;

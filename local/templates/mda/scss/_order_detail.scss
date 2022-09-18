@@ -31,8 +31,9 @@
             color: $font_color;
             padding: 15px;
             font-weight: bold;
-            border-bottom: $border1;
+            border-bottom: 1px solid $font_color;
             background-color: $lines_color;
+            text-shadow: 2px 2px 4px $font_color_reverse;
         }
     }
 
@@ -155,7 +156,7 @@
     }
 
     &__item {
-        border: $border1;
+        border: 1px solid $font_color;
         background-color: $background_color;
 
         &:not(:last-child) {

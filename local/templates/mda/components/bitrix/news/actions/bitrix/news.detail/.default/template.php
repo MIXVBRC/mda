@@ -20,5 +20,5 @@ $this->setFrameMode(true);
 
         <div class="detail1__description"><?=$arResult['DETAIL_TEXT']?></div>
     </div>
-    <a href="<?=$arResult['LIST_PAGE_URL']?>" class="back-button">Назад</a>
+    <a href="<?=$arResult['LIST_PAGE_URL']?>" class="back-button button">Назад</a>
 </div>

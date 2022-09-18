@@ -100,44 +100,50 @@ $(document).ready(function () {
 
     // button
     (function () {
-        let button = $('.button, .button__success, .button__medium, .button__error');
+        function test() {
+            let button = $('.button, .button__success, .button__medium, .button__error');
 
-        $(button).on('mouseenter', function (event) {
+            $(button).on('mouseenter', function (event) {
 
-            $(this).children('[data-button-effect-enter]').remove();
+                $(this).children('[data-button-effect-enter]').remove();
 
-            let effect = $('<div data-button-effect-enter></div>');
-    
-            $(effect).css({
-                left: event.offsetX + 'px',
-                top: event.offsetY + 'px',
+                let effect = $('<div data-button-effect-enter></div>');
+
+                $(effect).css({
+                    left: event.offsetX + 'px',
+                    top: event.offsetY + 'px',
+                });
+
+                $(this).append(effect);
+
+                setTimeout(function(){
+                    $(effect).remove();
+                }, 500);
+
             });
-            
-            $(this).append(effect);
-    
-            setTimeout(function(){
-                $(effect).remove();
-            }, 500);
-            
-        });
-        $(button).on('mouseleave', function (event) {
+            $(button).on('mouseleave', function (event) {
 
-            $(this).children('[data-button-effect-leave]').remove();
+                $(this).children('[data-button-effect-leave]').remove();
 
-            let effect = $('<div data-button-effect-leave></div>');
-    
-            $(effect).css({
-                left: event.offsetX + 'px',
-                top: event.offsetY + 'px',
+                let effect = $('<div data-button-effect-leave></div>');
+
+                $(effect).css({
+                    left: event.offsetX + 'px',
+                    top: event.offsetY + 'px',
+                });
+
+                $(this).append(effect);
+
+                setTimeout(function(){
+                    $(effect).remove();
+                }, 500);
+
             });
-            
-            $(this).append(effect);
-    
-            setTimeout(function(){
-                $(effect).remove();
-            }, 500);
-            
-        });
+
+
+        }
+        test();
+        BX.addCustomEvent('onAjaxSuccess', test);
     })();
 
     // inputmask
