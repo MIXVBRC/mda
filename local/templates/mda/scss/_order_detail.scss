@@ -89,13 +89,6 @@
             padding: 15px;
         }
 
-        &-item {
-            &:not(:last-child) {
-                border-bottom: 1px solid $font_color;
-                padding-bottom: 15px;
-            }
-        }
-
         &-new {
             margin-top: 15px;
 
@@ -158,6 +151,7 @@
     &__item {
         border: 1px solid $font_color;
         background-color: $background_color;
+        box-shadow: 5px 5px 20px #000;
 
         &:not(:last-child) {
             margin-bottom: 15px;
@@ -216,6 +210,8 @@
 
         &-detail {
             margin-top: 15px;
+            padding: 15px;
+            background-color: $blackout_color;
 
             &-body {
                 display: flex;

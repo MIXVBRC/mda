@@ -5638,10 +5638,6 @@ body {
 .order-detail__payment-box {
   padding: 15px;
 }
-.order-detail__payment-item:not(:last-child) {
-  border-bottom: 1px solid #fff;
-  padding-bottom: 15px;
-}
 .order-detail__payment-new {
   margin-top: 15px;
 }
@@ -5691,6 +5687,7 @@ body {
 .order-detail__item {
   border: 1px solid #fff;
   background-color: #15151B;
+  box-shadow: 5px 5px 20px #000;
 }
 .order-detail__item:not(:last-child) {
   margin-bottom: 15px;
@@ -5732,6 +5729,8 @@ body {
 }
 .order-detail__item-detail {
   margin-top: 15px;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .order-detail__item-detail-body {
   display: flex;
