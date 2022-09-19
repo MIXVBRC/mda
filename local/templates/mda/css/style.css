@@ -4822,39 +4822,6 @@ body {
   color: #fff;
 }
 
-@-webkit-keyframes woop {
-  0% {
-    width: 0;
-    height: 0;
-    opacity: 1;
-    margin-top: 0;
-    margin-left: 0;
-  }
-  100% {
-    width: 200%;
-    height: 300px;
-    opacity: 0;
-    margin-top: -150px;
-    margin-left: -100%;
-  }
-}
-
-@keyframes woop {
-  0% {
-    width: 0;
-    height: 0;
-    opacity: 1;
-    margin-top: 0;
-    margin-left: 0;
-  }
-  100% {
-    width: 200%;
-    height: 300px;
-    opacity: 0;
-    margin-top: -150px;
-    margin-left: -100%;
-  }
-}
 .button, .button__success, .button__medium, .button__error {
   text-transform: uppercase;
   padding: 10px 15px;
@@ -4864,26 +4831,9 @@ body {
   text-shadow: 1px 1px 2px #15151B;
   border: 1px solid #fff;
   transition: 500ms ease-in-out;
-  overflow: hidden;
-  position: relative;
-  z-index: 0;
 }
 .button:hover, .button__success:hover, .button__medium:hover, .button__error:hover {
   cursor: pointer;
-}
-.button [data-button-effect-enter], .button [data-button-effect-leave], .button__success [data-button-effect-enter], .button__success [data-button-effect-leave], .button__medium [data-button-effect-enter], .button__medium [data-button-effect-leave], .button__error [data-button-effect-enter], .button__error [data-button-effect-leave] {
-  position: absolute;
-  border-radius: 50%;
-  z-index: -1;
-  -webkit-animation-name: woop;
-          animation-name: woop;
-  -webkit-animation-duration: 500ms;
-          animation-duration: 500ms;
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
-}
-.button [data-button-effect-leave], .button__success [data-button-effect-leave], .button__medium [data-button-effect-leave], .button__error [data-button-effect-leave] {
-  animation-direction: reverse;
 }
 .button {
   border: 1px solid #fff;
@@ -4893,7 +4843,7 @@ body {
   background-color: #fff;
   text-shadow: none;
 }
-.button [data-button-effect-enter], .button [data-button-effect-leave] {
+.button [data-bubble-in], .button [data-bubble-out] {
   background-color: #fff;
 }
 .button__success {
@@ -4902,7 +4852,7 @@ body {
 .button__success:hover {
   background-color: #25d366;
 }
-.button__success [data-button-effect-enter], .button__success [data-button-effect-leave] {
+.button__success [data-bubble-in], .button__success [data-bubble-out] {
   background-color: #25d366;
 }
 .button__medium {
@@ -4911,7 +4861,7 @@ body {
 .button__medium:hover {
   background-color: #0085FF;
 }
-.button__medium [data-button-effect-enter], .button__medium [data-button-effect-leave] {
+.button__medium [data-bubble-in], .button__medium [data-bubble-out] {
   background-color: #0085FF;
 }
 .button__error {
@@ -4920,7 +4870,7 @@ body {
 .button__error:hover {
   background-color: #ff2d2d;
 }
-.button__error [data-button-effect-enter], .button__error [data-button-effect-leave] {
+.button__error [data-bubble-in], .button__error [data-bubble-out] {
   background-color: #ff2d2d;
 }
 

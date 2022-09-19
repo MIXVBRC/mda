@@ -59,13 +59,13 @@ $(document).ready(function () {
 
     // ajax loading
     let position = 'initial';
-    BX.showWait = function(node, msg) {
-        position = $(node).css('position');
-        $(node).css({'position':'relative'});
-    };
-    BX.closeWait = function(node, obMsg) {
-        $(node).css({'position':position});
-    };
+    // BX.showWait = function(node, msg) {
+    //     position = $(node).css('position');
+    //     $(node).css({'position':'relative'});
+    // };
+    // BX.closeWait = function(node, obMsg) {
+    //     $(node).css({'position':position});
+    // };
 
     // popup open
     $('[data-popup-form]').on('click' ,function (event) {
@@ -98,52 +98,97 @@ $(document).ready(function () {
         $('[data-popup-content]').html('');
     });
 
-    // button
+    // bubble effect
     (function () {
-        function test() {
-            let button = $('.button, .button__success, .button__medium, .button__error');
+        function bubble() {
 
-            $(button).on('mouseenter', function (event) {
+            let speed = 500,
+                boobleList = $('.button, .button__success, .button__medium, .button__error');
 
-                $(this).children('[data-button-effect-enter]').remove();
+            $(boobleList).toggleAttr('data-bubble');
 
-                let effect = $('<div data-button-effect-enter></div>');
-
-                $(effect).css({
-                    left: event.offsetX + 'px',
-                    top: event.offsetY + 'px',
-                });
-
-                $(this).append(effect);
-
-                setTimeout(function(){
-                    $(effect).remove();
-                }, 500);
-
-            });
-            $(button).on('mouseleave', function (event) {
-
-                $(this).children('[data-button-effect-leave]').remove();
-
-                let effect = $('<div data-button-effect-leave></div>');
-
-                $(effect).css({
-                    left: event.offsetX + 'px',
-                    top: event.offsetY + 'px',
-                });
-
-                $(this).append(effect);
-
-                setTimeout(function(){
-                    $(effect).remove();
-                }, 500);
-
+            $(boobleList).css({
+                position: 'relative',
+                overflow: 'hidden',
+                zIndex: '0',
             });
 
+            $('[data-bubble]').on('mouseenter', function (event) {
 
+                let booble = $('<div data-bubble-in></div>'),
+                    width = $(this).width() * 3,
+                    height = width * $(this).height() / 20;
+
+                $(booble).css({
+                    position: 'absolute',
+                    borderRadius: '50%',
+                    zIndex: '-1',
+                });
+
+                $(this).append(booble);
+
+                $(booble).css({
+                    left: event.offsetX + 'px',
+                    top: event.offsetY + 'px'
+                });
+
+                $(booble).css({
+                    width: '0',
+                    height: '0',
+                    opacity: '1',
+                    marginTop: '0',
+                    marginLeft: '0'
+                }).animate({
+                    width: width + 'px',
+                    height: height + 'px',
+                    opacity: '0',
+                    marginTop: -height / 2 + 'px',
+                    marginLeft: -width / 2 + 'px'
+                }, speed, function () {
+                    $(booble).remove();
+                });
+            });
+
+            $('[data-bubble]').on('mouseleave', function (event) {
+
+                let booble = $('<div data-bubble-out></div>'),
+                    width = $(this).width() * 3,
+                    height = width * $(this).height() / 20;
+
+                $(booble).css({
+                    left: event.offsetX + 'px',
+                    top: event.offsetY + 'px'
+                });
+
+                $(booble).css({
+                    position: 'absolute',
+                    borderRadius: '50%',
+                    zIndex: '-1',
+                });
+
+                $(this).append(booble);
+
+                $(booble).css({
+                    width: width + 'px',
+                    height: height + 'px',
+                    opacity: 0,
+                    marginTop: -height / 2 + 'px',
+                    marginLeft: -width / 2 + 'px'
+                }).animate({
+                    left: event.offsetX + 'px',
+                    top: event.offsetY + 'px',
+                    width: '0',
+                    height: '0',
+                    opacity: '1',
+                    marginTop: '0',
+                    marginLeft: '0'
+                }, speed, function () {
+                    $(booble).remove();
+                });
+            });
         }
-        test();
-        BX.addCustomEvent('onAjaxSuccess', test);
+        bubble();
+        BX.addCustomEvent('onAjaxSuccess', bubble);
     })();
 
     // inputmask
