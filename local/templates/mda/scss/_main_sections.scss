@@ -26,7 +26,9 @@
         color: $font_color;
 
         &:hover {
-            background-color: $lines_color;
+            background-color: $main_color;
+            border-color: $main_color;
+            text-shadow: 2px 2px 5px $font_color_reverse;
             transition: $transition_time_mini ease-in-out;
         }
     }

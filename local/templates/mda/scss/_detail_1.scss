@@ -12,7 +12,8 @@
     }
 
     &__img {
-        border: $border;
+        margin: -15px -15px 0 -15px;
+        border-bottom: $border;
 
         & img {
             width: 100%;

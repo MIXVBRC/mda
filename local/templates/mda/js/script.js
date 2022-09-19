@@ -110,7 +110,7 @@ $(document).ready(function () {
             $(boobleList).css({
                 position: 'relative',
                 overflow: 'hidden',
-                zIndex: '0',
+                zIndex: '0'
             });
 
             $('[data-bubble]').on('mouseenter', function (event) {
@@ -122,7 +122,7 @@ $(document).ready(function () {
                 $(booble).css({
                     position: 'absolute',
                     borderRadius: '50%',
-                    zIndex: '-1',
+                    zIndex: '-1'
                 });
 
                 $(this).append(booble);
@@ -163,7 +163,7 @@ $(document).ready(function () {
                 $(booble).css({
                     position: 'absolute',
                     borderRadius: '50%',
-                    zIndex: '-1',
+                    zIndex: '-1'
                 });
 
                 $(this).append(booble);
