@@ -3,6 +3,7 @@ $main_color: #0085FF;
 $main_color_reverse: #ff2d2d;
 $background_color: #15151B;
 $blackout_color: rgba(0,0,0,0.5);
+$blackout_color_more: rgba(0,0,0,0.9);
 $font_color: #fff;
 $font_color_reverse: #15151B;
 $font_color_medium: #8A8A8A;
@@ -21,8 +22,8 @@ $m_width: 768px;
 $s_width: 576px;
 
 // Прочие настройки
-$header_height: 79px;
-$header_height_mobile: 60px;
+$header_height: 56px;
+$header_height_mobile: 56px;
 $inner_title_margin: calc($header_height + 50px);
 $transition_time: 500ms;
 $transition_time_mini: 250ms;

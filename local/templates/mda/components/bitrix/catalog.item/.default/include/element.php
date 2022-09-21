@@ -35,9 +35,11 @@ $this->setFrameMode(false);
 
 <?// require __DIR__ . '/props.php'; ?>
 
+<?/*
 <div class="list1__item-hide">
     <? require __DIR__ . '/sku.php'; ?>
 </div>
+*/?>
 
 <? require __DIR__ . '/price.php'; ?>
 

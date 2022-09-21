@@ -11,18 +11,12 @@
     }
 
     &__item {
+        position: relative;
         
         &-body {
-            position: relative;
-            overflow: hidden;
-
             & > *:not(:last-child) {
                 margin-bottom: 10px;
             }
-        }
-
-        &:hover {
-            position: relative;
         }
 
         &:hover &-body {
@@ -40,35 +34,31 @@
                 box-sizing: border-box;
             }
         }
-        
-        &:hover &-hide {
-            display: block;
-        }
-
-        &-hide {
-            display: none;
-        }
     }
 
     &__img {
         display: block;
-        border: 2px solid $font_color;
+        border: 1px solid $font_color;
         height: 380px;
         overflow: hidden;
-        transition: $transition_time_mini ease-in-out;
 
-        & > img {
-            transition: $transition_time_mini ease-in-out;
-        }
-    }
-
-    &__item:hover &__img {
-        // border: 2px solid $lines_color;
-        transition: $transition_time_mini ease-in-out;
-
-        & > img {
-            transform: scale(1.05);
-            transition: $transition_time_mini ease-in-out;
+        &:hover {
+            position: relative;
+            &::before {
+                content: attr(data-before-text);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: $blackout_color_more;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $font_color;
+                text-transform: uppercase;
+                transition: $transition_time_mini ease-in-out;
+            }
         }
     }
 

@@ -24,48 +24,45 @@ $.fn.toggleAttr = function(name) {
 
 $(document).ready(function () {
 
-    $('[data-menu-burger]').on('click', function (event) {
+    // inputmask
+    $('[data-phone-mask]').inputmask("+7 (999) 999-99-99");
 
+    // burger
+    $('[data-menu-burger]').on('click', function (event) {
         $('[data-menu-burger]').toggleAttr('data-active');
         $('[data-menu-top]').toggleAttr('data-active');
         $('[data-header]').toggleAttr('data-active');
     });
-
     $(window).resize(function() {
         if ($(window).width() <= 768) return;
-
         $('[data-menu-top]').css({'margin-top' : ''});
         $('[data-menu-burger]').removeAttr('data-active');
         $('[data-menu-top]').removeAttr('data-active');
         $('[data-header]').removeAttr('data-active');
-
     });
 
 
+    // slider audio
     let audio = new Audio();
     audio.src = '/local/templates/mda/audio/mda.mp3';
-
     $('[data-audio]').on('click', function (event) {
-
         $(this).toggleAttr('data-audio-play');
-
         if ($(this).hasAttr('data-audio-play')) {
             audio.play();
         } else {
             audio.pause();
         }
-
     });
 
     // ajax loading
     let position = 'initial';
-    // BX.showWait = function(node, msg) {
-    //     position = $(node).css('position');
-    //     $(node).css({'position':'relative'});
-    // };
-    // BX.closeWait = function(node, obMsg) {
-    //     $(node).css({'position':position});
-    // };
+    BX.showWait = function(node, msg) {
+        position = $(node).css('position');
+        $(node).css({'position':'relative'});
+    };
+    BX.closeWait = function(node, obMsg) {
+        $(node).css({'position':position});
+    };
 
     // popup open
     $('[data-popup-form]').on('click' ,function (event) {
@@ -84,7 +81,6 @@ $(document).ready(function () {
                 WEB_FORM_ID: $(this).data('popup-form')
             },
             success: function (data) {
-                pre($('[data-popup]').hasAttr('data-popup-active'));
                 $('[data-popup-content]').html(data);
                 $('[data-popup]').toggleAttr('data-popup-active');
             }
@@ -103,7 +99,12 @@ $(document).ready(function () {
         function bubble() {
 
             let speed = 500,
-                boobleList = $('.button, .button__success, .button__medium, .button__error');
+                boobleList = $('.button, .button__success, .button__medium, .button__error'),
+                style = {
+                    position: 'absolute',
+                    borderRadius: '50%',
+                    zIndex: '-1'
+                };
 
             $(boobleList).toggleAttr('data-bubble');
 
@@ -119,11 +120,7 @@ $(document).ready(function () {
                     width = $(this).width() * 3,
                     height = width * $(this).height() / 20;
 
-                $(booble).css({
-                    position: 'absolute',
-                    borderRadius: '50%',
-                    zIndex: '-1'
-                });
+                $(booble).css(style);
 
                 $(this).append(booble);
 
@@ -160,11 +157,7 @@ $(document).ready(function () {
                     top: event.offsetY + 'px'
                 });
 
-                $(booble).css({
-                    position: 'absolute',
-                    borderRadius: '50%',
-                    zIndex: '-1'
-                });
+                $(booble).css(style);
 
                 $(this).append(booble);
 
@@ -190,8 +183,4 @@ $(document).ready(function () {
         bubble();
         BX.addCustomEvent('onAjaxSuccess', bubble);
     })();
-
-    // inputmask
-    $('[data-phone-mask]').inputmask("+7 (999) 999-99-99");
-
 });

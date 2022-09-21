@@ -3,7 +3,6 @@
 
     &__list {
         display: table;
-        width: 100%;
         margin: unset;
     }
 
@@ -13,9 +12,9 @@
         &-link {
             display: block;
             color: $font_color;
-            padding-top: 30px;
-            padding-bottom: 30px;
             text-align: center;
+            font-size: 13px;
+            padding: 20px 30px;
         }
 
         &:hover,

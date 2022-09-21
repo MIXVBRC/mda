@@ -14,8 +14,8 @@
         gap: 15px;
         grid-template-columns: 1fr 2fr;
         padding: 15px;
-        background-color: $background_color;
-        border: $border1;
+        background-color: #000;
+        border: 1px solid $font_color_medium;
 
         &-info {
 
@@ -40,8 +40,8 @@
                 bottom: 0;
                 left: -15px;
                 width: 80%;
-                height: 2px;
-                background-color: $font_color;
+                height: 1px;
+                background-color: $font_color_medium;
             }
         }
 

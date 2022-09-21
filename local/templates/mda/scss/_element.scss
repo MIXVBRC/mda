@@ -2,7 +2,7 @@
 
     &__body {
         display: grid;
-        gap: 30px;
+        gap: 80px;
         grid-template-columns: 1fr 1fr;
     }
 
@@ -12,26 +12,27 @@
         display: flex;
         justify-content: center;
         align-items: flex-start;
+        max-width: 600px;
+        max-height: 900px;
+        border: $border1;
 
-        & > div {
+        & img {
             width: 100%;
-            // border: $border;
-            // padding: 15px;
-            // background-color: $blackout_color;
-
-            & > img {
-                width: 100%;
-                // max-width: 500px;
-                // height: 100%;
-                object-position: center;
-                object-fit: contain;
-            }
+            height: 100%;
+            object-position: center;
+            object-fit: cover;
         }
         
     }
 
     &__info {
         
+    }
+
+    &-title {
+        font-size: 22px;
+        margin-bottom: 15px;
+        color: $font_color;
     }
 
     &__name {
@@ -204,6 +205,9 @@
 
 @media (max-width: $c_width) {
     .element {
+        &__body {
+            gap: 60px;
+        }
         &__name {
             margin-top: unset;
             font-size: 35px;
@@ -216,12 +220,16 @@
             font-size: 28px;
         }
         &__body {
-            grid-template-columns: 2fr 3fr;
+            gap: 30px;
+            grid-template-columns: 1fr 1fr;
         }
     }
 }
 @media (max-width: $m_width) {
     .element {
+        &__img {
+            margin: 0 auto;
+        }
         &__name {
             font-size: 22px;
         }

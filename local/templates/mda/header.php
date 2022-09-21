@@ -6,9 +6,9 @@
 
 // Namespace D7
 use Bitrix\Main\Page\Asset;
-?>
-<?
-IncludeTemplateLangFile(__FILE__);
+use Bitrix\Main\Localization\Loc;
+
+Loc::loadMessages(__FILE__);
 ?>
 <!DOCTYPE html>
 <html lang="<?=LANGUAGE_ID;?>">
@@ -24,7 +24,8 @@ IncludeTemplateLangFile(__FILE__);
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/style.css");
 
     // Для подключения скриптов
-    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.js");
+    CJSCore::Init(['jquery3']); // \bitrix\modules\main\jscore.php
+//    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.inputmask.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/script.js");
 
@@ -70,7 +71,6 @@ IncludeTemplateLangFile(__FILE__);
 		"USE_EXT" => "Y",
 		"COMPONENT_TEMPLATE" => "menu_top",
 		"IBLOCK_SECTIONS" => array(
-			0 => "catalog",
 		)
 	),
 	false
@@ -102,5 +102,7 @@ IncludeTemplateLangFile(__FILE__);
             </div>
 
             <div class="container">
+
+
 
         <? endif; ?>
