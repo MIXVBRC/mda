@@ -96,6 +96,7 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 					BX.ajax({
 						method: 'POST',
 						dataType: 'html',
+						async: false,
 						url: params.url,
 						data: {
 							sessid: BX.bitrix_sessid(),
@@ -125,13 +126,9 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 							return this;
 
 						}, this)
-
 					}, this);
-
 				}, this));
-
 			});
-
 		}
 	};
 })();

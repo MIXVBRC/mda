@@ -5524,6 +5524,11 @@ body {
   color: #fff;
   font-size: 24px;
 }
+.order-detail__list {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: 1fr 1fr;
+}
 .order-detail__item {
   background-color: #060606;
   margin-bottom: 15px;
@@ -5721,20 +5726,25 @@ body {
   align-items: center;
 }
 .order-detail__payment-new-item {
+  cursor: pointer;
   margin-right: 15px;
 }
 .order-detail__payment-new-item-image {
   width: 150px;
   height: 72px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: none;
+     object-fit: none;
   -o-object-position: center;
      object-position: center;
   margin-bottom: 10px;
+  background-color: #fff;
 }
 .order-detail__payment-new-item-name {
   text-align: center;
   font-size: 12px;
+}
+.order-detail__payment-new-item:hover .order-detail__payment-new-item-name {
+  text-decoration: underline;
 }
 @media (max-width: 992px) {
   .order-detail__title {
