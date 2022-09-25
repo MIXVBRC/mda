@@ -3926,6 +3926,7 @@ body {
   position: relative;
   width: 217px;
   height: 72px;
+  z-index: 1;
 }
 @-webkit-keyframes anaglyph {
   0% {
