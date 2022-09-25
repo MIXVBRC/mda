@@ -12,10 +12,12 @@
 
             <div class="element__info">
 
-                <div class="element__description">
-                    <div class="element__description-title">Описание</div>
-                    <div class="element__description-text"><?=$arResult['DETAIL_TEXT']?></div>
-                </div>
+                <?if ($arResult['DETAIL_TEXT']):?>
+                    <div class="element__description">
+                        <div class="element__description-title">Описание</div>
+                        <div class="element__description-text"><?=$arResult['DETAIL_TEXT']?></div>
+                    </div>
+                <?endif;?>
 
                 <?
                 foreach ($arParams['PRODUCT_INFO_BLOCK_ORDER'] as $blockName)

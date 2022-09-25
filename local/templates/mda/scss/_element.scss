@@ -26,7 +26,11 @@
     }
 
     &__info {
-        
+        & > *:not(:first-child) {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid $border_color_medium;
+        }
     }
 
     &-title {
@@ -58,9 +62,6 @@
     
 
     &__properties {
-        margin-top: 15px;
-        padding-top: 15px;
-        border-top: 1px solid $border_color_medium;
 
         &-title {
             font-size: 22px;
@@ -128,6 +129,10 @@
         &-item {
             display: flex;
             flex-direction: row;
+
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
         }
     
         &-name {
@@ -145,9 +150,7 @@
     
 
     &__buy-container {
-        margin-top: 15px;
-        padding-top: 15px;
-        border-top: 1px solid $border_color_medium;
+        
     }
 
     &__buy-button {

@@ -4588,6 +4588,11 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.element__info > *:not(:first-child) {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #5F5F5F;
+}
 .element-title {
   font-size: 22px;
   margin-bottom: 15px;
@@ -4606,11 +4611,6 @@ body {
 }
 .element__description-text {
   color: #fff;
-}
-.element__properties {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #5F5F5F;
 }
 .element__properties-title {
   font-size: 22px;
@@ -4663,6 +4663,9 @@ body {
   display: flex;
   flex-direction: row;
 }
+.element__properties-item:not(:last-child) {
+  margin-bottom: 10px;
+}
 .element__properties-name {
   flex: 0 0 auto;
   margin-right: 15px;
@@ -4671,11 +4674,6 @@ body {
 .element__properties-value {
   flex: 1 0 auto;
   color: #fff;
-}
-.element__buy-container {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #5F5F5F;
 }
 .element__buy-button {
   display: inline-block;
