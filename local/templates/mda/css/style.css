@@ -3475,8 +3475,11 @@ html {
 
 html,
 body {
-  min-height: 100%;
   background-color: #15151B;
+}
+
+html {
+  height: 100%;
 }
 
 body {

@@ -1,8 +1,11 @@
 // Прижимаем футер
+
 html,
 body {
-  min-height: 100%;
   background-color: $font_color_reverse;
+}
+html {
+    height: 100%;
 }
 body {
     display: flex;
