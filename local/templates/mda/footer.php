@@ -74,7 +74,7 @@ IncludeTemplateLangFile(__FILE__);
         "SHOW_REGISTRATION" => "N",
         "SHOW_TOTAL_PRICE" => "N"
     ),
-    array("HIDE_ICONS" => "Y")
+    array("HIDE_ICONS" => MDA_HIDE_ICONS)
 );?>
 
 <a href="<?=(isAuth() ? '/personal/' : '/auth/')?>" class="personal-small"></a>

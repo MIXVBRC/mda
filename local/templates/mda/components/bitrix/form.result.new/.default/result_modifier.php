@@ -2,13 +2,12 @@
 
 /**
  * @var array $arResult
- * @var CBitrixComponentTemplate $this
- * @var CatalogElementComponent $component
+ * @var array $arParams
  */
 
 $dom = new DOMDocument('1.0', 'UTF-8');
 
-foreach ($arResult["QUESTIONS"] as &$question) {
+foreach ($arResult["QUESTIONS"] as $FIELD_SID => &$question) {
 
     $tagList = [
         'input',
@@ -19,8 +18,12 @@ foreach ($arResult["QUESTIONS"] as &$question) {
 
     foreach ($tagList as $tag) {
         foreach ($dom->getElementsByTagName($tag) as $item) {
-            $item->setAttribute('placeholder', ($question['REQUIRED'] == 'Y' ? '* ' : '') . $question['CAPTION']);
+//            $item->setAttribute('placeholder', ($question['REQUIRED'] == 'Y' ? '* ' : '') . $question['CAPTION']);
             $item->setAttribute('class', 'form__'.$tag);
+            $item->setAttribute('id', $FIELD_SID.'_'.$question['STRUCTURE'][0]['FIELD_ID']);
+            if($arParams['FIELDS'][$FIELD_SID]) {
+                $item->setAttribute('value', $arParams['FIELDS'][$FIELD_SID]);
+            }
         }
     }
 

@@ -66,6 +66,7 @@ $APPLICATION->SetTitle("Корзина");
 		"USE_PRICE_ANIMATION" => "Y",
 		"COMPONENT_TEMPLATE" => ".default"
 	),
-	false
+	false,
+	array("HIDE_ICONS" => MDA_HIDE_ICONS)
 );?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

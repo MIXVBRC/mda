@@ -86,6 +86,7 @@ $APPLICATION->SetTitle("Оформление заказа");
 			2 => "3",
 		)
 	),
-	false
+	false,
+	array("HIDE_ICONS" => MDA_HIDE_ICONS)
 );?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

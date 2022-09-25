@@ -23,6 +23,8 @@
         position: relative;
         color: $font_color;
         
+        
+        
         &:not(:last-child) {
             margin-bottom: 30px;
         }
@@ -70,6 +72,26 @@
         border-bottom: $border1;
         width: 100%;
         color: $font_color;
+        position: relative;
+    }
+
+    // &__input[value] &__label,
+    // &__input[value=""] &__label,
+    &__input:invalid:focus:not(:placeholder-shown) &__label,
+    // &__input:focus + &__label,
+    &__input:hover + &__label {
+        top: -10px;
+        left: -10px;
+        font-size: 10px;
+        transition: $transition_time_mini;
+    }
+
+    &__label {
+        position: absolute;
+        left: 0;
+        top: 5px;
+        color: $font_color;
+        transition: $transition_time_mini;
     }
 
     &__button {

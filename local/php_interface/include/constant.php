@@ -16,5 +16,11 @@ const MDA_IBLOCK_ID_VACANSY = 11;
 const MDA_IBLOCK_ID_CATALOG = 5;
 const MDA_IBLOCK_ID_ACTIONS = 6;
 
+// Веб формы
+const MDA_WEB_FORM_ID_VACANSY = 1;
+
+// Отключить редактирование инфоблоков
+const MDA_HIDE_ICONS = 'Y';
+
 // Highload блоки
 const MDA_HL_VIEWS = 1;

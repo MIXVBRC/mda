@@ -78,7 +78,10 @@ $(document).ready(function () {
             url: $(this).attr('href'),
             async: false,
             data: {
-                WEB_FORM_ID: $(this).data('popup-form')
+                WEB_FORM_ID: $(this).data('popup-form'),
+                FIELDS: JSON.stringify({
+                    POST: $(this).data('popup-fields-post')
+                }),
             },
             success: function (data) {
                 $('[data-popup-content]').html(data);

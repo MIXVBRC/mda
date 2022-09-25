@@ -29,10 +29,13 @@
 
                 <? endif; ?>
 
-                <? foreach ($arResult['QUESTIONS'] as $FIELD_SID => $arQuestion): ?>
+                <? foreach ($arResult['QUESTIONS'] as $FIELD_SID => $arQuestion):?>
 
                     <div class="form__item">
                         <?= $arQuestion["HTML_CODE"] ?>
+                        <label class="form__label" for="<?=$FIELD_SID.'_'.$arQuestion['STRUCTURE'][0]['FIELD_ID']?>">
+                            <?=($arQuestion['REQUIRED']=='Y'?'* ':'') . $arQuestion['CAPTION']?>
+                        </label>
                     </div>
 
                 <? endforeach; ?>

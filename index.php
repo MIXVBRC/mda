@@ -50,7 +50,7 @@ $APPLICATION->IncludeComponent(
 		"IMAGE" => "44"
 	),
 	false,
-    array("HIDE_ICONS" => "Y")
+    array("HIDE_ICONS" => MDA_HIDE_ICONS)
 );
 ?>
 
@@ -88,7 +88,7 @@ $APPLICATION->IncludeComponent(
 		"ELEMENT_COUNT" => "4"
 	),
 	false,
-    array("HIDE_ICONS" => "Y")
+    array("HIDE_ICONS" => MDA_HIDE_ICONS)
 );
 ?>
 
@@ -230,7 +230,7 @@ $APPLICATION->IncludeComponent(
 		"IMAGE" => "46"
 	),
 	false,
-    array("HIDE_ICONS" => "Y")
+    array("HIDE_ICONS" => MDA_HIDE_ICONS)
 );?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

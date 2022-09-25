@@ -15,6 +15,7 @@ body {
 .content {
     flex: 1 0 auto;
     margin-bottom: $section_margin_bottom;
+    z-index: 1;
 }
 .footer {
     flex: 0 0 auto;
@@ -111,7 +112,6 @@ body {
     position: absolute;
     left: 0;
     top: 0;
-    z-index: -1;
     width: 100%;
     height: 1000px;
     background-image: url('../img/mda_background.svg');

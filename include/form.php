@@ -15,6 +15,7 @@
         "USE_EXTENDED_ERRORS" => "Y",
         "VARIABLE_ALIASES" => Array("RESULT_ID"=>"RESULT_ID","WEB_FORM_ID"=>"WEB_FORM_ID"),
         "WEB_FORM_ID" => $_REQUEST["WEB_FORM_ID"],
+        "FIELDS" => json_decode($_REQUEST['FIELDS'],true),
         "AJAX_MODE" => "Y",
         "AJAX_OPTION_STYLE" => "Y",
     )

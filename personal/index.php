@@ -63,5 +63,5 @@ $APPLICATION->SetTitle("Мой кабинет");
 		)
 	),
 	false,
-    array("HIDE_ICONS" => "Y")
+    array("HIDE_ICONS" => MDA_HIDE_ICONS)
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

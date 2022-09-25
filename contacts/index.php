@@ -84,7 +84,7 @@ $storeList = \Bitrix\Catalog\StoreTable::getList([
                                 ],
                                 "MAP_ID" => ""
                             ],
-                            array("HIDE_ICONS" => "Y")
+                            array("HIDE_ICONS" => MDA_HIDE_ICONS)
                         );
                         ?>
                     </div>
