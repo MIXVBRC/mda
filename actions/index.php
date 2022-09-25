@@ -40,7 +40,7 @@ $APPLICATION->SetTitle("Акции");
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-		"IBLOCK_ID" => "10",
+		"IBLOCK_ID" => MDA_IBLOCK_ID_ACTIONS,
 		"IBLOCK_TYPE" => "content",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
@@ -90,5 +90,6 @@ $APPLICATION->SetTitle("Акции");
 			"detail" => "#ELEMENT_CODE#/",
 		)
 	),
-	false
+	false,
+    array("HIDE_ICONS" => "Y")
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

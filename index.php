@@ -30,7 +30,7 @@ $APPLICATION->IncludeComponent(
 		"COUNT_ELEMENTS" => "Y",
 		"COUNT_ELEMENTS_FILTER" => "CNT_ACTIVE",
 		"FILTER_NAME" => "sectionsFilter",
-		"IBLOCK_ID" => "5",
+		"IBLOCK_ID" => MDA_IBLOCK_ID_CATALOG,
 		"IBLOCK_TYPE" => "catalog",
 		"SECTION_CODE" => "",
 		"SECTION_FIELDS" => array(
@@ -49,7 +49,8 @@ $APPLICATION->IncludeComponent(
 		"COMPONENT_TEMPLATE" => "main_sections",
 		"IMAGE" => "44"
 	),
-	false
+	false,
+    array("HIDE_ICONS" => "Y")
 );
 ?>
 
@@ -66,7 +67,7 @@ $APPLICATION->IncludeComponent(
 		"COUNT_ELEMENTS" => "Y",
 		"COUNT_ELEMENTS_FILTER" => "CNT_AVAILABLE",
 		"FILTER_NAME" => "sectionsFilter",
-		"IBLOCK_ID" => "5",
+		"IBLOCK_ID" => MDA_IBLOCK_ID_CATALOG,
 		"IBLOCK_TYPE" => "catalog",
 		"SECTION_CODE" => "",
 		"SECTION_FIELDS" => array(
@@ -86,7 +87,8 @@ $APPLICATION->IncludeComponent(
 		"IMAGE" => "45",
 		"ELEMENT_COUNT" => "4"
 	),
-	false
+	false,
+    array("HIDE_ICONS" => "Y")
 );
 ?>
 
@@ -192,7 +194,7 @@ $APPLICATION->IncludeComponent(
 		),
 		"FILTER_NAME" => "",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-		"IBLOCK_ID" => "7",
+		"IBLOCK_ID" => MDA_IBLOCK_ID_NEWS,
 		"IBLOCK_TYPE" => "content",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"INCLUDE_SUBSECTIONS" => "Y",
@@ -227,7 +229,8 @@ $APPLICATION->IncludeComponent(
 		"COMPONENT_TEMPLATE" => "main_news",
 		"IMAGE" => "46"
 	),
-	false
+	false,
+    array("HIDE_ICONS" => "Y")
 );?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

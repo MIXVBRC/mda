@@ -1,18 +1,20 @@
 <?php
 
 // Группы пользователей
-const USER_GROUP_ADMIN_ID = 6;
-const USER_GROUP_MANAGER_ID = 7;
-const USER_GROUP_DESIGNER_ID = 7;
+const MDA_USER_GROUP_ADMIN_ID = 6;
+const MDA_USER_GROUP_MANAGER_ID = 7;
+const MDA_USER_GROUP_DESIGNER_ID = 7;
 
 // Страницы без сайтбара
-const PAGE_NO_SITEBAR = [
+const MDA_PAGE_NO_SITEBAR = [
     '/'
 ];
 
 // Инфоблоки
-const IBLOCK_NEWS = 8;
-const IBLOCK_COMMENTS = 9;
+const MDA_IBLOCK_ID_NEWS = 9;
+const MDA_IBLOCK_ID_VACANSY = 11;
+const MDA_IBLOCK_ID_CATALOG = 5;
+const MDA_IBLOCK_ID_ACTIONS = 6;
 
 // Highload блоки
-const HL_VIEWS = 1;
+const MDA_HL_VIEWS = 1;

@@ -40,7 +40,7 @@ $APPLICATION->SetTitle("Новости");
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "Y",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-		"IBLOCK_ID" => "7",
+		"IBLOCK_ID" => MDA_IBLOCK_ID_NEWS,
 		"IBLOCK_TYPE" => "content",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
@@ -91,5 +91,6 @@ $APPLICATION->SetTitle("Новости");
 			"detail" => "#ELEMENT_CODE#/",
 		)
 	),
-	false
+	false,
+    array("HIDE_ICONS" => "Y")
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

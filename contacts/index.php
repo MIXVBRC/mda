@@ -83,7 +83,8 @@ $storeList = \Bitrix\Catalog\StoreTable::getList([
                                     "ENABLE_DBLCLICK_ZOOM"
                                 ],
                                 "MAP_ID" => ""
-                            ]
+                            ],
+                            array("HIDE_ICONS" => "Y")
                         );
                         ?>
                     </div>

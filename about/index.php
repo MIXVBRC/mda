@@ -53,7 +53,7 @@ $APPLICATION->SetTitle("О нас");
 		),
 		"FILTER_NAME" => "",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-		"IBLOCK_ID" => "11",
+		"IBLOCK_ID" => MDA_IBLOCK_ID_VACANSY,
 		"IBLOCK_TYPE" => "content",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"INCLUDE_SUBSECTIONS" => "Y",
@@ -92,7 +92,8 @@ $APPLICATION->SetTitle("О нас");
 		"STRICT_SECTION_CHECK" => "N",
 		"COMPONENT_TEMPLATE" => "vacansy"
 	),
-	false
+	false,
+    array("HIDE_ICONS" => "Y")
 );?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

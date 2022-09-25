@@ -62,5 +62,6 @@ $APPLICATION->SetTitle("Мой кабинет");
 			"order_cancel" => "cancel/#ID#",
 		)
 	),
-	false
+	false,
+    array("HIDE_ICONS" => "Y")
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

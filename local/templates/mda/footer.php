@@ -73,7 +73,8 @@ IncludeTemplateLangFile(__FILE__);
         "SHOW_PRODUCTS" => "N",
         "SHOW_REGISTRATION" => "N",
         "SHOW_TOTAL_PRICE" => "N"
-    )
+    ),
+    array("HIDE_ICONS" => "Y")
 );?>
 
 <a href="<?=(isAuth() ? '/personal/' : '/auth/')?>" class="personal-small"></a>

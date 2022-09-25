@@ -78,7 +78,7 @@ $APPLICATION->SetTitle("Каталог");
 		"GIFTS_SHOW_OLD_PRICE" => "Y",
 		"HIDE_NOT_AVAILABLE" => "Y",
 		"HIDE_NOT_AVAILABLE_OFFERS" => "Y",
-		"IBLOCK_ID" => "5",
+		"IBLOCK_ID" => MDA_IBLOCK_ID_CATALOG,
 		"IBLOCK_TYPE" => "catalog",
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"INSTANT_RELOAD" => "N",
@@ -229,9 +229,9 @@ $APPLICATION->SetTitle("Каталог");
 			0 => "",
 			1 => "",
 		),
-		"OFFERS_SORT_FIELD" => "sort",
-		"OFFERS_SORT_ORDER" => "asc",
-		"OFFERS_SORT_FIELD2" => "id",
+		"OFFERS_SORT_FIELD" => "SCALED_PRICE_1",
+		"OFFERS_SORT_ORDER" => "desc",
+		"OFFERS_SORT_FIELD2" => "shows",
 		"OFFERS_SORT_ORDER2" => "desc",
 		"LABEL_PROP_MOBILE" => array(
 			0 => "VKUS",
@@ -239,7 +239,6 @@ $APPLICATION->SetTitle("Каталог");
 		"LABEL_PROP_POSITION" => "top-left",
 		"OFFER_TREE_PROPS" => array(
 			0 => "VKUS",
-			1 => "TOPER",
 		),
 		"PRODUCT_PROPERTIES" => array(
 		),
@@ -263,8 +262,8 @@ $APPLICATION->SetTitle("Каталог");
 		"LIST_OFFERS_PROPERTY_CODE" => array(
 			0 => "VKUS",
 			1 => "TOPER",
-			2 => "TEST",
-			3 => "PHOTOS",
+			2 => "PHOTOS",
+			3 => "TEST",
 			4 => "",
 		),
 		"DETAIL_PROPERTY_CODE" => array(
@@ -275,8 +274,8 @@ $APPLICATION->SetTitle("Каталог");
 		"DETAIL_OFFERS_PROPERTY_CODE" => array(
 			0 => "VKUS",
 			1 => "TOPER",
-			2 => "TEST",
-			3 => "PHOTOS",
+			2 => "PHOTOS",
+			3 => "TEST",
 			4 => "",
 		),
 		"TOP_PROPERTY_CODE_MOBILE" => "",
@@ -291,7 +290,6 @@ $APPLICATION->SetTitle("Каталог");
 		"DETAIL_MAIN_BLOCK_OFFERS_PROPERTY_CODE" => array(
 			0 => "VKUS",
 			1 => "TOPER",
-			2 => "TEST",
 		),
 		"DISCOUNT_PERCENT_POSITION" => "bottom-right",
 		"FILE_404" => "",
@@ -308,5 +306,6 @@ $APPLICATION->SetTitle("Каталог");
 			),
 		)
 	),
-	false
+	false,
+    array("HIDE_ICONS" => "Y")
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
