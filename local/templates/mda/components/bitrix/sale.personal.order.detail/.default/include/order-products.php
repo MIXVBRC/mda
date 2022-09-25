@@ -7,109 +7,143 @@
 use Bitrix\Main\Localization\Loc;
 ?>
 
-<div class="order-detail__item order-detail__item-product">
+<div class="order-detail__item">
 
     <?/** Заголовок */?>
-    <div class="order-detail__title"><h3><?= Loc::getMessage('SPOD_ORDER_BASKET')?></h3></div>
+    <div class="order-detail__item-header">
+        <div class="order-detail__item-header-title"><h3><?= Loc::getMessage('SPOD_ORDER_BASKET')?></h3></div>
+    </div>
 
     <div class="order-detail__item-body">
+        <table class="order-detail__item-body-table">
 
-        <div class="order-detail__item-info">
+            <thead>
+                <tr class="order-detail__item-body-table-tr">
 
-            <table class="order-detail__item-table order-detail__item-table-width mobile-table">
+                    <?/** Наименование */?>
+                    <td class="order-detail__item-body-table-tr-td">
+                        <div class="order-detail__item-body-table-tr-td-box">
+                            <span><?= Loc::getMessage('SPOD_NAME')?></span>
+                        </div>
+                    </td>
 
-                <thead>
-                    <tr class="order-detail__item-table-tr">
+                    <?/** Цена */?>
+                    <td class="order-detail__item-body-table-tr-td">
+                        <div class="order-detail__item-body-table-tr-td-box">
+                            <span><?= Loc::getMessage('SPOD_PRICE')?></span>
+                        </div>
+                    </td>
 
-                        <?/** Наименование */?>
-                        <td class="order-detail__item-table-tr-td"><?= Loc::getMessage('SPOD_NAME')?></td>
+                    <?/** Скидка */?>
+                    <? if($arResult["SHOW_DISCOUNT_TAB"] <> ''):?>
+                        <td class="order-detail__item-body-table-tr-td">
+                            <div class="order-detail__item-body-table-tr-td-box">
+                                <span><?= Loc::getMessage('SPOD_DISCOUNT') ?></span>
+                            </div>
+                        </td>
+                    <?endif;?>
 
-                        <?/** Цена */?>
-                        <td class="order-detail__item-table-tr-td"><?= Loc::getMessage('SPOD_PRICE')?></td>
+                    <?/** Количество */?>
+                    <td class="order-detail__item-body-table-tr-td">
+                        <div class="order-detail__item-body-table-tr-td-box">
+                            <span><?= Loc::getMessage('SPOD_QUANTITY')?></span>
+                        </div>
+                    </td>
+
+                    <?/** Сумма */?>
+                    <td class="order-detail__item-body-table-tr-td">
+                        <div class="order-detail__item-body-table-tr-td-box">
+                            <span><?= Loc::getMessage('SPOD_ORDER_PRICE')?></span>
+                        </div>
+                    </td>
+
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <?/** Список товаров */?>
+                <? foreach ($arResult['BASKET'] as $basketItem):?>
+                    <tr class="order-detail__item-body-table-tr">
+
+                        <?/** Информация о товаре */?>
+                        <td class="order-detail__item-body-table-tr-td" data-label="<?= Loc::getMessage('SPOD_NAME')?>">
+                            <a class="order-detail__item-body-table-tr-td-box" href="<?=$basketItem['DETAIL_PAGE_URL']?>">
+
+                                <?/** Изображение товара */?>
+                                <?
+                                if($basketItem['PICTURE']['SRC'] <> '') {
+                                    $imageSrc = $basketItem['PICTURE']['SRC'];
+                                } else {
+                                    $imageSrc = $this->GetFolder().'/images/no_photo.png';
+                                }
+                                ?>
+                                <img src="<?=$imageSrc?>">
+
+                                <?/** Название товара */?>
+                                <span><?=htmlspecialcharsbx($basketItem['NAME'])?></span>
+
+                                <?/** Свойства товара */?>
+                                <?/* if (isset($basketItem['PROPS']) && is_array($basketItem['PROPS'])):?>
+                                    <?foreach ($basketItem['PROPS'] as $itemProps):?>
+                                        <div class="order-detail__item-table-tr-td-product-property">
+                                            <?=htmlspecialcharsbx($itemProps['NAME']) . ': ' . htmlspecialcharsbx($itemProps['VALUE'])?>
+                                        </div>
+                                    <?endforeach;?>
+                                <?endif;*/?>
+                            </a>
+                        </td>
+
+                        <?/** Цена товара */?>
+                        <td class="order-detail__item-body-table-tr-td" data-label="<?= Loc::getMessage('SPOD_PRICE')?>">
+                            <div class="order-detail__item-body-table-tr-td-box">
+                                <span><?=$basketItem['BASE_PRICE_FORMATED']?></span>
+                            </div>
+                        </td>
 
                         <?/** Скидка */?>
-                        <? if($arResult["SHOW_DISCOUNT_TAB"] <> ''):?>
-                            <td class="order-detail__item-table-tr-td"><?= Loc::getMessage('SPOD_DISCOUNT') ?></td>
+                        <? if($basketItem["DISCOUNT_PRICE_PERCENT_FORMATED"] <> ''):?>
+                            <td class="order-detail__item-body-table-tr-td" data-label="<?= Loc::getMessage('SPOD_DISCOUNT') ?>">
+                                <div class="order-detail__item-body-table-tr-td-box">
+                                    <span><?= $basketItem['DISCOUNT_PRICE_PERCENT_FORMATED'] ?></span>
+                                </div>
+                            </td>
+                        <? elseif(mb_strlen($arResult["SHOW_DISCOUNT_TAB"])):?>
+                            <td class="order-detail__item-body-table-tr-td" data-label="<?= Loc::getMessage('SPOD_DISCOUNT') ?>">
+                                <div class="order-detail__item-body-table-tr-td-box">
+                                    <span>-</span>
+                                </div>
+                            </td>
                         <?endif;?>
 
                         <?/** Количество */?>
-                        <td class="order-detail__item-table-tr-td"><?= Loc::getMessage('SPOD_QUANTITY')?></td>
+                        <td class="order-detail__item-body-table-tr-td" data-label="<?= Loc::getMessage('SPOD_QUANTITY')?>">
+                            <div class="order-detail__item-body-table-tr-td-box">
+                                <span>
+                                    <?
+                                    if($basketItem['MEASURE_NAME'] <> '') {
+                                        echo $basketItem['QUANTITY'] . ' ' . htmlspecialcharsbx($basketItem['MEASURE_NAME']);
+                                    } else {
+                                        echo $basketItem['QUANTITY'] . ' ' . Loc::getMessage('SPOD_DEFAULT_MEASURE');
+                                    }
+                                    ?>
+                                </span>
+                            </div>
+                        </td>
 
                         <?/** Сумма */?>
-                        <td class="order-detail__item-table-tr-td"><?= Loc::getMessage('SPOD_ORDER_PRICE')?></td>
+                        <td class="order-detail__item-body-table-tr-td" data-label="<?= Loc::getMessage('SPOD_ORDER_PRICE')?>">
+                            <div class="order-detail__item-body-table-tr-td-box">
+                                <span><?=$basketItem['FORMATED_SUM']?></span>
+                            </div>
+                        </td>
 
                     </tr>
-                </thead>
+                <?endforeach;?>
 
-                <tbody>
-                    <?/** Список товаров */?>
-                    <? foreach ($arResult['BASKET'] as $basketItem):?>
-                        <tr class="order-detail__item-table-tr">
+            </tbody>
 
-                            <?/** Информация о товаре */?>
-                            <td class="order-detail__item-table-tr-td" data-label="<?= Loc::getMessage('SPOD_NAME')?>">
-                                <a class="order-detail__item-table-tr-td-product" href="<?=$basketItem['DETAIL_PAGE_URL']?>">
-                                    <?/** Изображение товара */?>
-                                    <div class="order-detail__item-table-tr-td-product-image">
-                                        <?
-                                        if($basketItem['PICTURE']['SRC'] <> '') {
-                                            $imageSrc = $basketItem['PICTURE']['SRC'];
-                                        } else {
-                                            $imageSrc = $this->GetFolder().'/images/no_photo.png';
-                                        }
-                                        ?>
-                                        <img src="<?=$imageSrc?>" alt="product_image">
-                                    </div>
-                                    <div class="order-detail__item-table-tr-td-product-info">
-
-                                        <?/** Название товара */?>
-                                        <div class="order-detail__item-table-tr-td-product-title"><?=htmlspecialcharsbx($basketItem['NAME'])?></div>
-
-                                        <?/** Свойства товара */?>
-                                        <? if (isset($basketItem['PROPS']) && is_array($basketItem['PROPS'])):?>
-                                            <?foreach ($basketItem['PROPS'] as $itemProps):?>
-                                                <div class="order-detail__item-table-tr-td-product-property">
-                                                    <?=htmlspecialcharsbx($itemProps['NAME']) . ': ' . htmlspecialcharsbx($itemProps['VALUE'])?>
-                                                </div>
-                                            <?endforeach;?>
-                                        <?endif;?>
-
-                                    </div>
-
-                                </a>
-                            </td>
-
-                            <?/** Цена товара */?>
-                            <td class="order-detail__item-table-tr-td" data-label="<?= Loc::getMessage('SPOD_PRICE')?>"><?=$basketItem['BASE_PRICE_FORMATED']?></td>
-
-                            <?/** Скидка */?>
-                            <? if($basketItem["DISCOUNT_PRICE_PERCENT_FORMATED"] <> ''):?>
-                                <td class="order-detail__item-table-tr-td" data-label="<?= Loc::getMessage('SPOD_DISCOUNT') ?>"><?= $basketItem['DISCOUNT_PRICE_PERCENT_FORMATED'] ?></td>
-                            <? elseif(mb_strlen($arResult["SHOW_DISCOUNT_TAB"])):?>
-                                <td class="order-detail__item-table-tr-td" data-label="<?= Loc::getMessage('SPOD_DISCOUNT') ?>">-</td>
-                            <?endif;?>
-
-                            <?/** Количество */?>
-                            <td class="order-detail__item-table-tr-td" data-label="<?= Loc::getMessage('SPOD_QUANTITY')?>">
-                                <?
-                                if($basketItem['MEASURE_NAME'] <> '') {
-                                    echo $basketItem['QUANTITY'] . ' ' . htmlspecialcharsbx($basketItem['MEASURE_NAME']);
-                                } else {
-                                    echo $basketItem['QUANTITY'] . ' ' . Loc::getMessage('SPOD_DEFAULT_MEASURE');
-                                }
-                                ?>
-                            </td>
-
-                            <?/** Сумма */?>
-                            <td class="order-detail__item-table-tr-td" data-label="<?= Loc::getMessage('SPOD_ORDER_PRICE')?>"><?=$basketItem['FORMATED_SUM']?></td>
-
-                        </tr>
-                    <?endforeach;?>
-                </tbody>
-
-            </table>
-
-        </div>
+        </table>
 
     </div>
 </div>

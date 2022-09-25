@@ -7,19 +7,19 @@
 use Bitrix\Main\Localization\Loc;
 ?>
 
-<div class="order-detail__item">
-
-    <?/** Заголовок */?>
-    <div class="order-detail__title"><h3><?= Loc::getMessage('SPOD_LIST_ORDER_INFO') ?></h3></div>
-
-    <div class="order-detail__item-body">
-
-        <div class="order-detail__item-info">
-            <table class="order-detail__item-table">
+<div class="order-detail__item" data-item data-close>
+    <div class="order-detail__item-header">
+        <div class="order-detail__item-header-title"><h3><?= Loc::getMessage('SPOD_LIST_ORDER_INFO') ?></h3></div>
+        <span class="order-detail__item-header-arrow" data-opener></span>
+    </div>
+    <div class="order-detail__item-body" data-opener-box>
+        <div class="order-detail__item-body-element">
+            <ul class="order-detail__item-list">
 
                 <?/** ФИО */?>
-                <tr class="order-detail__item-table-tr">
-                    <td class="order-detail__item-table-tr-td">
+                <?/*
+                <li>
+                    <span>
                         <?
                         $userName = $arResult["USER_NAME"];
                         if (mb_strlen($userName) || mb_strlen($arResult['FIO'])) {
@@ -28,8 +28,9 @@ use Bitrix\Main\Localization\Loc;
                             echo Loc::getMessage('SPOD_LOGIN').':';
                         }
                         ?>
-                    </td>
-                    <td class="order-detail__item-table-tr-td">
+                    </span>
+                    <span></span>
+                    <span>
                         <?
                         if($userName <> '') {
                             echo htmlspecialcharsbx($userName);
@@ -39,17 +40,19 @@ use Bitrix\Main\Localization\Loc;
                             echo htmlspecialcharsbx($arResult["USER"]['LOGIN']);
                         }
                         ?>
-                    </td>
-                </tr>
+                    </span>
+                </li>
+                */?>
 
                 <?/** Статус заказа */?>
-                <tr class="order-detail__item-table-tr">
-                    <td class="order-detail__item-table-tr-td">
+                <li>
+                    <span>
                         <?= Loc::getMessage('SPOD_LIST_CURRENT_STATUS_DATE', array(
                             '#DATE_STATUS#' => $arResult["DATE_STATUS_FORMATED"]
                         )) ?>
-                    </td>
-                    <td class="order-detail__item-table-tr-td">
+                    </span>
+                    <span></span>
+                    <span>
                         <?
                         if ($arResult['CANCELED'] !== 'Y') {
                             echo htmlspecialcharsbx($arResult["STATUS"]["NAME"]);
@@ -57,63 +60,50 @@ use Bitrix\Main\Localization\Loc;
                             echo Loc::getMessage('SPOD_ORDER_CANCELED');
                         }
                         ?>
-                    </td>
-                </tr>
+                    </span>
+                </li>
 
                 <?/** Сумма заказа */?>
-                <tr class="order-detail__item-table-tr">
-                    <td class="order-detail__item-table-tr-td">
-                        <?= Loc::getMessage('SPOD_ORDER_PRICE')?>:
-                    </td>
-                    <td class="order-detail__item-table-tr-td">
-                        <?= $arResult["PRICE_FORMATED"]?>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <?/** Информация о пользователе */?>
-        <div class="order-detail__item-show order-detail__info-box" style="display: none">
-
-            <div class="order-detail__item-title"><?= Loc::getMessage('SPOD_USER_INFORMATION') ?></div>
-
-            <table class="order-detail__item-table">
-
-                <?/** Логин */?>
-                <? if (mb_strlen($arResult["USER"]["LOGIN"]) && !in_array("LOGIN", $arParams['HIDE_USER_INFO'])):?>
-                    <tr class="order-detail__item-table-tr">
-                        <td class="order-detail__item-table-tr-td"><?= Loc::getMessage('SPOD_LOGIN')?>:</td>
-                        <td class="order-detail__item-table-tr-td"><?= htmlspecialcharsbx($arResult["USER"]["LOGIN"]) ?></td>
-                    </tr>
-                <?endif;?>
+                <li>
+                    <span><?= Loc::getMessage('SPOD_ORDER_PRICE')?>:</span>
+                    <span></span>
+                    <span><?= $arResult["PRICE_FORMATED"]?></span>
+                </li>
 
                 <?/** E-mail */?>
+                <?/*
                 <?if (mb_strlen($arResult["USER"]["EMAIL"]) && !in_array("EMAIL", $arParams['HIDE_USER_INFO'])):?>
-                    <tr class="order-detail__item-table-tr">
-                        <td class="order-detail__item-table-tr-td"><?= Loc::getMessage('SPOD_EMAIL')?>:</td>
-                        <td class="order-detail__item-table-tr-td">
-                            <a class="order-detail__link" href="mailto:<?= htmlspecialcharsbx($arResult["USER"]["EMAIL"]) ?>"><?= htmlspecialcharsbx($arResult["USER"]["EMAIL"]) ?></a>
-                        </td>
-                    </tr>
+                    <li>
+                        <span><?= Loc::getMessage('SPOD_EMAIL')?>:</span>
+                        <span></span>
+                        <span><?= htmlspecialcharsbx($arResult["USER"]["EMAIL"]) ?></span>
+                    </li>
                 <?endif;?>
+                */?>
 
-                <?/** Тип плательщика */?>
-                <?if (mb_strlen($arResult["USER"]["PERSON_TYPE_NAME"]) && !in_array("PERSON_TYPE_NAME", $arParams['HIDE_USER_INFO'])):?>
-                    <tr class="order-detail__item-table-tr">
-                        <td class="order-detail__item-table-tr-td"><?= Loc::getMessage('SPOD_PERSON_TYPE_NAME') ?>:</td>
-                        <td class="order-detail__item-table-tr-td"><?= htmlspecialcharsbx($arResult["USER"]["PERSON_TYPE_NAME"]) ?></td>
-                    </tr>
-                <?endif;?>
+            </ul>
 
+            <div class="info-box" style="display: none">
                 <?/** Свойства заказа */?>
                 <?if (isset($arResult["ORDER_PROPS"])):?>
-                    <?foreach ($arResult["ORDER_PROPS"] as $property):?>
-                        <tr class="order-detail__item-table-tr">
-                            <?/** Название свойства */?>
-                            <td class="order-detail__item-table-tr-td"><?= htmlspecialcharsbx($property['NAME']) ?>:</td>
+                    <ul class="order-detail__item-list">
 
-                            <?/** Значение свойства */?>
-                            <td class="order-detail__item-table-tr-td">
+                        <?/** Логин */?>
+                        <?/*
+                        <? if (mb_strlen($arResult["USER"]["LOGIN"]) && !in_array("LOGIN", $arParams['HIDE_USER_INFO'])):?>
+                            <li>
+                                <span><?= Loc::getMessage('SPOD_LOGIN')?>:</span>
+                                <span></span>
+                                <span><?= htmlspecialcharsbx($arResult["USER"]["LOGIN"]) ?></span>
+                            </li>
+                        <?endif;?>
+                        */?>
+
+                        <?foreach ($arResult["ORDER_PROPS"] as $property):?>
+                            <li>
+                                <span><?= htmlspecialcharsbx($property['NAME']) ?>:</span>
+                                <span></span>
+                                <span>
                                 <?
                                 if ($property["TYPE"] == "Y/N") {
                                     echo Loc::getMessage('SPOD_' . ($property["VALUE"] == "Y" ? 'YES' : 'NO'));
@@ -130,36 +120,28 @@ use Bitrix\Main\Localization\Loc;
                                     }
                                 }
                                 ?>
-                            </td>
-                        </tr>
-                    <?endforeach;?>
+                            </span>
+                            </li>
+                        <?endforeach;?>
+                    </ul>
                 <?endif;?>
 
                 <?/** Комментарии к заказу */?>
                 <?if($arResult["USER_DESCRIPTION"] <> ''):?>
-                    <tr class="order-detail__item-table-tr">
-                        <td class="order-detail__item-table-tr-td"><?= Loc::getMessage('SPOD_ORDER_DESC') ?>:</td>
-                        <td class="order-detail__item-table-tr-td"><?= nl2br(htmlspecialcharsbx($arResult["USER_DESCRIPTION"])) ?></td>
-                    </tr>
+                    <div class="order-detail__item-text"><?= Loc::getMessage('SPOD_ORDER_DESC') ?>:</div>
+                    <div class="order-detail__item-textarea"><?= nl2br(htmlspecialcharsbx($arResult["USER_DESCRIPTION"])) ?></div>
                 <?endif;?>
-
-            </table>
-
-        </div>
-
-        <div class="order-detail__item-buttons">
+            </div>
 
             <?/** Повторить заказ */?>
-            <a class="button__success" data-button href="<?=$arResult["URL_TO_COPY"]?>"><?= Loc::getMessage('SPOD_ORDER_REPEAT') ?></a>
-
-            <?/** Отменить заказ */?>
-            <a class="button__error" data-button href="<?=$arResult["URL_TO_CANCEL"]?>"><?= Loc::getMessage('SPOD_ORDER_CANCEL') ?></a>
+            <a class="button" data-button href="<?=$arResult["URL_TO_COPY"]?>"><?= Loc::getMessage('SPOD_ORDER_REPEAT') ?></a>
 
             <?/** Подробнее */?>
-            <a class="button__medium order-detail__info-show" data-button href="javascript:void(0);"><?= Loc::getMessage('SPOD_LIST_MORE') ?></a>
-            <a class="button__medium order-detail__info-hide" style="display: none" data-button href="javascript:void(0);"><?= Loc::getMessage('SPOD_LIST_LESS') ?></a>
+            <a class="button info-show" data-button href="javascript:void(0);"><?= Loc::getMessage('SPOD_LIST_MORE') ?></a>
+            <a class="button info-hide" style="display: none" data-button href="javascript:void(0);"><?= Loc::getMessage('SPOD_LIST_LESS') ?></a>
 
+            <?/** Отменить заказ */?>
+            <a class="order-detail__item-link" data-button href="<?=$arResult["URL_TO_CANCEL"]?>"><?= Loc::getMessage('SPOD_ORDER_CANCEL') ?></a>
         </div>
-
     </div>
 </div>

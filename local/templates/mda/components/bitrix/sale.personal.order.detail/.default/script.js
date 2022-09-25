@@ -16,9 +16,9 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 			}
 
 			/** Показать информацию о заказе */
-			var buttonInfoShow = document.getElementsByClassName('order-detail__info-show')[0];
-			var buttonInfoHide = document.getElementsByClassName('order-detail__info-hide')[0];
-			var infoBox = document.getElementsByClassName('order-detail__info-box')[0];
+			var buttonInfoShow = document.getElementsByClassName('info-show')[0];
+			var buttonInfoHide = document.getElementsByClassName('info-hide')[0];
+			var infoBox = document.getElementsByClassName('info-box')[0];
 			BX.bind(buttonInfoShow, 'click', function() {
 				infoBox.style.display = 'block';
 				buttonInfoShow.style.display = 'none';
@@ -72,23 +72,23 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 
 
 			/** Сменить способ оплаты AND оплата */
-			var paymentItem = document.getElementsByClassName('order-detail__payment-item');
+			var paymentItem = document.getElementsByClassName('payment-item');
 			Array.prototype.forEach.call(paymentItem, function(paymentWrapper) {
 
 				/** Ооплата */
-				BX.bindDelegate(paymentWrapper, 'click', { 'class': 'order-detail__payment-pay' }, BX.proxy(function() {
+				BX.bindDelegate(paymentWrapper, 'click', { 'class': 'payment-pay' }, BX.proxy(function() {
 					$(paymentWrapper).toggleAttr('data-pay');
 				}, this));
-				BX.bindDelegate(paymentWrapper, 'click', { 'class': 'order-detail__payment-cancel' }, BX.proxy(function() {
+				BX.bindDelegate(paymentWrapper, 'click', { 'class': 'payment-cancel' }, BX.proxy(function() {
 					$(paymentWrapper).toggleAttr('data-pay');
 				}, this));
 
 				/** Сменить способ оплаты */
-				var paymentInfo = paymentWrapper.getElementsByClassName('order-detail__payment-info')[0];
-				BX.bindDelegate(paymentWrapper, 'click', { 'class': 'order-detail__payment-change' }, BX.proxy(function(event) {
+				var paymentInfo = paymentWrapper.getElementsByClassName('payment-change-box')[0];
+				BX.bindDelegate(paymentWrapper, 'click', { 'class': 'payment-change' }, BX.proxy(function(event) {
 					event.preventDefault();
 
-					var paymentBack = paymentWrapper.getElementsByClassName('order-detail__payment-back')[0];
+					var paymentBack = paymentWrapper.getElementsByClassName('payment-back')[0];
 
 					// Фикс двойного наложения события click после ajax
 					BX.unbindAll(paymentBack);

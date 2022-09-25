@@ -11,40 +11,46 @@
     }
 
     &__item {
-        border: $border;
+        border: 1px solid $font_color_medium;
         background-color: $blackout_color;
         display: grid;
         grid-template-columns: 1fr 3fr;
         gap: 15px;
 
         &:hover {
-            border-color: $main_color;
+            border-color: $font_color;
         }
-    }
 
-    &__img {
-        height: 250px;
-
-        & img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
+        &:hover &-info {
+            &-name {
+                text-decoration: underline;
+            }
         }
-    }
 
-    &__info {
-        padding: 15px;
-    }
+        &-img {
+            height: 250px;
+    
+            & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    
+        &-info {
+            padding: 15px;
 
-    &__name {
-        margin-bottom: 30px;
-        font-size: 24px;
-        color: $font_color;
-    }
-
-    &__description {
-        color: $font_color;
+            &-name {
+                margin-bottom: 30px;
+                font-size: 24px;
+                color: $font_color;
+            }
+        
+            &-description {
+                color: $font_color;
+            }
+        }
     }
 }
 @media (max-width: $c_width) {

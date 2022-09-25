@@ -6,14 +6,14 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 15px;
-        border: $border;
+        border: 1px solid $font_color_medium;
         background-color: $blackout_color;
         padding: 15px;
     }
 
     &__img {
         margin: -15px -15px 0 -15px;
-        border-bottom: $border;
+        border-bottom: 1px solid $font_color_medium;
 
         & img {
             width: 100%;

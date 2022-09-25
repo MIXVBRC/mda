@@ -27,7 +27,7 @@ $this->setFrameMode(true);
             ?>
 
             <a class="list2__item" href="<?=$arItem['DETAIL_PAGE_URL']?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-                <div class="list2__img">
+                <div class="list2__item-img">
 
                     <?/*
                     <img class="img__cover" src="<?=$arItem['PREVIEW_PICTURE']['SRC']?>" alt="<?=$arItem['PREVIEW_PICTURE']['ALT']?>">
@@ -51,9 +51,9 @@ $this->setFrameMode(true);
                     ); ?>
 
                 </div>
-                <div class="list2__info">
-                    <div class="list2__name"><?=$arItem['NAME']?></div>
-                    <div class="list2__description"><?=$arItem['PREVIEW_TEXT']?></div>
+                <div class="list2__item-info">
+                    <div class="list2__item-info-name"><?=$arItem['NAME']?></div>
+                    <div class="list2__item-info-description"><?=$arItem['PREVIEW_TEXT']?></div>
                 </div>
             </a>
 

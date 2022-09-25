@@ -5,42 +5,30 @@
 
     &__list {
         display: grid;
-        gap: 50px;
+        gap: 0;
         grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: minmax(530px, auto);
     }
 
     &__item {
-        position: relative;
+        padding: 15px;
+
+        &:hover {
+            background-color: $blackout_color;
+        }
         
         &-body {
             & > *:not(:last-child) {
                 margin-bottom: 10px;
             }
         }
-
-        &:hover &-body {
-            position: absolute;
-            left: -15px;
-            top: -15px;
-            background-color: $blackout_color;
-            @include blur;
-            padding: 15px;
-            width: 100%;
-            box-sizing: content-box;
-            z-index: 1;
-
-            & * {
-                box-sizing: border-box;
-            }
-        }
     }
 
     &__img {
         display: block;
-        border: 1px solid $font_color;
+        // border: 1px solid $font_color;
         height: 380px;
         overflow: hidden;
+        // border: $test;
 
         &:hover {
             position: relative;
@@ -186,35 +174,17 @@
 @media (max-width: $l_width) {
     .list1 {
         &__list {
+            gap: 15px;
             grid-template-columns: repeat(2, 1fr);
+        }
+        &__item {
+            background-color: $blackout_color;
         }
     }
 }
 @media (max-width: $m_width) {
     .list1 {
-        &__item {
-            &:hover &-body {
-                position: initial;
-                left: initial;
-                top: initial;
-                background-color: unset;
-                backdrop-filter: blur(0);
-                padding: unset;
-                width: initial;
-                box-sizing: border-box;
-                z-index: 1;
-            }
 
-            &-hide {
-                display: block;
-            }
-        }
-
-        &__item:hover &__img {
-            & > img {
-                transform: scale(1);
-            }
-        }
     }
     
 }
@@ -222,6 +192,9 @@
     .list1 {
         &__list {
             grid-template-columns: repeat(1, 1fr);
+        }
+        &__item {
+            background-color: $blackout_color;
         }
     }
 }

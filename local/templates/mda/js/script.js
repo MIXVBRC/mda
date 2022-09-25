@@ -98,7 +98,7 @@ $(document).ready(function () {
     (function () {
         function bubble() {
 
-            let speed = 500,
+            let speed = 400,
                 boobleList = $('.button, .button__success, .button__medium, .button__error'),
                 style = {
                     position: 'absolute',
@@ -183,4 +183,11 @@ $(document).ready(function () {
         bubble();
         BX.addCustomEvent('onAjaxSuccess', bubble);
     })();
+
+    (function () {
+        $('[data-opener]').on('click', function () {
+            pre(1);
+            $(this).parents('[data-item]').toggleAttr('data-close');
+        });
+    })()
 });

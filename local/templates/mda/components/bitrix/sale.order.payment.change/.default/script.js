@@ -23,8 +23,9 @@ BX.Sale.OrderPaymentChange = (function()
 
 	classDescription.prototype.init = function()
 	{
-
+		/*
 		var paymentNewList = this.wrapper.getElementsByClassName('order-detail__payment-new-list')[0];
+
 		new BX.easing({
 			duration: 300,
 			start: {opacity: 0, height: 0},
@@ -40,6 +41,7 @@ BX.Sale.OrderPaymentChange = (function()
 				paymentNewList.style.height = 'auto';
 			}
 		}).animate();
+		*/
 
 		BX.bindDelegate(this.paySystemsContainer, 'click', { 'className': 'order-detail__payment-new-item' }, BX.proxy(
 			function(event) {
@@ -67,8 +69,9 @@ BX.Sale.OrderPaymentChange = (function()
 					},
 					onsuccess: BX.proxy(function(result) {
 
-						// window.location.reload();
+						window.location.reload();
 
+						return this;
 						let paymentItem = this.paySystemsContainer.closest('.order-detail__payment-item');
 						let paymentBox = $(paymentItem).find('.order-detail__payment-box');
 
