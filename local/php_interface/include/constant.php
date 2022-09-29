@@ -23,7 +23,7 @@ const MDA_IBLOCK_ID_CATALOG_OFFERS = 13;
 const MDA_WEB_FORM_ID_VACANSY = 1;
 
 // Отключить редактирование инфоблоков
-const MDA_HIDE_ICONS = 'Y';
+const MDA_HIDE_ICONS = 'N';
 
 // Highload блоки
 const MDA_HL_VIEWS = 1;
