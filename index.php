@@ -37,7 +37,7 @@ $APPLICATION->IncludeComponent(
 			0 => "",
 			1 => "",
 		),
-		"SECTION_ID" => '',
+		"SECTION_ID" => "",
 		"SECTION_URL" => "/catalog/#SECTION_CODE#/",
 		"SECTION_USER_FIELDS" => array(
 			0 => "",
@@ -47,10 +47,12 @@ $APPLICATION->IncludeComponent(
 		"TOP_DEPTH" => "1",
 		"VIEW_MODE" => "LINE",
 		"COMPONENT_TEMPLATE" => "main_sections",
-		"IMAGE" => "44"
+		"IMAGE" => "4053"
 	),
 	false,
-    array("HIDE_ICONS" => MDA_HIDE_ICONS)
+	array(
+		"HIDE_ICONS" => MDA_HIDE_ICONS
+	)
 );
 ?>
 
@@ -65,7 +67,7 @@ $APPLICATION->IncludeComponent(
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"COUNT_ELEMENTS" => "Y",
-		"COUNT_ELEMENTS_FILTER" => "CNT_AVAILABLE",
+		"COUNT_ELEMENTS_FILTER" => "CNT_ALL",
 		"FILTER_NAME" => "sectionsFilter",
 		"IBLOCK_ID" => MDA_IBLOCK_ID_CATALOG,
 		"IBLOCK_TYPE" => "catalog",
@@ -77,18 +79,21 @@ $APPLICATION->IncludeComponent(
 		"SECTION_ID" => "",
 		"SECTION_URL" => "/catalog/#SECTION_CODE_PATH#/",
 		"SECTION_USER_FIELDS" => array(
-			0 => "UF_RECOMMEND",
-			1 => "",
+			0 => "",
+			1 => "UF_RECOMMEND",
+			2 => "",
 		),
 		"SHOW_PARENT_NAME" => "Y",
 		"TOP_DEPTH" => "9",
 		"VIEW_MODE" => "LINE",
 		"COMPONENT_TEMPLATE" => "main_popular",
-		"IMAGE" => "45",
+		"IMAGE" => "4054",
 		"ELEMENT_COUNT" => "4"
 	),
 	false,
-    array("HIDE_ICONS" => MDA_HIDE_ICONS)
+	array(
+		"HIDE_ICONS" => MDA_HIDE_ICONS
+	)
 );
 ?>
 
@@ -227,10 +232,12 @@ $APPLICATION->IncludeComponent(
 		"SORT_ORDER2" => "ASC",
 		"STRICT_SECTION_CHECK" => "N",
 		"COMPONENT_TEMPLATE" => "main_news",
-		"IMAGE" => "46"
+		"IMAGE" => "4055"
 	),
 	false,
-    array("HIDE_ICONS" => MDA_HIDE_ICONS)
+	array(
+		"HIDE_ICONS" => MDA_HIDE_ICONS
+	)
 );?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
