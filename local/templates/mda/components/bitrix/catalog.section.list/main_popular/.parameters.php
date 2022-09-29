@@ -10,7 +10,7 @@ $arValues = [
 $itemList = \Bitrix\Iblock\ElementTable::getList([
     'select' => ['ID', 'NAME', 'DETAIL_PICTURE'],
     'filter' => [
-        'IBLOCK_ID' => 8,
+        'IBLOCK_ID' => MDA_IBLOCK_ID_IMAGES,
     ],
 ])->fetchAll();
 foreach ($itemList as $item) {

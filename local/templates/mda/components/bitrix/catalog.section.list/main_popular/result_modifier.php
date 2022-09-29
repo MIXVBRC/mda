@@ -10,13 +10,13 @@
 // Вывод изображений справа
 if ($arParams['IMAGE'] > 0) {
     $item = \Bitrix\Iblock\ElementTable::getList([
-        'select' => ['ID', 'DETAIL_PICTURE'],
+        'select' => ['PREVIEW_PICTURE'],
         'filter' => [
             'ID' => $arParams['IMAGE'],
             'ACTIVE' => 'Y'
         ],
-    ])->fetch();
-    $arResult['IMAGE'] = CFile::GetPath($item['DETAIL_PICTURE']);
+    ])->fetch()['PREVIEW_PICTURE'];
+    $arResult['IMAGE'] = CFile::GetPath($item);
 }
 
 $sectionList = [];

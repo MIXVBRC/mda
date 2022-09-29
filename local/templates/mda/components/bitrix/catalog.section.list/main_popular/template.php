@@ -33,7 +33,7 @@ if ($arResult['SECTIONS']):?>
 
                         <div class="popular__item" id="<?=$this->GetEditAreaId($arSection['ID'])?>">
                             <a href="<?=$arSection['SECTION_PAGE_URL']?>" class="popular__link">
-                                <img src="<?=$arSection['PICTURE']['SRC']?>" alt="<?=$arSection['PICTURE']['ALT']?>" class="popular__img img__cover">
+                                <img src="<?=$arSection['PICTURE']['SRC']?:MDA_NO_PHOTO;?>" alt="<?=$arSection['NAME']?>" class="popular__img img__cover">
                                 <div class="popular__name"><?=$arSection['NAME']?></div>
                             </a>
                         </div>

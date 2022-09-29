@@ -17,6 +17,7 @@ const MDA_NO_PHOTO = '/local/templates/mda/img/nophoto.png';
 const MDA_IBLOCK_ID_NEWS = 9;
 const MDA_IBLOCK_ID_VACANSY = 11;
 const MDA_IBLOCK_ID_ACTIONS = 6;
+const MDA_IBLOCK_ID_IMAGES = 10;
 
 // Каталог
 const MDA_IBLOCK_ID_CATALOG = 12;
