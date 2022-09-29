@@ -52,8 +52,8 @@
                     </div>
 
                     <div class="form__item">
-                        <input class="form__input" id="formCaptcha" type="text" name="captcha_word" size="30" maxlength="50" value="" class="inputtext">
-                        <label class="form__label" for="formCaptcha">* <?=GetMessage("FORM_CAPTCHA_FIELD_TITLE")?></label>
+                        <input class="form__input" id="FORM_CAPTCHA" type="text" name="captcha_word" size="30" maxlength="50" value="" class="inputtext">
+                        <label class="form__label" for="FORM_CAPTCHA">* <?=GetMessage("FORM_CAPTCHA_FIELD_TITLE")?></label>
                     </div>
 
                 <? endif; ?>

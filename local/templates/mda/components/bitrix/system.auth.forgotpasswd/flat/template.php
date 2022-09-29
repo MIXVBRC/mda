@@ -23,8 +23,11 @@
                 <input type="hidden" name="TYPE" value="SEND_PWD">
 
                 <div class="form__item">
-                    <input class="form__input" placeholder="<?=GetMessage("sys_forgot_pass_login1")?>" type="text" name="USER_LOGIN" value="<?= $arResult["USER_LOGIN"] ?>">
+                    <input class="form__input" id="USER_LOGIN" type="text" name="USER_LOGIN" value="<?= $arResult["USER_LOGIN"] ?>">
                     <input type="hidden" name="USER_EMAIL"/>
+                    <label class="form__label" for="USER_LOGIN">
+                        * <?=GetMessage("sys_forgot_pass_login1")?>
+                    </label>
                 </div>
 
                 <div class="form__item">
@@ -34,7 +37,10 @@
                 <? if ($arResult["PHONE_REGISTRATION"]): ?>
 
                     <div class="form__item">
-                        <input class="form__input" placeholder="<?=GetMessage("sys_forgot_pass_phone")?>" type="text" name="USER_PHONE_NUMBER" value="<?= $arResult["USER_PHONE_NUMBER"] ?>">
+                        <input class="form__input" id="USER_PHONE_NUMBER" type="text" name="USER_PHONE_NUMBER" value="<?= $arResult["USER_PHONE_NUMBER"] ?>">
+                        <label class="form__label" for="USER_PHONE_NUMBER">
+                            <?=GetMessage("sys_forgot_pass_phone")?>
+                        </label>
                     </div>
 
                     <div class="form__item">
@@ -51,13 +57,16 @@
                     </div>
 
                     <div class="form__item">
-                        <input class="form__input" placeholder="<?=GetMessage("system_auth_captcha")?>" type="text" name="captcha_word" maxlength="50" value="" autocomplete="off">
+                        <input class="form__input" id="FORM_CAPTCHA" type="text" name="captcha_word" maxlength="50" value="" autocomplete="off">
+                        <label class="form__label" for="FORM_CAPTCHA">
+                            * <?=GetMessage("system_auth_captcha")?>
+                        </label>
                     </div>
 
                 <? endif ?>
 
                 <div class="form__item">
-                    <input class="form__button" type="submit" name="send_account_info" value="<?= GetMessage("AUTH_SEND") ?>">
+                    <input class="button" type="submit" name="send_account_info" value="<?= GetMessage("AUTH_SEND") ?>">
                 </div>
 
                 <div class="form__item">

@@ -37,7 +37,13 @@
             transition: $transition_time_mini ease-in-out;
         }
 
-        & > input:not(.button),
+        & > input[type=checkbox] ~ label {
+            left: 25px;
+            top: 0;
+        }
+
+        & > input[type=text],
+        & > input[type=password],
         & > textarea {
             width: 100%;
             border-bottom: $border_white;
@@ -59,7 +65,8 @@
             color: $font_color_medium;
         }
         
-        & > input,
+        & > input[type=text],
+        & > input[type=password],
         & > textarea {
             &:focus {
                 &,

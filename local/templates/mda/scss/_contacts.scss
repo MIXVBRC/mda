@@ -71,7 +71,8 @@
         &-address {
             color: $font_color;
 
-            & > span {
+            & > span:last-child,
+            & > address {
                 color: $main_color;
             }
 

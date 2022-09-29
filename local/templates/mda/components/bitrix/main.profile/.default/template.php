@@ -87,8 +87,8 @@ use Bitrix\Main\Localization\Loc;
                 <? endif; ?>
 
                 <div class="form__item">
-                    <input class="form__button" type="submit" name="save" value="<?=(($arResult["ID"]>0) ? Loc::getMessage("MAIN_SAVE") : Loc::getMessage("MAIN_ADD"))?>">
-                    <input class="form__button" type="submit" name="reset" value="<?echo GetMessage("MAIN_RESET")?>">
+                    <input class="button" type="submit" name="save" value="<?=(($arResult["ID"]>0) ? Loc::getMessage("MAIN_SAVE") : Loc::getMessage("MAIN_ADD"))?>">
+                    <input class="button" type="submit" name="reset" value="<?echo GetMessage("MAIN_RESET")?>">
                 </div>
 
                 <div class="form__item">

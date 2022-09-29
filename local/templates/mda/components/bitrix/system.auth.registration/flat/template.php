@@ -95,19 +95,31 @@ if ($arResult["SHOW_SMS_FIELD"] == true) {
                 <div class="form__list">
 
                     <div class="form__item">
-                        <input class="form__input" placeholder="<?= GetMessage("AUTH_NAME") ?>" type="text" name="USER_NAME" maxlength="50" value="<?= $arResult["USER_NAME"] ?>">
+                        <input class="form__input" id="USER_NAME" type="text" name="USER_NAME" maxlength="50" value="<?= $arResult["USER_NAME"] ?>">
+                        <label class="form__label" for="USER_NAME">
+                            <?=GetMessage("AUTH_NAME")?>
+                        </label>
                     </div>
 
                     <div class="form__item">
-                        <input class="form__input" placeholder="<?= GetMessage("AUTH_LAST_NAME") ?>" type="text" name="USER_LAST_NAME" maxlength="50" value="<?= $arResult["USER_LAST_NAME"] ?>">
+                        <input class="form__input" id="USER_LAST_NAME" type="text" name="USER_LAST_NAME" maxlength="50" value="<?= $arResult["USER_LAST_NAME"] ?>">
+                        <label class="form__label" for="USER_LAST_NAME">
+                            <?=GetMessage("AUTH_LAST_NAME")?>
+                        </label>
                     </div>
 
                     <div class="form__item">
-                        <input class="form__input" placeholder="* <?= GetMessage("AUTH_LOGIN_MIN") ?>" type="text" name="USER_LOGIN" maxlength="50" value="<?= $arResult["USER_LOGIN"] ?>">
+                        <input class="form__input" id="USER_LOGIN" type="text" name="USER_LOGIN" maxlength="50" value="<?= $arResult["USER_LOGIN"] ?>">
+                        <label class="form__label" for="USER_LOGIN">
+                            * <?=GetMessage("AUTH_LOGIN_MIN")?>
+                        </label>
                     </div>
 
                     <div class="form__item">
-                        <input class="form__input" placeholder="* <?= GetMessage("AUTH_PASSWORD_REQ") ?>" type="password" name="USER_PASSWORD" maxlength="255" value="<?= $arResult["USER_PASSWORD"] ?>" autocomplete="off">
+                        <input class="form__input" id="USER_PASSWORD" type="password" name="USER_PASSWORD" maxlength="255" value="<?= $arResult["USER_PASSWORD"] ?>" autocomplete="off">
+                        <label class="form__label" for="USER_PASSWORD">
+                            * <?=GetMessage("AUTH_PASSWORD_REQ")?>
+                        </label>
                     </div>
 
                     <? if ($arResult["GROUP_POLICY"]["PASSWORD_REQUIREMENTS"]): ?>
@@ -119,13 +131,19 @@ if ($arResult["SHOW_SMS_FIELD"] == true) {
                     <? endif ?>
 
                     <div class="form__item">
-                        <input class="form__input" placeholder="* <?= GetMessage("AUTH_CONFIRM") ?>" type="password" name="USER_CONFIRM_PASSWORD" maxlength="255" value="<?= $arResult["USER_CONFIRM_PASSWORD"] ?>" autocomplete="off">
+                        <input class="form__input" id="USER_CONFIRM_PASSWORD" type="password" name="USER_CONFIRM_PASSWORD" maxlength="255" value="<?= $arResult["USER_CONFIRM_PASSWORD"] ?>" autocomplete="off">
+                        <label class="form__label" for="USER_CONFIRM_PASSWORD">
+                            * <?=GetMessage("AUTH_CONFIRM")?>
+                        </label>
                     </div>
 
                     <? if ($arResult["EMAIL_REGISTRATION"]): ?>
 
                         <div class="form__item">
-                            <input class="form__input" placeholder="<?=($arResult["EMAIL_REQUIRED"] ? '* ' : '')?><?= GetMessage("AUTH_EMAIL") ?>" type="text" name="USER_EMAIL" maxlength="255" value="<?= $arResult["USER_EMAIL"] ?>">
+                            <input class="form__input" id="USER_EMAIL" type="text" name="USER_EMAIL" maxlength="255" value="<?= $arResult["USER_EMAIL"] ?>">
+                            <label class="form__label" for="USER_EMAIL">
+                                <?=($arResult["EMAIL_REQUIRED"] ? '* ' : '')?><?= GetMessage("AUTH_EMAIL") ?>
+                            </label>
                         </div>
 
                     <? endif ?>
@@ -141,7 +159,10 @@ if ($arResult["SHOW_SMS_FIELD"] == true) {
                     <? if ($arResult["PHONE_REGISTRATION"]): ?>
 
                         <div class="form__item">
-                            <input class="form__input" placeholder="<?=($arResult["PHONE_REQUIRED"] ? '* ' : '')?><?= GetMessage("main_register_phone_number") ?>" type="text" name="USER_PHONE_NUMBER" maxlength="255" value="<?= $arResult["USER_PHONE_NUMBER"] ?>">
+                            <input class="form__input" id="USER_PHONE_NUMBER" type="text" name="USER_PHONE_NUMBER" maxlength="255" value="<?= $arResult["USER_PHONE_NUMBER"] ?>">
+                            <label class="form__label" for="USER_PHONE_NUMBER">
+                                <?=($arResult["PHONE_REQUIRED"] ? '* ' : '')?><?= GetMessage("main_register_phone_number") ?>
+                            </label>
                         </div>
 
                     <? endif ?>
@@ -154,41 +175,46 @@ if ($arResult["SHOW_SMS_FIELD"] == true) {
                         </div>
 
                         <div class="form__item">
-                            <input class="form__input" placeholder="<?= GetMessage("CAPTCHA_REGF_PROMT") ?>" type="text" name="captcha_word" maxlength="50" value="" autocomplete="off">
+                            <input class="form__input" id="FORM_CAPTCHA" type="text" name="captcha_word" maxlength="50" value="" autocomplete="off">
+                            <label class="form__label" for="FORM_CAPTCHA">
+                                * <?= GetMessage("CAPTCHA_REGF_PROMT") ?>
+                            </label>
                         </div>
 
                     <? endif ?>
 
                     <div class="form__item">
-                        <? $APPLICATION->IncludeComponent("bitrix:main.userconsent.request", "",
-                            array(
-                                "ID" => COption::getOptionString("main", "new_user_agreement", ""),
-                                "IS_CHECKED" => "Y",
-                                "AUTO_SAVE" => "N",
-                                "IS_LOADED" => "Y",
-                                "ORIGINATOR_ID" => $arResult["AGREEMENT_ORIGINATOR_ID"],
-                                "ORIGIN_ID" => $arResult["AGREEMENT_ORIGIN_ID"],
-                                "INPUT_NAME" => $arResult["AGREEMENT_INPUT_NAME"],
-                                "REPLACE" => array(
-                                    "button_caption" => GetMessage("AUTH_REGISTER"),
-                                    "fields" => array(
-                                        rtrim(GetMessage("AUTH_NAME"), ":"),
-                                        rtrim(GetMessage("AUTH_LAST_NAME"), ":"),
-                                        rtrim(GetMessage("AUTH_LOGIN_MIN"), ":"),
-                                        rtrim(GetMessage("AUTH_PASSWORD_REQ"), ":"),
-                                        rtrim(GetMessage("AUTH_EMAIL"), ":"),
-                                    )
-                                ),
-                            )
-                        ); ?>
-                    </div>
-
-                    <div class="form__item">
-                        <input class="form__button" type="submit" name="Register" value="<?= GetMessage("AUTH_REGISTER") ?>">
-                    </div>
-
-                    <div class="form__item">
                         <div class="form__small">* <?= GetMessage("AUTH_REQ") ?></div>
+                    </div>
+
+                    <div class="form__item">
+                        <div>
+                            <? $APPLICATION->IncludeComponent("bitrix:main.userconsent.request", "",
+                                array(
+                                    "ID" => COption::getOptionString("main", "new_user_agreement", ""),
+                                    "IS_CHECKED" => "Y",
+                                    "AUTO_SAVE" => "N",
+                                    "IS_LOADED" => "Y",
+                                    "ORIGINATOR_ID" => $arResult["AGREEMENT_ORIGINATOR_ID"],
+                                    "ORIGIN_ID" => $arResult["AGREEMENT_ORIGIN_ID"],
+                                    "INPUT_NAME" => $arResult["AGREEMENT_INPUT_NAME"],
+                                    "REPLACE" => array(
+                                        "button_caption" => GetMessage("AUTH_REGISTER"),
+                                        "fields" => array(
+                                            rtrim(GetMessage("AUTH_NAME"), ":"),
+                                            rtrim(GetMessage("AUTH_LAST_NAME"), ":"),
+                                            rtrim(GetMessage("AUTH_LOGIN_MIN"), ":"),
+                                            rtrim(GetMessage("AUTH_PASSWORD_REQ"), ":"),
+                                            rtrim(GetMessage("AUTH_EMAIL"), ":"),
+                                        )
+                                    ),
+                                )
+                            ); ?>
+                        </div>
+                    </div>
+
+                    <div class="form__item">
+                        <input class="button" type="submit" name="Register" value="<?= GetMessage("AUTH_REGISTER") ?>">
                     </div>
 
                     <div class="form__item">

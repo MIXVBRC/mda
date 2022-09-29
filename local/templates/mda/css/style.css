@@ -5152,7 +5152,7 @@ body {
 .contacts__item-address {
   color: #fff;
 }
-.contacts__item-address > span {
+.contacts__item-address > span:last-child, .contacts__item-address > address {
   color: #0085FF;
 }
 .contacts__item-address > address {
@@ -5251,7 +5251,11 @@ body {
   pointer-events: none;
   transition: 250ms ease-in-out;
 }
-.form__item > input:not(.button), .form__item > textarea {
+.form__item > input[type=checkbox] ~ label {
+  left: 25px;
+  top: 0;
+}
+.form__item > input[type=text], .form__item > input[type=password], .form__item > textarea {
   width: 100%;
   border-bottom: 2px solid #fff;
   padding: 5px 0;
@@ -5260,20 +5264,20 @@ body {
   border-radius: unset;
   transition: 250ms ease-in-out;
 }
-.form__item > input:not(.button)[readonly], .form__item > textarea[readonly] {
+.form__item > input[type=text][readonly], .form__item > input[type=password][readonly], .form__item > textarea[readonly] {
   color: #8A8A8A !important;
   border-color: #8A8A8A !important;
 }
-.form__item > input:focus::-moz-placeholder, .form__item > textarea:focus::-moz-placeholder {
+.form__item > input[type=text]:focus::-moz-placeholder, .form__item > input[type=password]:focus::-moz-placeholder, .form__item > textarea:focus::-moz-placeholder {
   color: #fff;
 }
-.form__item > input:focus:-ms-input-placeholder, .form__item > textarea:focus:-ms-input-placeholder {
+.form__item > input[type=text]:focus:-ms-input-placeholder, .form__item > input[type=password]:focus:-ms-input-placeholder, .form__item > textarea:focus:-ms-input-placeholder {
   color: #fff;
 }
-.form__item > input:focus, .form__item > input:focus::placeholder, .form__item > textarea:focus, .form__item > textarea:focus::placeholder {
+.form__item > input[type=text]:focus, .form__item > input[type=text]:focus::placeholder, .form__item > input[type=password]:focus, .form__item > input[type=password]:focus::placeholder, .form__item > textarea:focus, .form__item > textarea:focus::placeholder {
   color: #fff;
 }
-.form__item > input:focus ~ label, .form__item > textarea:focus ~ label {
+.form__item > input[type=text]:focus ~ label, .form__item > input[type=password]:focus ~ label, .form__item > textarea:focus ~ label {
   top: -10px;
   font-size: 10px;
   color: #8A8A8A;

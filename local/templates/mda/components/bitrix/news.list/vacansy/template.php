@@ -19,7 +19,7 @@ $this->setFrameMode(true);
         <?=$arResult["NAV_STRING"]?>
     <?endif;?>
 
-    <div class="vacansy">
+    <div class="vacansy" id="vacansy">
         <div class="vacansy__body">
 
             <h2 class="vacansy__title"><?=$arResult['NAME']?></h2>

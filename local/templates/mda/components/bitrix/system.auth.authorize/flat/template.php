@@ -40,11 +40,17 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 
                 <div class="form__item">
-                    <input class="form__input" placeholder="<?=GetMessage("AUTH_LOGIN")?>" type="text" name="USER_LOGIN" maxlength="255" value="<?=$arResult["LAST_LOGIN"]?>">
+                    <input class="form__input" id="USER_LOGIN" type="text" name="USER_LOGIN" maxlength="255" value="<?=$arResult["LAST_LOGIN"]?>">
+                    <label class="form__label" for="USER_LOGIN">
+                        <?=GetMessage("AUTH_LOGIN")?>
+                    </label>
                 </div>
 
                 <div class="form__item">
-                    <input class="form__input" placeholder="<?=GetMessage("AUTH_PASSWORD")?>" type="password" name="USER_PASSWORD" maxlength="255" autocomplete="off">
+                    <input class="form__input" id="USER_PASSWORD" type="password" name="USER_PASSWORD" maxlength="255" autocomplete="off">
+                    <label class="form__label" for="USER_LOGIN">
+                        <?=GetMessage("AUTH_PASSWORD")?>
+                    </label>
                 </div>
 
                 <? if($arResult["CAPTCHA_CODE"]): ?>
@@ -55,7 +61,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
                     </div>
 
                     <div class="form__item">
-                        <input class="form__input" placeholder="<?=GetMessage("AUTH_CAPTCHA_PROMT")?>" type="text" name="captcha_word" maxlength="50" value="" autocomplete="off">
+                        <input class="form__input" id="FORM_CAPTCHA" type="text" name="captcha_word" maxlength="50" value="" autocomplete="off">
+                        <label class="form__label" for="FORM_CAPTCHA">
+                            <?=GetMessage("AUTH_CAPTCHA_PROMT")?>
+                        </label>
                     </div>
 
                 <? endif; ?>
@@ -64,13 +73,13 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
                     <div class="form__item">
                         <input class="form__checkbox" type="checkbox" id="USER_REMEMBER" name="USER_REMEMBER" value="Y" />
-                        <label for="USER_REMEMBER"><?=GetMessage("AUTH_REMEMBER_ME")?></label>
+                        <label class="form__label" for="USER_REMEMBER"><?=GetMessage("AUTH_REMEMBER_ME")?></label>
                     </div>
 
                 <? endif; ?>
 
                 <div class="form__item">
-                    <input class="form__button" type="submit" name="Login" value="<?=GetMessage("AUTH_AUTHORIZE")?>">
+                    <input class="button" type="submit" name="Login" value="<?=GetMessage("AUTH_AUTHORIZE")?>">
                 </div>
 
                 <? if($arParams["NOT_SHOW_LINKS"] != "Y" && $arResult["NEW_USER_REGISTRATION"] == "Y" && $arParams["AUTHORIZE_REGISTRATION"] != "Y"): ?>
