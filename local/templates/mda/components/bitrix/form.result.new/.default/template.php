@@ -52,7 +52,8 @@
                     </div>
 
                     <div class="form__item">
-                        <input class="form__input" placeholder="* <?=GetMessage("FORM_CAPTCHA_FIELD_TITLE")?>" type="text" name="captcha_word" size="30" maxlength="50" value="" class="inputtext">
+                        <input class="form__input" id="formCaptcha" type="text" name="captcha_word" size="30" maxlength="50" value="" class="inputtext">
+                        <label class="form__label" for="formCaptcha">* <?=GetMessage("FORM_CAPTCHA_FIELD_TITLE")?></label>
                     </div>
 
                 <? endif; ?>
@@ -64,7 +65,7 @@
                 </div>
 
                 <div class="form__item">
-                    <input class="form__button" type="submit" name="web_form_submit" value="<?= htmlspecialcharsbx(trim($arResult["arForm"]["BUTTON"]) == '' ? GetMessage("FORM_ADD") : $arResult["arForm"]["BUTTON"]); ?>">
+                    <input class="button" type="submit" name="web_form_submit" value="<?= htmlspecialcharsbx(trim($arResult["arForm"]["BUTTON"]) == '' ? GetMessage("FORM_ADD") : $arResult["arForm"]["BUTTON"]); ?>">
                 </div>
 
             </div>

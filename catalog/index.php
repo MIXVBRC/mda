@@ -5,6 +5,16 @@ $APPLICATION->SetTitle("Каталог");
 	"bitrix:catalog", 
 	".default", 
 	array(
+        "IBLOCK_ID" => MDA_IBLOCK_ID_CATALOG,
+        "LINK_IBLOCK_ID" => MDA_IBLOCK_ID_CATALOG_OFFERS,
+        // Тип цены
+        "PRICE_CODE" => array(
+            0 => "BASE",
+        ),
+        // Свойства для отбора предложений
+        "OFFER_TREE_PROPS" => array(
+            0 => "CML2_MANUFACTURER",
+        ),
 		"ACTION_VARIABLE" => "action",
 		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_PICT_PROP" => "-",
@@ -78,7 +88,6 @@ $APPLICATION->SetTitle("Каталог");
 		"GIFTS_SHOW_OLD_PRICE" => "Y",
 		"HIDE_NOT_AVAILABLE" => "Y",
 		"HIDE_NOT_AVAILABLE_OFFERS" => "Y",
-		"IBLOCK_ID" => MDA_IBLOCK_ID_CATALOG,
 		"IBLOCK_TYPE" => "catalog",
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"INSTANT_RELOAD" => "N",
@@ -87,7 +96,6 @@ $APPLICATION->SetTitle("Каталог");
 		"LAZY_LOAD" => "N",
 		"LINE_ELEMENT_COUNT" => "3",
 		"LINK_ELEMENTS_URL" => "link.php?PARENT_ELEMENT_ID=#ELEMENT_ID#",
-		"LINK_IBLOCK_ID" => MDA_IBLOCK_ID_CATALOG_OFFERS,
 		"LINK_IBLOCK_TYPE" => "catalog",
 		"LINK_PROPERTY_SID" => "CML2_LINK",
 		"LIST_BROWSER_TITLE" => "-",
@@ -119,11 +127,8 @@ $APPLICATION->SetTitle("Каталог");
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Товары",
-		"PAGE_ELEMENT_COUNT" => "20",
+		"PAGE_ELEMENT_COUNT" => "30",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
-		"PRICE_CODE" => array(
-			0 => "BASE",
-		),
 		"PRICE_VAT_INCLUDE" => "Y",
 		"PRICE_VAT_SHOW_VALUE" => "N",
 		"PRODUCT_ID_VARIABLE" => "id",
@@ -216,7 +221,7 @@ $APPLICATION->SetTitle("Каталог");
 		"OFFER_ADD_PICT_PROP" => "-",
 		"TOP_OFFERS_FIELD_CODE" => array(
 			0 => "",
-			1 => "VKUS",
+			1 => "",
 			2 => "",
 		),
 		"TOP_OFFERS_LIMIT" => "5",
@@ -234,62 +239,45 @@ $APPLICATION->SetTitle("Каталог");
 		"OFFERS_SORT_FIELD2" => "shows",
 		"OFFERS_SORT_ORDER2" => "desc",
 		"LABEL_PROP_MOBILE" => array(
-			0 => "VKUS",
+			0 => "",
 		),
 		"LABEL_PROP_POSITION" => "top-left",
-		"OFFER_TREE_PROPS" => array(
-			0 => "VKUS",
-		),
 		"PRODUCT_PROPERTIES" => array(
 		),
 		"OFFERS_CART_PROPERTIES" => array(
-			0 => "VKUS",
+			0 => "",
 		),
 		"TOP_PROPERTY_CODE" => array(
 			0 => "",
-			1 => "VKUS",
+			1 => "",
 			2 => "",
 		),
 		"TOP_OFFERS_PROPERTY_CODE" => array(
-			0 => "VKUS",
+			0 => "",
 			1 => "",
 		),
 		"LIST_PROPERTY_CODE" => array(
-			0 => "FORM",
-			1 => "COLOR",
-			2 => "",
+			0 => "",
+			1 => "",
 		),
 		"LIST_OFFERS_PROPERTY_CODE" => array(
-			0 => "VKUS",
-			1 => "TOPER",
-			2 => "PHOTOS",
-			3 => "TEST",
-			4 => "",
+			0 => "",
+			1 => "",
 		),
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "FORM",
-			1 => "COLOR",
-			2 => "",
+			0 => "",
+			1 => "",
 		),
 		"DETAIL_OFFERS_PROPERTY_CODE" => array(
-			0 => "VKUS",
-			1 => "TOPER",
-			2 => "PHOTOS",
-			3 => "TEST",
-			4 => "",
+			0 => "",
+			1 => "",
 		),
 		"TOP_PROPERTY_CODE_MOBILE" => "",
 		"LIST_PROPERTY_CODE_MOBILE" => array(
-			0 => "FORM",
-			1 => "COLOR",
 		),
 		"DETAIL_MAIN_BLOCK_PROPERTY_CODE" => array(
-			0 => "FORM",
-			1 => "COLOR",
 		),
 		"DETAIL_MAIN_BLOCK_OFFERS_PROPERTY_CODE" => array(
-			0 => "VKUS",
-			1 => "TOPER",
 		),
 		"DISCOUNT_PERCENT_POSITION" => "bottom-right",
 		"FILE_404" => "",
@@ -307,5 +295,7 @@ $APPLICATION->SetTitle("Каталог");
 		)
 	),
 	false,
-    array("HIDE_ICONS" => MDA_HIDE_ICONS)
+	array(
+		"HIDE_ICONS" => MDA_HIDE_ICONS
+	)
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

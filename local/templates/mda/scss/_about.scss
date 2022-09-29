@@ -7,7 +7,7 @@
         font-size: 24px;
         padding-bottom: 24px;
         width: 100%;
-        border-bottom: $border1;
+        border-bottom: $border_white;
         margin-bottom: 30px;
         text-transform: uppercase;
         color: $font_color;
@@ -24,7 +24,7 @@
     }
 
     &__img {
-        border: $border1;
+        border: $border_white;
         
         & > img {
             width: 100%;

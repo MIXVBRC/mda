@@ -4,7 +4,7 @@
         width: 100%;
         max-width: 800px;
         padding: 60px;
-        border: $border1;
+        border: $border_white;
         background-color: $background_color;
     }
 
@@ -37,21 +37,15 @@
             transition: $transition_time_mini ease-in-out;
         }
 
-        & > input,
+        & > input:not(.button),
         & > textarea {
             width: 100%;
-            border-bottom: $border1;
+            border-bottom: $border_white;
             padding: 5px 0;
             z-index: 1;
             outline: none;
             border-radius: unset;
             transition: $transition_time_mini ease-in-out;
-            
-            &:not([readonly]),
-            &::placeholder {
-                transition-delay: 0.1s;
-                color: transparent;
-            }
 
             &[readonly] {
                 color: $font_color_medium !important;
@@ -133,7 +127,7 @@
     }
 
     &__button {
-        border: $border1;
+        border: $border_white;
         padding: 10px 10px;
         text-transform: uppercase;
         cursor: pointer;

@@ -65,7 +65,7 @@ $(document).ready(function () {
     };
 
     // popup open
-    $('[data-popup-form]').on('click' ,function (event) {
+    $(this).on('click', '[data-popup-form]', function (event) {
 
         event.preventDefault();
 
@@ -117,7 +117,7 @@ $(document).ready(function () {
                 zIndex: '0'
             });
 
-            $('[data-bubble]').on('mouseenter', function (event) {
+            $(document).on('mouseenter', '[data-bubble]', function (event) {
 
                 let booble = $('<div data-bubble-in></div>'),
                     width = $(this).width() * 3,
@@ -149,7 +149,7 @@ $(document).ready(function () {
                 });
             });
 
-            $('[data-bubble]').on('mouseleave', function (event) {
+            $(document).on('mouseleave', '[data-bubble]', function (event) {
 
                 let booble = $('<div data-bubble-out></div>'),
                     width = $(this).width() * 3,
@@ -188,7 +188,7 @@ $(document).ready(function () {
     })();
 
     (function () {
-        $('[data-opener]').on('click', function () {
+        $(document).on('click', '[data-opener]', function () {
             pre(1);
             $(this).parents('[data-item]').toggleAttr('data-close');
         });

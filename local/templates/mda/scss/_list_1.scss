@@ -25,13 +25,14 @@
 
     &__img {
         display: block;
-        // border: 1px solid $font_color;
+        border: $border_white;
         height: 380px;
         overflow: hidden;
-        // border: $test;
 
         &:hover {
             position: relative;
+            border-color: $font_color_medium;
+
             &::before {
                 content: attr(data-before-text);
                 position: absolute;
