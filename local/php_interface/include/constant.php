@@ -11,7 +11,7 @@ const MDA_PAGE_NO_SITEBAR = [
 ];
 
 // Картинка "Нет фото"
-const MDA_NO_PHOTO = '/local/templates/mda/img/nophoto.png';
+const MDA_NO_PHOTO = '/local/templates/mda/img/no_photo.png';
 
 // Инфоблоки
 const MDA_IBLOCK_ID_NEWS = 9;
