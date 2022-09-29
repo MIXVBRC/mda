@@ -12,32 +12,38 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<div class="list2">
-    <div class="list2__body">
-        <div class="list2__list">
+<?if($arParams["DISPLAY_TOP_PAGER"]):?>
+    <?=$arResult["NAV_STRING"]?>
+<?endif;?>
 
-            <?foreach($arResult["ITEMS"] as $arItem):?>
-            <?
-                $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
-                $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-            ?>
+<?if ($arResult["ITEMS"]):?>
+    <div class="list2">
+        <div class="list2__body">
+            <div class="list2__list">
 
-            <a class="list2__item" href="<?=$arItem['DETAIL_PAGE_URL']?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-                <div class="list2__item-img">
-                    <img class="img__cover" src="<?=$arItem['PREVIEW_PICTURE']['SRC']?>" alt="<?=$arItem['PREVIEW_PICTURE']['ALT']?>">
-                </div>
-                <div class="list2__item-info">
-                    <div class="list2__item-info-name"><?=$arItem['NAME']?></div>
-                    <div class="list2__item-info-description"><?=$arItem['PREVIEW_TEXT']?></div>
-                </div>
-            </a>
+                <?foreach($arResult["ITEMS"] as $arItem):?>
+                <?
+                    $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+                    $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+                ?>
 
-            <?endforeach;?>
+                <a class="list2__item" href="<?=$arItem['DETAIL_PAGE_URL']?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+                    <div class="list2__item-img">
+                        <img class="img__cover" src="<?=$arItem['PREVIEW_PICTURE']['SRC']?>" alt="<?=$arItem['PREVIEW_PICTURE']['ALT']?>">
+                    </div>
+                    <div class="list2__item-info">
+                        <div class="list2__item-info-name"><?=$arItem['NAME']?></div>
+                        <div class="list2__item-info-description"><?=$arItem['PREVIEW_TEXT']?></div>
+                    </div>
+                </a>
 
+                <?endforeach;?>
+
+            </div>
         </div>
     </div>
-</div>
+<?endif;?>
 
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
-    <br /><?=$arResult["NAV_STRING"]?>
+    <?=$arResult["NAV_STRING"]?>
 <?endif;?>

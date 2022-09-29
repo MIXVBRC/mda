@@ -13,7 +13,7 @@
 $this->setFrameMode(true);
 ?>
 <?if($arParams["DISPLAY_TOP_PAGER"]):?>
-    <br /><?=$arResult["NAV_STRING"]?>
+    <?=$arResult["NAV_STRING"]?>
 <?endif;?>
 
 <?if ($arResult["ITEMS"]):?>
@@ -66,5 +66,5 @@ $this->setFrameMode(true);
 <?endif;?>
 
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
-    <br /><?=$arResult["NAV_STRING"]?>
+    <?=$arResult["NAV_STRING"]?>
 <?endif;?>

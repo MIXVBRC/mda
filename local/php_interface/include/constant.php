@@ -13,8 +13,11 @@ const MDA_PAGE_NO_SITEBAR = [
 // Инфоблоки
 const MDA_IBLOCK_ID_NEWS = 9;
 const MDA_IBLOCK_ID_VACANSY = 11;
-const MDA_IBLOCK_ID_CATALOG = 5;
 const MDA_IBLOCK_ID_ACTIONS = 6;
+
+// Каталог
+const MDA_IBLOCK_ID_CATALOG = 12;
+const MDA_IBLOCK_ID_CATALOG_OFFERS = 13;
 
 // Веб формы
 const MDA_WEB_FORM_ID_VACANSY = 1;

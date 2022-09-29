@@ -23,10 +23,75 @@
         position: relative;
         color: $font_color;
         
-        
-        
         &:not(:last-child) {
             margin-bottom: 30px;
+        }
+
+        & > label {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: $font_color;
+            z-index: 0;
+            pointer-events: none;
+            transition: $transition_time_mini ease-in-out;
+        }
+
+        & > input,
+        & > textarea {
+            width: 100%;
+            border-bottom: $border1;
+            padding: 5px 0;
+            z-index: 1;
+            outline: none;
+            border-radius: unset;
+            transition: $transition_time_mini ease-in-out;
+            
+            &:not([readonly]),
+            &::placeholder {
+                transition-delay: 0.1s;
+                color: transparent;
+            }
+
+            &[readonly] {
+                color: $font_color_medium !important;
+                border-color: $font_color_medium !important;
+            }
+        }
+
+        @mixin labelToTop {
+            top: -10px;
+            font-size: 10px;
+            color: $font_color_medium;
+        }
+        
+        & > input,
+        & > textarea {
+            &:focus {
+                &,
+                &::placeholder {
+                    color: $font_color;
+                }
+
+                & ~ label {
+                    @include labelToTop;
+                }
+            }
+        }
+
+        &[data-form-label] > input {
+            &,
+            &::placeholder {
+                color: $font_color;
+            }
+        }
+
+        &[data-form-label] > label {
+            @include labelToTop;
+        }
+
+        & > textarea {
+            resize: vertical;
         }
     }
 
@@ -67,33 +132,6 @@
         }
     }
 
-    &__input {
-        padding: 5px 0;
-        border-bottom: $border1;
-        width: 100%;
-        color: $font_color;
-        position: relative;
-    }
-
-    // &__input[value] &__label,
-    // &__input[value=""] &__label,
-    &__input:invalid:focus:not(:placeholder-shown) &__label,
-    // &__input:focus + &__label,
-    &__input:hover + &__label {
-        top: -10px;
-        left: -10px;
-        font-size: 10px;
-        transition: $transition_time_mini;
-    }
-
-    &__label {
-        position: absolute;
-        left: 0;
-        top: 5px;
-        color: $font_color;
-        transition: $transition_time_mini;
-    }
-
     &__button {
         border: $border1;
         padding: 10px 10px;
@@ -122,21 +160,6 @@
     &__checkbox {
         cursor: pointer;
         margin-right: 5px;
-    }
-
-    &__textarea {
-        width: 100%;
-        border-bottom: $border1;
-        padding: 5px 0;
-        resize: vertical;
-        border-radius: none;
-        outline: none;
-        color: $font_color;
-    }
-
-    & [readonly] {
-        color: $font_color_medium;
-        border-color: $font_color_medium;
     }
 }
 

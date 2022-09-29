@@ -31,7 +31,7 @@
 
                 <? foreach ($arResult['QUESTIONS'] as $FIELD_SID => $arQuestion):?>
 
-                    <div class="form__item">
+                    <div class="form__item" data-form-input>
                         <?= $arQuestion["HTML_CODE"] ?>
                         <label class="form__label" for="<?=$FIELD_SID.'_'.$arQuestion['STRUCTURE'][0]['FIELD_ID']?>">
                             <?=($arQuestion['REQUIRED']=='Y'?'* ':'') . $arQuestion['CAPTION']?>
@@ -72,4 +72,29 @@
         <?=$arResult["FORM_FOOTER"]?>
 
     </div>
+
+    <script>
+        (function () {
+            function checkInput(item, input) {
+                if ($(input).val()) {
+                    $(item).attr('data-form-label','');
+                } else {
+                    $(item).removeAttr('data-form-label');
+                }
+            }
+
+            $('[data-form-input]').each(function (key, item) {
+                let input = $(this).find('input,textarea');
+
+                checkInput(this, input);
+
+                $(input).change(function () {
+                    checkInput(item, this);
+                });
+            });
+
+            $('[data-phone-mask]').inputmask("+7 (999) 999-99-99");
+        })();
+
+    </script>
 </div>

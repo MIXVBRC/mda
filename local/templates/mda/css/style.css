@@ -4973,6 +4973,7 @@ body {
   background-color: #15151B;
   border-radius: 30px;
   border: 2px solid #fff;
+  z-index: 10;
 }
 .basket-small:hover {
   border: 2px solid #0085FF;
@@ -5065,6 +5066,7 @@ body {
   background-color: #15151B;
   border-radius: 30px;
   border: 2px solid #fff;
+  z-index: 10;
 }
 .personal-small:hover {
   border: 2px solid #0085FF;
@@ -5237,6 +5239,71 @@ body {
 .form__item:not(:last-child) {
   margin-bottom: 30px;
 }
+.form__item > label {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  color: #fff;
+  z-index: 0;
+  pointer-events: none;
+  transition: 250ms ease-in-out;
+}
+.form__item > input, .form__item > textarea {
+  width: 100%;
+  border-bottom: 2px solid #fff;
+  padding: 5px 0;
+  z-index: 1;
+  outline: none;
+  border-radius: unset;
+  transition: 250ms ease-in-out;
+}
+.form__item > input::-moz-placeholder, .form__item > textarea::-moz-placeholder {
+  transition-delay: 0.1s;
+  color: transparent;
+}
+.form__item > input:-ms-input-placeholder, .form__item > textarea:-ms-input-placeholder {
+  transition-delay: 0.1s;
+  color: transparent;
+}
+.form__item > input:not([readonly]), .form__item > input::placeholder, .form__item > textarea:not([readonly]), .form__item > textarea::placeholder {
+  transition-delay: 0.1s;
+  color: transparent;
+}
+.form__item > input[readonly], .form__item > textarea[readonly] {
+  color: #8A8A8A !important;
+  border-color: #8A8A8A !important;
+}
+.form__item > input:focus::-moz-placeholder, .form__item > textarea:focus::-moz-placeholder {
+  color: #fff;
+}
+.form__item > input:focus:-ms-input-placeholder, .form__item > textarea:focus:-ms-input-placeholder {
+  color: #fff;
+}
+.form__item > input:focus, .form__item > input:focus::placeholder, .form__item > textarea:focus, .form__item > textarea:focus::placeholder {
+  color: #fff;
+}
+.form__item > input:focus ~ label, .form__item > textarea:focus ~ label {
+  top: -10px;
+  font-size: 10px;
+  color: #8A8A8A;
+}
+.form__item[data-form-label] > input::-moz-placeholder {
+  color: #fff;
+}
+.form__item[data-form-label] > input:-ms-input-placeholder {
+  color: #fff;
+}
+.form__item[data-form-label] > input, .form__item[data-form-label] > input::placeholder {
+  color: #fff;
+}
+.form__item[data-form-label] > label {
+  top: -10px;
+  font-size: 10px;
+  color: #8A8A8A;
+}
+.form__item > textarea {
+  resize: vertical;
+}
 .form__message {
   color: #8A8A8A;
 }
@@ -5267,40 +5334,6 @@ body {
 .form__success * {
   color: #0085FF;
 }
-.form__input {
-  padding: 5px 0;
-  border-bottom: 2px solid #fff;
-  width: 100%;
-  color: #fff;
-  position: relative;
-}
-.form__input:invalid:focus:not(:-moz-placeholder-shown) .form__label {
-  top: -10px;
-  left: -10px;
-  font-size: 10px;
-  -moz-transition: 250ms;
-  transition: 250ms;
-}
-.form__input:invalid:focus:not(:-ms-input-placeholder) .form__label {
-  top: -10px;
-  left: -10px;
-  font-size: 10px;
-  -ms-transition: 250ms;
-  transition: 250ms;
-}
-.form__input:invalid:focus:not(:placeholder-shown) .form__label, .form__input:hover + .form__label {
-  top: -10px;
-  left: -10px;
-  font-size: 10px;
-  transition: 250ms;
-}
-.form__label {
-  position: absolute;
-  left: 0;
-  top: 5px;
-  color: #fff;
-  transition: 250ms;
-}
 .form__button {
   border: 2px solid #fff;
   padding: 10px 10px;
@@ -5325,19 +5358,6 @@ body {
 .form__checkbox {
   cursor: pointer;
   margin-right: 5px;
-}
-.form__textarea {
-  width: 100%;
-  border-bottom: 2px solid #fff;
-  padding: 5px 0;
-  resize: vertical;
-  border-radius: none;
-  outline: none;
-  color: #fff;
-}
-.form [readonly] {
-  color: #8A8A8A;
-  border-color: #8A8A8A;
 }
 
 @media (max-width: 768px) {
