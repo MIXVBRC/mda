@@ -4,7 +4,8 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 	BX.Sale.PersonalOrderComponent.PersonalOrderList = {
 		init : function(params)
 		{
-			var rowWrapper = document.getElementsByClassName('sale-order-list-inner-row');
+			// var rowWrapper = document.getElementsByClassName('sale-order-list-inner-row');
+			var rowWrapper = document.getElementsByClassName('order-list__status-item-body-item');
 
 			params.paymentList = params.paymentList || {};
 			params.url = params.url || "";
@@ -13,6 +14,8 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 
 			Array.prototype.forEach.call(rowWrapper, function(wrapper)
 			{
+
+				// Идентификатор отправления
 				var shipmentTrackingId = wrapper.getElementsByClassName('sale-order-list-shipment-id');
 				if (shipmentTrackingId[0])
 				{
@@ -26,12 +29,21 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 					});
 				}
 
+				// Оплата
 				BX.bindDelegate(wrapper, 'click', { 'class': 'ajax_reload' }, BX.proxy(function(event)
 				{
-					var block = wrapper.getElementsByClassName('sale-order-list-inner-row-body')[0];
-					var template = wrapper.getElementsByClassName('sale-order-list-inner-row-template')[0];
-					var cancelPaymentLink = template.getElementsByClassName('sale-order-list-cancel-payment')[0];
 
+					// var block = wrapper.getElementsByClassName('sale-order-list-inner-row-body')[0];
+					// var block = wrapper.getElementsByClassName('order-list__status-item-body-item')[0];
+					// var block = wrapper.getElementsByClassName('payment-button')[0];
+					// var template = wrapper.getElementsByClassName('sale-order-list-inner-row-template')[0];
+					// var template = wrapper.getElementsByClassName('payment-box')[0];
+					var template = $(wrapper).find('[data-payment-body]')[0];
+					// var cancelPaymentLink = template.getElementsByClassName('sale-order-list-cancel-payment')[0];
+					// var cancelPaymentLink = template.getElementsByClassName('payment-cancel')[0];
+					var cancelPaymentLink = $(wrapper).find('[data-payment-cancel]')[0];
+
+					pre(template);
 					BX.ajax(
 						{
 							method: 'POST',
@@ -46,15 +58,20 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 							{
 								var resultDiv = document.createElement('div');
 								resultDiv.innerHTML = result;
-								template.insertBefore(resultDiv, cancelPaymentLink);
-								block.style.display = 'none';
-								template.style.display = 'block';
+								$(template).append(resultDiv);
+								// template.insertBefore(resultDiv, cancelPaymentLink);
+								// block.style.display = 'none';
+								// template.style.display = 'block';
+
+								$(wrapper).attr('data-pay','');
 
 								BX.bind(cancelPaymentLink, 'click', function()
 								{
-									block.style.display = 'block';
-									template.style.display = 'none';
+									// block.style.display = 'block';
+									// template.style.display = 'none';
+									$(wrapper).removeAttr('data-pay');
 									resultDiv.remove();
+
 								},this);
 
 							},this),
@@ -67,13 +84,17 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 					event.preventDefault();
 				}, this));
 
-				BX.bindDelegate(wrapper, 'click', { 'class': 'sale-order-list-change-payment' }, BX.proxy(function(event)
+				// сменить оплату
+				BX.bindDelegate(wrapper, 'click', { 'class': 'payment_change' }, BX.proxy(function(event)
 				{
+					pre(1);
 					event.preventDefault();
 
-					var block = wrapper.getElementsByClassName('sale-order-list-inner-row-body')[0];
-					var template = wrapper.getElementsByClassName('sale-order-list-inner-row-template')[0];
-					var cancelPaymentLink = template.getElementsByClassName('sale-order-list-cancel-payment')[0];
+					// var block = wrapper.getElementsByClassName('sale-order-list-inner-row-body')[0];
+					// var template = wrapper.getElementsByClassName('sale-order-list-inner-row-template')[0];
+					var template = $(wrapper).find('[data-payment-body]')[0];
+					// var cancelPaymentLink = template.getElementsByClassName('sale-order-list-cancel-payment')[0];
+					var cancelPaymentLink = $(wrapper).find('[data-payment-cancel]')[0];
 
 					BX.ajax(
 						{
@@ -90,10 +111,14 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 							{
 								var resultDiv = document.createElement('div');
 								resultDiv.innerHTML = result;
-								template.insertBefore(resultDiv, cancelPaymentLink);
-								event.target.style.display = 'none';
-								block.parentNode.removeChild(block);
-								template.style.display = 'block';
+								$(template).append(resultDiv);
+								// template.insertBefore(resultDiv, cancelPaymentLink);
+								// event.target.style.display = 'none';
+								// block.parentNode.removeChild(block);
+								// template.style.display = 'block';
+
+								$(wrapper).attr('data-change','');
+
 								BX.bind(cancelPaymentLink, 'click', function()
 								{
 									window.location.reload();

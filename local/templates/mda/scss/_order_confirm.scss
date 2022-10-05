@@ -1,7 +1,7 @@
 .order-confirm {
-    background-color: $background_color;
+    background-color: $font_color;
     border: $border;
-    padding: 15px;
+    padding: 5px;
 
     & a {
         color: $main_color;
@@ -9,6 +9,11 @@
 
     & .ps_logo > *:not(:last-child) {
         margin-bottom: 15px;
+    }
+
+    &__file {
+        padding: 5px;
+        background-color: $font_color;
     }
 
     &__file * {

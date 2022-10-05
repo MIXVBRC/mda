@@ -15,6 +15,6 @@ $APPLICATION->IncludeComponent(
 $content = ob_get_contents();
 ob_end_clean();
 ?>
-<div class="order-confirm__file" style="padding: 15px">
+<div class="order-confirm__file">
     <?=$content?>
 </div>

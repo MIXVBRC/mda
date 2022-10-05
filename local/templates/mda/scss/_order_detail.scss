@@ -14,7 +14,7 @@
 
     &__list {
         display: grid;
-        gap: 15px;
+        gap: 30px;
         grid-template-columns: 1fr 1fr;
     }
 
@@ -351,6 +351,14 @@
                     }
                 }
             }
+        }
+    }
+}
+@media (max-width: $c_width) {
+    .order-detail {
+        &__list {
+            grid-template-columns: 1fr;
+            gap: 0;
         }
     }
 }
