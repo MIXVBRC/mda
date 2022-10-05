@@ -263,10 +263,11 @@
 				return;
 
 			var node, position;
+			var headerHeight = $('header.header')[0].offsetHeight + 20;
 			var border = 2, offset = 0;
 			var scrollTop = this.getDocumentScrollTop();
 			var basketPosition = BX.pos(this.getCacheNode(this.ids.basketRoot));
-			var basketScrolledToEnd = scrollTop + 200 >= basketPosition.bottom;
+			var basketScrolledToEnd = scrollTop + 200 + headerHeight >= basketPosition.bottom;
 
 			if (BX.util.in_array('top', this.params.TOTAL_BLOCK_DISPLAY))
 			{
@@ -278,7 +279,7 @@
 					{
 						position = BX.pos(totalBlockNode);
 
-						if (scrollTop >= position.top)
+						if (scrollTop >= position.top - headerHeight)
 						{
 							offset += node.clientHeight;
 
@@ -287,6 +288,7 @@
 								totalBlockNode.style.height = position.height + 'px';
 
 								node.style.width = node.clientWidth + border + 'px';
+								node.style.marginTop = headerHeight + 'px';
 								BX.addClass(node, 'basket-checkout-container-fixed');
 							}
 						}
@@ -295,6 +297,7 @@
 							totalBlockNode.style.height = '';
 
 							node.style.width = '';
+							node.style.marginTop = '';
 							BX.removeClass(node, 'basket-checkout-container-fixed');
 						}
 
