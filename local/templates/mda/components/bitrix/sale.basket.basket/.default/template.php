@@ -220,14 +220,19 @@ if (empty($arResult['ERROR_MESSAGE']))
 				<div class="basket-items-list-wrapper basket-items-list-wrapper-height-fixed basket-items-list-wrapper-light<?=$displayModeClass?>"
 					id="basket-items-list-wrapper">
 					<div class="basket-items-list-header" data-entity="basket-items-list-header">
-						<div class="basket-items-search-field" data-entity="basket-filter">
-							<div class="form has-feedback">
-								<input type="text" class="form-control"
-									placeholder="<?=Loc::getMessage('SBB_BASKET_FILTER')?>"
-									data-entity="basket-filter-input">
-								<span class="form-control-feedback basket-clear" data-entity="basket-filter-clear-btn"></span>
-							</div>
-						</div>
+
+                        <?$filterItems = false;?>
+                        <? if ($filterItems) :?>
+                            <div class="basket-items-search-field" data-entity="basket-filter">
+                                <div class="form has-feedback">
+                                    <input type="text" class="form-control" style="color: #000 !important;"
+                                        placeholder="<?=Loc::getMessage('SBB_BASKET_FILTER')?>"
+                                        data-entity="basket-filter-input">
+                                    <span class="form-control-feedback basket-clear" data-entity="basket-filter-clear-btn"></span>
+                                </div>
+                            </div>
+                        <? endif; ?>
+
 						<div class="basket-items-list-header-filter">
 							<a href="javascript:void(0)" class="basket-items-list-header-filter-item active"
 								data-entity="basket-items-count" data-filter="all" style="display: none;"></a>
