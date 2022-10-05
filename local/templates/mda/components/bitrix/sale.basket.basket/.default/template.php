@@ -219,33 +219,44 @@ if (empty($arResult['ERROR_MESSAGE']))
 			<div class="col-xs-12">
 				<div class="basket-items-list-wrapper basket-items-list-wrapper-height-fixed basket-items-list-wrapper-light<?=$displayModeClass?>"
 					id="basket-items-list-wrapper">
-					<div class="basket-items-list-header" data-entity="basket-items-list-header">
 
-                        <?$filterItems = false;?>
-                        <? if ($filterItems) :?>
-                            <div class="basket-items-search-field" data-entity="basket-filter">
-                                <div class="form has-feedback">
-                                    <input type="text" class="form-control" style="color: #000 !important;"
-                                        placeholder="<?=Loc::getMessage('SBB_BASKET_FILTER')?>"
-                                        data-entity="basket-filter-input">
-                                    <span class="form-control-feedback basket-clear" data-entity="basket-filter-clear-btn"></span>
+                    <?$itemsFilter = false;?>
+                    <?$itemsCount = false;?>
+
+                    <? if ($itemsFilter || $itemsCount) :?>
+
+                        <div class="basket-items-list-header" data-entity="basket-items-list-header">
+
+                            <? if ($itemsFilter) :?>
+                                <div class="basket-items-search-field" data-entity="basket-filter">
+                                    <div class="form has-feedback">
+                                        <input type="text" class="form-control" style="color: #000 !important;"
+                                            placeholder="<?=Loc::getMessage('SBB_BASKET_FILTER')?>"
+                                            data-entity="basket-filter-input">
+                                        <span class="form-control-feedback basket-clear" data-entity="basket-filter-clear-btn"></span>
+                                    </div>
                                 </div>
-                            </div>
-                        <? endif; ?>
+                            <? endif; ?>
 
-						<div class="basket-items-list-header-filter">
-							<a href="javascript:void(0)" class="basket-items-list-header-filter-item active"
-								data-entity="basket-items-count" data-filter="all" style="display: none;"></a>
-							<a href="javascript:void(0)" class="basket-items-list-header-filter-item"
-								data-entity="basket-items-count" data-filter="similar" style="display: none;"></a>
-							<a href="javascript:void(0)" class="basket-items-list-header-filter-item"
-								data-entity="basket-items-count" data-filter="warning" style="display: none;"></a>
-							<a href="javascript:void(0)" class="basket-items-list-header-filter-item"
-								data-entity="basket-items-count" data-filter="delayed" style="display: none;"></a>
-							<a href="javascript:void(0)" class="basket-items-list-header-filter-item"
-								data-entity="basket-items-count" data-filter="not-available" style="display: none;"></a>
-						</div>
-					</div>
+                            <? if ($itemsCount) :?>
+                                <div class="basket-items-list-header-filter">
+                                    <a href="javascript:void(0)" class="basket-items-list-header-filter-item active"
+                                        data-entity="basket-items-count" data-filter="all" style="display: none;"></a>
+                                    <a href="javascript:void(0)" class="basket-items-list-header-filter-item"
+                                        data-entity="basket-items-count" data-filter="similar" style="display: none;"></a>
+                                    <a href="javascript:void(0)" class="basket-items-list-header-filter-item"
+                                        data-entity="basket-items-count" data-filter="warning" style="display: none;"></a>
+                                    <a href="javascript:void(0)" class="basket-items-list-header-filter-item"
+                                        data-entity="basket-items-count" data-filter="delayed" style="display: none;"></a>
+                                    <a href="javascript:void(0)" class="basket-items-list-header-filter-item"
+                                        data-entity="basket-items-count" data-filter="not-available" style="display: none;"></a>
+                                </div>
+                            <? endif; ?>
+
+                        </div>
+
+                    <? endif; ?>
+
 					<div class="basket-items-list-container" id="basket-items-list-container">
 						<div class="basket-items-list-overlay" id="basket-items-list-overlay" style="display: none;"></div>
 						<div class="basket-items-list" id="basket-item-list">
