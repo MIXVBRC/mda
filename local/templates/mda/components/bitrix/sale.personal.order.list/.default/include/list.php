@@ -61,6 +61,8 @@ $orderHeaderStatus = null;
 
                                     <? foreach ($order['PAYMENT'] as $payment): ?>
 
+                                        <? if ($payment['SUM'] <= 0) continue; ?>
+
                                         <?
                                         if ($order['ORDER']['LOCK_CHANGE_PAYSYSTEM'] !== 'Y') {
                                             $paymentChangeData[$payment['ACCOUNT_NUMBER']] = array(
@@ -117,30 +119,34 @@ $orderHeaderStatus = null;
                                                 <a href="javascript:void(0)" class="button" data-payment-cancel><?= Loc::getMessage('SPOL_CANCEL_PAYMENT') ?></a>
                                             </div>
 
-                                            <?if ($payment['PAID'] === 'N' && $payment['IS_CASH'] !== 'Y' && $payment['ACTION_FILE'] !== 'cash'):?>
-                                                <?if ($order['ORDER']['IS_ALLOW_PAY'] == 'N'):?>
-                                                    <a href="javascript:void(0)" class="button">
-                                                        <?= Loc::getMessage('SPOL_TPL_PAY') ?>
-                                                    </a>
-                                                <?elseif ($payment['NEW_WINDOW'] === 'Y'):?>
-                                                    <a class="button" target="_blank"
-                                                       href="<?= htmlspecialcharsbx($payment['PSA_ACTION_FILE']) ?>">
-                                                        <?= Loc::getMessage('SPOL_TPL_PAY') ?>
-                                                    </a>
-                                                <?else:?>
-                                                    <a class="button ajax_reload" data-payment-button
-                                                       href="<?= htmlspecialcharsbx($payment['PSA_ACTION_FILE']) ?>">
-                                                        <?= Loc::getMessage('SPOL_TPL_PAY') ?>
+                                            <? if ($order['ORDER']['CANCELED'] !== 'Y'): ?>
+
+                                                <?if ($payment['PAID'] === 'N' && $payment['IS_CASH'] !== 'Y' && $payment['ACTION_FILE'] !== 'cash'):?>
+                                                    <?if ($order['ORDER']['IS_ALLOW_PAY'] == 'N'):?>
+                                                        <a href="javascript:void(0)" class="button">
+                                                            <?= Loc::getMessage('SPOL_TPL_PAY') ?>
+                                                        </a>
+                                                    <?elseif ($payment['NEW_WINDOW'] === 'Y'):?>
+                                                        <a class="button" target="_blank"
+                                                           href="<?= htmlspecialcharsbx($payment['PSA_ACTION_FILE']) ?>">
+                                                            <?= Loc::getMessage('SPOL_TPL_PAY') ?>
+                                                        </a>
+                                                    <?else:?>
+                                                        <a class="button ajax_reload" data-payment-button
+                                                           href="<?= htmlspecialcharsbx($payment['PSA_ACTION_FILE']) ?>">
+                                                            <?= Loc::getMessage('SPOL_TPL_PAY') ?>
+                                                        </a>
+                                                    <?endif;?>
+                                                <?endif;?>
+
+                                                <?if ($payment['PAID'] !== 'Y' && $order['ORDER']['LOCK_CHANGE_PAYSYSTEM'] !== 'Y'):?>
+                                                    <a href="#" class="button payment_change" data-payment-change
+                                                       id="<?= htmlspecialcharsbx($payment['ACCOUNT_NUMBER']) ?>">
+                                                        <?= Loc::getMessage('SPOL_TPL_CHANGE_PAY_TYPE') ?>
                                                     </a>
                                                 <?endif;?>
-                                            <?endif;?>
 
-                                            <?if ($payment['PAID'] !== 'Y' && $order['ORDER']['LOCK_CHANGE_PAYSYSTEM'] !== 'Y'):?>
-                                                <a href="#" class="button payment_change" data-payment-change
-                                                   id="<?= htmlspecialcharsbx($payment['ACCOUNT_NUMBER']) ?>">
-                                                    <?= Loc::getMessage('SPOL_TPL_CHANGE_PAY_TYPE') ?>
-                                                </a>
-                                            <?endif;?>
+                                            <? endif; ?>
 
                                         </div>
 
@@ -158,12 +164,8 @@ $orderHeaderStatus = null;
                                                 if ($shipment['DATE_DEDUCTED']) {
                                                     $shipmentSubTitle .= " " . Loc::getMessage('SPOL_TPL_FROM_DATE') . " " . $shipment['DATE_DEDUCTED_FORMATED'];
                                                 }
-
-                                                if ($shipment['FORMATED_DELIVERY_PRICE']) {
-                                                    $shipmentSubTitle .= ", " . Loc::getMessage('SPOL_TPL_DELIVERY_COST') . " " . $shipment['FORMATED_DELIVERY_PRICE'];
-                                                }
-                                                echo $shipmentSubTitle;
                                                 ?>
+                                                <?=$shipmentSubTitle?>
                                             </h4>
 
                                             <?/** Отгружено / Не отгружено */?>
@@ -186,6 +188,13 @@ $orderHeaderStatus = null;
                                                         <span><?= Loc::getMessage('SPOL_TPL_DELIVERY_SERVICE') ?></span>
                                                         <span></span>
                                                         <span><?= $arResult['INFO']['DELIVERY'][$shipment['DELIVERY_ID']]['NAME'] ?></span>
+                                                    </li>
+                                                <?endif;?>
+                                                <?if ($shipment['FORMATED_DELIVERY_PRICE'] && $shipment['PRICE_DELIVERY'] > 0):?>
+                                                    <li>
+                                                        <span><?= Loc::getMessage('SPOL_TPL_DELIVERY_COST') ?></span>
+                                                        <span></span>
+                                                        <span><?= $shipment['FORMATED_DELIVERY_PRICE'] ?></span>
                                                     </li>
                                                 <?endif;?>
 

@@ -191,9 +191,18 @@
 }
 @media (max-width: $c_width) {
     .order-list {
+
+        &__top-buttons {
+            grid-template-columns: 1fr;
+        }
+
         &__status {
             &-header {
                 grid-column: unset;
+                padding: 25px;
+                &-title {
+                    font-size: 20px;
+                }
             }
             &-list {
                 grid-template-columns: 1fr;
@@ -209,9 +218,21 @@
         }
         
         &__status {
+            &-header {
+                padding: 15px;
+                &-title {
+                    font-size: 16px;
+                }
+            }
             &-item {
+                &-title {
+                    font-size: 16px;
+                }
                 &-body {
                     &-item {
+                        &-title {
+                            font-size: 16px;
+                        }
                         &-list {
                             & > li {
                                 flex-direction: column;

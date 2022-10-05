@@ -5687,8 +5687,15 @@ body {
 }
 
 @media (max-width: 1400px) {
+  .order-list__top-buttons {
+    grid-template-columns: 1fr;
+  }
   .order-list__status-header {
     grid-column: unset;
+    padding: 25px;
+  }
+  .order-list__status-header-title {
+    font-size: 20px;
   }
   .order-list__status-list {
     grid-template-columns: 1fr;
@@ -5697,6 +5704,18 @@ body {
 @media (max-width: 768px) {
   .order-list .button {
     width: 100%;
+  }
+  .order-list__status-header {
+    padding: 15px;
+  }
+  .order-list__status-header-title {
+    font-size: 16px;
+  }
+  .order-list__status-item-title {
+    font-size: 16px;
+  }
+  .order-list__status-item-body-item-title {
+    font-size: 16px;
   }
   .order-list__status-item-body-item-list > li {
     flex-direction: column;
