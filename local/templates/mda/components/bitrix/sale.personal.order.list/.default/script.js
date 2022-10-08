@@ -1,6 +1,29 @@
 BX.namespace('BX.Sale.PersonalOrderComponent');
 
 (function() {
+
+	// Развернуть / свернуть
+	$(document).on('click', '[data-opener-arrow]', function () {
+		$(this).parents('[data-opener-item]').toggleAttr('data-opener-close');
+	});
+
+	// Делаем последний элемент списка заказов на всю ширину, если он нечетный
+	$(document).ready(function () {
+		let statusList = {};
+		let itemList = {};
+		$('[data-order-status-id]').each(function (key, item) {
+			let id = $(item).data('order-status-id');
+			statusList[id] = statusList[id] ? statusList[id] + 1 : 1;
+			if (itemList[id]) itemList[id].push(item);
+			else itemList[id] = [item];
+		});
+		for (let id in statusList) {
+			if (statusList[id] % 2 === 0) continue;
+			$(itemList[id].slice(-1)).attr('data-last-odd', '');
+		}
+	});
+
+
 	BX.Sale.PersonalOrderComponent.PersonalOrderList = {
 		init : function(params)
 		{

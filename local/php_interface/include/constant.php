@@ -19,6 +19,13 @@ const MDA_IBLOCK_ID_VACANSY = 11;
 const MDA_IBLOCK_ID_ACTIONS = 6;
 const MDA_IBLOCK_ID_IMAGES = 10;
 
+/** @var bool MDA_SITE_MODE_SALE
+ * <div>Режимы:
+ * <div> true - Интернет магазин
+ * <div> false - Интернет каталог
+ */
+const MDA_SITE_MODE_SALE = false;
+
 // Каталог
 const MDA_IBLOCK_ID_CATALOG = 12;
 const MDA_IBLOCK_ID_CATALOG_OFFERS = 13;

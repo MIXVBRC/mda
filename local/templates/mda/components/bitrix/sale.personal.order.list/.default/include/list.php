@@ -29,34 +29,38 @@ $orderHeaderStatus = null;
 
             <? endif; ?>
 
-            <div class="order-list__status">
+            <div class="order-list__status" data-opener-item data-opener-close data-order-status-id="<?=$orderHeaderStatus?>">
 
                 <div class="order-list__status-body">
 
                     <div class="order-list__status-item">
 
                             <?/** Заказ - заголовок */?>
-                            <h3 class="order-list__status-item-title">
-                                <?= Loc::getMessage('SPOL_TPL_ORDER') ?>
-                                <?= Loc::getMessage('SPOL_TPL_NUMBER_SIGN') . $order['ORDER']['ACCOUNT_NUMBER'] ?>
-                                <?= Loc::getMessage('SPOL_TPL_FROM_DATE') ?>
-                                <?= $order['ORDER']['DATE_INSERT_FORMATED'] ?>,
-                                <?= count($order['BASKET_ITEMS']); ?>
-                                <?
-                                $count = count($order['BASKET_ITEMS']) % 10;
-                                if ($count == '1') {
-                                    echo Loc::getMessage('SPOL_TPL_GOOD');
-                                } elseif ($count >= '2' && $count <= '4') {
-                                    echo Loc::getMessage('SPOL_TPL_TWO_GOODS');
-                                } else {
-                                    echo Loc::getMessage('SPOL_TPL_GOODS');
-                                }
-                                ?>
-                                <?= Loc::getMessage('SPOL_TPL_SUMOF') ?>
-                                <?= $order['ORDER']['FORMATED_PRICE'] ?>
-                            </h3>
+                            <div class="order-list__status-item-header">
+                                <h3 class="order-list__status-item-title">
+                                    <?= Loc::getMessage('SPOL_TPL_ORDER') ?>
+                                    <?= Loc::getMessage('SPOL_TPL_NUMBER_SIGN') . $order['ORDER']['ACCOUNT_NUMBER'] ?>
+                                    <?= Loc::getMessage('SPOL_TPL_FROM_DATE') ?>
+                                    <?= $order['ORDER']['DATE_INSERT_FORMATED'] ?>,
+                                    <?= count($order['BASKET_ITEMS']); ?>
+                                    <?
+                                    $count = count($order['BASKET_ITEMS']) % 10;
+                                    if ($count == '1') {
+                                        echo Loc::getMessage('SPOL_TPL_GOOD');
+                                    } elseif ($count >= '2' && $count <= '4') {
+                                        echo Loc::getMessage('SPOL_TPL_TWO_GOODS');
+                                    } else {
+                                        echo Loc::getMessage('SPOL_TPL_GOODS');
+                                    }
+                                    ?>
+                                    <?= Loc::getMessage('SPOL_TPL_SUMOF') ?>
+                                    <?= $order['ORDER']['FORMATED_PRICE'] ?>
+                                </h3>
+                                <span class="order-list__status-item-arrow" data-opener-arrow></span>
+                            </div>
 
-                            <div class="order-list__status-item-body">
+
+                            <div class="order-list__status-item-body" data-opener-contaner>
                                 <div class="order-list__status-item-body-list">
 
                                     <? foreach ($order['PAYMENT'] as $payment): ?>

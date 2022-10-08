@@ -43,6 +43,6 @@ $this->setFrameMode(false);
 
 <? require __DIR__ . '/price.php'; ?>
 
-<? require __DIR__ . '/quantity.php'; ?>
+<? if (MDA_SITE_MODE_SALE) require __DIR__ . '/quantity.php'; ?>
 
-<? require __DIR__ . '/buttons.php'; ?>
+<? if (MDA_SITE_MODE_SALE) require __DIR__ . '/buttons.php'; ?>

@@ -59,11 +59,11 @@
                                 break;
 
                             case 'quantity':
-                                require_once __DIR__ . '/quantity.php';
+                                if (MDA_SITE_MODE_SALE) require_once __DIR__ . '/quantity.php';
                                 break;
 
                             case 'buttons':
-                                require_once __DIR__ . '/buttons.php';
+                                if (MDA_SITE_MODE_SALE) require_once __DIR__ . '/buttons.php';
                                 break;
                         }
                     }

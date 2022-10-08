@@ -13,6 +13,10 @@ $theme = Bitrix\Main\Config\Option::get("main", "wizard_eshop_bootstrap_theme_id
 
 $availablePages = array();
 
+if (!MDA_SITE_MODE_SALE) {
+    $arParams['SHOW_ORDER_PAGE'] = $arParams['SHOW_BASKET_PAGE'] = 'N';
+}
+
 if ($arParams['SHOW_ORDER_PAGE'] === 'Y')
 {
 	$availablePages[] = array(
@@ -100,22 +104,22 @@ if ($customPagesList)
 	}
 }
 
-if (empty($availablePages))
-{
+if (empty($availablePages)):
+
 	ShowError(Loc::getMessage("SPS_ERROR_NOT_CHOSEN_ELEMENT"));
-}
-else
-{
-	?>
+
+else: ?>
+
+    <? if (count($availablePages) == 1) LocalRedirect(htmlspecialcharsbx($availablePages[0]['path'])); ?>
+
     <div class="personal">
         <div class="personal__body">
             <div class="personal__list">
-                <?foreach ($availablePages as $blockElement):?>
+                <? foreach ($availablePages as $blockElement): ?>
                     <a href="<?=htmlspecialcharsbx($blockElement['path'])?>" class="personal__item"><?=htmlspecialcharsbx($blockElement['name'])?></a>
-                <?endforeach;?>
+                <? endforeach; ?>
             </div>
         </div>
     </div>
-	<?
-}
-?>
+
+<? endif; ?>
