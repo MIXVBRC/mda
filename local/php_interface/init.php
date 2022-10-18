@@ -1,5 +1,6 @@
 <?
 
+// Подключение файлов из /local/php_interface/include/
 use MDA\ScanDir;
 include_once __DIR__.'/include/core/scandir.php';
 $files = (new ScanDir())->scan(__DIR__.'/include',['php']);

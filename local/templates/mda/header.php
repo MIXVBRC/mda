@@ -1,8 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
-/**
- * @global CMain $APPLICATION
- */
+global $APPLICATION;
 
 // Namespace D7
 use Bitrix\Main\Page\Asset;
@@ -18,7 +16,7 @@ Loc::loadMessages(__FILE__);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title><?=$APPLICATION->ShowTitle()?></title>
+    <title><?$APPLICATION->ShowTitle()?></title>
 
     <?
     // Для подключения css

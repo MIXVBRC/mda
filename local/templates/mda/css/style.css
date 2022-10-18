@@ -3897,6 +3897,10 @@ body {
   align-items: center;
   position: relative;
 }
+.slider__item > .anaglyph {
+  max-width: 217px;
+  max-height: 72px;
+}
 .slider__description {
   text-align: center;
   margin-top: 45px;
@@ -3922,84 +3926,6 @@ body {
        object-fit: cover;
   }
 }
-.mda-animate {
-  position: relative;
-  width: 217px;
-  height: 72px;
-  z-index: 1;
-}
-@-webkit-keyframes anaglyph {
-  0% {
-    left: 0;
-    top: 0;
-  }
-  25% {
-    left: 5px;
-    top: 5px;
-  }
-  50% {
-    left: 0;
-    top: 0;
-  }
-  75% {
-    left: -5px;
-    top: -5px;
-  }
-  100% {
-    left: 0;
-    top: 0;
-  }
-}
-@keyframes anaglyph {
-  0% {
-    left: 0;
-    top: 0;
-  }
-  25% {
-    left: 5px;
-    top: 5px;
-  }
-  50% {
-    left: 0;
-    top: 0;
-  }
-  75% {
-    left: -5px;
-    top: -5px;
-  }
-  100% {
-    left: 0;
-    top: 0;
-  }
-}
-.mda-animate__w {
-  z-index: 1;
-}
-.mda-animate__r {
-  z-index: -1;
-  -webkit-animation-direction: alternate;
-          animation-direction: alternate;
-}
-.mda-animate__b {
-  z-index: -1;
-  animation-direction: alternate-reverse;
-}
-.mda-animate__r, .mda-animate__b {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  -webkit-animation-name: anaglyph;
-          animation-name: anaglyph;
-  -webkit-animation-duration: 2s;
-          animation-duration: 2s;
-  -webkit-animation-timing-function: steps(2, end);
-          animation-timing-function: steps(2, end);
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-}
-
 .sections-main__body {
   display: grid;
   gap: 75px;
@@ -4256,6 +4182,89 @@ body {
     font-size: 22px;
   }
 }
+.anaglyph {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+@-webkit-keyframes anaglyph {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  25% {
+    left: 5px;
+    top: 5px;
+  }
+  50% {
+    left: 0;
+    top: 0;
+  }
+  75% {
+    left: -5px;
+    top: -5px;
+  }
+  100% {
+    left: 0;
+    top: 0;
+  }
+}
+@keyframes anaglyph {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  25% {
+    left: 5px;
+    top: 5px;
+  }
+  50% {
+    left: 0;
+    top: 0;
+  }
+  75% {
+    left: -5px;
+    top: -5px;
+  }
+  100% {
+    left: 0;
+    top: 0;
+  }
+}
+.anaglyph > *:nth-child(1), .anaglyph > *:nth-child(2), .anaglyph > *:nth-child(3) {
+  width: 100%;
+}
+.anaglyph > *:nth-child(1) {
+  z-index: 1;
+  fill: #fff;
+}
+.anaglyph > *:nth-child(2) {
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  fill: #CC1E1E;
+}
+.anaglyph > *:nth-child(3) {
+  animation-direction: alternate-reverse;
+  fill: #0085FF;
+}
+.anaglyph > *:nth-child(2), .anaglyph > *:nth-child(3) {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-animation-name: anaglyph;
+          animation-name: anaglyph;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-timing-function: steps(2, end);
+          animation-timing-function: steps(2, end);
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
 .breadcrumbs__item {
   display: inline-block;
 }
@@ -4581,6 +4590,10 @@ body {
   max-width: 600px;
   max-height: 900px;
   border: 2px solid #fff;
+}
+.element__img-container {
+  width: 100%;
+  height: 100%;
 }
 .element__img img {
   width: 100%;
@@ -6112,4 +6125,18 @@ body {
   .mobile-table tr td:nth-child(2n+1)::after {
     opacity: 0;
   }
+}
+.page-404 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+.page-404__img {
+  max-width: 300px;
+  margin-bottom: 30px;
+}
+.page-404__text {
+  color: #fff;
 }

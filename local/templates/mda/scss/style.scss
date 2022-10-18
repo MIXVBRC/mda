@@ -26,7 +26,6 @@
 
 // Главная страница
 @import "_main_slider";
-@import "_mda_animate";
 @import "_main_sections";
 @import "_main_popular";
 @import "_main_news";
@@ -37,6 +36,7 @@
 
 // Внутренние
 @import "_inner";
+@import "_anaglyph"; // Глич эффект
 
 @import "_breadcrumbs"; // Хлебные крошки
 @import "_pagenavigation"; // Пагинация
@@ -61,3 +61,4 @@
 @import "_order_list"; // Список заказов
 @import "_order_detail"; // Детальная страница заказа
 @import "_mobile_table"; // Адаптив для таблиц
+@import "_page_404"; // 404

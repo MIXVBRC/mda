@@ -11,6 +11,11 @@
         justify-content: center;
         align-items: center;
         position: relative;
+
+        & > .anaglyph {
+            max-width: 217px;
+            max-height: 72px;
+        }
     }
 
     &__description {
