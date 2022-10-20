@@ -31,6 +31,8 @@ Class MDAEvents
         ]);
 
         $GLOBALS['APPLICATION']->RestartBuffer();
+        $GLOBALS['APPLICATION']->SetTitle("404 Not Found");
+        $GLOBALS['APPLICATION']->SetDirProperty('HIDE_TITLE', 'Y');
 
         include_once $_SERVER["DOCUMENT_ROOT"] . '/404.php';
     }

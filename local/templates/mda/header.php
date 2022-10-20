@@ -38,7 +38,7 @@ Loc::loadMessages(__FILE__);
 </head>
 <body style="background-image: url('<?=SITE_TEMPLATE_PATH?>/img/ef.png'), url('<?=SITE_TEMPLATE_PATH?>/img/prop.png');">
 
-<?if ($APPLICATION->GetDirProperty("MDA_LOGO") == 'Y'):?>
+<?if ($APPLICATION->GetDirProperty('MDA_LOGO') == 'Y'):?>
     <div class="mda-bg"></div>
 <?endif;?>
 
@@ -84,24 +84,27 @@ Loc::loadMessages(__FILE__);
 
             <div class="title">
                 <div class="container">
-                    
-                    <h1 class="title__text"><?$APPLICATION->ShowTitle(false);?></h1>
 
-                    <?$APPLICATION->IncludeComponent(
-                        "bitrix:breadcrumb",
-                        "",
-                        Array(
-                            "PATH" => "",
-                            "SITE_ID" => "s1",
-                            "START_FROM" => "0"
-                        )
-                    );?><br>
+                    <?if ($APPLICATION->GetDirProperty('HIDE_TITLE') != 'Y'):?>
+
+                        <h1 class="title__text"><?$APPLICATION->ShowTitle(false);?></h1>
+
+
+                        <?$APPLICATION->IncludeComponent(
+                            "bitrix:breadcrumb",
+                            "",
+                            Array(
+                                "PATH" => "",
+                                "SITE_ID" => "s1",
+                                "START_FROM" => "0"
+                            )
+                        );?><br>
+
+                    <? endif; ?>
 
                 </div>
             </div>
 
             <div class="container">
-
-
 
         <? endif; ?>
