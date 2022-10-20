@@ -26,7 +26,7 @@ $APPLICATION->SetTitle("MDA");
                     <path d="M592.499 0.599565C650.064 0.799446 763.637 38.1373 757.401 185.89C751.681 321.414 659.423 358.662 602.699 361.586H823.961L840.751 309.417H956.483L975.072 361.586H1087.21L953.485 0.599565H592.499ZM899.508 118.13L930.147 230.563H868.869L899.508 118.13Z"/>
                 </svg>
             </div>
-            <div class="slider__description">Сеть магазинов кальянной индустрии</div>
+            <div class="slider__description">Сеть магазинов кальянной индустрии 123</div>
             <img class="slider__img" src="<?=SITE_TEMPLATE_PATH?>/img/slider.png" alt="">
         </div>
     </div>
