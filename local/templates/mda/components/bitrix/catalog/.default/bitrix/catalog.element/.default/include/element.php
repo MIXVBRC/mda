@@ -45,14 +45,14 @@
 //                            case 'rating':
 //                                require_once __DIR__ . '/rating.php';
 //                                break;
-
-                            case 'priceRanges':
-                                require_once __DIR__ . '/priceRanges.php';
-                                break;
-
-                            case 'quantityLimit':
-                                require_once __DIR__ . '/quantityLimit.php';
-                                break;
+//
+//                            case 'priceRanges':
+//                                require_once __DIR__ . '/priceRanges.php';
+//                                break;
+//
+//                            case 'quantityLimit':
+//                                require_once __DIR__ . '/quantityLimit.php';
+//                                break;
 
                             case 'price':
                                 require_once __DIR__ . '/price.php';
