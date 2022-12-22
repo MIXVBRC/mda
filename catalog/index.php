@@ -14,6 +14,7 @@ $APPLICATION->SetTitle("Каталог");
         // Свойства для отбора предложений
         "OFFER_TREE_PROPS" => array(
             0 => "CML2_MANUFACTURER",
+            1 => "VKUS",
         ),
 		"ACTION_VARIABLE" => "action",
 		"ADD_ELEMENT_CHAIN" => "Y",
