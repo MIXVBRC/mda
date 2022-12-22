@@ -45,25 +45,25 @@
 //                            case 'rating':
 //                                require_once __DIR__ . '/rating.php';
 //                                break;
-//
-//                            case 'priceRanges':
-//                                require_once __DIR__ . '/priceRanges.php';
-//                                break;
-//
-//                            case 'quantityLimit':
-//                                require_once __DIR__ . '/quantityLimit.php';
-//                                break;
+
+                            case 'priceRanges':
+                                require_once __DIR__ . '/priceRanges.php';
+                                break;
+
+                            case 'quantityLimit':
+                                require_once __DIR__ . '/quantityLimit.php';
+                                break;
 
                             case 'price':
                                 require_once __DIR__ . '/price.php';
                                 break;
 
                             case 'quantity':
-                                if (MDA_SITE_MODE_SALE) require_once __DIR__ . '/quantity.php';
+                                require_once __DIR__ . '/quantity.php';
                                 break;
 
                             case 'buttons':
-                                if (MDA_SITE_MODE_SALE) require_once __DIR__ . '/buttons.php';
+                                require_once __DIR__ . '/buttons.php';
                                 break;
                         }
                     }
