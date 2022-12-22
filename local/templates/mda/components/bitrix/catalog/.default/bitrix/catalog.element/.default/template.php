@@ -39,7 +39,7 @@ $templateData = array(
 unset($currencyList, $templateLibrary);
 
 $mainId = $this->GetEditAreaId($arResult['ID']);
-$itemIds = array(
+$itemIds = [
 	'ID' => $mainId,
 	'DISCOUNT_PERCENT_ID' => $mainId.'_dsc_pict',
 	'STICKER_ID' => $mainId.'_sticker',
@@ -72,7 +72,21 @@ $itemIds = array(
 	'TAB_CONTAINERS_ID' => $mainId.'_tab_containers',
 	'SMALL_CARD_PANEL_ID' => $mainId.'_small_card_panel',
 	'TABS_PANEL_ID' => $mainId.'_tabs_panel'
-);
+];
+
+if (MDA_SITE_MODE_SALE) {
+    unset($itemIds['PRICE_TOTAL']);
+    unset($itemIds['QUANTITY_ID']);
+    unset($itemIds['QUANTITY_DOWN_ID']);
+    unset($itemIds['QUANTITY_UP_ID']);
+    unset($itemIds['QUANTITY_MEASURE']);
+    unset($itemIds['QUANTITY_LIMIT']);
+    unset($itemIds['ADD_BASKET_LINK']);
+    unset($itemIds['BASKET_ACTIONS_ID']);
+    unset($itemIds['BUY_LINK']);
+    unset($itemIds['NOT_AVAILABLE_MESS']);
+}
+
 $obName = $templateData['JS_OBJ'] = 'ob'.preg_replace('/[^a-zA-Z0-9_]/', 'x', $mainId);
 $name = !empty($arResult['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE'])
 	? $arResult['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE']
