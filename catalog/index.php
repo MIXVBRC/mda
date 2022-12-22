@@ -270,7 +270,7 @@ $APPLICATION->SetTitle("Каталог");
 			1 => "",
 		),
 		"DETAIL_OFFERS_PROPERTY_CODE" => array(
-			0 => "",
+			0 => "VKUS",
 			1 => "",
 		),
 		"TOP_PROPERTY_CODE_MOBILE" => "",
