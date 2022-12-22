@@ -24,7 +24,7 @@ const MDA_IBLOCK_ID_IMAGES = 10;
  * <div> true - Интернет магазин
  * <div> false - Интернет каталог
  */
-const MDA_SITE_MODE_SALE = false;
+const MDA_SITE_MODE_SALE = true;
 
 // Каталог
 const MDA_IBLOCK_ID_CATALOG = 12;
