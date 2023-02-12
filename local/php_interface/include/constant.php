@@ -26,6 +26,13 @@ const MDA_IBLOCK_ID_IMAGES = 10;
  */
 const MDA_SITE_MODE_SALE = true;
 
+// Список торговых предложений
+const MDA_OFFERS_PROPERTY_LIST = [
+    "CML2_MANUFACTURER",
+    "VKUS",
+    "NAIMENOVANIE_DLYA_SAYTA",
+];
+
 // Каталог
 const MDA_IBLOCK_ID_CATALOG = 12;
 const MDA_IBLOCK_ID_CATALOG_OFFERS = 13;

@@ -11,11 +11,6 @@ $APPLICATION->SetTitle("Каталог");
         "PRICE_CODE" => array(
             0 => "BASE",
         ),
-        // Свойства для отбора предложений
-        "OFFER_TREE_PROPS" => array(
-            0 => "CML2_MANUFACTURER",
-            1 => "VKUS",
-        ),
 		"ACTION_VARIABLE" => "action",
 		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_PICT_PROP" => "-",
@@ -128,7 +123,7 @@ $APPLICATION->SetTitle("Каталог");
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Товары",
-		"PAGE_ELEMENT_COUNT" => "30",
+		"PAGE_ELEMENT_COUNT" => "20",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_VAT_INCLUDE" => "Y",
 		"PRICE_VAT_SHOW_VALUE" => "N",
@@ -230,7 +225,7 @@ $APPLICATION->SetTitle("Каталог");
 			0 => "",
 			1 => "",
 		),
-		"LIST_OFFERS_LIMIT" => "5",
+		"LIST_OFFERS_LIMIT" => "3",
 		"DETAIL_OFFERS_FIELD_CODE" => array(
 			0 => "",
 			1 => "",
@@ -245,23 +240,12 @@ $APPLICATION->SetTitle("Каталог");
 		"LABEL_PROP_POSITION" => "top-left",
 		"PRODUCT_PROPERTIES" => array(
 		),
-		"OFFERS_CART_PROPERTIES" => array(
-			0 => "",
-		),
 		"TOP_PROPERTY_CODE" => array(
 			0 => "",
 			1 => "",
 			2 => "",
 		),
-		"TOP_OFFERS_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
-		),
 		"LIST_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
-		),
-		"LIST_OFFERS_PROPERTY_CODE" => array(
 			0 => "",
 			1 => "",
 		),
@@ -269,10 +253,14 @@ $APPLICATION->SetTitle("Каталог");
 			0 => "",
 			1 => "",
 		),
-		"DETAIL_OFFERS_PROPERTY_CODE" => array(
-			0 => "VKUS",
-			1 => "",
-		),
+
+        // Свойства для отбора предложений
+        "OFFER_TREE_PROPS" => MDA_OFFERS_PROPERTY_LIST,
+        "OFFERS_CART_PROPERTIES" => MDA_OFFERS_PROPERTY_LIST,
+        "TOP_OFFERS_PROPERTY_CODE" => MDA_OFFERS_PROPERTY_LIST,
+        "LIST_OFFERS_PROPERTY_CODE" => MDA_OFFERS_PROPERTY_LIST,
+		"DETAIL_OFFERS_PROPERTY_CODE" => MDA_OFFERS_PROPERTY_LIST,
+
 		"TOP_PROPERTY_CODE_MOBILE" => "",
 		"LIST_PROPERTY_CODE_MOBILE" => array(
 		),

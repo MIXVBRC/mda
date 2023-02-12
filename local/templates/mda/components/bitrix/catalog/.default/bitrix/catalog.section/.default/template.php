@@ -192,7 +192,8 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
                             'SCALABLE' => 'N'
                         ),
                         'PARAMS' => $generalParams
-                            + array('SKU_PROPS' => $arResult['SKU_PROPS'][$item['IBLOCK_ID']])
+                            + array('SKU_PROPS' => $arResult['SKU_PROPS'][$item['IBLOCK_ID']]),
+                        'OFFERS_LIMIT' => $arParams['OFFERS_LIMIT']
                     ),
                     $component,
                     array('HIDE_ICONS' => 'Y')

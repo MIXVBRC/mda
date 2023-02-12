@@ -143,12 +143,12 @@ $orderHeaderStatus = null;
                                                     <?endif;?>
                                                 <?endif;?>
 
-                                                <?if ($payment['PAID'] !== 'Y' && $order['ORDER']['LOCK_CHANGE_PAYSYSTEM'] !== 'Y'):?>
+                                                <?/*if ($payment['PAID'] !== 'Y' && $order['ORDER']['LOCK_CHANGE_PAYSYSTEM'] !== 'Y'):?>
                                                     <a href="#" class="button payment_change" data-payment-change
                                                        id="<?= htmlspecialcharsbx($payment['ACCOUNT_NUMBER']) ?>">
                                                         <?= Loc::getMessage('SPOL_TPL_CHANGE_PAY_TYPE') ?>
                                                     </a>
-                                                <?endif;?>
+                                                <?endif;*/?>
 
                                             <? endif; ?>
 

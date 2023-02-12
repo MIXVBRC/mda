@@ -93,6 +93,9 @@ if (isset($arResult['ITEM']))
 		}
 	}
 
+	// TODO: Отсутствие цен ломает каталог
+	if (empty($price)) return;
+
 	$showSlider = is_array($morePhoto) && count($morePhoto) > 1;
 	$showSubscribe = $arParams['PRODUCT_SUBSCRIPTION'] === 'Y' && ($item['CATALOG_SUBSCRIBE'] === 'Y' || $haveOffers);
 

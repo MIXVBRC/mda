@@ -41,7 +41,7 @@
                     <? foreach ($skuProperty['VALUES'] as $value):?>
 
                         <?
-                        if (!isset($item['SKU_TREE_VALUES'][$propertyId][$value['ID']]))  continue;
+                        if (!isset($item['SKU_TREE_VALUES'][$propertyId][$value['ID']])) continue;
                         $value['NAME'] = htmlspecialcharsbx($value['NAME']);
                         ?>
 

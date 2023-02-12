@@ -163,9 +163,9 @@ use Bitrix\Main\Localization\Loc;
                     <?endif;?>
 
                     <?/** Сменить способ оплаты" */?>
-                    <?if ($payment['PAID'] !== 'Y' && $arResult['CANCELED'] !== 'Y' && $arParams['GUEST_MODE'] !== 'Y' && $arResult['LOCK_CHANGE_PAYSYSTEM'] !== 'Y'):?>
+                    <?/*if ($payment['PAID'] !== 'Y' && $arResult['CANCELED'] !== 'Y' && $arParams['GUEST_MODE'] !== 'Y' && $arResult['LOCK_CHANGE_PAYSYSTEM'] !== 'Y'):?>
                         <a class="button payment-change" id="<?=$payment['ACCOUNT_NUMBER']?>" href="javascript:void(0);"><?=Loc::getMessage('SPOD_CHANGE_PAYMENT_TYPE')?></a>
-                    <?endif;?>
+                    <?endif;*/?>
 
                     <?/** Назад */?>
                     <a class="button payment-back" href="javascript:void(0);"><?=Loc::getMessage('SPOD_CANCEL_PAYMENT')?></a>

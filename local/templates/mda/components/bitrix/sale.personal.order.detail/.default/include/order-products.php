@@ -68,7 +68,7 @@ use Bitrix\Main\Localization\Loc;
 
                         <?/** Информация о товаре */?>
                         <td class="order-detail__item-body-table-tr-td" data-label="<?= Loc::getMessage('SPOD_NAME')?>">
-                            <a class="order-detail__item-body-table-tr-td-box" href="<?=$basketItem['DETAIL_PAGE_URL']?>">
+                            <div class="order-detail__item-body-table-tr-td-box">
 
                                 <?/** Изображение товара */?>
                                 <?
@@ -91,7 +91,7 @@ use Bitrix\Main\Localization\Loc;
                                         </div>
                                     <?endforeach;?>
                                 <?endif;*/?>
-                            </a>
+                            </div>
                         </td>
 
                         <?/** Цена товара */?>
