@@ -4276,7 +4276,6 @@ body {
   content: "|";
   position: absolute;
   right: -7px;
-  top: 4px;
   font-size: 10px;
   color: #fff;
 }
@@ -5223,9 +5222,12 @@ body {
   }
 }
 .order-confirm {
-  background-color: #fff;
-  border: 2px solid rgba(0, 133, 255, 0.44);
-  padding: 5px;
+  background-color: #15151B;
+  border-style: solid;
+  border-color: #fff;
+  border-width: 2px;
+  padding: 15px;
+  color: #fff;
 }
 .order-confirm a {
   color: #0085FF;
@@ -5238,7 +5240,8 @@ body {
   background-color: #fff;
 }
 .order-confirm__file * {
-  color: #000;
+  background-color: #15151B;
+  color: #fff;
 }
 
 .form__body {
@@ -5874,6 +5877,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   text-align: left;
+  overflow: hidden;
 }
 .order-detail__item-body-table-tr-td-box > img {
   width: 72px;
@@ -5894,7 +5898,7 @@ body {
 .order-detail__item-body-table-tr-td-box::after {
   content: "";
   width: 100%;
-  border-bottom: 1px dotted #fff;
+  border-bottom: 1px dotted #15151B;
   margin-bottom: -10px;
 }
 .order-detail__item-body-table-tr-td:last-child {
@@ -5945,7 +5949,7 @@ body {
 .order-detail__item-list > li > span {
   color: #fff;
   flex: 1 0 auto;
-  border-bottom: 1px dotted #fff;
+  border-bottom: 1px dotted #15151B;
   margin-bottom: 4px;
 }
 .order-detail__item-list > li > span:first-child {
@@ -6048,6 +6052,18 @@ body {
     width: 100% !important;
     padding: 10px;
   }
+  .order-detail__item-body-table-tr-td.item-name {
+    position: relative;
+    height: 35px;
+  }
+  .order-detail__item-body-table-tr-td.item-name > div {
+    position: absolute;
+    left: 10px;
+    top: 7px;
+    max-width: calc(100% - 20px);
+    text-align: right;
+    overflow: hidden;
+  }
   .order-detail__item-body-table-tr-td-box {
     display: block;
   }
@@ -6061,7 +6077,7 @@ body {
   .order-detail__item-body-table-tr-td:nth-child(2n) {
     background-color: #15151B;
   }
-  .order-detail__item-body-table-tr-td::before {
+  .order-detail__item-body-table-tr-td:not(.item-name)::before {
     content: attr(data-label);
     color: #fff;
     font-size: 12px;

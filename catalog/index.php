@@ -123,7 +123,7 @@ $APPLICATION->SetTitle("Каталог");
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Товары",
-		"PAGE_ELEMENT_COUNT" => "20",
+		"PAGE_ELEMENT_COUNT" => "24",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_VAT_INCLUDE" => "Y",
 		"PRICE_VAT_SHOW_VALUE" => "N",

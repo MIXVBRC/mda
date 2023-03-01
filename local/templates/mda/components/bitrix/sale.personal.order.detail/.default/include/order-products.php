@@ -67,7 +67,7 @@ use Bitrix\Main\Localization\Loc;
                     <tr class="order-detail__item-body-table-tr">
 
                         <?/** Информация о товаре */?>
-                        <td class="order-detail__item-body-table-tr-td" data-label="<?= Loc::getMessage('SPOD_NAME')?>">
+                        <td class="order-detail__item-body-table-tr-td item-name" data-label="<?= Loc::getMessage('SPOD_NAME')?>">
                             <div class="order-detail__item-body-table-tr-td-box">
 
                                 <?/** Изображение товара */?>
