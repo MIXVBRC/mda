@@ -4276,6 +4276,7 @@ body {
   content: "|";
   position: absolute;
   right: -7px;
+  top: 4px;
   font-size: 10px;
   color: #fff;
 }
