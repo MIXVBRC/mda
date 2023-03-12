@@ -3500,7 +3500,7 @@
 				this.obPopupWin.setTitleBar(arResult.STATUS === 'OK' ? BX.message('TITLE_SUCCESSFUL') : BX.message('TITLE_ERROR'));
 				this.obPopupWin.setContent(popupContent);
 				this.obPopupWin.setButtons(popupButtons);
-				this.obPopupWin.show();
+				// this.obPopupWin.show(); // TODO: popup "Товар добавлен в корзину"
 			}
 		},
 

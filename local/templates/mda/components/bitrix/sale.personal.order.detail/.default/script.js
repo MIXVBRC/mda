@@ -75,7 +75,7 @@ BX.namespace('BX.Sale.PersonalOrderComponent');
 			var paymentItem = document.getElementsByClassName('payment-item');
 			Array.prototype.forEach.call(paymentItem, function(paymentWrapper) {
 
-				/** Ооплата */
+				/** Оплата */
 				BX.bindDelegate(paymentWrapper, 'click', { 'class': 'payment-pay' }, BX.proxy(function() {
 					$(paymentWrapper).toggleAttr('data-pay');
 				}, this));

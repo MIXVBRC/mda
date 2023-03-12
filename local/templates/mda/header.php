@@ -98,7 +98,7 @@ Loc::loadMessages(__FILE__);
                                 "SITE_ID" => "s1",
                                 "START_FROM" => "0"
                             )
-                        );?><br>
+                        );?>
 
                     <? endif; ?>
 

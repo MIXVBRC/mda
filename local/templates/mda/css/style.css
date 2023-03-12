@@ -3477,6 +3477,10 @@ html,
 body {
   background-color: #15151B;
 }
+html[menu-open],
+body[menu-open] {
+  overflow: hidden;
+}
 
 html {
   height: 100%;
@@ -3705,6 +3709,7 @@ body {
   .header[data-active]::after {
     height: 100vh;
     transition: 250ms ease-in-out;
+    background-color: black;
   }
   .header__body {
     border-bottom: 0px solid rgba(0, 0, 0, 0);
@@ -4265,6 +4270,15 @@ body {
           animation-iteration-count: infinite;
 }
 
+.lazyload {
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.lazyload__button {
+  width: 100%;
+}
+
 .breadcrumbs__item {
   display: inline-block;
 }
@@ -4315,7 +4329,7 @@ body {
 }
 
 .sections-mini {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 .sections-mini__list {
   display: flex;
@@ -5913,7 +5927,7 @@ body {
   margin-bottom: 15px;
 }
 .order-detail__item-body-element {
-  margin: 30px 0;
+  margin-top: 30px;
 }
 .order-detail__item-body-element .payment-pay-box, .order-detail__item-body-element .payment-change-box, .order-detail__item-body-element .payment-cancel, .order-detail__item-body-element .payment-back {
   display: none;

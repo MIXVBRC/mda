@@ -223,7 +223,8 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 			'bitrix:catalog.element',
 			'',
 			$componentElementParams,
-			$component
+			$component,
+            array("HIDE_ICONS" => MDA_HIDE_ICONS)
 		);
 
 		$GLOBALS['CATALOG_CURRENT_ELEMENT_ID'] = $elementId;

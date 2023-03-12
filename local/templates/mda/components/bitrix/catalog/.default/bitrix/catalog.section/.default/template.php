@@ -165,6 +165,7 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 
 <div class="list1">
     <div class="list1__body" data-entity="<?=$containerName?>">
+        <!-- items-container -->
         <div class="list1__list" data-entity="items-row">
 
             <?$areaIds = array();?>
@@ -203,13 +204,14 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
             <?unset($generalParams, $rowItems);?>
 
         </div>
+        <!-- items-container -->
     </div>
 </div>
 
 <?if ($showLazyLoad):?>
-    <div data-entity="lazy-<?=$containerName?>">
-        <button type="button"
-                style="margin: 15px;"
+    <div class="lazyload" data-entity="lazy-<?=$containerName?>">
+        <button class="lazyload__button button"
+                type="button"
                 data-use="show-more-<?=$navParams['NavNum']?>">
                     <?=$arParams['MESS_BTN_LAZY_LOAD']?>
         </button>

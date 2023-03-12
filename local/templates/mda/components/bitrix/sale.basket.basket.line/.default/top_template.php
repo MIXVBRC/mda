@@ -1,4 +1,7 @@
 <?php
+
+use Bitrix\Main\Localization\Loc;
+
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 {
 	die();
@@ -14,7 +17,7 @@ $compositeStub = ($arResult['COMPOSITE_STUB'] ?? 'N') === 'Y';
 
 if ($arResult['NUM_PRODUCTS'] > 0):?>
 
-	<a href="<?=$arParams['PATH_TO_BASKET']?>" class="basket-small">
+	<a href="<?=$arParams['PATH_TO_BASKET']?>" class="basket-small" title="<?=Loc::getMessage('TSB1_CART')?>">
 
 		<?if ($arParams['SHOW_NUM_PRODUCTS'] === 'Y' && ($arResult['NUM_PRODUCTS'] > 0 || $arParams['SHOW_EMPTY_VALUES'] === 'Y') && !$compositeStub):?>
 

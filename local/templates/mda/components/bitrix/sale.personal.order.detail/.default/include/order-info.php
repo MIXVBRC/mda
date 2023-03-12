@@ -133,15 +133,17 @@ use Bitrix\Main\Localization\Loc;
                 <?endif;?>
             </div>
 
-            <?/** Повторить заказ */?>
-            <a class="button" data-button href="<?=$arResult["URL_TO_COPY"]?>"><?= Loc::getMessage('SPOD_ORDER_REPEAT') ?></a>
-
             <?/** Подробнее */?>
             <a class="button info-show" data-button href="javascript:void(0);"><?= Loc::getMessage('SPOD_LIST_MORE') ?></a>
             <a class="button info-hide" style="display: none" data-button href="javascript:void(0);"><?= Loc::getMessage('SPOD_LIST_LESS') ?></a>
 
+            <?/** Повторить заказ */?>
+            <a class="button" data-button href="<?=$arResult["URL_TO_COPY"]?>"><?= Loc::getMessage('SPOD_ORDER_REPEAT') ?></a>
+
             <?/** Отменить заказ */?>
-            <a class="order-detail__item-link" data-button href="<?=$arResult["URL_TO_CANCEL"]?>"><?= Loc::getMessage('SPOD_ORDER_CANCEL') ?></a>
+            <?if ($arResult['CAN_CANCEL'] === 'Y'):?>
+                <a class="order-detail__item-link" data-button href="<?=$arResult["URL_TO_CANCEL"]?>"><?= Loc::getMessage('SPOD_ORDER_CANCEL') ?></a>
+            <?endif;?>
         </div>
     </div>
 </div>

@@ -79,7 +79,7 @@ IncludeTemplateLangFile(__FILE__);
         array("HIDE_ICONS" => MDA_HIDE_ICONS)
     );?>
 
-    <a href="<?=(isAuth() ? '/personal/' : '/auth/')?>" class="personal-small"></a>
+    <a href="<?=(isAuth() ? '/personal/' : '/auth/')?>" class="personal-small" title="Персональный кабинет"></a>
 
 <?endif;?>
 

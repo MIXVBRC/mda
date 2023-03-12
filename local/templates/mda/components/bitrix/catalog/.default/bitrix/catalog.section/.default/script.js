@@ -99,7 +99,7 @@
 			var scrollTop = BX.GetWindowScrollPos().scrollTop,
 				containerBottom = BX.pos(this.container).bottom;
 
-			if (scrollTop + window.innerHeight > containerBottom)
+			if (scrollTop + window.innerHeight > containerBottom - 500)
 			{
 				this.showMore();
 			}
@@ -268,7 +268,7 @@
 				}
 
 				new BX.easing({
-					duration: 2000,
+					duration: 1000,
 					start: {opacity: 0},
 					finish: {opacity: 100},
 					transition: BX.easing.makeEaseOut(BX.easing.transitions.quad),

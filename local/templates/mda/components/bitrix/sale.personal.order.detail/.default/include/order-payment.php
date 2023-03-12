@@ -138,7 +138,7 @@ use Bitrix\Main\Localization\Loc;
                     <?endif;?>
                 </div>
 
-                <?if ($payment['PAID'] !== 'Y'):?>
+                <?if ($payment['PAID'] !== 'Y' && $arResult['CANCELED'] === 'N'):?>
                     <?/** Кнопка оплатить */?>
                     <?if ($payment['PAY_SYSTEM']['IS_CASH'] !== 'Y' && $payment['PAY_SYSTEM']['ACTION_FILE'] !== 'cash'):?>
 
