@@ -4337,15 +4337,14 @@ body {
   flex-wrap: wrap;
 }
 .sections-mini__item {
-  margin-top: 15px;
-  margin-right: 20px;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 .sections-mini__link {
   display: inline-block;
   font-size: 15px;
-  padding: 14px 46px 14px 14px;
-  opacity: 0.5;
-  border: 2px solid #fff;
+  padding: 5px 10px;
+  border: 2px solid #8A8A8A;
   color: #fff;
 }
 .sections-mini__link:hover {
@@ -4432,6 +4431,10 @@ body {
 .list1__properties-sky-item.selected {
   color: #fff;
   border: 2px solid #0085FF;
+}
+.list1__properties-sky-item:hover:not(.selected) {
+  background-color: #fff;
+  color: #15151B;
 }
 .list1__properties-sky-item-img {
   height: 30px;
@@ -4668,7 +4671,7 @@ body {
 .element__properties-sky-item {
   margin-bottom: 5px;
   padding: 5px;
-  border: 2px solid #fff;
+  border: 2px solid #8A8A8A;
   cursor: pointer;
   color: #fff;
 }
@@ -4784,6 +4787,10 @@ body {
 }
 .quantity {
   margin-bottom: 15px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .quantity__button {
   display: inline-block;

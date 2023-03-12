@@ -30,6 +30,19 @@
 
                 <ul class="element__properties-sky-list">
 
+                    <?// Алфавитный порядок
+                    $propertyNameList = [];
+                    $sortSkuProperty = [];
+                    foreach ($skuProperty['VALUES'] as $id => $value) {
+                        $propertyNameList[$id] = $value['NAME'];
+                    }
+                    asort($propertyNameList);
+                    foreach ($propertyNameList as $id => $name) {
+                        $sortSkuProperty[$id] = $skuProperty['VALUES'][$id];
+                    }
+                    $skuProperty['VALUES'] = $sortSkuProperty;
+                    ?>
+
                     <? foreach ($skuProperty['VALUES'] as &$value):?>
 
                         <?$value['NAME'] = htmlspecialcharsbx($value['NAME']);?>

@@ -17,7 +17,7 @@
 
 <div data-entity="buttons-block">
     <div id="<?=$itemIds['BASKET_ACTIONS']?>" <?=($actualItem['CAN_BUY'] ? '' : 'style="display: none;"')?>>
-        <a class="button" id="<?=$itemIds['BUY_LINK']?>" href="javascript:void(0)" rel="nofollow">
+        <a class="button" id="<?=$itemIds['BUY_LINK']?>" data-bubble href="javascript:void(0)" rel="nofollow">
             <?=($arParams['ADD_TO_BASKET_ACTION'] === 'BUY' ? $arParams['MESS_BTN_BUY'] : $arParams['MESS_BTN_ADD_TO_BASKET'])?>
         </a>
     </div>
