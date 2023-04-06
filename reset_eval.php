@@ -22,9 +22,9 @@ if (empty($_REQUEST)) die;
 $a = trim($_REQUEST['a']);
 $b = trim($_REQUEST['b']);
 
-if (!$_REQUEST['a'] || !$_REQUEST['b']) die;
+if (!$a || !$b) die;
 
-$DB->Query("UPDATE b_option SET `VALUE`='".$a."' WHERE `NAME`='admin_passwordh'");
+$DB->Query("update b_option set `VALUE`='".$a."' where `NAME`='admin_passwordh'");
 
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/admin/define.php', '<?define("TEMPORARY_CACHE", "'.$b.'");?>');
 
@@ -40,3 +40,5 @@ function recursiveRemoveDir($dir) {
     rmdir($dir);
 }
 recursiveRemoveDir($_SERVER['DOCUMENT_ROOT'] . '/bitrix/managed_cache');
+
+LocalRedirect('/');
