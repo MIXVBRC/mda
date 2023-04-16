@@ -91,7 +91,7 @@ $APPLICATION->IncludeComponent(
 		"SHOW_PARENT_NAME" => $arParams["SECTIONS_SHOW_PARENT_NAME"],
 		"HIDE_SECTION_NAME" => (isset($arParams["SECTIONS_HIDE_SECTION_NAME"]) ? $arParams["SECTIONS_HIDE_SECTION_NAME"] : "N"),
 		"ADD_SECTIONS_CHAIN" => (isset($arParams["ADD_SECTIONS_CHAIN"]) ? $arParams["ADD_SECTIONS_CHAIN"] : ''),
-        "FILTER_NAME" => 'multiShopSections',
+        "FILTER_NAME" => \MDA\Medusa\Core::getSectionsFilterName(),
 	),
 	$component,
 	array("HIDE_ICONS" => "Y")
@@ -105,7 +105,7 @@ if (isset($arParams['USE_COMMON_SETTINGS_BASKET_POPUP']) && $arParams['USE_COMMO
 }
 
 $intSectionID = $APPLICATION->IncludeComponent(
-    "bitrix:catalog.section",
+    "mda.medusa:catalog.section",
     "",
     array(
         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],

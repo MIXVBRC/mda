@@ -29,4 +29,14 @@ class Core
     {
         return (int) COption::GetOptionString(self::$module, 'stock_hl_block_id');
     }
+
+    public static function getElementsFilterName(): string
+    {
+        return (string) COption::GetOptionString(self::$module, 'elements_filter_name');
+    }
+
+    public static function getSectionsFilterName(): string
+    {
+        return (string) COption::GetOptionString(self::$module, 'sections_filter_name');
+    }
 }

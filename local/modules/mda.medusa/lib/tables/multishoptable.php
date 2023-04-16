@@ -15,7 +15,7 @@ use Bitrix\Sale\FuserTable;
  * <li> ID int
  * <li> FUSER_ID int
  * <li> USER_ID int
- * <li> SHOP_XML_ID string
+ * <li> XML_ID string
  * </ul>
  *
  * Tables:
@@ -55,7 +55,7 @@ class MultiShopTable extends Entity\DataManager
                 'required' => true,
             ]),
             new Entity\IntegerField('USER_ID'),
-            new Entity\StringField('SHOP_XML_ID', [
+            new Entity\StringField('XML_ID', [
                 'required' => true,
             ]),
             new Entity\DatetimeField('DATE_CREATE', [

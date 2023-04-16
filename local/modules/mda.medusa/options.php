@@ -85,6 +85,18 @@ $aTabs = array(
                     $hlBlocks
                 ]
             ],
+            [
+                'elements_filter_name',
+                Loc::getMessage('MDA_MEDUSA_OPTIONS_MULTI_SHOP_OPTION_ELEMENTS_FILTER_NAME'),
+                'multiShopProducts',
+                ['text', 32]
+            ],
+            [
+                'sections_filter_name',
+                Loc::getMessage('MDA_MEDUSA_OPTIONS_MULTI_SHOP_OPTION_SECTIONS_FILTER_NAME'),
+                'multiShopSections',
+                ['text', 32]
+            ],
         ]
     ],
 

@@ -42,7 +42,7 @@ $jsParams = [
     'showQuestion' => (bool) $arResult['SHOW_QUESTION'],
     'shops' => array_values($arResult['SHOPS']),
     'shop' => $arResult['SHOP'],
-    'cookieName' => 'BITRIX_SM_' . $arParams['COOKIE_NAME'],
+    'templateFolder' => $templateFolder,
 ];
 ?>
 

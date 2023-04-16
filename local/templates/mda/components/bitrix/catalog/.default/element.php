@@ -220,7 +220,7 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 		}
 
 		$elementId = $APPLICATION->IncludeComponent(
-			'bitrix:catalog.element',
+			'mda.medusa:catalog.element',
 			'',
 			$componentElementParams,
 			$component,

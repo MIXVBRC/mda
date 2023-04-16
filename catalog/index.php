@@ -232,8 +232,7 @@ $APPLICATION->SetTitle("Каталог");
 		"OFFERS_SORT_ORDER" => "desc",
 		"OFFERS_SORT_FIELD2" => "shows",
 		"OFFERS_SORT_ORDER2" => "desc",
-		"LABEL_PROP_MOBILE" => array(
-		),
+		"LABEL_PROP_MOBILE" => "",
 		"LABEL_PROP_POSITION" => "top-left",
 		"PRODUCT_PROPERTIES" => array(
 		),
@@ -249,6 +248,7 @@ $APPLICATION->SetTitle("Каталог");
 		"DETAIL_PROPERTY_CODE" => array(
 			0 => "",
 			1 => "",
+			2 => "",
 		),
 		"OFFER_TREE_PROPS" => MDA_OFFERS_PROPERTY_LIST,
 		"OFFERS_CART_PROPERTIES" => MDA_OFFERS_PROPERTY_LIST,
@@ -262,7 +262,7 @@ $APPLICATION->SetTitle("Каталог");
 		"DISCOUNT_PERCENT_POSITION" => "bottom-right",
 		"FILE_404" => "",
 		"CACHE_NOTES" => "",
-		"FILTER_NAME" => "multiShopProducts",
+		"FILTER_NAME" => \MDA\Medusa\Core::getElementsFilterName(),
 		"FILTER_FIELD_CODE" => array(
 			0 => "",
 			1 => "",

@@ -1,28 +1,13 @@
 <? require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include/prolog_before.php");
 
-use Bitrix\Highloadblock\HighloadBlockTable;
 use Bitrix\Main\Application;
+use MDA\Medusa\MultiShop;
+
+CModule::IncludeModule('mda.medusa');
 
 $request = Application::getInstance()->getContext()->getRequest();
 
-$result = [];
-
-
 $action = $request->getPost('ACTION');
-$select = $request->getPost('SELECT');
-$arParams = $request->getPost('PARAMS');
+$xmlId = $request->getPost('XML_ID');
 
-$result = [
-    $action,
-    $select,
-    $arParams,
-];
-
-if ($action === 'select') {
-
-}
-
-
-
-
-pre($result);
+MultiShop::setUserShop($xmlId);

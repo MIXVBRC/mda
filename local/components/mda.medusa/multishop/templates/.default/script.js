@@ -47,8 +47,19 @@ this.MultiShop = {
         let action = event.data.action;
         switch (action) {
             case 'selected':
-                MultiShop.setShop(MultiShop.params.shops[4]['XML_ID']);
-                location.reload();
+                BX.ajax({
+                    url: MultiShop.params.templateFolder + '/ajax.php',
+                    data: {
+                        ACTION: action,
+                        XML_ID: MultiShop.params.shops[2]['XML_ID'],
+                    },
+                    method: 'POST',
+                    async: true,
+                    onsuccess: function(data) {
+                        console.log(1);
+                        location.reload();
+                    },
+                });
                 break;
             case 'yes':
                 MultiShop.questionHide();
@@ -59,27 +70,6 @@ this.MultiShop = {
         }
 
     },
-
-    setShop: function (xmlId)
-    {
-        let cookieName = MultiShop.params.cookieName;
-
-        while (true) {
-            let cookie = BX.getCookie(cookieName);
-            pre(cookie);
-            if (!cookie) break;
-            BX.setCookie(cookieName, '', {expires: -1});
-
-        }
-
-        BX.setCookie(cookieName, xmlId, {expires: 86400});
-
-        // document.cookie = cookieName + '=;max-age=-1';
-        //
-        // let cookieDate = new Date();
-        // cookieDate.setMonth(cookieDate.getMonth() + 1);
-        // document.cookie = cookieName + '=' + xmlId + ';expires=' + cookieDate.toUTCString();
-    }
 }
 
 
@@ -109,18 +99,18 @@ this.MultiShop = {
 //
 //             $('[data-multishop-popup-no]').on('click', function () {
 //
-//                 // BX.ajax({
-//                 //     url: './ajax.php',
-//                 //     data: {
-//                 //         AJAX_CALL: 'Y',
-//                 //         ACTION: 'select',
-//                 //     },
-//                 //     method: 'POST',
-//                 //     async: true,
-//                 //     onsuccess: function(data) {
-//                 //
-//                 //     },
-//                 // });
+                // BX.ajax({
+                //     url: './ajax.php',
+                //     data: {
+                //         AJAX_CALL: 'Y',
+                //         ACTION: 'select',
+                //     },
+                //     method: 'POST',
+                //     async: true,
+                //     onsuccess: function(data) {
+                //
+                //     },
+                // });
 //
 //                 // $.ajax({
 //                 //     // url: templateFolder + '/ajax.php',
