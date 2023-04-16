@@ -1,5 +1,6 @@
 .quantity {
     margin-bottom: 15px;
+    user-select: none;
 
     &__button {
         display: inline-block;

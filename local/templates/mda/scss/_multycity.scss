@@ -1,0 +1,18 @@
+.multycity {
+    padding: 10px 0;
+
+    &__body {
+    }
+
+    &__title {
+        margin-left: 10px;
+    }
+    &__select {
+        cursor: pointer;
+        padding: 10px;
+
+        &:hover {
+            background-color: $main_color;
+        }
+    }
+}

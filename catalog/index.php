@@ -5,12 +5,11 @@ $APPLICATION->SetTitle("Каталог");
 	"bitrix:catalog", 
 	".default", 
 	array(
-        "IBLOCK_ID" => MDA_IBLOCK_ID_CATALOG,
-        "LINK_IBLOCK_ID" => MDA_IBLOCK_ID_CATALOG_OFFERS,
-        // Тип цены
-        "PRICE_CODE" => array(
-            0 => "BASE",
-        ),
+		"IBLOCK_ID" => MDA_IBLOCK_ID_CATALOG,
+		"LINK_IBLOCK_ID" => MDA_IBLOCK_ID_CATALOG_OFFERS,
+		"PRICE_CODE" => array(
+			0 => "BASE",
+		),
 		"ACTION_VARIABLE" => "action",
 		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_PICT_PROP" => "-",
@@ -87,8 +86,7 @@ $APPLICATION->SetTitle("Каталог");
 		"IBLOCK_TYPE" => "catalog",
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"INSTANT_RELOAD" => "N",
-		"LABEL_PROP" => array(
-		),
+		"LABEL_PROP" => "",
 		"LAZY_LOAD" => "Y",
 		"LINE_ELEMENT_COUNT" => "3",
 		"LINK_ELEMENTS_URL" => "link.php?PARENT_ELEMENT_ID=#ELEMENT_ID#",
@@ -184,7 +182,7 @@ $APPLICATION->SetTitle("Каталог");
 		"USE_COMPARE" => "N",
 		"USE_ELEMENT_COUNTER" => "N",
 		"USE_ENHANCED_ECOMMERCE" => "N",
-		"USE_FILTER" => "N",
+		"USE_FILTER" => "Y",
 		"USE_GIFTS_DETAIL" => "N",
 		"USE_GIFTS_MAIN_PR_SECTION_LIST" => "N",
 		"USE_GIFTS_SECTION" => "N",
@@ -235,7 +233,6 @@ $APPLICATION->SetTitle("Каталог");
 		"OFFERS_SORT_FIELD2" => "shows",
 		"OFFERS_SORT_ORDER2" => "desc",
 		"LABEL_PROP_MOBILE" => array(
-			0 => "",
 		),
 		"LABEL_PROP_POSITION" => "top-left",
 		"PRODUCT_PROPERTIES" => array(
@@ -253,23 +250,30 @@ $APPLICATION->SetTitle("Каталог");
 			0 => "",
 			1 => "",
 		),
-
-        // Свойства для отбора предложений
-        "OFFER_TREE_PROPS" => MDA_OFFERS_PROPERTY_LIST,
-        "OFFERS_CART_PROPERTIES" => MDA_OFFERS_PROPERTY_LIST,
-        "TOP_OFFERS_PROPERTY_CODE" => MDA_OFFERS_PROPERTY_LIST,
-        "LIST_OFFERS_PROPERTY_CODE" => MDA_OFFERS_PROPERTY_LIST,
+		"OFFER_TREE_PROPS" => MDA_OFFERS_PROPERTY_LIST,
+		"OFFERS_CART_PROPERTIES" => MDA_OFFERS_PROPERTY_LIST,
+		"TOP_OFFERS_PROPERTY_CODE" => MDA_OFFERS_PROPERTY_LIST,
+		"LIST_OFFERS_PROPERTY_CODE" => MDA_OFFERS_PROPERTY_LIST,
 		"DETAIL_OFFERS_PROPERTY_CODE" => MDA_OFFERS_PROPERTY_LIST,
-
 		"TOP_PROPERTY_CODE_MOBILE" => "",
-		"LIST_PROPERTY_CODE_MOBILE" => array(
-		),
-		"DETAIL_MAIN_BLOCK_PROPERTY_CODE" => array(
-		),
-		"DETAIL_MAIN_BLOCK_OFFERS_PROPERTY_CODE" => array(
-		),
+		"LIST_PROPERTY_CODE_MOBILE" => "",
+		"DETAIL_MAIN_BLOCK_PROPERTY_CODE" => "",
+		"DETAIL_MAIN_BLOCK_OFFERS_PROPERTY_CODE" => "",
 		"DISCOUNT_PERCENT_POSITION" => "bottom-right",
 		"FILE_404" => "",
+		"CACHE_NOTES" => "",
+		"FILTER_NAME" => "multiShopProducts",
+		"FILTER_FIELD_CODE" => array(
+			0 => "",
+			1 => "",
+		),
+		"FILTER_PROPERTY_CODE" => array(
+			0 => "",
+			1 => "",
+		),
+		"FILTER_PRICE_CODE" => array(
+			0 => "BASE",
+		),
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",
 			"section" => "#SECTION_CODE_PATH#/",

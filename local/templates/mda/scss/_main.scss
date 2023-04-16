@@ -3,6 +3,10 @@
 html,
 body {
   background-color: $font_color_reverse;
+
+  &[menu-open] {
+    overflow: hidden;
+  }
 }
 html {
     height: 100%;

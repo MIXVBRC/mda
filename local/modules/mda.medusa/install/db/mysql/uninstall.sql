@@ -1,0 +1,1 @@
+drop table if exists mda_medusa_multi_shop;

@@ -21,6 +21,7 @@
 
 // Хедер
 @import "_header";
+@import "_multycity";
 @import "_menu_top";
 @import "_burger";
 
@@ -38,6 +39,7 @@
 @import "_inner";
 @import "_anaglyph"; // Глич эффект
 
+@import "_lazyload"; // Ленивая загрузка
 @import "_breadcrumbs"; // Хлебные крошки
 @import "_pagenavigation"; // Пагинация
 @import "_mini_sections"; // Список подразделов

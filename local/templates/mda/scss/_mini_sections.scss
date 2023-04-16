@@ -1,5 +1,5 @@
 .sections-mini {
-    margin-bottom: $section_margin_bottom;
+    margin-bottom: $section_margin_bottom_standart;
 
     &__body {
     }
@@ -11,16 +11,19 @@
     }
 
     &__item {
-        margin-top: 15px;
-        margin-right: 20px;
+        // margin-top: 15px;
+        margin-top: 10px;
+        // margin-right: 20px;
+        margin-right: 10px;
     }
 
     &__link {
         display: inline-block;
         font-size: 15px;
-        padding: 14px 46px 14px 14px;
-        opacity: 0.5;
-        border: 2px solid $font_color;
+        // padding: 14px 46px 14px 14px;
+        padding: 5px 10px;
+        // opacity: 0.5;
+        border: 2px solid $font_color_medium;
         color: $font_color;
 
         &:hover {

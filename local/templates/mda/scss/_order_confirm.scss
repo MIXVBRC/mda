@@ -1,7 +1,10 @@
 .order-confirm {
-    background-color: $font_color;
-    border: $border;
-    padding: 5px;
+    background-color: $background_color;
+    border-style: solid;
+    border-color: $font_color;
+    border-width: 2px;
+    padding: 15px;
+    color: $font_color;
 
     & a {
         color: $main_color;
@@ -17,6 +20,7 @@
     }
 
     &__file * {
-        color: #000;
+        background-color: $background_color;
+        color: $font_color;
     }
 }

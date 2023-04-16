@@ -47,34 +47,60 @@ Loc::loadMessages(__FILE__);
     <header class="header" data-header>
 
         <?$APPLICATION->ShowPanel();?>
-
+        
         <div class="header__body">
-            <a href="<?= (isMainPage() ? "javascript:void(0)" : "/") ?>" class="logo">
-                <img class="logo__file" src="<?=SITE_TEMPLATE_PATH?>/img/logo_header.png" alt="Logo">
-            </a>
-            <?
-            $APPLICATION->IncludeComponent(
-	"bitrix:menu", 
-	"menu_top", 
+            <div class="header__body-top">
+                <div class="container">
+                    <?
+                    $APPLICATION->IncludeComponent(
+	"mda.medusa:multishop", 
+	".default", 
 	array(
-		"ALLOW_MULTI_SELECT" => "N",
-		"CHILD_MENU_TYPE" => "left",
-		"DELAY" => "N",
-		"MAX_LEVEL" => "1",
-		"MENU_CACHE_GET_VARS" => array(
-		),
-		"MENU_CACHE_TIME" => "3600",
-		"MENU_CACHE_TYPE" => "N",
-		"MENU_CACHE_USE_GROUPS" => "Y",
-		"ROOT_MENU_TYPE" => "top",
-		"USE_EXT" => "Y",
-		"COMPONENT_TEMPLATE" => "menu_top",
-		"IBLOCK_SECTIONS" => array(
-		)
+		"COMPONENT_TEMPLATE" => ".default",
+		"FILTER_NAME" => "multiShopFilter",
+		"COOKIE_NAME" => "MDA_MULTI_SHOP",
+		"PRODUCTS_FILTER_NAME" => "multiShopProducts",
+		"SECTIONS_FILTER_NAME" => "multiShopSections"
 	),
-	false
+	false,
+	array(
+		"HIDE_ICONS" => MDA_HIDE_ICONS
+	)
 );
-            ?>
+                    ?>
+                </div>
+            </div>
+            <div class="header__body-down">
+                <a href="<?= (isMainPage() ? "javascript:void(0)" : "/") ?>" class="logo">
+                    <img class="logo__file" src="<?=SITE_TEMPLATE_PATH?>/img/logo_header.png" alt="Logo">
+                </a>
+                <?
+                $APPLICATION->IncludeComponent(
+                    "bitrix:menu",
+                    "menu_top",
+                    array(
+                        "ALLOW_MULTI_SELECT" => "N",
+                        "CHILD_MENU_TYPE" => "left",
+                        "DELAY" => "N",
+                        "MAX_LEVEL" => "1",
+                        "MENU_CACHE_GET_VARS" => array(
+                        ),
+                        "MENU_CACHE_TIME" => "3600",
+                        "MENU_CACHE_TYPE" => "N",
+                        "MENU_CACHE_USE_GROUPS" => "Y",
+                        "ROOT_MENU_TYPE" => "top",
+                        "USE_EXT" => "Y",
+                        "COMPONENT_TEMPLATE" => "menu_top",
+                        "IBLOCK_SECTIONS" => array(
+                        )
+                    ),
+                    false,
+                    array(
+                        "HIDE_ICONS" => MDA_HIDE_ICONS
+                    )
+                );
+                ?>
+            </div>
         </div>
     </header>
 
@@ -97,6 +123,10 @@ Loc::loadMessages(__FILE__);
                                 "PATH" => "",
                                 "SITE_ID" => "s1",
                                 "START_FROM" => "0"
+                            ),
+                            false,
+                            array(
+                                "HIDE_ICONS" => MDA_HIDE_ICONS
                             )
                         );?>
 

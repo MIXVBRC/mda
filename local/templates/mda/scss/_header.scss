@@ -9,8 +9,15 @@
     }
 
     &__body {
-        display: flex;
-        align-items: center;
+        
+        &-top {
+            background-color: $lines_color;
+        }
+
+        &-down {
+            display: flex;
+            align-items: center;
+        }
     }
 
     &:not(table)::after {
@@ -52,6 +59,7 @@
         &[data-active]::after {
             height: 100vh;
             transition: $transition_time_mini ease-in-out;
+            background-color: rgba($color: #000, $alpha: 1);
         }
 
         &__body {
