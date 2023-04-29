@@ -14,7 +14,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 
 Loc::loadMessages(__FILE__);
 
-class MainUserConsentRequestComponent extends CBitrixComponent
+class CookieUserConsentRequestComponent extends CBitrixComponent
 {
 	/** @var ErrorCollection $errors */
 	protected $errors;
