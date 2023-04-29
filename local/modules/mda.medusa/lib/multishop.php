@@ -275,7 +275,7 @@ class MultiShop
             $shops = MultiShop::getShops();
             $shopXmlId = $shops[array_key_first($shops)]['XML_ID'];
         }
-        
+
         return MultiShop::setUserShop($shopXmlId);
     }
 
