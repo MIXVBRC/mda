@@ -9,23 +9,17 @@ use Bitrix\Main\Web\Cookie;
 use MDA\Medusa\Core;
 use MDA\Medusa\MultiShop;
 
-Class Comments extends CBitrixComponent
+Class MultiShopComponent extends CBitrixComponent
 {
     public function executeComponent()
     {
-
         if (!$this->arResult['SHOPS'] = MultiShop::getShops()) {
             return;
         }
 
-        if (!$this->arResult['SHOP'] = MultiShop::getUserShop()) {
+        $this->arResult['SHOP'] = MultiShop::getUserShop();
 
-            $this->arResult['SHOW_QUESTION'] = true;
-            $this->arResult['SHOP'] = $this->arResult['SHOPS'][array_key_first($this->arResult['SHOPS'])];
-
-            if (!MultiShop::setUserShop($this->arResult['SHOP']['XML_ID'])) return;
-
-        }
+        $this->arResult['SHOW_QUESTION'] = $this->arResult['SHOP']['AUTO_SELECT'];
 
         $filter = MultiShop::getFiltersByShop($this->arResult['SHOP']['XML_ID']);
 

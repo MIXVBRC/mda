@@ -3,7 +3,7 @@ define("NEED_AUTH", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Мой кабинет");
 ?><?$APPLICATION->IncludeComponent(
-	"bitrix:sale.personal.section", 
+	"bitrix:sale.personal.section",
 	".default", 
 	array(
 		"ACCOUNT_PAYMENT_SELL_USER_INPUT" => "Y",

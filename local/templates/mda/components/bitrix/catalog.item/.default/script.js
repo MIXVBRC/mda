@@ -1594,6 +1594,7 @@
 			return true;
 		},
 
+		// TODO: скрывает ТП
 		updateRow: function(intNumber, activeID, showID, canBuyID)
 		{
 			var i = 0,

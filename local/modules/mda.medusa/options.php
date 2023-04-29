@@ -19,27 +19,28 @@ Loader::includeModule($module_id);
 
 CModule::IncludeModule('iblock');
 CModule::IncludeModule('highloadblock');
-
-$iblockList = \Bitrix\Iblock\IblockTable::getList([
+$iBlockList = [
+    0 => 'Не выбрано'
+];
+$iBlockTable = \Bitrix\Iblock\IblockTable::getList([
     'select' => ['ID','CODE','NAME'],
 ])->fetchAll();
-foreach ($iblockList as $key => $iblock) {
-    unset($iblockList[$key]);
-    $iblockList[$iblock['ID']] = '['.$iblock['ID'].'] '.$iblock['NAME'];
+foreach ($iBlockTable as $iBlock) {
+    $iBlockList[$iBlock['ID']] = '['.$iBlock['ID'].'] '.$iBlock['NAME'];
 }
-$iblockList[0] = 'Не выбрано';
-ksort($iblockList);
+$iBlockList[0] = 'Не выбрано';
+ksort($iBlockList);
 
-$hlBlocks = [];
+$hlBlocks = [
+    0 => 'Не выбрано'
+];
 $hlBlockTable = HighloadBlockTable::getList([
     'select' => ['ID', 'NAME'],
 ])->fetchAll();
 foreach ($hlBlockTable as $hlBlock) {
     $hlBlocks[$hlBlock['ID']] = '['.$hlBlock['ID'].'] '.$hlBlock['NAME'];
 }
-$hlBlocks[0] = 'Не выбрано';
 ksort($hlBlocks);
-
 
 // Параметры модуля со значениями по умолчанию
 $aTabs = array(
@@ -55,7 +56,7 @@ $aTabs = array(
                 '0',
                 [
                     'selectbox',
-                    $iblockList
+                    $iBlockList
                 ]
             ],
             [
@@ -64,7 +65,7 @@ $aTabs = array(
                 '0',
                 [
                     'selectbox',
-                    $iblockList
+                    $iBlockList
                 ]
             ],
             [
@@ -95,6 +96,12 @@ $aTabs = array(
                 'sections_filter_name',
                 Loc::getMessage('MDA_MEDUSA_OPTIONS_MULTI_SHOP_OPTION_SECTIONS_FILTER_NAME'),
                 'multiShopSections',
+                ['text', 32]
+            ],
+            [
+                'user_data_lifetime',
+                Loc::getMessage('MDA_MEDUSA_OPTIONS_MULTI_SHOP_OPTION_USER_DATA_LIFETIME'),
+                '84600',
                 ['text', 32]
             ],
         ]
@@ -141,14 +148,10 @@ if ($request->isPost() && check_bitrix_sessid()) {
             }
             if ($request['apply']) { // сохраняем введенные настройки
                 $optionValue = $request->getPost($arOption[0]);
-                if ($arOption[0] == 'switch_on') {
-                    if ($optionValue == '') {
-                        $optionValue = 'N';
-                    }
-                }
-                if ($arOption[0] == 'jquery_on') {
-                    if ($optionValue == '') {
-                        $optionValue = 'N';
+                if ($arOption[0] == 'user_data_lifetime') {
+                    $optionValue = (int) $optionValue;
+                    if ($optionValue <= 0) {
+                        $optionValue = 1;
                     }
                 }
                 Option::set($module_id, $arOption[0], is_array($optionValue) ? implode(',', $optionValue) : $optionValue);

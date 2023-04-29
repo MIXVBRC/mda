@@ -3,7 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Корзина");
 ?>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:sale.basket.basket", 
+	"mda.medusa:sale.basket.basket",
 	".default", 
 	array(
 		"ACTION_VARIABLE" => "basketAction",

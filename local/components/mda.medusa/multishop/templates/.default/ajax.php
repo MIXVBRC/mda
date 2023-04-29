@@ -10,4 +10,5 @@ $request = Application::getInstance()->getContext()->getRequest();
 $action = $request->getPost('ACTION');
 $xmlId = $request->getPost('XML_ID');
 
-MultiShop::setUserShop($xmlId);
+MultiShop::setUserShop($xmlId, false);
+echo json_encode(MultiShop::getUserShop());

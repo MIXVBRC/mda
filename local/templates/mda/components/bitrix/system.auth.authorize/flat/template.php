@@ -10,7 +10,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 <div class="form">
     <div class="form__body">
 
-        <div class="form__title">Присоединяйся к нашей команде</div>
+        <div class="form__title">Присоединяйся к нам</div>
 
         <form method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
 

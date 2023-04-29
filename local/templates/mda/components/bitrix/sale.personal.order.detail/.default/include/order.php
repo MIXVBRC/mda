@@ -31,7 +31,7 @@ use Bitrix\Main\Localization\Loc;
 
 
                 <?/** Параметры отгрузки */?>
-                <? require __DIR__ . '/order-shipment.php'; ?>
+                <?// require __DIR__ . '/order-shipment.php'; ?>
 
             </div>
 

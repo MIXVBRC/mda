@@ -1,74 +1,180 @@
 this.MultiShop = {
 
     params: null,
+    shops: null,
+    shop: null,
+    popups: null,
+    animationTime: 300,
 
     init: function(params)
     {
+        if (!params) throw new Error('Empty params.');
+
         this.params = params;
+        this.shops = this.params.shops;
+        this.shop = this.params.shop;
+
+        if (params.animationTime) {
+            this.animationTime = parseInt(params.animationTime);
+        }
+
         for (let nodeName in this.params.nodes) {
             if (!this.params.nodes.hasOwnProperty(nodeName)) continue;
             this.params.nodes[nodeName] = $(this.params.nodes[nodeName]);
         }
 
+        this.popups = {
+            question: {
+                node: this.params.nodes.question,
+                active: false,
+            },
+            select: {
+                node: this.params.nodes.select,
+                active: false,
+            },
+        };
+
         if (this.params.showQuestion) {
-            setTimeout(this.questionShow,1000);
-        } else {
-            this.params.nodes.question.remove();
+            setTimeout(function (MultiShop) {
+                MultiShop.popupShow('question');
+            },1000, this);
         }
 
-        $(this.params.nodes.selected).on('click', {action:'selected'}, this.sendRequest);
-        $(this.params.nodes.yes).on('click', {action:'yes'}, this.sendRequest);
-        $(this.params.nodes.no).on('click', {action:'no'}, this.sendRequest);
+        this.bind(this.params.nodes.shop, 'click', 'shop');
+        this.bind(this.params.nodes.shopsItem, 'click', 'select');
+        this.bind(this.params.nodes.yes, 'click', 'yes');
+        this.bind(this.params.nodes.no, 'click', 'no');
     },
 
-    questionShow: function ()
+    bind: function (node, type, action)
     {
-        let node = MultiShop.params.nodes.question;
-        node.animate(
+        $(node).bind(type, {action:action}, this.distributor);
+    },
+
+    unbind: function (node, type)
+    {
+        $(node).unbind(type, this.distributor);
+    },
+
+    update: function (reload = false)
+    {
+        this.params.nodes.shop.find('span').text(this.shop.NAME);
+        if (reload) location.reload();
+    },
+
+    popupShow: function (type)
+    {
+        let popup = this.popups[type];
+
+        if (!popup) return;
+
+        popup.active = true;
+
+        popup.node.css({
+            display: 'initial',
+            opacity: 0
+        });
+
+        popup.node.animate(
             {opacity: 1},
-            1000
+            this.animationTime
         );
     },
 
-    questionHide: function ()
+    popupHide: function (type)
     {
-        let node = MultiShop.params.nodes.question;
-        node.animate(
+        let popup = this.popups[type];
+
+        if (!popup) return;
+
+        popup.node.animate(
             {opacity: 0},
-            300,
+            this.animationTime,
             function () {
-                node.remove();
+                popup.active = false;
+                popup.node.css({display: 'none'});
             }
         );
     },
 
-    sendRequest: function(event)
+    popupToggle: function (type)
+    {
+        let popup = this.popups[type];
+
+        if (popup.active) {
+            this.popupHide(type);
+        } else {
+            this.popupShow(type);
+        }
+    },
+
+    popupsHide: function ()
+    {
+        let popups = this.popups;
+        for (let type in popups) {
+            if (!popups.hasOwnProperty(type)) continue;
+            let popup = popups[type];
+            if (popup.active) {
+                this.popupHide(type);
+                break;
+            }
+        }
+    },
+
+    sendRequest: function(params)
+    {
+        let requestData = null;
+
+        BX.ajax({
+            url: this.params.templateFolder + '/ajax.php',
+            data: params,
+            method: 'POST',
+            async: false,
+            onsuccess: function(request) {
+                requestData = JSON.parse(request);
+            },
+        });
+
+        return requestData;
+    },
+
+    distributor: function(event)
     {
         let action = event.data.action;
+
         switch (action) {
-            case 'selected':
-                BX.ajax({
-                    url: MultiShop.params.templateFolder + '/ajax.php',
-                    data: {
-                        ACTION: action,
-                        XML_ID: MultiShop.params.shops[2]['XML_ID'],
-                    },
-                    method: 'POST',
-                    async: true,
-                    onsuccess: function(data) {
-                        console.log(1);
-                        location.reload();
-                    },
-                });
+            case 'select':
+                let xmlId = $(event.target).data('multishop-shops-item');
+                if (!xmlId) return;
+                MultiShop.actionSelect(xmlId);
+                MultiShop.popupsHide();
                 break;
             case 'yes':
-                MultiShop.questionHide();
+                MultiShop.popupsHide();
+                MultiShop.actionYes();
                 break;
+            case 'shop':
             case 'no':
-                MultiShop.questionHide();
+                MultiShop.popupsHide();
+                MultiShop.popupToggle('select');
                 break;
         }
+    },
 
+    actionSelect: function (xmlId)
+    {
+        this.shop = this.sendRequest({
+            XML_ID: xmlId,
+        });
+        this.update(true);
+    },
+
+    actionYes: function ()
+    {
+        this.shop = this.sendRequest({
+            XML_ID: this.shop['XML_ID'],
+        });
+        this.update();
     },
 }
 

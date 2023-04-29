@@ -248,7 +248,6 @@ $APPLICATION->SetTitle("Каталог");
 		"DETAIL_PROPERTY_CODE" => array(
 			0 => "",
 			1 => "",
-			2 => "",
 		),
 		"OFFER_TREE_PROPS" => MDA_OFFERS_PROPERTY_LIST,
 		"OFFERS_CART_PROPERTIES" => MDA_OFFERS_PROPERTY_LIST,

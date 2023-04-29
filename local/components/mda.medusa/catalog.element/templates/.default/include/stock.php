@@ -25,7 +25,7 @@
 
                     <li>
                         <span>
-                            <?=$offer['PROPERTIES']['CML2_ATTRIBUTES']['VALUE'][0]?> - <?=$offer['STOCK']?>
+                            <?=$offer['STOCK']?> - <?=$offer['PROPERTIES']['CML2_ATTRIBUTES']['VALUE'][0]?>
                         </span>
                     </li>
 

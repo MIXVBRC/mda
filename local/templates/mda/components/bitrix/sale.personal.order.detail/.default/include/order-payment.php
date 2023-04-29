@@ -6,7 +6,7 @@
 
 use Bitrix\Main\Localization\Loc;
 ?>
-<div class="order-detail__item" data-item data-hide>
+<div class="order-detail__item" data-item data-close>
 
     <div class="order-detail__item-header">
         <div class="order-detail__item-header-title"><h3><?= Loc::getMessage('SPOD_ORDER_PAYMENT') ?></h3></div>

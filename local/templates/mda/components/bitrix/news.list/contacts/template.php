@@ -63,7 +63,47 @@ $this->setFrameMode(true);
                     </div>
 
                     <div class="contacts__map">
-                        <?=$arItem['PROPERTIES']['MAP']['VALUE']?>
+                        <?
+                        if ($arItem['PROPERTIES']['MAP']['VALUE']) {
+                            echo $arItem['PROPERTIES']['MAP']['VALUE'];
+                        } else {
+                            $mapText = implode('<br>',$arItem['PROPERTIES']['MAP_TEXT']['VALUE'] ?: [$arItem['NAME']]);
+                            $APPLICATION->IncludeComponent(
+                                "bitrix:map.yandex.view",
+                                "",
+                                [
+                                    "INIT_MAP_TYPE" => "COORDINATES",
+                                    "MAP_DATA" =>   serialize(
+                                        [
+                                            'yandex_lon' => $arItem['PROPERTIES']['MAP_LON']['VALUE'],
+                                            'yandex_lat' => $arItem['PROPERTIES']['MAP_LAT']['VALUE'],
+                                            'yandex_scale' => $arItem['PROPERTIES']['MAP_SCALE']['VALUE'],
+                                            'PLACEMARKS' => [
+                                                [
+                                                    "LON" => $arItem['PROPERTIES']['MAP_LON']['VALUE'],
+                                                    "LAT" => $arItem['PROPERTIES']['MAP_LAT']['VALUE'],
+                                                    "TEXT" => $mapText,
+                                                ]
+                                            ]
+                                        ]
+                                    ),
+                                    "MAP_WIDTH" => "100%",
+                                    "MAP_HEIGHT" => "250",
+                                    "CONTROLS" => ["ZOOM", "SMALLZOOM", "SCALELINE"],
+                                    "OPTIONS" => [
+                                        "ENABLE_DRAGGING",
+                                        "ENABLE_SCROLL_ZOOM",
+                                        "ENABLE_DBLCLICK_ZOOM"
+                                    ],
+                                    "MAP_ID" => ""
+                                ],
+                                ["HIDE_ICONS" => true]
+                            );
+                        }
+                        ?>
+                        <?
+
+                        ?>
                     </div>
 
                 </div>

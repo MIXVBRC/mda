@@ -18,6 +18,7 @@ const MDA_IBLOCK_ID_NEWS = 9;
 const MDA_IBLOCK_ID_VACANSY = 11;
 const MDA_IBLOCK_ID_ACTIONS = 6;
 const MDA_IBLOCK_ID_IMAGES = 10;
+const MDA_IBLOCK_ID_STORE = 8;
 
 /** @var bool MDA_SITE_MODE_SALE
  * <div>Режимы:

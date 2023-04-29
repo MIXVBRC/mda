@@ -25,14 +25,5 @@ $arComponentParameters = [
             'TYPE' => 'STRING',
             'DEFAULT' => 'multiShopSections',
         ],
-
-        'COOKIE_NAME' => [
-            'PARENT' => 'PROPERTIES',
-            'NAME' => 'Название cookie',
-            'TYPE' => 'STRING',
-            'DEFAULT' => 'MDA_MULTI_SHOP',
-        ],
-
-//        "CACHE_TIME"  =>  array("DEFAULT"=>36000000),
     ],
 ];

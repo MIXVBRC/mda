@@ -2,6 +2,7 @@
 use \Bitrix\Main;
 use \Bitrix\Main\Loader;
 use \Bitrix\Main\Error;
+use Bitrix\Main\Type\Collection;
 use \Bitrix\Main\Type\DateTime;
 use \Bitrix\Main\Localization\Loc;
 use \Bitrix\Iblock;
@@ -106,6 +107,9 @@ class CatalogSectionComponent extends ElementList
 
             $productFields = $this->getProductFields($iblockId);
             $translateFields = $this->getCompatibleProductFields();
+
+            // TODO: MDA MEDUSA
+            $offersOrder = array_merge(['PROPERTY_NAIMENOVANIE_DLYA_SAYTA' => 'ASC'],$offersOrder);
 
             $offersId = array();
             $offersCount = array();
@@ -393,8 +397,10 @@ class CatalogSectionComponent extends ElementList
                 'OWNER_PICT' => $offer['OWNER_PICT'],
                 'PREVIEW_PICTURE' => $offer['PREVIEW_PICTURE'],
                 'PREVIEW_PICTURE_SECOND' => $offer['PREVIEW_PICTURE_SECOND'],
-                'CHECK_QUANTITY' => $offer['CHECK_QUANTITY'],
-                'MAX_QUANTITY' => $offer['PRODUCT']['QUANTITY'],
+//                'CHECK_QUANTITY' => $offer['CHECK_QUANTITY'],
+//                'MAX_QUANTITY' => $offer['PRODUCT']['QUANTITY'],
+                'CHECK_QUANTITY' => true,  // TODO: MDA MEDUSA
+                'MAX_QUANTITY' => $offer['STOCK'], // TODO: MDA MEDUSA
                 'STEP_QUANTITY' => $offer['ITEM_MEASURE_RATIOS'][$ratioSelectedIndex]['RATIO'], // deprecated
                 'QUANTITY_FLOAT' => is_float($offer['ITEM_MEASURE_RATIOS'][$ratioSelectedIndex]['RATIO']), //deprecated
                 'MEASURE' => $offer['ITEM_MEASURE']['TITLE'],

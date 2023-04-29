@@ -38,7 +38,7 @@
 
                 <ul class="list1__properties-sky-list">
 
-                    <? foreach ($skuProperty['VALUES'] as $value):?>
+                    <? foreach ($skuProperty['VALUES'] as $value): ?>
 
                         <?
                         if (!isset($item['SKU_TREE_VALUES'][$propertyId][$value['ID']])) continue;

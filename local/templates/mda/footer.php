@@ -90,5 +90,26 @@ IncludeTemplateLangFile(__FILE__);
     </div>
 </div>
 
+<?
+$APPLICATION->IncludeComponent(
+	"mda.medusa:cookie.userconsent", 
+	".default", 
+	array(
+		"ID" => "2",
+		"IS_CHECKED" => "Y",
+		"IS_LOADED" => "Y",
+		"AUTO_SAVE" => "Y",
+		"SUBMIT_EVENT_NAME" => "cookie",
+		"AJAX_MODE" => "Y",
+		"COMPONENT_TEMPLATE" => ".default",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "N",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "cookie"
+	),
+	false
+);
+?>
+
 </body>
 </html>

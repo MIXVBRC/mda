@@ -13,7 +13,7 @@ $orderHeaderStatus = null;
 
         <div class="order-list__status-list">
 
-        <? foreach ($arResult['ORDERS'] as $key => $order):?>
+        <? foreach ($arResult['ORDERS'] as $key => $order): ?>
 
             <?/** Статус - заголовок */?>
             <? if ($orderHeaderStatus !== $order['ORDER']['STATUS_ID'] && $arResult['SORT_TYPE'] == 'STATUS'):?>
@@ -156,7 +156,8 @@ $orderHeaderStatus = null;
 
                                     <?endforeach;?>
 
-                                    <? foreach ($order['SHIPMENT'] as $shipment): ?>
+                                    <?// TODO: break - убираем отгрузки?>
+                                    <? foreach ($order['SHIPMENT'] as $shipment): break;?>
 
                                         <?if (empty($shipment)) continue;?>
 

@@ -2013,6 +2013,10 @@
 					this.minQuantity = this.currentPriceMode === 'Q' ? parseInt(this.currentPrices[this.currentPriceSelected].MIN_QUANTITY) : this.stepQuantity;
 				}
 
+				// TODO: MDA MEDUSA
+				// this.product.maxQuantity = 5;
+				// this.product.minQuantity = 3;
+
 				if (this.config.showQuantity)
 				{
 					var isDifferentMinQuantity = oldOffer.ITEM_PRICES.length
@@ -2891,6 +2895,7 @@
 			return range;
 		},
 
+		// TODO: MDA MEDUSA
 		checkQuantityControls: function()
 		{
 			if (!this.obQuantity)

@@ -3,98 +3,80 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Контакты");
 ?>
 
-<?
-CModule::IncludeModule("catalog");
-$storeList = \Bitrix\Catalog\StoreTable::getList([
-    'filter' => ['ACTIVE'>='Y'],
-])->fetchAll();
-?>
-
-<div class="contacts">
-    <div class="contacts__body">
-        <div class="contacts__list">
-
-            <?foreach($storeList as $store):?>
-
-                <div class="contacts__item">
-
-                    <div class="contacts__item-info">
-
-                        <div class="contacts__item-name">
-                            <h2><?=$store['TITLE']?></h2>
-                        </div>
-
-                        <?if ($store['PHONE']):?>
-
-                            <div class="contacts__item-phone">
-                                <i class="fa fa-phone"></i>
-                                <a href="tel:<?=$store['PHONE']?>"><?=$store['PHONE']?></a>
-                            </div>
-
-                            <div class="contacts__item-whatsapp">
-                                <i class="fa fa-whatsapp"></i>
-                                <a href="https://wa.me/<?=$store['PHONE']?>"><?=$store['PHONE']?></a>
-                            </div>
-
-                        <?endif;?>
-
-                        <?if ($store['ADDRESS']):?>
-                            <div class="contacts__item-address">
-                                <span>Адрес: </span><address><?=$store['ADDRESS']?></address>
-                            </div>
-                        <?endif;?>
-
-                        <?if ($store['SCHEDULE']):?>
-
-                            <div class="contacts__item-time">
-                                Режим работы: <span><?=$store['SCHEDULE']?></span>
-                            </div>
-
-                        <?endif;?>
-
-                    </div>
-
-                    <div class="contacts__map">
-                        <?
-                        $APPLICATION->IncludeComponent(
-                            "bitrix:map.yandex.view",
-                            "",
-                            [
-                                "INIT_MAP_TYPE" => "COORDINATES",
-                                "MAP_DATA" =>   serialize(
-                                    [
-                                        'yandex_lon' => $store['GPS_S'],
-                                        'yandex_lat' => $store['GPS_N'],
-                                        'PLACEMARKS' => [
-                                            [
-                                                "LON" => $store['GPS_S'],
-                                                "LAT" => $store['GPS_N'],
-                                                "TEXT" => htmlspecialcharsbx($store['TITLE'])
-                                            ]
-                                        ]
-                                    ]
-                                ),
-                                "MAP_WIDTH" => "100%",
-                                "MAP_HEIGHT" => "250",
-                                "CONTROLS" => ["ZOOM", "SMALLZOOM", "SCALELINE"],
-                                "OPTIONS" => [
-                                    "ENABLE_DRAGGING",
-                                    "ENABLE_SCROLL_ZOOM",
-                                    "ENABLE_DBLCLICK_ZOOM"
-                                ],
-                                "MAP_ID" => ""
-                            ],
-                            array("HIDE_ICONS" => MDA_HIDE_ICONS)
-                        );
-                        ?>
-                    </div>
-
-                </div>
-
-            <?endforeach;?>
-
-        </div>
-    </div>
-</div>
+<?$APPLICATION->IncludeComponent(
+	"bitrix:news.list", 
+	"contacts", 
+	array(
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
+		"CACHE_FILTER" => "N",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "N",
+		"CHECK_DATES" => "Y",
+		"DETAIL_URL" => "",
+		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"DISPLAY_DATE" => "Y",
+		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"FIELD_CODE" => array(
+			0 => "",
+			1 => "",
+		),
+		"FILTER_NAME" => "",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"IBLOCK_ID" => MDA_IBLOCK_ID_STORE,
+		"IBLOCK_TYPE" => "-",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"MESSAGE_404" => "",
+		"NEWS_COUNT" => "20",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_TEMPLATE" => ".default",
+		"PAGER_TITLE" => "Новости",
+		"PARENT_SECTION" => "",
+		"PARENT_SECTION_CODE" => "",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"PROPERTY_CODE" => [
+			"PHONE",
+			"WHATSAPP",
+			"ADDRESS",
+			"MAP",
+			"START",
+			"END",
+			"AROUND_THE_CLOCK",
+			"MAP_TEXT",
+			"MAP_LON",
+			"MAP_LAT",
+			"MAP_SCALE",
+			"test",
+		],
+		"SET_BROWSER_TITLE" => "Y",
+		"SET_LAST_MODIFIED" => "N",
+		"SET_META_DESCRIPTION" => "Y",
+		"SET_META_KEYWORDS" => "Y",
+		"SET_STATUS_404" => "N",
+		"SET_TITLE" => "Y",
+		"SHOW_404" => "N",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "DESC",
+		"SORT_ORDER2" => "ASC",
+		"STRICT_SECTION_CHECK" => "N",
+		"COMPONENT_TEMPLATE" => "contacts"
+	),
+    ["HIDE_ICONS" => MDA_HIDE_ICONS]
+);?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

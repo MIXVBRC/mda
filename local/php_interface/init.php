@@ -11,4 +11,3 @@ foreach ($files as $file) {
 }
 
 CModule::IncludeModule('mda.medusa');
-

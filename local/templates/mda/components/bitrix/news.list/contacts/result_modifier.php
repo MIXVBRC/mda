@@ -7,9 +7,18 @@
  * @var array $arParams
  */
 
-foreach($arResult["ITEMS"] as &$arItem) {
+$userShop = \MDA\Medusa\MultiShop::getUserShop();
+
+$item = [];
+foreach($arResult["ITEMS"] as $key => &$arItem) {
     $arItem['PROPERTIES']['WHATSAPP']['VALUE_PREG'] = preg_replace("/[^,.0-9]/", '', $arItem['PROPERTIES']['WHATSAPP']['VALUE']);
     $arItem['PROPERTIES']['MAP']['VALUE'] = htmlspecialchars_decode($arItem['PROPERTIES']['MAP']['VALUE']);
+    if ($userShop['XML_ID'] == $arItem['EXTERNAL_ID']) {
+        $item = $arItem;
+        unset($arResult["ITEMS"][$key]);
+    }
 }
-
+if ($item) {
+    array_unshift($arResult["ITEMS"], $item);
+}
 

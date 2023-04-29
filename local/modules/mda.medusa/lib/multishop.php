@@ -8,8 +8,8 @@ use Bitrix\Highloadblock\HighloadBlockTable;
 use Bitrix\Iblock\ElementTable;
 use Bitrix\Iblock\SectionElementTable;
 use Bitrix\Iblock\SectionTable;
-use Bitrix\Main\Application;
 use Bitrix\Main\Engine\CurrentUser;
+use Bitrix\Main\Type\DateTime;
 use Bitrix\Sale\Fuser;
 use CModule;
 use MDA\Medusa\Tables\MultiShopTable;
@@ -25,6 +25,7 @@ class MultiShop
     private static array $hl = [];
     private static array $productStocks = [];
     private static array $offerLink = [];
+    private static array $available = [];
 
     private static function getHL($id)
     {
@@ -36,6 +37,12 @@ class MultiShop
         return self::$hl[$id];
     }
 
+    /**
+     * Получает магазин по xml_id магазина
+     *
+     * @param string $shopXmlId
+     * @return array
+     */
     public static function getShop(string $shopXmlId): array
     {
         if (empty(self::$shop)) {
@@ -60,6 +67,11 @@ class MultiShop
         return self::$shop?:[];
     }
 
+    /**
+     * Получает список магазинов
+     *
+     * @return array
+     */
     public static function getShops(): array
     {
         if (empty(self::$shops)) {
@@ -76,6 +88,12 @@ class MultiShop
         return self::$shops?:[];
     }
 
+    /**
+     * Формирует поля
+     *
+     * @param array $shop
+     * @return array
+     */
     private static function getShopRows(array $shop): array
     {
         return [
@@ -87,6 +105,8 @@ class MultiShop
     }
 
     /**
+     *
+     * Получение остатков магазина по xml_id магазина
      *
      * Fields:
      * <ul>
@@ -135,6 +155,11 @@ class MultiShop
         return self::$shopsStocks[$shopXmlId]?:[];
     }
 
+    /**
+     * Получает информацию о пользователе bitrix
+     *
+     * @return array
+     */
     private static function getUser(): array
     {
         if (empty(self::$user)) {
@@ -145,51 +170,89 @@ class MultiShop
         return self::$user;
     }
 
+    /**
+     * Удаляет старые записи пользователей
+     * Время жизни записи устанавливается в настройках модуля
+     */
+    private static function removeOldUserData()
+    {
+        $list = MultiShopTable::getList([
+            'filter' => [
+                '<DATE_CREATE' => (new DateTime())->add(Core::getUserDataLifetime() * -1 . ' min'),
+            ],
+            'select' => ['ID'],
+        ]);
+
+        while ($item = $list->fetch()) {
+            MultiShopTable::delete($item['ID']);
+        }
+    }
+
+    /**
+     * Получает данные пользователя
+     *
+     * @return array
+     */
     public static function getUserData(): array
     {
+        self::removeOldUserData();
+
         if (empty(self::$userData)) {
             $user = self::getUser();
 
+            if (empty($user['id'])) {
+                $filter = ['FUSER_ID' => $user['fid']];
+            } else {
+                $filter = ['USER_ID' => $user['id']];
+            }
+
             self::$userData = MultiShopTable::getRow([
-                'filter' => [
-                    [
-                        'LOGIC' => 'OR',
-                        ['FUSER_ID' => $user['fid']],
-                        ['USER_ID' => $user['id']],
-                    ]
-                ]
+                'filter' => $filter,
             ])?:[];
         }
 
         return self::$userData;
     }
 
+    /**
+     * Получает магазин пользователя
+     *
+     * @return array
+     */
     public static function getUserShop(): array
     {
         if (empty(self::$userShop)) {
             if (!$userData = self::getUserData()) return [];
-            self::$userShop = self::getShop($userData['XML_ID']);
+            self::$userShop = array_merge($userData, self::getShop($userData['XML_ID']));
         }
 
         return self::$userShop?:[];
     }
 
-    public static function setUserShop(string $shopXmlId): bool
+    /**
+     * Устанавливает магазин для пользователя
+     *
+     * @param string $shopXmlId - xml_id магазина
+     * @param bool $autoSelect - было ли установлено автоматически
+     * @return bool
+     */
+    public static function setUserShop(string $shopXmlId, bool $autoSelect = true): bool
     {
+        $fields = [
+            'XML_ID' => $shopXmlId,
+            'AUTO_SELECT' => $autoSelect,
+        ];
+
         if ($id = self::getUserData()['ID']) {
-            $fields = [
-                'XML_ID' => $shopXmlId,
-            ];
             $result = MultiShopTable::update($id, $fields);
             if (!$result->isSuccess()) return false;
             self::$userData = array_merge(self::$userData, $fields);
         } else {
             $user = self::getUser();
-            $fields = [
+            $fields = array_merge($fields, [
                 'FUSER_ID' => $user['fid'],
                 'USER_ID' => $user['id'],
-                'XML_ID' => $shopXmlId,
-            ];
+            ]);
             $result = MultiShopTable::add($fields);
             if (!$result->isSuccess()) return false;
             self::$userData = array_merge(self::$userData, $fields);
@@ -198,6 +261,24 @@ class MultiShop
         return true;
     }
 
+    /**
+     * Добавляет пользователя если нет и устанавливает город по умолчанию
+     *
+     * @return bool
+     */
+    public static function addUser(): bool
+    {
+        if (MultiShop::getUserData()) return true;
+        $shop = MultiShop::getShops()[0]['XML_ID'];
+        return MultiShop::setUserShop($shop);
+    }
+
+    /**
+     * Получает фильтры для каталога по xml_id магазина
+     *
+     * @param string $shopXmlId
+     * @return array|array[]
+     */
     public static function getFiltersByShop(string $shopXmlId): array
     {
         $products = [];
@@ -269,6 +350,12 @@ class MultiShop
         ];
     }
 
+    /**
+     * Получает остатки товара по xml_id товара
+     *
+     * @param string $xmlId
+     * @return int
+     */
     public static function getProductStocks(string $xmlId): int
     {
         $userShop = self::getUserShop();
@@ -289,6 +376,26 @@ class MultiShop
         return self::$productStocks[$userShop['XML_ID']][$xmlId]?:0;
     }
 
+    /**
+     * Проверяет доступность товара
+     *
+     * @param string $xmlId
+     * @return bool
+     */
+    public static function isAvailable(string $xmlId): bool
+    {
+        if (!self::$available[$xmlId]) {
+            self::$available[$xmlId] = (bool) self::getProductStocks($xmlId) > 0;
+        }
+
+        return self::$available[$xmlId];
+    }
+
+    /**
+     * Получает торговые предложения магазина
+     *
+     * @return array
+     */
     public static function getOffers()
     {
         $result = [];

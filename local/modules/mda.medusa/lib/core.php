@@ -4,6 +4,7 @@
 namespace MDA\Medusa;
 
 
+use Bitrix\Main\UserConsent\Internals\AgreementTable;
 use COption;
 
 class Core
@@ -38,5 +39,10 @@ class Core
     public static function getSectionsFilterName(): string
     {
         return (string) COption::GetOptionString(self::$module, 'sections_filter_name');
+    }
+
+    public static function getUserDataLifetime(): int
+    {
+        return (int) COption::GetOptionString(self::$module, 'user_data_lifetime');
     }
 }

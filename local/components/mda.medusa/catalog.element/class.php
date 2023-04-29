@@ -3,6 +3,7 @@
 use Bitrix\Main\Localization\Loc,
     Bitrix\Main,
     Bitrix\Main\Loader,
+    Bitrix\Iblock,
     Bitrix\Iblock\Component\Element,
     Bitrix\Catalog;
 use MDA\Medusa\MultiShop;
@@ -38,7 +39,7 @@ class CatalogElementComponent extends Element
         if (!empty($elementIterator) && ($elementObject = $elementIterator->GetNextElement()))
         {
             $element = $elementObject->GetFields();
-            
+
             // TODO: MDA MEDUSA
             $element['HAVE_OFFERS'] = self::haveOffers($element['ID']);
             if ($element['XML_ID'] && !$element['HAVE_OFFERS']) {
@@ -349,6 +350,93 @@ class CatalogElementComponent extends Element
         return $offers;
     }
 
+    protected function editTemplateItems(&$item)
+    {
+        $skuPropList =& $this->arResult['SKU_PROPS'];
+
+        if (!isset($item['CATALOG_QUANTITY']))
+        {
+            $item['CATALOG_QUANTITY'] = 0;
+        }
+
+        $item['CATALOG_QUANTITY'] = $item['CATALOG_QUANTITY'] > 0 && is_float($item['ITEM_MEASURE_RATIOS'][$item['ITEM_MEASURE_RATIO_SELECTED']]['RATIO'])
+            ? (float)$item['CATALOG_QUANTITY']
+            : (int)$item['CATALOG_QUANTITY'];
+
+        $item['CATALOG'] = false;
+        $item['CATALOG_SUBSCRIPTION'] = isset($item['CATALOG_SUBSCRIPTION']) && $item['CATALOG_SUBSCRIPTION'] === 'Y' ? 'Y' : 'N';
+
+        \CIBlockPriceTools::getLabel($item, $this->arParams['LABEL_PROP']);
+        $this->editTemplateProductSlider($item, $item['IBLOCK_ID'], 0, $this->arParams['ADD_DETAIL_TO_SLIDER'] === 'Y', array($this->arResult['DEFAULT_PICTURE']));
+        $this->editTemplateCatalogInfo($item);
+
+        if ($item['CATALOG'] && !empty($item['OFFERS']))
+        {
+            $needValues = array();
+
+            foreach ($item['OFFERS'] as &$offer)
+            {
+                foreach (array_keys($skuPropList) as $strOneCode)
+                {
+                    if (isset($offer['DISPLAY_PROPERTIES'][$strOneCode]))
+                    {
+                        if (!isset($needValues[$skuPropList[$strOneCode]['ID']]))
+                        {
+                            $needValues[$skuPropList[$strOneCode]['ID']] = array();
+                        }
+
+                        $valueId = $skuPropList[$strOneCode]['PROPERTY_TYPE'] == Iblock\PropertyTable::TYPE_LIST
+                            ? $offer['DISPLAY_PROPERTIES'][$strOneCode]['VALUE_ENUM_ID']
+                            : $offer['DISPLAY_PROPERTIES'][$strOneCode]['VALUE'];
+
+                        $needValues[$skuPropList[$strOneCode]['ID']][$valueId] = $valueId;
+                        unset($valueId);
+                    }
+                }
+                unset($strOneCode);
+            }
+            unset($offer);
+
+            if (!empty($needValues))
+                \CIBlockPriceTools::getTreePropertyValues($skuPropList, $needValues);
+            unset($needValues);
+            $this->editTemplateOfferProps($item);
+            $offerSet = $this->editTemplateProductSets($item);
+            $this->editTemplateJsOffers($item, $offerSet);
+        }
+
+        if ($item['MODULES']['catalog'] && $item['CATALOG'])
+        {
+            if ($item['CATALOG_TYPE'] == Catalog\ProductTable::TYPE_PRODUCT || $item['CATALOG_TYPE'] == Catalog\ProductTable::TYPE_SET)
+            {
+                \CIBlockPriceTools::setRatioMinPrice($item, false);
+                $item['MIN_BASIS_PRICE'] = $item['MIN_PRICE'];
+            }
+
+            if (
+                Catalog\Config\Feature::isProductSetsEnabled()
+                && (
+                    $item['CATALOG_TYPE'] == Catalog\ProductTable::TYPE_PRODUCT
+                    || $item['CATALOG_TYPE'] == Catalog\ProductTable::TYPE_SET
+                )
+            )
+            {
+                $item['OFFER_GROUP'] = (isset($item['PRODUCT']['BUNDLE']) && $item['PRODUCT']['BUNDLE'] === 'Y');
+            }
+        }
+
+        if (!empty($item['DISPLAY_PROPERTIES']))
+        {
+            foreach ($item['DISPLAY_PROPERTIES'] as $propKey => $displayProperty)
+            {
+                if ($displayProperty['PROPERTY_TYPE'] === 'F')
+                {
+                    unset($item['DISPLAY_PROPERTIES'][$propKey]);
+                }
+            }
+        }
+    }
+
     protected function editTemplateJsOffers(&$item, $offerSet)
     {
         $matrix = [];
@@ -419,8 +507,10 @@ class CatalogElementComponent extends Element
                 'ITEM_MEASURE_RATIO_SELECTED' => $ratioSelectedIndex,
                 'PREVIEW_PICTURE' => $firstPhoto,
                 'DETAIL_PICTURE' => $firstPhoto,
-                'CHECK_QUANTITY' => $offer['CHECK_QUANTITY'],
-                'MAX_QUANTITY' => $offer['PRODUCT']['QUANTITY'],
+//                'CHECK_QUANTITY' => $offer['CHECK_QUANTITY'],
+//                'MAX_QUANTITY' => $offer['PRODUCT']['QUANTITY'],
+                'CHECK_QUANTITY' => true, // TODO: MDA MEDUSA
+                'MAX_QUANTITY' => $offer['STOCK'], // TODO: MDA MEDUSA
                 'STEP_QUANTITY' => $offer['ITEM_MEASURE_RATIOS'][$ratioSelectedIndex]['RATIO'], // deprecated
                 'QUANTITY_FLOAT' => is_float($offer['ITEM_MEASURE_RATIOS'][$ratioSelectedIndex]['RATIO']), // deprecated
                 'MEASURE' => $offer['ITEM_MEASURE']['TITLE'],
