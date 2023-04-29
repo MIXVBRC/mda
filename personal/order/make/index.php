@@ -3,12 +3,12 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Оформление заказа");
 ?>
 <?$APPLICATION->IncludeComponent(
-	"mda.medusa:sale.order.ajax",
+	"mda.medusa:sale.order.ajax", 
 	".default", 
 	array(
 		"ACTION_VARIABLE" => "soa-action",
 		"ADDITIONAL_PICT_PROP_5" => "-",
-		"ALLOW_APPEND_ORDER" => "N",
+		"ALLOW_APPEND_ORDER" => "Y",
 		"ALLOW_AUTO_REGISTER" => "Y",
 		"ALLOW_NEW_PROFILE" => "N",
 		"ALLOW_USER_PROFILES" => "N",
@@ -84,9 +84,13 @@ $APPLICATION->SetTitle("Оформление заказа");
 			0 => "1",
 			1 => "2",
 			2 => "3",
-		)
+		),
+		"ADDITIONAL_PICT_PROP_12" => "-",
+		"ADDITIONAL_PICT_PROP_13" => "-"
 	),
 	false,
-	array("HIDE_ICONS" => MDA_HIDE_ICONS)
+	array(
+		"HIDE_ICONS" => MDA_HIDE_ICONS
+	)
 );?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

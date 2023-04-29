@@ -8,6 +8,7 @@ use Bitrix\Highloadblock\HighloadBlockTable;
 use Bitrix\Iblock\ElementTable;
 use Bitrix\Iblock\SectionElementTable;
 use Bitrix\Iblock\SectionTable;
+use Bitrix\Main\Application;
 use Bitrix\Main\Engine\CurrentUser;
 use Bitrix\Main\Type\DateTime;
 use Bitrix\Sale\Fuser;
@@ -38,57 +39,6 @@ class MultiShop
     }
 
     /**
-     * Получает магазин по xml_id магазина
-     *
-     * @param string $shopXmlId
-     * @return array
-     */
-    public static function getShop(string $shopXmlId): array
-    {
-        if (empty(self::$shop)) {
-
-            foreach (self::getShops() as $shop) {
-                if ($shop['XML_ID'] !== $shopXmlId) continue;
-                self::$shop = $shop;
-                break;
-            }
-
-            if (empty(self::$shop)) {
-                $hl = self::getHL(Core::getShopHlBlockId());
-
-                self::$shop = $hl::getRow([
-                    'filter' => ['UF_XML_ID' => $shopXmlId],
-                ])?:[];
-
-                self::$shop = self::getShopRows(self::$shop);
-            }
-        }
-
-        return self::$shop?:[];
-    }
-
-    /**
-     * Получает список магазинов
-     *
-     * @return array
-     */
-    public static function getShops(): array
-    {
-        if (empty(self::$shops)) {
-
-            $hl = self::getHL(Core::getShopHlBlockId());
-
-            self::$shops = $hl::getList()->fetchAll();
-
-            foreach (self::$shops as &$shop) {
-                $shop = self::getShopRows($shop);
-            }
-        }
-
-        return self::$shops?:[];
-    }
-
-    /**
      * Формирует поля
      *
      * @param array $shop
@@ -102,6 +52,39 @@ class MultiShop
             'DESCRIPTION' => $shop['UF_DESCRIPTION'],
             'XML_ID' => $shop['UF_XML_ID'],
         ];
+    }
+
+    /**
+     * Получает список магазинов
+     *
+     * @return array
+     */
+    public static function getShops(): array
+    {
+        if (empty(self::$shops)) {
+
+            $hl = self::getHL(Core::getShopHlBlockId());
+
+            $shops = $hl::getList()->fetchAll();
+
+            foreach ($shops as $shop) {
+                $shop = self::getShopRows($shop);
+                self::$shops[$shop['XML_ID']] = $shop;
+            }
+        }
+
+        return self::$shops?:[];
+    }
+
+    /**
+     * Получает магазин по xml_id магазина
+     *
+     * @param string $shopXmlId
+     * @return array
+     */
+    public static function getShop(string $shopXmlId): array
+    {
+        return self::getShops()[$shopXmlId]?:[];
     }
 
     /**
@@ -164,8 +147,8 @@ class MultiShop
     {
         if (empty(self::$user)) {
             CModule::IncludeModule("sale");
-            self::$user['fid'] = Fuser::getId();
-            self::$user['id'] = CurrentUser::get()->getId();
+            self::$user['FUSER_ID'] = Fuser::getId();
+            self::$user['USER_ID'] = CurrentUser::get()->getId();
         }
         return self::$user;
     }
@@ -195,20 +178,27 @@ class MultiShop
      */
     public static function getUserData(): array
     {
-        self::removeOldUserData();
-
         if (empty(self::$userData)) {
             $user = self::getUser();
 
-            if (empty($user['id'])) {
-                $filter = ['FUSER_ID' => $user['fid']];
+            if (empty($user['USER_ID'])) {
+                $filter = ['FUSER_ID' => $user['FUSER_ID']];
             } else {
-                $filter = ['USER_ID' => $user['id']];
+                $filter = ['USER_ID' => $user['USER_ID']];
             }
 
-            self::$userData = MultiShopTable::getRow([
+            $userData = MultiShopTable::getRow([
                 'filter' => $filter,
-            ])?:[];
+                'select' => [
+                    'ID',
+                    'FUSER_ID',
+                    'USER_ID',
+                    'XML_ID',
+                    'AUTO_SELECT',
+                ],
+            ]);
+
+            self::$userData = $userData?:[];
         }
 
         return self::$userData;
@@ -222,8 +212,13 @@ class MultiShop
     public static function getUserShop(): array
     {
         if (empty(self::$userShop)) {
-            if (!$userData = self::getUserData()) return [];
-            self::$userShop = array_merge($userData, self::getShop($userData['XML_ID']));
+            if ($session = self::getSession()) {
+                self::$userShop = $session;
+            } else if ($userData = self::getUserData()) {
+                self::$userShop = array_merge($userData, self::getShop($userData['XML_ID']));
+            } else {
+                return [];
+            }
         }
 
         return self::$userShop?:[];
@@ -250,13 +245,15 @@ class MultiShop
         } else {
             $user = self::getUser();
             $fields = array_merge($fields, [
-                'FUSER_ID' => $user['fid'],
-                'USER_ID' => $user['id'],
+                'FUSER_ID' => $user['FUSER_ID'],
+                'USER_ID' => $user['USER_ID'],
             ]);
             $result = MultiShopTable::add($fields);
             if (!$result->isSuccess()) return false;
             self::$userData = array_merge(self::$userData, $fields);
         }
+
+        self::setSession(array_merge(self::$userData, self::getShop($shopXmlId)));
 
         return true;
     }
@@ -268,9 +265,18 @@ class MultiShop
      */
     public static function addUser(): bool
     {
+        self::removeOldUserData();
+
         if (MultiShop::getUserData()) return true;
-        $shop = MultiShop::getShops()[0]['XML_ID'];
-        return MultiShop::setUserShop($shop);
+
+        if ($session = self::getSession()) {
+            $shopXmlId = $session['XML_ID'];
+        } else {
+            $shops = MultiShop::getShops();
+            $shopXmlId = $shops[array_key_first($shops)]['XML_ID'];
+        }
+        
+        return MultiShop::setUserShop($shopXmlId);
     }
 
     /**
@@ -407,5 +413,17 @@ class MultiShop
         }
 
         return $result;
+    }
+
+    public static function getSession(): array
+    {
+        $session = Application::getInstance()->getSession();
+        return json_decode($session[self::class],true)?:[];
+    }
+
+    public static function setSession($data)
+    {
+        $session = Application::getInstance()->getSession();
+        $session->set(self::class, json_encode($data));
     }
 }
