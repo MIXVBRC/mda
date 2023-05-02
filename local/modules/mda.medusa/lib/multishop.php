@@ -181,10 +181,10 @@ class MultiShop
         if (empty(self::$userData)) {
             $user = self::getUser();
 
-            if (empty($user['USER_ID'])) {
-                $filter = ['FUSER_ID' => $user['FUSER_ID']];
-            } else {
+            if (!empty($user['USER_ID'])) {
                 $filter = ['USER_ID' => $user['USER_ID']];
+            } else {
+                $filter = ['FUSER_ID' => $user['FUSER_ID']];
             }
 
             $userData = MultiShopTable::getRow([
@@ -267,7 +267,10 @@ class MultiShop
     {
         self::removeOldUserData();
 
-        if (MultiShop::getUserData()) return true;
+        if (self::$userData = MultiShop::getUserData()) {
+            self::setSession(array_merge(self::$userData, self::getShop(self::$userData['XML_ID'])));
+            return true;
+        }
 
         if ($session = self::getSession()) {
             $shopXmlId = $session['XML_ID'];
