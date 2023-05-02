@@ -35,9 +35,7 @@ this.MultiShop = {
         };
 
         if (this.params.showQuestion) {
-            setTimeout(function (MultiShop) {
-                MultiShop.popupShow('question');
-            },1000, this);
+            this.popupShow('question');
         }
 
         this.bind(this.params.nodes.shop, 'click', 'shop');
