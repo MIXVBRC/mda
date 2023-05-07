@@ -157,7 +157,7 @@ class MultiShop
      * Удаляет старые записи пользователей
      * Время жизни записи устанавливается в настройках модуля
      */
-    public static function removeOldUserData()
+    private static function removeOldUserData()
     {
         $list = MultiShopTable::getList([
             'filter' => [

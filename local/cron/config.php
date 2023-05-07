@@ -17,6 +17,6 @@ define('PHP_SCRIPT', true);
 
 set_time_limit(0);
 
-$_SERVER['DOCUMENT_ROOT'] = dirname(__FILE__, 5);
+$_SERVER['DOCUMENT_ROOT'] = dirname(__FILE__, 3);
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php';
