@@ -16,7 +16,17 @@ $APPLICATION->SetTitle("О нас");
             </div>
 
             <div class="about__img">
-                <img src="<?=SITE_TEMPLATE_PATH?>/img/element.jpeg" alt="">
+                <?$APPLICATION->IncludeComponent(
+                    "bitrix:main.include",
+                    "",
+                    Array(
+                        "AREA_FILE_SHOW" => "file",
+                        "AREA_FILE_SUFFIX" => "inc",
+                        "EDIT_TEMPLATE" => "",
+                        "PATH" => "/include/about_image.php",
+                        "ICON" => "phone"
+                    )
+                );?>
             </div>
 
         </div>

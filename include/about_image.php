@@ -1,0 +1,1 @@
+<img src="<?=SITE_TEMPLATE_PATH?>/img/element.jpeg" alt="Фотография коллектива" title="Наша команда">
