@@ -13,10 +13,10 @@
         cursor: pointer;
 
         &.disabled {
-            border-color: $font_color_medium;
+            border-color: $border_color_medium !important;
             &:before,
             &:after {
-                background-color: $font_color_medium;
+                background-color: $border_color_medium !important;
             }
         }
 
@@ -50,16 +50,17 @@
 
         &.plus,
         &.minus {
-            &:hover {
-                background-color: $font_color;
-
-                &:before,
-                &:after {
-                    background-color: $font_color_reverse;
+            &:not(.disabled) {
+                &:hover {
+                    background-color: $font_color;
+    
+                    &:before,
+                    &:after {
+                        background-color: $font_color_reverse;
+                    }
                 }
             }
         }
-        
     }
 
     &__input {

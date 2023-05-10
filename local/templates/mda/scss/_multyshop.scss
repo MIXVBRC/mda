@@ -1,0 +1,110 @@
+.multishop {
+    color: $font_color;
+
+    &__body {
+        position: relative;
+    }
+
+    &__title {
+        margin-left: 10px;
+    }
+    &__select {
+        display: inline-block;
+        cursor: pointer;
+        padding: 10px 15px;
+
+        & i {
+            margin-right: 10px;
+            color: $main_color;
+        }
+
+        span {
+            font-size: 12px;
+        }
+
+        &:hover {
+            background-color: $blackout_color;
+        }
+    }
+    &__list {
+        max-height: 300px;
+        overflow: auto;
+        padding-right: 15px;
+
+        &::-webkit-scrollbar {
+            width: 1px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $main_color;
+        }
+
+    }
+    &__item {
+        padding: 5px;
+        cursor: pointer;
+
+        &:hover {
+            color: $main_color;
+            background-color: $blackout_color;
+        }
+    }
+    &__popup {
+        position: absolute;
+        left: 0;
+        top: calc(100% + 15px);
+        max-width: 500px;
+        padding: 15px;
+        background-color: $background_color;
+        border: 1px solid $main_color;
+        z-index: 9999;
+        display: none;
+        opacity: 0;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 13px;
+            top: -21px;
+            border: 10px solid transparent;
+            border-bottom: 10px solid $main_color;
+        }
+
+        &-title {
+            margin-bottom: 15px;
+            & span {
+                margin-left: 5px;
+                font-weight: bold;
+                color: $main_color;
+            }
+        }
+    
+        &-buttons {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: row;
+
+            &-yes,
+            &-no {
+                cursor: pointer;
+                padding: 10px 30px;
+            }
+
+            &-yes {
+                background-color: $main_color;
+            }
+            &-no {
+                color: $main_color;
+                &:hover {
+                    color: $font_color;
+                    background-color: $lines_color;
+                }
+            }
+        }
+    
+        &-description {
+            font-size: 10px;
+            color: $font_color_medium;
+        }
+    }
+}

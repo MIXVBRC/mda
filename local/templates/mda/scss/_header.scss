@@ -11,7 +11,7 @@
     &__body {
         
         &-top {
-            background-color: $lines_color;
+            background-color: $background_color;
         }
 
         &-down {
@@ -27,8 +27,9 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: $blackout_color;
-        @include blur;
+        background-color: $blackout_color_more;
+        // background-color: $blackout_color;
+        // @include blur;
         z-index: -1;
         transition: $transition_time_mini ease-in-out;
         transition-delay: 0.25s;
@@ -63,11 +64,13 @@
         }
 
         &__body {
-            border-bottom: 0px solid $transparent;
-            // padding: 0 25px;
-            justify-content: space-between;
-            transition: $transition_time_mini ease-in-out;
-            height: $header_height_mobile;
+            &-down {
+                border-bottom: 0px solid $transparent;
+                // padding: 0 25px;
+                justify-content: space-between;
+                transition: $transition_time_mini ease-in-out;
+                height: $header_height_mobile;
+            }
         }
 
         .logo {
