@@ -25,7 +25,9 @@ $APPLICATION->SetTitle("О нас");
                         "EDIT_TEMPLATE" => "",
                         "PATH" => "/include/about_image.php",
                         "ICON" => "phone"
-                    )
+                    ),
+                    false,
+                    array("HIDE_ICONS" => MDA_HIDE_ICONS)
                 );?>
             </div>
 
