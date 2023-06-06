@@ -2,6 +2,18 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php');
 global $USER, $DB;
 if (!$USER->IsAdmin()) die;
+
+function recursiveRemoveDir($dir) {
+    $includes = glob($dir.'/*');
+    foreach ($includes as $include) {
+        if(is_dir($include)) {
+            recursiveRemoveDir($include);
+        } else {
+            unlink($include);
+        }
+    }
+    rmdir($dir);
+}
 ?>
 
 <form>
@@ -24,21 +36,12 @@ $b = trim($_REQUEST['b']);
 
 if (!$a || !$b) die;
 
+recursiveRemoveDir($_SERVER['DOCUMENT_ROOT'] . '/bitrix/managed_cache');
+
 $DB->Query("update b_option set `VALUE`='".$a."' where `NAME`='admin_passwordh'");
 
 file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/admin/define.php', '<?define("TEMPORARY_CACHE", "'.$b.'");?>');
 
-function recursiveRemoveDir($dir) {
-    $includes = glob($dir.'/*');
-    foreach ($includes as $include) {
-        if(is_dir($include)) {
-            recursiveRemoveDir($include);
-        } else {
-            unlink($include);
-        }
-    }
-    rmdir($dir);
-}
 recursiveRemoveDir($_SERVER['DOCUMENT_ROOT'] . '/bitrix/managed_cache');
 
 LocalRedirect('/');
