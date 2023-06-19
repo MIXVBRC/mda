@@ -26,6 +26,10 @@ ErrorDocument 404 /404.php
   RewriteCond %{HTTP_HOST} ^www\.(.*)$
   RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
 
+  # //// -> /
+  RewriteCond %{THE_REQUEST} /{2,}
+  RewriteRule .* /$0 [R=301,L]
+
   Options +FollowSymLinks
   RewriteEngine On
   RewriteCond %{REQUEST_FILENAME} !-f
