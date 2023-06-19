@@ -6344,3 +6344,43 @@ body {
 .page-404__text {
   color: #fff;
 }
+
+.default-page {
+  color: #fff;
+}
+.default-page h1, .default-page h2, .default-page h3, .default-page h4, .default-page h5 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.default-page h1 {
+  font-size: 1.875rem;
+}
+.default-page h2 {
+  font-size: 1.6rem;
+}
+.default-page h3 {
+  font-size: 1.3rem;
+}
+.default-page h4 {
+  font-size: 1.2rem;
+}
+.default-page h5 {
+  font-size: 1rem;
+}
+.default-page p {
+  margin-bottom: 15px;
+}
+.default-page ul li, .default-page ol li {
+  margin-left: 30px;
+  margin-bottom: 15px;
+}
+.default-page .warning {
+  color: #0085FF;
+  font-weight: bold;
+  font-style: italic;
+}
+.default-page .warning-box {
+  padding: 15px;
+  border-left: 2px solid rgba(0, 133, 255, 0.44);
+  background-color: rgba(0, 0, 0, 0.5);
+}

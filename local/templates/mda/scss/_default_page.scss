@@ -1,0 +1,51 @@
+.default-page {
+    color: $font_color;
+
+    h1,h2,h3,h4,h5 {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    h1 {
+        font-size: 1.875rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    h5 {
+        font-size: 1rem;
+    }
+
+    p {
+        margin-bottom: 15px;
+    }
+
+    ul,ol {
+        li {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .warning {
+        color: $main_color;
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    .warning-box {
+        padding: 15px;
+        border-left: 2px solid $lines_color;
+        background-color: $blackout_color;
+    }
+}
