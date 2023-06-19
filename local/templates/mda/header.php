@@ -135,6 +135,6 @@ Loc::loadMessages(__FILE__);
                 </div>
             </div>
 
-            <div class="container">
+            <div class="container" style="color:<?= $APPLICATION->GetDirProperty('TEXT_COLOR')?:'initial' ?>;">
 
         <? endif; ?>
