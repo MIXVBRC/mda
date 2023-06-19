@@ -22,8 +22,8 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Личный кабинет", 
-		"/personal/", 
+		"Оплата и доставка", 
+		"/delivery-and-payment", 
 		Array(), 
 		Array(), 
 		"" 
