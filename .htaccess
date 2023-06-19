@@ -11,6 +11,21 @@ ErrorDocument 404 /404.php
 </IfModule>
 
 <IfModule mod_rewrite.c>
+
+  # /index.php -> /
+  RewriteCond %{REQUEST_URI} ^(.*)/index\.php$
+  RewriteRule ^(.*)$ %1/ [R=301,L]
+
+  # http -> https
+  RewriteEngine on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+
+  # www.site.ru -> site.ru
+  RewriteEngine on
+  RewriteCond %{HTTP_HOST} ^www\.(.*)$
+  RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
+
   Options +FollowSymLinks
   RewriteEngine On
   RewriteCond %{REQUEST_FILENAME} !-f
