@@ -60,7 +60,7 @@ $APPLICATION->SetTitle("Каталог");
 		"DISPLAY_BOTTOM_PAGER" => "N",
 		"DISPLAY_TOP_PAGER" => "N",
 		"ELEMENT_SORT_FIELD" => "sort",
-		"ELEMENT_SORT_FIELD2" => "id",
+		"ELEMENT_SORT_FIELD2" => "shows",
 		"ELEMENT_SORT_ORDER" => "asc",
 		"ELEMENT_SORT_ORDER2" => "desc",
 		"FILTER_HIDE_ON_MOBILE" => "N",
