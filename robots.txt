@@ -1,5 +1,4 @@
 User-Agent: *
-Disallow: /
 Disallow: */index.php
 Disallow: /bitrix/
 Disallow: /*show_include_exec_time=

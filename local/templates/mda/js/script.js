@@ -43,19 +43,6 @@ $(document).ready(function () {
         $('html, body').removeAttr('menu-open');
     });
 
-
-    // slider audio
-    let audio = new Audio();
-    audio.src = '/local/templates/mda/audio/mda.mp3';
-    $('[data-audio]').on('click', function (event) {
-        $(this).toggleAttr('data-audio-play');
-        if ($(this).hasAttr('data-audio-play')) {
-            audio.play();
-        } else {
-            audio.pause();
-        }
-    });
-
     // ajax loading
     let position = 'initial';
     BX.showWait = function(node, msg) {
