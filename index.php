@@ -33,8 +33,7 @@ $APPLICATION->SetTitle("MDA");
     <script>
         $(document).ready(function () {
             // slider audio
-            let audio = new Audio();
-            audio.src = '/local/templates/mda/audio/mda.mp3';
+            let audio = new Audio('/local/templates/mda/audio/mda.mp3');
             $('[data-audio]').on('click', function (event) {
                 $(this).toggleAttr('data-audio-play');
                 if ($(this).hasAttr('data-audio-play')) {
