@@ -77,7 +77,7 @@ IncludeTemplateLangFile(__FILE__);
             "SHOW_TOTAL_PRICE" => "N"
         ),
         false,
-        array("HIDE_ICONS" => MDA_HIDE_ICONS)
+        ["HIDE_ICONS" => MDA_HIDE_ICONS]
     );?>
 
     <a href="<?=(isAuth() ? '/personal/' : '/auth/')?>" class="personal-small" title="Персональный кабинет"></a>
@@ -108,7 +108,8 @@ $APPLICATION->IncludeComponent(
 		"AJAX_OPTION_HISTORY" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "cookie"
 	),
-	false
+	false,
+    ["HIDE_ICONS" => MDA_HIDE_ICONS]
 );
 ?>
 
