@@ -38,9 +38,6 @@ const MDA_OFFERS_PROPERTY_LIST = [
 const MDA_IBLOCK_ID_CATALOG = 12;
 const MDA_IBLOCK_ID_CATALOG_OFFERS = 13;
 
-// Веб формы
-const MDA_WEB_FORM_ID_VACANSY = 1;
-
 // Отключить редактирование инфоблоков
 const MDA_HIDE_ICONS = 'Y';
 

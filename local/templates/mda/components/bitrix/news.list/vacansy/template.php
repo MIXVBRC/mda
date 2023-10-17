@@ -97,7 +97,7 @@ $this->setFrameMode(true);
 
                             </div>
 
-                            <a href="/include/form.php" data-popup-form="<?=MDA_WEB_FORM_ID_VACANSY?>" data-popup-fields-post="<?=$arItem['NAME']?>" id="<?=$arResult['CODE'].'-'.$arItem['ID']?>" class="button"><?=GetMessage('VACANSY_BUTTON')?></a>
+                            <a href="/include/form.php" data-popup-form="<?=$arItem['PROPERTIES']['WEB_FORM']['VALUE_XML_ID']?>" data-popup-fields-post="<?=$arItem['NAME']?>" id="<?=$arResult['CODE'].'-'.$arItem['ID']?>" class="button"><?=GetMessage('VACANSY_BUTTON')?></a>
 
                         </div>
 
