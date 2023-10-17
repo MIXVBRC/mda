@@ -40,7 +40,7 @@ $arUrlRewrite=array (
     'PATH' => '/catalog/index.php',
     'SORT' => 100,
   ),
-  15 => 
+  18 => 
   array (
     'CONDITION' => '#^/news/#',
     'RULE' => '',

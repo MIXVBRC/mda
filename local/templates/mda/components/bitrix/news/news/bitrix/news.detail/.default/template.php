@@ -11,6 +11,8 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
+$picture = $arResult["PREVIEW_PICTURE"] ?: $arResult["DETAIL_PICTURE"];
 ?>
 <div class="detail1">
     <div class="detail1__body">
@@ -19,7 +21,7 @@ $this->setFrameMode(true);
             <img class="img__cover" src="<?=$arResult['DETAIL_PICTURE']['SRC']?>" alt="<?=$arResult['DETAIL_PICTURE']['ALT']?>">
             */?>
             <?= getPictureSource(
-                $arResult["DETAIL_PICTURE"],
+                $picture,
                 [
                     "min"=> [
                         1200 => 732

@@ -25,6 +25,7 @@ $this->setFrameMode(true);
                 <?
                     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
                     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+                    $picture = $arItem["PREVIEW_PICTURE"] ?: $arItem["DETAIL_PICTURE"];
                 ?>
 
                 <a class="list2__item" href="<?=$arItem['DETAIL_PAGE_URL']?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
@@ -35,7 +36,7 @@ $this->setFrameMode(true);
                         */?>
 
                         <?= getPictureSource(
-                            $arItem["PREVIEW_PICTURE"],
+                            $picture,
                             [
                                 "min"=> [
                                     1200 => 303

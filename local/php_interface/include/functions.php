@@ -124,6 +124,8 @@ function fpc($data, $add = false)
  */
 function getPictureSource($image, $arSizeInfo, $minHeight)
 {
+    if (empty($image)) return;
+
     $result = '<picture>';
 
     foreach ($arSizeInfo as $minmax => $arSize) {
