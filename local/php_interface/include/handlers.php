@@ -2,7 +2,8 @@
 
 // Регистрируем события
 $eventList = [
-    ['module' => 'main', 'eventName' => 'OnProlog', 'eventAction' => 'OnEpilogHandler', 'sort' => 1]
+    ['module' => 'main', 'eventName' => 'OnProlog', 'eventAction' => 'OnEpilogHandler', 'sort' => 1],
+    ['module' => 'iblock', 'eventName' => 'OnBeforeIBlockElementUpdate', 'eventAction' => 'OnBeforeIBlockElementUpdateHandler', 'sort' => 2],
 ];
 
 // Добавляем события
@@ -35,6 +36,15 @@ Class MDAEvents
         $GLOBALS['APPLICATION']->SetDirProperty('HIDE_TITLE', 'Y');
 
         include_once $_SERVER["DOCUMENT_ROOT"] . '/404.php';
+    }
+
+    public static function OnBeforeIBlockElementUpdateHandler(&$arFields)
+    {
+        // Не выгружаем картинки из 1С
+        if (@$_REQUEST['mode'] == 'import') {
+            unset($arFields['PREVIEW_PICTURE']);
+            unset($arFields['DETAIL_PICTURE']);
+        }
     }
 }
 

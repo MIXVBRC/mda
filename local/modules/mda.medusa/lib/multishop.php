@@ -68,6 +68,7 @@ class MultiShop
             $shops = $hl::getList()->fetchAll();
 
             foreach ($shops as $shop) {
+                if (empty($shop['UF_ACTIVE'])) continue;
                 $shop = self::getShopRows($shop);
                 self::$shops[$shop['XML_ID']] = $shop;
             }

@@ -37,7 +37,7 @@ $APPLICATION->SetTitle("Контакты");
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"MESSAGE_404" => "",
-		"NEWS_COUNT" => "20",
+		"NEWS_COUNT" => "60",
 		"PAGER_BASE_LINK_ENABLE" => "N",
 		"PAGER_DESC_NUMBERING" => "N",
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
@@ -76,6 +76,7 @@ $APPLICATION->SetTitle("Контакты");
 		"STRICT_SECTION_CHECK" => "N",
 		"COMPONENT_TEMPLATE" => "contacts"
 	),
+    false,
     ["HIDE_ICONS" => MDA_HIDE_ICONS]
 );?>
 
