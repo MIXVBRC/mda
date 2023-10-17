@@ -76,6 +76,7 @@ IncludeTemplateLangFile(__FILE__);
             "SHOW_REGISTRATION" => "N",
             "SHOW_TOTAL_PRICE" => "N"
         ),
+        false,
         array("HIDE_ICONS" => MDA_HIDE_ICONS)
     );?>
 
