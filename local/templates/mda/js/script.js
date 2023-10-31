@@ -180,5 +180,5 @@ $(document).ready(function () {
         $(document).on('click', '[data-opener]', function () {
             $(this).parents('[data-item]').toggleAttr('data-close');
         });
-    })()
+    })();
 });

@@ -23,7 +23,8 @@ IncludeTemplateLangFile(__FILE__);
                         "EDIT_TEMPLATE" => "",
                         "PATH" => "/include/phone.php",
                         "ICON" => "phone"
-                    )
+                    ),
+                    false,
                 );?>
             </div>
 
@@ -45,7 +46,7 @@ IncludeTemplateLangFile(__FILE__);
                     "USE_EXT" => "N",
                     "COMPONENT_TEMPLATE" => "menu_bottom"
                 ),
-                false
+                false,
             );
             ?>
 
@@ -113,5 +114,13 @@ $APPLICATION->IncludeComponent(
 );
 ?>
 
+<!-- age 18+ -->
+<?$APPLICATION->IncludeComponent(
+    "mda.medusa:age",
+    "",
+    [],
+    false,
+    ["HIDE_ICONS" => MDA_HIDE_ICONS]
+);?>
 </body>
 </html>
