@@ -147,7 +147,7 @@ $APPLICATION->SetTitle("Каталог");
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "N",
 		"SET_TITLE" => "Y",
-		"SHOW_404" => "N",
+		"SHOW_404" => "Y",
 		"SHOW_DEACTIVATED" => "N",
 		"SHOW_DISCOUNT_PERCENT" => "Y",
 		"SHOW_MAX_QUANTITY" => "N",

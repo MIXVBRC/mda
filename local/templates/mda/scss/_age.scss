@@ -1,0 +1,62 @@
+.age {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    @include blur;
+    overflow: auto;
+    display: none;
+
+    background-color: $blackout_color;
+    
+    &__body {
+        width: 100%;
+        max-width: 500px;
+        background-color: $background_color;
+        padding: 15px;
+        border: $border_white;
+    }
+
+    &__img {
+
+        & img {
+            width: 100%;
+        }
+        margin-bottom: 15px;
+    }
+
+    &__description {
+        text-align: center;
+        color: $font_color;
+        & p {
+            margin-bottom: 15px;
+        }
+
+        margin-bottom: 30px;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-around;
+
+        & [data-age-button-yes],
+        & [data-age-button-no]{
+            padding: 10px 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        & [data-age-button-yes] {
+            
+        }
+
+        & [data-age-button-no] {
+            
+        }
+
+    }
+}

@@ -14,6 +14,7 @@
     &__img {
         margin: -15px -15px 0 -15px;
         border-bottom: 1px solid $font_color_medium;
+        max-height: 500px;
 
         & img {
             width: 100%;
