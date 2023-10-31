@@ -48,7 +48,9 @@ class MultiShop
     {
         return [
             'ID' => $shop['ID'],
-            'NAME' => $shop['UF_NAME'],
+            'ACTIVE' => $shop['UF_ACTIVE'],
+            'NAME' => $shop['UF_NAME_REAL'] ?: $shop['UF_NAME'],
+            'EMAIL' => $shop['UF_EMAIL'],
             'DESCRIPTION' => $shop['UF_DESCRIPTION'],
             'XML_ID' => $shop['UF_XML_ID'],
         ];
@@ -68,8 +70,8 @@ class MultiShop
             $shops = $hl::getList()->fetchAll();
 
             foreach ($shops as $shop) {
-                if (empty($shop['UF_ACTIVE'])) continue;
                 $shop = self::getShopRows($shop);
+                if (empty($shop['ACTIVE'])) continue;
                 self::$shops[$shop['XML_ID']] = $shop;
             }
         }

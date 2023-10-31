@@ -39,7 +39,7 @@ const MDA_IBLOCK_ID_CATALOG = 12;
 const MDA_IBLOCK_ID_CATALOG_OFFERS = 13;
 
 // Отключить редактирование инфоблоков
-const MDA_HIDE_ICONS = 'Y';
+const MDA_HIDE_ICONS = 'N';
 
 // Highload блоки
 const MDA_HL_VIEWS = 1;

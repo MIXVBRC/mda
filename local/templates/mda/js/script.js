@@ -181,4 +181,5 @@ $(document).ready(function () {
             $(this).parents('[data-item]').toggleAttr('data-close');
         });
     })();
+
 });

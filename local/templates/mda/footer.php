@@ -122,5 +122,6 @@ $APPLICATION->IncludeComponent(
     false,
     ["HIDE_ICONS" => MDA_HIDE_ICONS]
 );?>
+
 </body>
 </html>
