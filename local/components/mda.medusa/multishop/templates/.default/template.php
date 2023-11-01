@@ -18,6 +18,11 @@ $this->setFrameMode(false);
             <i class="fa fa-shopping-basket"></i>
             <span><?=$arResult['SHOP']['NAME']?></span>
         </div>
+        <? if ($arResult['SHOP']['PHONE']): ?>
+            <div class="multishop__phone">
+                <a href="tel:<?=$arResult['SHOP']['PHONE']?>"><?=$arResult['SHOP']['PHONE']?></a>
+            </div>
+        <? endif; ?>
         <div class="multishop__popup" data-multishop-select>
             <ul class="multishop__list">
                 <? foreach ($arResult['SHOPS'] as $shop): ?>

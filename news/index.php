@@ -52,7 +52,7 @@ $APPLICATION->SetTitle("Новости");
 		),
 		"LIST_PROPERTY_CODE" => array(
 			0 => "",
-			1 => "",
+			1 => "EXTERNAL_LINK",
 		),
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",

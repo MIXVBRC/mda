@@ -3730,6 +3730,22 @@ body {
 }
 .multishop__body {
   position: relative;
+  display: flex;
+  align-items: center;
+}
+.multishop__phone {
+  margin-left: 10px;
+  opacity: 0.5;
+}
+.multishop__phone a {
+  color: #0085FF;
+  font-size: 14px;
+}
+.multishop__phone:hover {
+  text-decoration: underline;
+}
+.multishop__phone i.fa {
+  margin-right: 10px;
 }
 .multishop__title {
   margin-left: 10px;
@@ -3994,7 +4010,8 @@ body {
   }
 }
 .slider__item {
-  height: 100vh;
+  margin-top: 100px;
+  height: 37vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6399,6 +6416,7 @@ body {
           backdrop-filter: blur(20px);
   overflow: auto;
   display: flex;
+  padding: 15px;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .age__body {
@@ -6410,6 +6428,7 @@ body {
 }
 .age__img {
   margin-bottom: 15px;
+  padding: 15px;
 }
 .age__img img {
   width: 100%;

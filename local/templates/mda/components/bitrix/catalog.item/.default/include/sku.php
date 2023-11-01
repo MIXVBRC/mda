@@ -23,7 +23,7 @@
 
             <?
             $propertyId = $skuProperty['ID'];
-            if (!isset($item['SKU_TREE_VALUES'][$propertyId])) continue;
+//            if (!isset($item['SKU_TREE_VALUES'][$propertyId])) continue;
             $skuProps[] = array(
                 'ID' => $skuProperty['ID'],
                 'SHOW_MODE' => $skuProperty['SHOW_MODE'],
@@ -41,7 +41,7 @@
                     <? foreach ($skuProperty['VALUES'] as $value): ?>
 
                         <?
-                        if (!isset($item['SKU_TREE_VALUES'][$propertyId][$value['ID']])) continue;
+//                        if (!isset($item['SKU_TREE_VALUES'][$propertyId][$value['ID']])) continue;
                         $value['NAME'] = htmlspecialcharsbx($value['NAME']);
                         ?>
 

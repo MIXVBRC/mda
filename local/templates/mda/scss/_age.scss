@@ -10,6 +10,7 @@
     @include blur;
     overflow: auto;
     display: flex;
+    padding: 15px;
 
     background-color: $blackout_color;
     
@@ -22,11 +23,12 @@
     }
 
     &__img {
+        margin-bottom: 15px;
+        padding: 15px;
 
         & img {
             width: 100%;
         }
-        margin-bottom: 15px;
     }
 
     &__description {

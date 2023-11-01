@@ -1050,33 +1050,56 @@ class CatalogSectionComponent extends ElementList
 		}
 	}
 
-	protected function initElementList()
-	{
-		parent::initElementList();
+    /**
+     * Initialize and data process of iblock elements.
+     *
+     * @return void
+     */
+    protected function initElementList()
+    {
+        $this->storage['CURRENCY_LIST'] = array();
+        $this->storage['DEFAULT_MEASURE'] = $this->getDefaultMeasure();
 
-		// compatibility for old components
-		if ($this->isEnableCompatible() && empty($this->arResult['NAV_RESULT']))
-		{
-			$this->initNavString(\CIBlockElement::GetList(
-				array(),
-				array_merge($this->globalFilter, $this->filterFields + array('IBLOCK_ID' => $this->arParams['IBLOCK_ID'])),
-				false,
-				array('nTopCount' => 1),
-				array('ID')
-			));
-			$this->arResult['NAV_RESULT']->NavNum = Main\Security\Random::getString(6);
-		}
+        $this->initQueryFields();
 
-		$this->storage['sections'] = array();
+        foreach ($this->iblockProducts as $iblock => $products)
+        {
+            $elementIterator = $this->getElementList($iblock, $products);
+            $iblockElements = $this->getIblockElements($elementIterator);
 
-		if (!empty($this->elements) && is_array($this->elements))
-		{
-			foreach ($this->elements as &$element)
-			{
-				$this->modifyItemPath($element);
-			}
-		}
-	}
+            if (!empty($iblockElements) && !$this->hasErrors())
+            {
+                $this->modifyDisplayProperties($iblock, $iblockElements);
+                $this->elements = array_merge($this->elements, array_values($iblockElements));
+                $this->iblockProducts[$iblock] = array_keys($iblockElements);
+            }
+
+            unset($elementIterator, $iblockElements, $element);
+        }
+
+        // compatibility for old components
+        if ($this->isEnableCompatible() && empty($this->arResult['NAV_RESULT']))
+        {
+            $this->initNavString(\CIBlockElement::GetList(
+                array(),
+                array_merge($this->globalFilter, $this->filterFields + array('IBLOCK_ID' => $this->arParams['IBLOCK_ID'])),
+                false,
+                array('nTopCount' => 1),
+                array('ID')
+            ));
+            $this->arResult['NAV_RESULT']->NavNum = Main\Security\Random::getString(6);
+        }
+
+        $this->storage['sections'] = array();
+
+        if (!empty($this->elements) && is_array($this->elements))
+        {
+            foreach ($this->elements as &$element)
+            {
+                $this->modifyItemPath($element);
+            }
+        }
+    }
 
 	protected function modifyItemPath(&$element)
 	{

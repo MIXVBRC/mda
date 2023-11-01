@@ -3,6 +3,26 @@
 
     &__body {
         position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    &__phone {
+        margin-left: 10px;
+        opacity: 0.5;
+        
+        & a {
+            color: $main_color;
+            font-size: 14px;
+        }
+    
+        &:hover {
+            text-decoration: underline;
+        }
+    
+        & i.fa {
+            margin-right: 10px;
+        }
     }
 
     &__title {

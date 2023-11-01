@@ -50,7 +50,7 @@ $APPLICATION->SetTitle("Акции");
 		),
 		"LIST_PROPERTY_CODE" => array(
 			0 => "",
-			1 => "",
+			1 => "EXTERNAL_LINK",
 		),
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",
@@ -91,5 +91,7 @@ $APPLICATION->SetTitle("Акции");
 		)
 	),
 	false,
-    array("HIDE_ICONS" => MDA_HIDE_ICONS)
+	array(
+		"HIDE_ICONS" => MDA_HIDE_ICONS
+	)
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
