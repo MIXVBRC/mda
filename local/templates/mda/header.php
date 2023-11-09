@@ -51,6 +51,17 @@ Loc::loadMessages(__FILE__);
     <noscript><div><img src="https://mc.yandex.ru/watch/95265911" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHFB705W5Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZHFB705W5Z');
+    </script>
+    <!-- /Google tag (gtag.js) -->
+
     <?$APPLICATION->ShowHead();?>
 </head>
 <body style="background-image: url('<?=SITE_TEMPLATE_PATH?>/img/ef.png'), url('<?=SITE_TEMPLATE_PATH?>/img/prop.png');">
