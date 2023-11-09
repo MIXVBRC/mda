@@ -36,5 +36,5 @@ Allow: /bitrix/cache/
 Allow: /bitrix/js/
 Allow: /bitrix/templates/
 Allow: /bitrix/panel/
-Host: https://mda-medusa.ru
+Host: mda-medusa.ru
 Sitemap: https://mda-medusa.ru/sitemap.xml
