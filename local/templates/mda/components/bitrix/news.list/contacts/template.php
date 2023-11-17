@@ -89,7 +89,7 @@ $this->setFrameMode(true);
                                     ),
                                     "MAP_WIDTH" => "100%",
                                     "MAP_HEIGHT" => "250",
-                                    "CONTROLS" => ["ZOOM", "SMALLZOOM", "SCALELINE"],
+                                    "CONTROLS" => [],
                                     "OPTIONS" => [
                                         "ENABLE_DRAGGING",
                                         "ENABLE_SCROLL_ZOOM",
