@@ -28,7 +28,7 @@ $this->setFrameMode(true);
                     $picture = $arItem["PREVIEW_PICTURE"] ?: $arItem["DETAIL_PICTURE"];
                 ?>
 
-                <a class="list2__item" href="<?=$arItem['PROPERTIES']['EXTERNAL_LINK']['VALUE']?:$arItem['DETAIL_PAGE_URL']?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+                <a class="list2__item" href="<?=$arItem['PROPERTIES']['EXTERNAL_LINK']['VALUE']?:$arItem['DETAIL_PAGE_URL']?>" <?= $arItem['PROPERTIES']['EXTERNAL_LINK']['VALUE']? 'target="_blank"' : '' ?> id="<?=$this->GetEditAreaId($arItem['ID']);?>">
                     <div class="list2__item-img">
 
                         <?/*

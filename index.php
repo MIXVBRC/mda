@@ -137,44 +137,61 @@ $APPLICATION->IncludeComponent(
 //);
 ?>
 
-<?
+<? // Популярные разделы
+//$APPLICATION->IncludeComponent(
+//	"bitrix:catalog.section.list",
+//	"main_popular",
+//	array(
+//		"ADD_SECTIONS_CHAIN" => "Y",
+//		"CACHE_FILTER" => "N",
+//		"CACHE_GROUPS" => "Y",
+//		"CACHE_TIME" => "36000000",
+//		"CACHE_TYPE" => "A",
+//		"COUNT_ELEMENTS" => "Y",
+//		"COUNT_ELEMENTS_FILTER" => "CNT_ALL",
+//		"FILTER_NAME" => "sectionsFilter",
+//		"IBLOCK_ID" => MDA_IBLOCK_ID_CATALOG,
+//		"IBLOCK_TYPE" => "catalog",
+//		"SECTION_CODE" => "",
+//		"SECTION_FIELDS" => array(
+//			0 => "",
+//			1 => "",
+//		),
+//		"SECTION_ID" => "",
+//		"SECTION_URL" => "/catalog/#SECTION_CODE_PATH#/",
+//		"SECTION_USER_FIELDS" => array(
+//			0 => "",
+//			1 => "UF_RECOMMEND",
+//			2 => "",
+//		),
+//		"SHOW_PARENT_NAME" => "Y",
+//		"TOP_DEPTH" => "9",
+//		"VIEW_MODE" => "LINE",
+//		"COMPONENT_TEMPLATE" => "main_popular",
+//		"IMAGE" => "4054",
+//		"ELEMENT_COUNT" => "4"
+//	),
+//	false,
+//	array(
+//		"HIDE_ICONS" => MDA_HIDE_ICONS
+//	)
+//);
+?>
+
+<?php
 $APPLICATION->IncludeComponent(
-	"bitrix:catalog.section.list", 
-	"main_popular", 
-	array(
-		"ADD_SECTIONS_CHAIN" => "Y",
-		"CACHE_FILTER" => "N",
-		"CACHE_GROUPS" => "Y",
-		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "A",
-		"COUNT_ELEMENTS" => "Y",
-		"COUNT_ELEMENTS_FILTER" => "CNT_ALL",
-		"FILTER_NAME" => "sectionsFilter",
-		"IBLOCK_ID" => MDA_IBLOCK_ID_CATALOG,
-		"IBLOCK_TYPE" => "catalog",
-		"SECTION_CODE" => "",
-		"SECTION_FIELDS" => array(
-			0 => "",
-			1 => "",
-		),
-		"SECTION_ID" => "",
-		"SECTION_URL" => "/catalog/#SECTION_CODE_PATH#/",
-		"SECTION_USER_FIELDS" => array(
-			0 => "",
-			1 => "UF_RECOMMEND",
-			2 => "",
-		),
-		"SHOW_PARENT_NAME" => "Y",
-		"TOP_DEPTH" => "9",
-		"VIEW_MODE" => "LINE",
-		"COMPONENT_TEMPLATE" => "main_popular",
-		"IMAGE" => "4054",
-		"ELEMENT_COUNT" => "4"
-	),
-	false,
-	array(
-		"HIDE_ICONS" => MDA_HIDE_ICONS
-	)
+    "mda.medusa:popular",
+    ".default",
+    array(
+        "COMPONENT_TEMPLATE" => ".default",
+        "IBLOCK_ID" => "12",
+        "POPULAR_FIELD" => "POPULAR",
+        "LIMIT" => "4",
+        "CACHE_TYPE" => "A",
+        "CACHE_TIME" => "3600"
+    ),
+    false,
+    ["HIDE_ICONS" => MDA_HIDE_ICONS]
 );
 ?>
 
@@ -298,7 +315,7 @@ $APPLICATION->IncludeComponent(
 		"PREVIEW_TRUNCATE_LEN" => "",
 		"PROPERTY_CODE" => array(
 			0 => "",
-			1 => "",
+			1 => "EXTERNAL_LINK",
 		),
 		"SET_BROWSER_TITLE" => "N",
 		"SET_LAST_MODIFIED" => "N",
