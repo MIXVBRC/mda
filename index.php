@@ -180,18 +180,22 @@ $APPLICATION->IncludeComponent(
 
 <?php
 $APPLICATION->IncludeComponent(
-    "mda.medusa:popular",
-    ".default",
-    array(
-        "COMPONENT_TEMPLATE" => ".default",
-        "IBLOCK_ID" => "12",
-        "POPULAR_FIELD" => "POPULAR",
-        "LIMIT" => "4",
-        "CACHE_TYPE" => "A",
-        "CACHE_TIME" => "3600"
-    ),
-    false,
-    ["HIDE_ICONS" => MDA_HIDE_ICONS]
+	"mda.medusa:popular", 
+	".default", 
+	array(
+		"COMPONENT_TEMPLATE" => ".default",
+		"IBLOCK_ID" => "12",
+		"POPULAR_FIELD" => "POPULAR",
+		"LIMIT" => "4",
+		"CACHE_TYPE" => "A",
+		"CACHE_TIME" => "3600",
+		"TITLE" => "Популярное",
+		"IMAGE" => "4054"
+	),
+	false,
+	array(
+		"HIDE_ICONS" => MDA_HIDE_ICONS
+	)
 );
 ?>
 

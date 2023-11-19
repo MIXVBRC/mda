@@ -91,6 +91,18 @@ class PopularComponent extends CBitrixComponent
             $itemIds = $this->getPopularItemIds();
             $this->arResult['ITEMS'] = $this->getItems($itemIds);
 
+            // Вывод изображений справа
+            if ($this->arParams['IMAGE'] > 0) {
+                $item = \Bitrix\Iblock\ElementTable::getList([
+                    'select' => ['PREVIEW_PICTURE'],
+                    'filter' => [
+                        'ID' => $this->arParams['IMAGE'],
+                        'ACTIVE' => 'Y'
+                    ],
+                ])->fetch()['PREVIEW_PICTURE'];
+                $this->arResult['IMAGE'] = CFile::GetPath($item);
+            }
+
             $this->includeComponentTemplate();
         }
 

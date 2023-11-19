@@ -15,6 +15,19 @@ foreach ($query->fetchAll() as $iblock) {
     $iblocks[$iblock['ID']] = "[{$iblock['ID']}] {$iblock['NAME']} ({$iblock['CODE']})";
 }
 
+$images = [
+    '0' => 'Нет'
+];
+$itemList = \Bitrix\Iblock\ElementTable::getList([
+    'select' => ['ID', 'NAME', 'DETAIL_PICTURE'],
+    'filter' => [
+        'IBLOCK_ID' => MDA_IBLOCK_ID_IMAGES,
+    ],
+])->fetchAll();
+foreach ($itemList as $item) {
+    $images[$item['ID']] = '['.$item['ID'].'] '.$item['NAME'];
+}
+
 $arComponentParameters = [
     'GROUPS' => [
         'ADDITIONAL' => [
@@ -49,6 +62,14 @@ $arComponentParameters = [
             'DEFAULT' => 'Популярное',
             'SORT' => 400,
         ],
+        'IMAGE' => [
+            'PARENT' => 'ADDITIONAL',
+            'NAME' => 'Картинка справа',
+            'TYPE' => 'LIST',
+            'MULTIPLE' => 'N',
+            'VALUES' => $images,
+            'SORT' => 500,
+        ],
         'CACHE_TIME' => [],
     ],
 ];
@@ -77,4 +98,3 @@ if (!empty($arCurrentValues['IBLOCK_ID'])) {
         'SORT' => 200,
     ];
 }
-
