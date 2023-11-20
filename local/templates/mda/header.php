@@ -21,12 +21,14 @@ Loc::loadMessages(__FILE__);
     <?
     // Для подключения css
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/style.css");
+    Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/swiper-bundle.min.css");
 
     // Для подключения скриптов
     CJSCore::Init(['jquery3']); // \bitrix\modules\main\jscore.php
 //    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.inputmask.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/script.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/swiper-bundle.min.js");
 
     // Для вывода строки в секцию <head> ... </head>, например можно добавить шрифт
     Asset::getInstance()->addString("<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">");
