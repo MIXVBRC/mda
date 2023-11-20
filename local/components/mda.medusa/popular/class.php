@@ -23,21 +23,22 @@ class PopularComponent extends CBitrixComponent
 
         $query->setFilter([
             'IBLOCK_ID' => $this->arParams['IBLOCK_ID'],
+            'ACTIVE' => 'Y',
         ]);
 
-        $query->registerRuntimeField('PROPERTY', [
-            'data_type' => PropertyTable::class,
-            'reference' => Join::on('ref.IBLOCK_ID', 'this.IBLOCK_ID')
-                ->whereIn('ref.CODE', [$this->arParams['POPULAR_FIELD']]),
-            'join_type' => 'inner',
-        ]);
-
-        $query->registerRuntimeField('ELEMENT_PROPERTY', [
-            'data_type' => ElementPropertyTable::class,
-            'reference' => Join::on('ref.IBLOCK_PROPERTY_ID', 'this.PROPERTY.ID')
-                ->whereColumn('ref.IBLOCK_ELEMENT_ID', 'this.ID'),
-            'join_type' => 'inner',
-        ]);
+//        $query->registerRuntimeField('PROPERTY', [
+//            'data_type' => PropertyTable::class,
+//            'reference' => Join::on('ref.IBLOCK_ID', 'this.IBLOCK_ID')
+//                ->whereIn('ref.CODE', [$this->arParams['POPULAR_FIELD']]),
+//            'join_type' => 'inner',
+//        ]);
+//
+//        $query->registerRuntimeField('ELEMENT_PROPERTY', [
+//            'data_type' => ElementPropertyTable::class,
+//            'reference' => Join::on('ref.IBLOCK_PROPERTY_ID', 'this.PROPERTY.ID')
+//                ->whereColumn('ref.IBLOCK_ELEMENT_ID', 'this.ID'),
+//            'join_type' => 'inner',
+//        ]);
 
         foreach ($query->fetchAll() as $item) {
             $ids[] = $item['ID'];
@@ -81,6 +82,7 @@ class PopularComponent extends CBitrixComponent
 
             $items[] = $arFields;
         }
+
         return $items;
     }
 

@@ -186,7 +186,7 @@ $APPLICATION->IncludeComponent(
 		"COMPONENT_TEMPLATE" => ".default",
 		"IBLOCK_ID" => "12",
 		"POPULAR_FIELD" => "POPULAR",
-		"LIMIT" => "4",
+		"LIMIT" => "20",
 		"CACHE_TYPE" => "A",
 		"CACHE_TIME" => "3600",
 		"TITLE" => "Популярное",
