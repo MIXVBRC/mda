@@ -1,9 +1,10 @@
 .idea/*
+/dev
 /bitrix
 /upload
 /test/
 test.php
 yandex_*.html
 google*.html
-/*.txt
-/*.xml
+*.txt
+*.xml
