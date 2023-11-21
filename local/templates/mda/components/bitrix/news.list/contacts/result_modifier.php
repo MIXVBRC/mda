@@ -13,7 +13,7 @@ $item = [];
 foreach($arResult["ITEMS"] as $key => &$arItem) {
     $arItem['PROPERTIES']['WHATSAPP']['VALUE_PREG'] = preg_replace("/[^,.0-9]/", '', $arItem['PROPERTIES']['WHATSAPP']['VALUE']);
     $arItem['PROPERTIES']['MAP']['VALUE'] = htmlspecialchars_decode($arItem['PROPERTIES']['MAP']['VALUE']);
-    if ($userShop['XML_ID'] == $arItem['EXTERNAL_ID']) {
+    if ($userShop['XML_ID'] == $arItem['PROPERTIES']['SHOP']['VALUE']) {
         $item = $arItem;
         unset($arResult["ITEMS"][$key]);
     }
