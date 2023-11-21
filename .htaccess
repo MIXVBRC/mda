@@ -29,6 +29,10 @@ ErrorDocument 404 /404.php
   RewriteCond %{THE_REQUEST} /{2,}
   RewriteRule .* /$0 [R=301,L]
 
+  # /dev -> /
+  RewriteCond %{REQUEST_URI} ^/dev(.|)$
+  RewriteRule ^(.*)$ / [R=301,L]
+
   Options +FollowSymLinks
   RewriteEngine On
   RewriteCond %{REQUEST_FILENAME} !-f
