@@ -28,7 +28,7 @@ $this->setFrameMode(false);
         <? if (isset($arResult['SHOP']['WAY'])): ?>
             <div class="multishop__way">
                 <a href="<?=$arResult['SHOP']['WAY']?>" target="_blank" title="Как добраться?">
-                    <img src="local/templates/mda/img/ballon_2.svg" alt="Как добраться?">
+                    <img src="/local/templates/mda/img/ballon_2.svg" alt="Как добраться?">
                 </a>
             </div>
         <? endif; ?>
