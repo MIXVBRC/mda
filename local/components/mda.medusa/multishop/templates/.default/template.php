@@ -20,7 +20,7 @@ $this->setFrameMode(false);
         </div>
         <? if (isset($arResult['SHOP']['PHONE'])): ?>
             <div class="multishop__phone">
-                <a href="tel:<?=$arResult['SHOP']['PHONE']?>">
+                <a href="tel:<?=$arResult['SHOP']['PHONE']?>" title="<?=$arResult['SHOP']['PHONE']?>">
                     <i class="fa fa-phone"></i>
                 </a>
             </div>
