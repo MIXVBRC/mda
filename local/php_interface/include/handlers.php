@@ -126,8 +126,8 @@ TABLE;
         while ($arBasketItems = $dbBasketItems->Fetch()) {
 
             $quantity = $arBasketItems["QUANTITY"];
-            $price = SaleFormatCurrency($order->getPrice(), $order->getCurrency());
-            $priceFinal = SaleFormatCurrency($order->getPrice() * $quantity, $order->getCurrency());
+            $price = SaleFormatCurrency($arBasketItems['PRICE'], $order->getCurrency());
+            $priceFinal = SaleFormatCurrency($arBasketItems['PRICE'] * $quantity, $order->getCurrency());
 
             $table .= '<tr>';
             $table .= "<td style='padding: 0 10px 0 10px'>{$arBasketItems["NAME"]}</td>";
