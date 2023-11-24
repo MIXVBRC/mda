@@ -18,11 +18,21 @@ $this->setFrameMode(false);
             <i class="fa fa-shopping-basket"></i>
             <span><?=$arResult['SHOP']['NAME']?></span>
         </div>
-        <? if ($arResult['SHOP']['PHONE']): ?>
+        <? if (isset($arResult['SHOP']['PHONE'])): ?>
             <div class="multishop__phone">
-                <a href="tel:<?=$arResult['SHOP']['PHONE']?>"><?=$arResult['SHOP']['PHONE']?></a>
+                <a href="tel:<?=$arResult['SHOP']['PHONE']?>">
+                    <i class="fa fa-phone"></i>
+                </a>
             </div>
         <? endif; ?>
+        <? if (isset($arResult['SHOP']['WAY'])): ?>
+            <div class="multishop__way">
+                <a href="<?=$arResult['SHOP']['WAY']?>" target="_blank" title="Как добраться?">
+                    <img src="local/templates/mda/img/ballon_2.svg" alt="Как добраться?">
+                </a>
+            </div>
+        <? endif; ?>
+
         <div class="multishop__popup" data-multishop-select>
             <ul class="multishop__list">
                 <? foreach ($arResult['SHOPS'] as $shop): ?>

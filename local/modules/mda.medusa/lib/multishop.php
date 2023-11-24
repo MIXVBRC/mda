@@ -52,6 +52,7 @@ class MultiShop
             'NAME' => $shop['UF_NAME_REAL'] ?: $shop['UF_NAME'],
             'EMAIL' => $shop['UF_EMAIL'],
             'PHONE' => $shop['UF_PHONE'],
+            'WAY' => $shop['UF_WAY'],
             'DESCRIPTION' => $shop['UF_DESCRIPTION'],
             'XML_ID' => $shop['UF_XML_ID'],
         ];

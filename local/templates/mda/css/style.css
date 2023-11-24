@@ -3735,17 +3735,17 @@ body {
 }
 .multishop__phone {
   margin-left: 10px;
-  opacity: 0.5;
 }
 .multishop__phone a {
   color: #0085FF;
-  font-size: 14px;
 }
-.multishop__phone:hover {
-  text-decoration: underline;
+.multishop__way {
+  margin-left: 20px;
 }
-.multishop__phone i.fa {
-  margin-right: 10px;
+.multishop__way img {
+  height: 16px;
+  fill: #0085FF;
+  stroke: #0085FF;
 }
 .multishop__title {
   margin-left: 10px;
