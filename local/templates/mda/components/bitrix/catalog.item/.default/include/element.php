@@ -4,6 +4,7 @@ use \Bitrix\Main\Localization\Loc;
 
 /**
  * @global CMain $APPLICATION
+ * @var array $arResult
  * @var array $arParams
  * @var array $item
  * @var array $actualItem
@@ -47,4 +48,4 @@ $this->setFrameMode(false);
 
 <?// if (MDA_SITE_MODE_SALE) require __DIR__ . '/buttons.php'; ?>
 
-<div class="button" data-bubble>Подробнее</div>
+<a class="button" href="<?= $arResult['ITEM']['DETAIL_PAGE_URL'] ?>" data-bubble>Подробнее</a>
