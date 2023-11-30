@@ -37,12 +37,14 @@ $this->setFrameMode(false);
 
 
 <div class="list1__item-hide">
-    <? require __DIR__ . '/sku.php'; ?>
+<!--    --><?// require __DIR__ . '/sku.php'; ?>
 </div>
 
 
 <? require __DIR__ . '/price.php'; ?>
 
-<? if (MDA_SITE_MODE_SALE) require __DIR__ . '/quantity.php'; ?>
+<?// if (MDA_SITE_MODE_SALE) require __DIR__ . '/quantity.php'; ?>
 
-<? if (MDA_SITE_MODE_SALE) require __DIR__ . '/buttons.php'; ?>
+<?// if (MDA_SITE_MODE_SALE) require __DIR__ . '/buttons.php'; ?>
+
+<div class="button" data-bubble>Подробнее</div>
