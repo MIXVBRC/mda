@@ -74,7 +74,7 @@ if ($isFilter)
 */
 
 $APPLICATION->IncludeComponent(
-	"bitrix:catalog.section.list",
+	"mda.medusa:catalog.section.list",
 	"",
 	array(
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],

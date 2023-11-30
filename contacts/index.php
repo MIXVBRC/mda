@@ -4,7 +4,7 @@ $APPLICATION->SetTitle("Контакты");
 ?>
 
 <?$APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
+	"mda.medusa:news.list",
 	"contacts", 
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
@@ -16,8 +16,8 @@ $APPLICATION->SetTitle("Контакты");
 		"AJAX_OPTION_STYLE" => "Y",
 		"CACHE_FILTER" => "N",
 		"CACHE_GROUPS" => "Y",
-		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "N",
+		"CACHE_TIME" => "86400",
+		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
 		"DETAIL_URL" => "",
 		"DISPLAY_BOTTOM_PAGER" => "Y",

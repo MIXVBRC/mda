@@ -88,7 +88,9 @@ Loc::loadMessages(__FILE__);
 		"FILTER_NAME" => "multiShopFilter",
 		"COOKIE_NAME" => "MDA_MULTI_SHOP",
 		"PRODUCTS_FILTER_NAME" => "multiShopProducts",
-		"SECTIONS_FILTER_NAME" => "multiShopSections"
+		"SECTIONS_FILTER_NAME" => "multiShopSections",
+        "CACHE_TIME" => "86400",
+        "CACHE_TYPE" => "A",
 	),
 	false,
 	array(

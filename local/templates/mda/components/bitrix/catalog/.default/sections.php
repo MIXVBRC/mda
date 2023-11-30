@@ -15,7 +15,7 @@
 $this->setFrameMode(true);
 
 $APPLICATION->IncludeComponent(
-	"bitrix:catalog.section.list",
+	"mda.medusa:catalog.section.list",
 	"",
 	[
         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],

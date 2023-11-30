@@ -35,6 +35,43 @@ class CatalogSectionComponent extends ElementList
 		$this->setSeparateLoading(true);
 	}
 
+    /**
+     * Show cached component data or load if outdated.
+     * If extended mode enabled - uses result_modifier.php logic in component (be careful not to duplicate it).
+     */
+    public function loadData()
+    {
+        $this->initNavParams();
+        if ($this->isCacheDisabled() || $this->startResultCache(false, $this->getAdditionalCacheId(), $this->getComponentCachePath()))
+        {
+            $this->processResultData();
+            if (!$this->hasErrors())
+            {
+                if ($this->isExtendedMode())
+                {
+                    $this->initComponentTemplate();
+                    $this->applyTemplateModifications();
+                }
+
+                $this->initResultCache();
+                $this->includeComponentTemplate();
+                $this->clearCatalogDiscountCache();
+            }
+        }
+    }
+
+    protected function getAdditionalCacheId()
+    {
+        return array(
+            $this->globalFilter,
+            $this->productIdMap,
+            $this->arParams['CACHE_GROUPS'] === 'N' ? false : $this->getUserGroupsCacheId(),
+            $this->navigation,
+            $this->pagerParameters,
+            MultiShop::getUserShop()['XML_ID']
+        );
+    }
+
     protected function getIblockOffers($iblockId)
     {
         $offers = array();
