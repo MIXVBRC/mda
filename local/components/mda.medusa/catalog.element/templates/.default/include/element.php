@@ -57,7 +57,7 @@
 //                                break;
 
                                 case 'price':
-                                    require_once __DIR__ . '/stock.php';
+//                                    require_once __DIR__ . '/stock.php';
                                     require_once __DIR__ . '/price.php';
                                     break;
 

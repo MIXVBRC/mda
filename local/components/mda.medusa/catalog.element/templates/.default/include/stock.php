@@ -13,30 +13,30 @@
 
 <div style="color: #fff; margin: 10px 0">
 
-        <? if (!$arResult['HAVE_OFFERS']): ?>
+    <? if (!$arResult['HAVE_OFFERS']): ?>
 
-            <div>В наличии: <span><?=$arResult['STOCK']?></span></div>
+        <div>Наличие: <span><?=$arResult['STOCK']?></span></div>
 
-        <? elseif (count($arResult['OFFERS']) > 1): ?>
-            <div style="margin-bottom: 10px">В наличии:</div>
-            <ul style="margin-left: 10px">
+    <? elseif (count($arResult['OFFERS']) > 1): ?>
+        <div style="margin-bottom: 10px">Наличие:</div>
+        <ul style="margin-left: 10px">
 
-                <? foreach ($arResult['OFFERS'] as $offer): ?>
+            <? foreach ($arResult['OFFERS'] as $offer): ?>
 
-                    <li>
-                        <span>
-                            <?=$offer['STOCK']?> - <?=$offer['PROPERTIES']['CML2_ATTRIBUTES']['VALUE'][0]?>
-                        </span>
-                    </li>
+                <li>
+                    <span>
+                        <?=$offer['STOCK']?> - <?=$offer['PROPERTIES']['CML2_ATTRIBUTES']['VALUE'][0]?>
+                    </span>
+                </li>
 
-                <? endforeach; ?>
+            <? endforeach; ?>
 
-            </ul>
-        <? else:?>
+        </ul>
+    <? else:?>
 
-            <div>В наличии: <span><?=$arResult['OFFERS'][0]['STOCK']?></span></div>
+        <div>Наличие: <span><?=$arResult['OFFERS'][0]['STOCK']?></span></div>
 
-        <? endif; ?>
+    <? endif; ?>
 
 </div>
 

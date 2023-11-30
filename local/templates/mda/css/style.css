@@ -5536,11 +5536,12 @@ body {
 .form__item > label {
   position: absolute;
   left: 0;
-  top: 5px;
-  color: #fff;
+  top: -10px;
+  color: #8A8A8A;
   z-index: 0;
   pointer-events: none;
   transition: 250ms ease-in-out;
+  font-size: 10px;
 }
 .form__item > input[type=checkbox] ~ label {
   left: 25px;
