@@ -68,7 +68,7 @@ class CatalogSectionComponent extends ElementList
             $this->arParams['CACHE_GROUPS'] === 'N' ? false : $this->getUserGroupsCacheId(),
             $this->navigation,
             $this->pagerParameters,
-            MultiShop::getUserShop()['XML_ID']
+            MultiShop::getUserShop()
         );
     }
 
@@ -747,6 +747,8 @@ class CatalogSectionComponent extends ElementList
 	protected function getFilter()
 	{
 		$filterFields = parent::getFilter();
+
+		$filterFields = array_merge($filterFields,MultiShop::getFiltersByShop(MultiShop::getUserShop()['XML_ID'])['FILTER_PRODUCTS']);
 
 		if ($this->getAction() === 'bigDataLoad')
 		{
