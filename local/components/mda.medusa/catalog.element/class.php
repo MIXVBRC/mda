@@ -26,6 +26,15 @@ class CatalogElementComponent extends Element
         $this->setExtendedMode(false);
     }
 
+    protected function getAdditionalCacheId()
+    {
+        return array(
+            $this->productIdMap,
+            $this->arParams['CACHE_GROUPS'] === 'N' ? false : $this->getUserGroupsCacheId(),
+            MultiShop::getUserShop()['XML_ID']
+        );
+    }
+
     private static function haveOffers($id): bool
     {
         return (bool) CCatalogSKU::getExistOffers($id)[$id];

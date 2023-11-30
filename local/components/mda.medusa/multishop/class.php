@@ -13,19 +13,22 @@ Class MultiShopComponent extends CBitrixComponent
 {
     public function executeComponent()
     {
-        if (!$this->arResult['SHOPS'] = MultiShop::getShops()) {
-            return;
+        if($this->startResultCache($this->arParams['CACHE_TIME'], [MultiShop::getUserShop()['XML_ID']])) {
+            if (!$this->arResult['SHOPS'] = MultiShop::getShops()) {
+                return;
+            }
+
+            $this->arResult['SHOP'] = MultiShop::getUserShop();
+
+            $this->arResult['SHOW_QUESTION'] = $this->arResult['SHOP']['AUTO_SELECT'];
+
+            $filter = MultiShop::getFiltersByShop($this->arResult['SHOP']['XML_ID']);
+
+            $GLOBALS[Core::getElementsFilterName()] = $filter['FILTER_PRODUCTS'];
+            $GLOBALS[Core::getSectionsFilterName()] = $filter['FILTER_SECTIONS'];
+
+            $this->includeComponentTemplate();
         }
 
-        $this->arResult['SHOP'] = MultiShop::getUserShop();
-
-        $this->arResult['SHOW_QUESTION'] = $this->arResult['SHOP']['AUTO_SELECT'];
-
-        $filter = MultiShop::getFiltersByShop($this->arResult['SHOP']['XML_ID']);
-
-        $GLOBALS[Core::getElementsFilterName()] = $filter['FILTER_PRODUCTS'];
-        $GLOBALS[Core::getSectionsFilterName()] = $filter['FILTER_SECTIONS'];
-
-        $this->includeComponentTemplate();
     }
 }

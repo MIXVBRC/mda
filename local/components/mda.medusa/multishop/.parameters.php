@@ -25,5 +25,6 @@ $arComponentParameters = [
             'TYPE' => 'STRING',
             'DEFAULT' => 'multiShopSections',
         ],
+        'CACHE_TIME' => ['DEFAULT'=>36000000],
     ],
 ];
