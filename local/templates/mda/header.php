@@ -90,7 +90,7 @@ Loc::loadMessages(__FILE__);
 		"PRODUCTS_FILTER_NAME" => "multiShopProducts",
 		"SECTIONS_FILTER_NAME" => "multiShopSections",
         "CACHE_TIME" => "86400",
-        "CACHE_TYPE" => "A",
+        "CACHE_TYPE" => "N",
 	),
 	false,
 	array(
