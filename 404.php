@@ -10,6 +10,8 @@ CHTTP::SetStatus("404 Not Found");
 
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 
+\Bitrix\Main\Page\Asset::getInstance()->addString('<meta name="robots" content="noindex">');
+
 ?>
 <div class="page-404">
 
