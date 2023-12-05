@@ -33,6 +33,10 @@ $this->setFrameMode(false);
             </div>
         <? endif; ?>
 
+        <div class="multishop__search">
+            <span onclick="window.location.href = '/search/'" title="Поиск"><i class="fa fa-search"></i></span>
+        </div>
+
         <div class="multishop__popup" data-multishop-select>
             <ul class="multishop__list">
                 <? foreach ($arResult['SHOPS'] as $shop): ?>
