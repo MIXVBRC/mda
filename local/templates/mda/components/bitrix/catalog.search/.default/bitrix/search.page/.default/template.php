@@ -7,7 +7,8 @@
             <input type="hidden" name="how" value="<? echo $arResult["REQUEST"]["HOW"] == "d" ? "d" : "r" ?>"/>
 
             <div class="form__item">
-                <input class="form__input" type="text" name="q" value="<?= $arResult["REQUEST"]["QUERY"] ?>" size="40"/>
+                <input class="form__input" autofocus type="text" name="q" value="<?= $arResult["REQUEST"]["QUERY"] ?>" size="40"/>
+                <label class="form__label"><?=GetMessage("SEARCH_GO")?></label>
             </div>
 
             <div class="form__item">
@@ -19,7 +20,7 @@
                     <? $APPLICATION->ShowProperty('SEARCH_MESSAGE') ?>
                 </div>
             </div>
-            
+
         </form>
     </div>
 </div>
