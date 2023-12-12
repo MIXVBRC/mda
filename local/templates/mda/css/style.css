@@ -4329,8 +4329,6 @@ body {
   width: 100%;
   display: block;
   background-color: rgba(0, 0, 0, 0.5);
-  -webkit-backdrop-filter: blur(20px);
-          backdrop-filter: blur(20px);
   color: #fff;
 }
 .popular-elements__item:hover .popular-elements__name {
