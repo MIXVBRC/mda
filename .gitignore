@@ -6,5 +6,6 @@
 test.php
 yandex_*.html
 google*.html
-*.txt
-*.xml
+/*.txt
+/*.xml
+.htaccess
