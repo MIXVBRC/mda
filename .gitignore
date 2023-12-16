@@ -7,3 +7,4 @@ yandex_*.html
 google*.html
 /*.txt
 /*.xml
+.htaccess
