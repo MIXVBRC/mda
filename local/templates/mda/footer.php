@@ -57,7 +57,8 @@ IncludeTemplateLangFile(__FILE__);
 
 <? if (MDA_SITE_MODE_SALE): ?>
 
-    <?$APPLICATION->IncludeComponent(
+    <?/*
+    $APPLICATION->IncludeComponent(
         "bitrix:sale.basket.basket.line",
         "",
         Array(
@@ -79,7 +80,8 @@ IncludeTemplateLangFile(__FILE__);
         ),
         false,
         ["HIDE_ICONS" => MDA_HIDE_ICONS]
-    );?>
+    );
+    */?>
 
     <a href="<?=(isAuth() ? '/personal/' : '/auth/')?>" class="personal-small" title="Персональный кабинет"></a>
     <a href="https://wa.me/79098236060" target="blank" class="whatsapp-small" title="Написать а Whatsapp"></a>

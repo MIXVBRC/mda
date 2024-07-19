@@ -325,6 +325,9 @@ class MultiShop
             ],
         ]);
 
+        $productIds = [];
+        $sectionIds = [];
+
         while ($element = $elements->fetch()) {
             $productIds[] = $element['ID'];
             $sectionIds[] = $element['IBLOCK_SECTION_ID'];

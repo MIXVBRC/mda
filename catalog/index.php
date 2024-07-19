@@ -190,7 +190,7 @@ $APPLICATION->SetTitle("Каталог");
 		"USE_GIFTS_SECTION" => "N",
 		"USE_MAIN_ELEMENT_SECTION" => "Y",
 		"USE_PRICE_COUNT" => "N",
-		"USE_PRODUCT_QUANTITY" => "Y",
+		"USE_PRODUCT_QUANTITY" => "N",
 		"USE_REVIEW" => "N",
 		"USE_SALE_BESTSELLERS" => "N",
 		"USE_STORE" => "N",

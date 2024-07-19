@@ -28,13 +28,13 @@ $aMenuLinks = Array(
 		Array(), 
 		"" 
 	),
-	Array(
-		"Акции", 
-		"/actions/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
+//	Array(
+//		"Акции", 
+//		"/actions/",
+//		Array(),
+//		Array(),
+//		""
+//	),
 	Array(
 		"Оплата и доставка", 
 		"/delivery-and-payment", 

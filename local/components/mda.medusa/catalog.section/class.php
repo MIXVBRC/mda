@@ -748,7 +748,11 @@ class CatalogSectionComponent extends ElementList
 	{
 		$filterFields = parent::getFilter();
 
-		$filterFields = array_merge($filterFields,MultiShop::getFiltersByShop(MultiShop::getUserShop()['XML_ID'])['FILTER_PRODUCTS']);
+		$filters = MultiShop::getFiltersByShop(MultiShop::getUserShop()['XML_ID']);
+
+		if (!empty($filters)) {
+            $filterFields = array_merge($filterFields,$filters['FILTER_PRODUCTS']);
+        }
 
 		if ($this->getAction() === 'bigDataLoad')
 		{
