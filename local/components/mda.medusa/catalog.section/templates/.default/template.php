@@ -217,7 +217,19 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
         </button>
     </div>
 <?endif;?>
+<div class="list2__item-info-description">
 
+<?
+if ($USER->IsAdmin()) {
+/*
+echo '<pre>';
+var_dump ($arSection);
+echo '</pre>';
+*/
+}
+?>
+	<?=$arResult["DESCRIPTION"]?>
+</div>
 <?if ($showBottomPager):?>
     <div data-pagination-num="<?=$navParams['NavNum']?>">
         <?=$arResult['NAV_STRING']?>

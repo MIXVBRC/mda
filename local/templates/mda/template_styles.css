@@ -1,0 +1,14 @@
+.list2__item-info-description h2 {
+  font-size: 2em;
+}
+.list2__item-info-description * {
+  padding-bottom: 1rem;
+}
+
+.list2__item-info-description ul {
+  padding-bottom: 0;
+}
+.list2__item-info-description li {
+    list-style: square;
+    margin-left: 2rem;
+}

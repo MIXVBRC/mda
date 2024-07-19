@@ -34,7 +34,6 @@ if ($arResult["SECTIONS_COUNT"] > 0 && $arResult['SECTIONS']):?>
                     </div>
 
                 <?endforeach;?>
-
             </div>
         </div>
     </div>

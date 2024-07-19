@@ -175,4 +175,18 @@ $intSectionID = $APPLICATION->IncludeComponent(
 $GLOBALS['CATALOG_CURRENT_SECTION_ID'] = $intSectionID;
 
 unset($basketAction);
-
+?>
+<? if ($arResult["FOLDER"] == "/catalog/") { ?>
+<div class="list2__item-info-description">
+	<?$APPLICATION->IncludeComponent(
+		"bitrix:main.include",
+		"",
+		Array(
+			"AREA_FILE_SHOW" => "file",
+			"AREA_FILE_SUFFIX" => "inc",
+			"EDIT_TEMPLATE" => "",
+			"PATH" => "/include/SEO_catalog_description.php"
+		)
+	);?>
+</div>
+<? } ?>

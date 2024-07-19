@@ -5458,7 +5458,7 @@ body {
   bottom: 30px;
   width: 60px;
   height: 60px;
-  background-image: url("../img/person.png");
+  background-image: url(../img/person.png);
   background-size: 80%;
   background-position: 50% 10px;
   background-repeat: no-repeat;
@@ -5497,6 +5497,34 @@ body {
   background-color: #fff;
   color: #15151B;
   transition: 250ms ease-in-out;
+}
+
+.whatsapp-small {
+  position: fixed;
+  right: 30px;
+  bottom: 180px;
+  width: 60px;
+  height: 60px;
+  background-image: url(../img/wafff.png);
+  background-size: 80%;
+  background-position: 55% 6px;
+  background-repeat: no-repeat;
+  background-color: #15151B;
+  border-radius: 30px;
+  border: 2px solid #fff;
+  z-index: 10;
+}
+.whatsapp-small:hover {
+  border: 2px solid #0085FF;
+}
+@media (max-width: 768px) {
+  .whatsapp-small {
+    right: 15px;
+    bottom: 135px;
+    width: 45px;
+    height: 45px;
+    background-position: 54% 5px;
+  }
 }
 
 .contacts__list {

@@ -1,5 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+$APPLICATION->SetPageProperty("description", "Интернет-каталог  MDA-medusa  - электронные сигареты, жидкости, одноразки,  кальяны  и аксессуары. Вейп магазин рядом с домом в Хабаровске.  Удобная интернет-витрина электронных сигарет с широким ассортиментом и лучшими ценами.");
+$APPLICATION->SetPageProperty("title", "MDA-medusa, вейп-шоп рядом с вами. Хабаровск");
 $APPLICATION->SetTitle("Каталог");
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:catalog", 

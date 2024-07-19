@@ -1,4 +1,6 @@
 <?
+$PERM["test"]["*"]="D";
+$PERM["privacy"]["2"]="D";
 $PERM["include"]["7"]="W";
 $PERM["about"]["7"]="W";
 $PERM["search"]["5"]="W";

@@ -8,6 +8,20 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
+		"Вейпы", 
+		"/catalog/vape/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Кальяны", 
+		"/catalog/kalyannaya_industriya/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
 		"Акции", 
 		"/actions/", 
 		Array(), 
