@@ -65,9 +65,9 @@
                                     if (MDA_SITE_MODE_SALE) require_once __DIR__ . '/quantity.php';
                                     break;
 
-//                                case 'buttons':
-//                                    if (MDA_SITE_MODE_SALE) require_once __DIR__ . '/buttons.php';
-//                                    break;
+                                case 'buttons':
+                                    if (MDA_SITE_MODE_SALE) require_once __DIR__ . '/buttons.php';
+                                    break;
                             }
                         }
                         ?>
